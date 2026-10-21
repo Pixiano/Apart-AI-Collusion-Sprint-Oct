@@ -11,8 +11,12 @@ Sprint: Apart Research AI Collusion Sprint, starts 2026-10-23. Today is pre-spri
 - README history log (general/readme_history/) with an automatic pre-commit snapshot hook (local only).
 - Drafted the phased schedule, go/no-go gate and fallback rule (see 02_PLAN.md). Pre-registration file still to be written (03_PREREG.md, planned before Oct 23).
 
+- Signed up for the sprint.
+- Decided compute is local-only (no paid or hosted APIs).
+- Installed a pinned llama.cpp build (b11798, CUDA 13.4 prebuilt, third-party tool) in one shared location outside the repo, and wrote `tools/serve.ps1`, a launcher for a local playground server (port 8081) and a real-run server (port 8080, locked until 2026-10-23). Tooling only.
+
 ## NOT done today (important for the prior-work disclosure)
-- No experiment code written.
+- No experiment code written (the launcher script only starts a model server; no game, agents, episodes or metrics).
 - No simulations or model runs.
 - No results, data, or paper text produced.
 - No starter repos cloned or run.
