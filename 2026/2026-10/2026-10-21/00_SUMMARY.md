@@ -14,6 +14,7 @@ Sprint: Apart Research AI Collusion Sprint, starts 2026-10-23. Today is pre-spri
 - Signed up for the sprint.
 - Decided compute is local-only (no paid or hosted APIs).
 - Installed a pinned llama.cpp build (b11798, CUDA 13.4 prebuilt, third-party tool) in one shared location outside the repo, and wrote `tools/serve.ps1` + `tools/models.ini`, a launcher for a local model server in router mode: a playground (port 8081, web UI with a picker for 7 local models, renamed "Collusion Playground") and a real-run server (port 8080, locked until 2026-10-23). Tooling only.
+- Added keyboard shortcuts to the playground web UI (`tools/playground/shortcuts.js`, press `?` in the UI for the list). Tooling only.
 
 ## NOT done today (important for the prior-work disclosure)
 - No experiment code written (the launcher script only starts a model server; no game, agents, episodes or metrics).
