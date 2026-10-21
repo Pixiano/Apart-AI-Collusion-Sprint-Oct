@@ -19,3 +19,6 @@ Purpose: show what existed before the sprint (2026-10-23) versus what was built 
 | 2026-10-21 | Local git repo (main), README, LICENSE, .gitignore, tag `pre-sprint` | Pre-sprint |
 | 2026-10-21 | README history log and snapshot hook; phased schedule and gate rule drafted | Pre-sprint |
 | 2026-10-21 | First push to GitHub (main + `pre-sprint` tag) and later push of docs | Pre-sprint |
+| 2026-10-21 | Decision: local-only compute; sprint sign-up completed | Pre-sprint |
+| 2026-10-21 | Third-party tool installed: llama.cpp build b11798 (prebuilt CUDA 13.4 Windows release, outside the repo) | Pre-sprint |
+| 2026-10-21 | `tools/serve.ps1` launcher for a local model server (playground and real modes); no game or experiment code | Pre-sprint |
