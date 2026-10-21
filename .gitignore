@@ -1,0 +1,21 @@
+# secrets
+.env
+.env.*
+*.key
+
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# large local artifacts (models, raw dumps)
+*.gguf
+*.safetensors
+raw/
+
+# os/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

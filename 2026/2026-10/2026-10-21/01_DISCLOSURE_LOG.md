@@ -16,3 +16,4 @@ Purpose: show what existed before the sprint (2026-10-23) versus what was built 
 | 2026-10-21 | Hardware/tooling inventory | Pre-sprint |
 | 2026-10-21 | Question chosen via two-agent debate; plan written | Pre-sprint |
 | 2026-10-21 | Doc structure created | Pre-sprint |
+| 2026-10-21 | Local git repo (main), README, LICENSE, .gitignore, tag `pre-sprint` | Pre-sprint |
