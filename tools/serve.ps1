@@ -13,6 +13,9 @@ $max = if ($Mode -eq 'real') { 2 } else { 1 }   # ponytail: check VRAM before ra
 $logs = "D:\llm\logs\$Mode"
 New-Item -ItemType Directory -Force $logs | Out-Null
 # playground UI is a locally renamed copy of the built-in web UI (see D:\llm\playground-ui); falls back to the built-in one
-$ui = @(); if ($Mode -eq 'playground' -and (Test-Path 'D:\llm\playground-ui\index.html')) { $ui = '--path', 'D:\llm\playground-ui' }
+$ui = @(); if ($Mode -eq 'playground' -and (Test-Path 'D:\llm\playground-ui\index.html')) {
+    Copy-Item "$PSScriptRoot\playground\shortcuts.js" 'D:\llm\playground-ui\shortcuts.js' -Force   # keyboard shortcuts, source of truth is in the repo
+    $ui = '--path', 'D:\llm\playground-ui'
+}
 & $bin --models-preset "$PSScriptRoot\models.ini" --models-max $max --host 127.0.0.1 --port $port @ui `
     --log-file "$logs\router-$(Get-Date -Format yyyyMMdd_HHmm).log"
