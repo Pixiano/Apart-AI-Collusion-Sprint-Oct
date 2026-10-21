@@ -23,6 +23,15 @@ Local GGUF via llama.cpp (Qwen3-8B/14B, Gemma-4-12B, gpt-oss-20b on disk), hoste
 - Sat 10-24: main sweep in background; write intro/method.
 - Sun 10-25: analysis, figures, paper, ethics appendix, README; submit early afternoon, deadline 11:59 PM AoE.
 
+## Phases
+- **Phase 0 (Wed 10-21 to Thu 10-22), planning and setup only, no experiment code:** confirm submission form and template; locate llama.cpp or use a local server; read rate limits and test keys; write 03_PREREG.md; draft report skeleton (verified citations only); create a Python venv; commit and refresh tags; ask before pushing.
+- **Phase 1 (Fri 10-23):** tag `sprint-start`; write harness; pilot of about 24 episodes; go/no-go gate around 3pm.
+- **Phase 2 (Sat 10-24):** main sweep in the background; write intro, related work, methods. If quotas bite, drop conditions from the bottom: 2-of-3 replaced, announced swap, comm off.
+- **Phase 3 (Sun 10-25):** analysis, figures, report, ethics appendix; submit early afternoon (deadline 11:59 PM AoE).
+
+## Gate and fallback rule
+GO if at least one (model, framing) cell has pre-swap collusion index >= 0.5 in at least 2 of 3 pilot seeds. If none passes after one logged prompt change, switch to the fallback by 4pm Friday. Pilot data is not pooled with main results.
+
 ## Fallback
 Plus-factor collusion detector (messages-only vs actions-only vs plus-factor report) using a scripted cartel for positives.
 
