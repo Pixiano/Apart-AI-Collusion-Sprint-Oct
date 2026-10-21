@@ -18,7 +18,7 @@ The claim is deliberately narrow: *collusion persistence under agent replacement
 - Metric: collusion index `(mean price - Nash) / (monopoly - Nash)` before and after the swap, plus re-convergence time. Awareness is measured by price shift against the no-swap control.
 - Gating: only (model, framing) cells that collude before the swap enter the swap analysis; the per-model pass rate is reported as a result.
 - 10+ seeds per cell, bootstrap confidence intervals, no-swap control.
-- Models: local open models (llama.cpp) plus larger open models via free-tier APIs.
+- Models: local open models only (llama.cpp / local OpenAI-compatible server on one 16 GB GPU).
 
 **Fallback:** if no model colludes in the pilot, switch to a plus-factor collusion detection study using a scripted cartel for positives.
 
