@@ -17,3 +17,5 @@ Purpose: show what existed before the sprint (2026-10-23) versus what was built 
 | 2026-10-21 | Question chosen via two-agent debate; plan written | Pre-sprint |
 | 2026-10-21 | Doc structure created | Pre-sprint |
 | 2026-10-21 | Local git repo (main), README, LICENSE, .gitignore, tag `pre-sprint` | Pre-sprint |
+| 2026-10-21 | README history log and snapshot hook; phased schedule and gate rule drafted | Pre-sprint |
+| 2026-10-21 | First push to GitHub (main + `pre-sprint` tag) and later push of docs | Pre-sprint |
