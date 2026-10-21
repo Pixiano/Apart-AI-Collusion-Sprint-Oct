@@ -23,3 +23,4 @@ Purpose: show what existed before the sprint (2026-10-23) versus what was built 
 | 2026-10-21 | Third-party tool installed: llama.cpp build b11798 (prebuilt CUDA 13.4 Windows release, outside the repo) | Pre-sprint |
 | 2026-10-21 | `tools/serve.ps1` launcher for a local model server (playground and real modes); no game or experiment code | Pre-sprint |
 | 2026-10-21 | `tools/models.ini` model presets (router mode, 7 local models); playground web UI is a locally renamed copy of the llama.cpp built-in web UI (third-party, kept outside the repo) | Pre-sprint |
+| 2026-10-21 | `tools/playground/shortcuts.js`: keyboard shortcuts script for the playground UI; no game or experiment code | Pre-sprint |
