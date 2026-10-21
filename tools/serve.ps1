@@ -3,7 +3,10 @@
 #   playground: port 8081, web UI at http://127.0.0.1:8081 (model picker), 1 model resident at a time
 #   real:       port 8080, for sprint runs, 2 models resident (agents + replacement); refuses to start before 2026-10-23
 # usage: .\tools\serve.ps1 [-Mode playground|real]
-param([ValidateSet('playground', 'real')][string]$Mode = 'playground')
+#   -Lan: playground only, listen on all network interfaces (no login!) instead of this PC only; for brief demos
+param([ValidateSet('playground', 'real')][string]$Mode = 'playground', [switch]$Lan)
+if ($Lan -and $Mode -eq 'real') { throw '-Lan is for the playground only.' }
+$bindHost = if ($Lan) { '0.0.0.0' } else { '127.0.0.1' }
 $bin = 'D:\llm\llama.cpp\b11798\llama-server.exe'
 if ($Mode -eq 'real' -and (Get-Date) -lt [datetime]'2026-10-23') {
     throw 'real mode is locked until 2026-10-23 (no sprint runs before the start). Use -Mode playground.'
@@ -17,5 +20,5 @@ $ui = @(); if ($Mode -eq 'playground' -and (Test-Path 'D:\llm\playground-ui\inde
     Copy-Item "$PSScriptRoot\playground\shortcuts.js" 'D:\llm\playground-ui\shortcuts.js' -Force   # keyboard shortcuts, source of truth is in the repo
     $ui = '--path', 'D:\llm\playground-ui'
 }
-& $bin --models-preset "$PSScriptRoot\models.ini" --models-max $max --host 127.0.0.1 --port $port @ui `
+& $bin --models-preset "$PSScriptRoot\models.ini" --models-max $max --host $bindHost --port $port @ui `
     --log-file "$logs\router-$(Get-Date -Format yyyyMMdd_HHmm).log"
