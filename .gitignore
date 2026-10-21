@@ -19,3 +19,6 @@ raw/
 Thumbs.db
 .vscode/
 .idea/
+
+# local verbose working log (never committed or pushed)
+_local/
