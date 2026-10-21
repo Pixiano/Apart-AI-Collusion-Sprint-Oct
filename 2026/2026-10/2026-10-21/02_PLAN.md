@@ -1,0 +1,32 @@
+# Plan
+
+## Goal
+Solo entry to the Apart AI Collusion Sprint (2026-10-23 to 10-25). Priorities: exposure first, prize money second.
+
+## Chosen question
+Does a colluding group of LLM pricing agents keep colluding when members are replaced mid-episode? (sprint questions 1.2 + 3.3)
+Claim wording: "collusion persistence under agent replacement, as a stylised model of model updates". Not a claim about real markets.
+
+## Design
+- Repeated Bertrand pricing game, 3 agents, 60 rounds, swap at round 30.
+- Swap types: none (control), fresh clone (memory wiped), different-family model, scripted undercutter.
+- Other factors: 1 vs 2 of 3 replaced, hidden vs announced, communication on/off.
+- Metrics: collusion index (mean price - Nash) / (monopoly - Nash) before and after swap; re-convergence time; awareness as price shift vs control (self-report only as cheap talk).
+- Gating: only (model, framing) cells with pre-swap collusion above a threshold enter the swap analysis; report per-model pass rate.
+- 10+ seeds per cell, bootstrap CIs, no-swap control.
+
+## Resources
+Local GGUF via llama.cpp (Qwen3-8B/14B, Gemma-4-12B, gpt-oss-20b on disk), Groq and Cerebras free tiers, at most ~$20 paid. Keep the setup simple (one game, one manipulation).
+
+## Weekend (sprint days only)
+- Fri 10-23: harness, pilot gate (does any model collude with no swap?). If none, switch to fallback.
+- Sat 10-24: main sweep in background; write intro/method.
+- Sun 10-25: analysis, figures, paper, ethics appendix, README; submit early afternoon, deadline 11:59 PM AoE.
+
+## Fallback
+Plus-factor collusion detector (messages-only vs actions-only vs plus-factor report) using a scripted cartel for positives.
+
+## Rules to respect
+- Disclose all prior work in the report (see 01_DISCLOSURE_LOG.md).
+- Report needs: PDF on official template, abstract <=150 words, Limitations and Dual-Use/Ethics appendix.
+- Never fabricate results or references.
