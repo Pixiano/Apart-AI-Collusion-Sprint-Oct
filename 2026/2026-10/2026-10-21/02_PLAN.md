@@ -16,7 +16,7 @@ Claim wording: "collusion persistence under agent replacement, as a stylised mod
 - 10+ seeds per cell, bootstrap CIs, no-swap control.
 
 ## Resources
-Local GGUF via llama.cpp (Qwen3-8B/14B, Gemma-4-12B, gpt-oss-20b on disk), hosted endpoint and hosted endpoint free tiers, at most ~$20 paid. Keep the setup simple (one game, one manipulation).
+Local-only: GGUF models on one 16 GB GPU (Qwen3-8B/14B, Gemma-4-12B, gpt-oss-20b on disk). No paid or hosted APIs ($0 budget). Keep the setup simple (one game, one manipulation), with short structured model outputs and a smaller grid to fit local throughput.
 
 ## Weekend (sprint days only)
 - Fri 10-23: harness, pilot gate (does any model collude with no swap?). If none, switch to fallback.
