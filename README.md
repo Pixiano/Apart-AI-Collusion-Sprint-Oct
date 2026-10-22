@@ -39,6 +39,10 @@ Code, data, and results directories will be added when they exist.
 
 The work documents how agent collusion persists or breaks. Only the experiment harness and aggregate results will be released. The collusion-eliciting prompts used in the literature are already public; this project frames its findings defensively, for auditors and market designers. A full limitations and dual-use appendix will accompany the report.
 
+## Credits and references
+
+This project builds on the work of others and credits it: [`references.bib`](references.bib) lists every paper, repository, tool and model used or consulted, with links. Third-party code is not copied into this repository (the starter repositories named on the sprint page have no license, so none of their code is used), and downloaded papers are kept locally and not redistributed (see [`papers/README.md`](papers/README.md)). Model and tool licenses are those of their own pages.
+
 ## License
 
 MIT, see [LICENSE](LICENSE).
