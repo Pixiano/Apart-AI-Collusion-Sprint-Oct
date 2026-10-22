@@ -37,4 +37,6 @@ An episode is dropped only for API/server failure or unparseable output in more 
 Paired differences against the control branch, bootstrap over base runs (10,000 resamples). No significance testing beyond the intervals; effect sizes first. Pilot data is never pooled with main data.
 
 ## Deviations
+Note (added after freezing, 2026-10-22): details here may vary if the pilot shows something is unworkable. Any change will be listed below with its date and reason. The frozen version is the `prereg-v1` tag.
+
 (none yet)
