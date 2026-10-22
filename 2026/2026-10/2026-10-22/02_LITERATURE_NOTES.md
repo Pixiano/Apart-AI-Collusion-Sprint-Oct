@@ -1,6 +1,6 @@
 # Literature notes (2026-10-22)
 
-Read status: title, abstract and introduction of each paper, plus keyword searches (replace, swap, turnover, mid-episode) and a look at each setup. Not read in full. Every statement below is from those parts. PDFs: see `papers/README.md`.
+Read status: title, abstract and introduction of each paper, keyword searches (replace, swap, turnover, mid-episode), and a deeper read of the design sections of Keppo, Fish, Eschenbaum and Shi (see `04_PAPER_INSIGHTS.md` for exactly which sections). Not read in full. Every statement below is from those parts. PDFs: see `papers/README.md`.
 
 | Paper | What they did | Relation to this project |
 |---|---|---|
