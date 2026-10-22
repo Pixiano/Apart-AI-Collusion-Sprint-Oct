@@ -22,3 +22,7 @@ Thumbs.db
 
 # local verbose working log (never committed or pushed)
 _local/
+
+# papers kept locally only (copyright); papers/README.md lists them
+papers/*.pdf
+papers/txt/
