@@ -12,4 +12,5 @@ Read status: abstract, introduction and keyword searches only (2026-10-22). Not 
 | `eschenbaum2022_2201.00345.pdf` | Eschenbaum, Mellgren, Zahn. Robust Algorithmic Collusion (2021/2022) | https://arxiv.org/abs/2201.00345 |
 | `aharon2026_2601.22184.pdf` | Aharon, La Malfa, Wooldridge, Kraus. Tacit Coordination of Large Language Models (v2, 2026) | https://arxiv.org/abs/2601.22184 |
 | `trust-breaking2026_2607.05132.pdf` | Shi, Zhang, Scholkopf, Conitzer, Jin. When Agents Lie: Premeditation, Persistence, and Exploitation in Repeated Games (ICML 2026) | https://arxiv.org/abs/2607.05132 |
+| `tewolde2026_2604.15267.pdf` | Tewolde, Zhang, Guzman Piedrahita, Conitzer, Jin. CoopEval: Benchmarking Cooperation-Sustaining Mechanisms and LLM Agents in Social Dilemmas (ICML 2026) | https://arxiv.org/abs/2604.15267 |
 | `dietrich2026_2606.09854.pdf` | Dietrich. Can Multi-Agent LLMs Identify Their Peers? Stylometric Fingerprinting in Role-Constrained Political Analysis (2026) | https://arxiv.org/abs/2606.09854 |

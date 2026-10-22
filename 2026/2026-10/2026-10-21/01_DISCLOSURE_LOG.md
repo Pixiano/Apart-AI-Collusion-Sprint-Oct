@@ -27,4 +27,5 @@ Purpose: show what existed before the sprint (2026-10-23) versus what was built 
 | 2026-10-22 | `tools/serve.ps1` `-Lan` option and 32k context settings in `tools/models.ini`; UI copy patched to send gpt-oss its native reasoning level; no game or experiment code | Pre-sprint |
 | 2026-10-22 | `03_PREREG.md` pre-registration draft written; no code or data | Pre-sprint |
 | 2026-10-22 | Downloaded and read (abstract and introduction) six related papers (Fish; Keppo; Eschenbaum; Shi; Dietrich; Aharon), local only, listed in `papers/README.md`; literature notes and a paper-only harness spec written; no code | Pre-sprint |
+| 2026-10-22 | Downloaded and read a seventh paper, Tewolde et al. (CoopEval), local only; analysis written; no code | Pre-sprint |
 | 2026-10-22 | Read starter repos' metadata only (LLMCartel, focal-points, LLM-Trust-Breaking): none has a license, nothing cloned, no code used | Pre-sprint |
