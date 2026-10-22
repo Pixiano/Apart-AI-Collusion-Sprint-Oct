@@ -11,6 +11,7 @@ Sprint: Apart Research AI Collusion Sprint, starts 2026-10-23. Today is the last
 - Downloaded six related papers (kept locally, not committed; list in `papers/README.md`), read abstracts and introductions, wrote `02_LITERATURE_NOTES.md` (closest work: Keppo et al. 2026, which uses fixed heterogeneity, not replacement mid-run).
 - Read the design sections of the papers and wrote `04_PAPER_INSIGHTS.md` (theory, methods and risks drawn from them; expectations written before any data, labelled exploratory). Changed the harness spec: the agents are not told the number of rounds, long-run-profit prompt, one-firm and one-shot sanity checks.
 - Chased the CoopEval lead (Tewolde et al.): downloaded, read the results sections, wrote `05_COOPEVAL_ANALYSIS.md`; it re-matches strangers each round, not a replacement in a stable group. Added to the bibliography.
+- Wrote an exploratory list of ablations and extra configurations (`06_ABLATIONS.md`): horizon told or hidden, notes field, history window, wording, swap timing, reasoning effort, replacement strength, temperature, number of firms. Not part of the pre-registration.
 - Wrote the harness spec on paper (`03_HARNESS_SPEC.md`). No code.
 - Fixed `02_PLAN.md`: abstract is 150 to 250 words (the plan said 150 or fewer).
 - Froze the pre-registration (`prereg-v1` tag) and refreshed the `pre-sprint` tag.
@@ -29,3 +30,4 @@ Sprint: Apart Research AI Collusion Sprint, starts 2026-10-23. Today is the last
 - 03_HARNESS_SPEC.md - how to build the harness (paper only)
 - 04_PAPER_INSIGHTS.md - what the papers give us: theory, methods, risks, expectations
 - 05_COOPEVAL_ANALYSIS.md - analysis of the CoopEval paper
+- 06_ABLATIONS.md - exploratory ablations and extra configurations
