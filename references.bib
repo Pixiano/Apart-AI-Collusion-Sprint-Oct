@@ -1,0 +1,130 @@
+% Bibliography for this project. Every entry was checked against the paper's own first pages or the page it links to (2026-10-22).
+% "read" notes say how much of each source was read. Only cite specific results from a source after reading the relevant part in full.
+% Entries marked (to add) are sources whose details have not been verified yet; none so far.
+
+% ---------- Related work (read: title, abstract, introduction, keyword searches) ----------
+
+@misc{fish2024algorithmic,
+  author        = {Fish, Sara and Gonczarowski, Yannai A. and Shorrer, Ran},
+  title         = {Algorithmic Collusion by Large Language Models},
+  year          = {2024},
+  eprint        = {2404.00806},
+  archivePrefix = {arXiv},
+  url           = {https://arxiv.org/abs/2404.00806},
+  note          = {Version 6 (2026) read. First version January 2024.}
+}
+
+@misc{keppo2026fragility,
+  author        = {Keppo, Jussi and Li, Yuze and Tsoukalas, Gerry and Yuan, Nuo},
+  title         = {On the Fragility of {AI} Agent Collusion},
+  year          = {2026},
+  eprint        = {2603.20281},
+  archivePrefix = {arXiv},
+  url           = {https://arxiv.org/abs/2603.20281},
+  note          = {Closest prior work to this project: heterogeneity between pricing agents that is fixed from the start of a run.}
+}
+
+@misc{eschenbaum2022robust,
+  author        = {Eschenbaum, Nicolas and Mellgren, Filip and Zahn, Philipp},
+  title         = {Robust Algorithmic Collusion},
+  year          = {2022},
+  eprint        = {2201.00345},
+  archivePrefix = {arXiv},
+  url           = {https://arxiv.org/abs/2201.00345},
+  note          = {arXiv version 2 (January 2022, dated December 2021) read. The sprint page links an OpenReview version (id BztUFukcBry) that could not be opened; it is not confirmed to be the same version.}
+}
+
+@inproceedings{shi2026agentslie,
+  author        = {Shi, Jerick and Zhang, Terry Jingcheng and Sch{\"o}lkopf, Bernhard and Conitzer, Vincent and Jin, Zhijing},
+  title         = {When Agents Lie: Premeditation, Persistence, and Exploitation in Repeated Games},
+  booktitle     = {Proceedings of the 43rd International Conference on Machine Learning (ICML)},
+  series        = {Proceedings of Machine Learning Research},
+  volume        = {306},
+  year          = {2026},
+  address       = {Seoul, South Korea},
+  eprint        = {2607.05132},
+  archivePrefix = {arXiv},
+  url           = {https://arxiv.org/abs/2607.05132},
+  note          = {Code: https://github.com/Jerick-1380/LLM-Trust-Breaking (no license stated; not used).}
+}
+
+@misc{dietrich2026peers,
+  author        = {Dietrich, Juergen},
+  title         = {Can Multi-Agent {LLMs} Identify Their Peers? Stylometric Fingerprinting in Role-Constrained Political Analysis},
+  year          = {2026},
+  eprint        = {2606.09854},
+  archivePrefix = {arXiv},
+  url           = {https://arxiv.org/abs/2606.09854}
+}
+
+@misc{aharon2026tacit,
+  author        = {Aharon, Ido and La Malfa, Emanuele and Wooldridge, Michael and Kraus, Sarit},
+  title         = {Tacit Coordination of Large Language Models},
+  year          = {2026},
+  eprint        = {2601.22184},
+  archivePrefix = {arXiv},
+  url           = {https://arxiv.org/abs/2601.22184},
+  note          = {Version 2 (June 2026) read. Code: https://github.com/EmanueleLM/focal-points (no license stated; not used).}
+}
+
+% ---------- Starter repositories named on the sprint page (listed, not used; none has a license) ----------
+
+@misc{riemer_llmcartel,
+  author        = {{mattriemer (GitHub account)}},
+  title         = {{LLMCartel}},
+  howpublished  = {GitHub repository},
+  url           = {https://github.com/mattriemer/LLMCartel},
+  note          = {No license stated; not cloned or used. Owner account: mattriemer; the real author names are not verified.}
+}
+
+% ---------- Tools and models used (third-party, kept outside the repository) ----------
+
+@misc{llamacpp,
+  author        = {{ggml-org and contributors}},
+  title         = {{llama.cpp}: {LLM} inference in {C/C++}},
+  howpublished  = {GitHub repository, release b11798 (prebuilt CUDA 13.4 Windows build)},
+  url           = {https://github.com/ggml-org/llama.cpp},
+  note          = {MIT license. Used as the local model server.}
+}
+
+@misc{qwen3_8b_gguf,
+  author        = {{Qwen team (original model); LM Studio community (GGUF conversion)}},
+  title         = {{Qwen3-8B} {GGUF}},
+  howpublished  = {Hugging Face model repository},
+  url           = {https://huggingface.co/lmstudio-community/Qwen3-8B-GGUF},
+  note          = {Used as qwen3-8b (Q4\_K\_M). Check the model card for the license.}
+}
+
+@misc{qwen3_14b_gguf,
+  author        = {{Qwen team (original model); LM Studio community (GGUF conversion)}},
+  title         = {{Qwen3-14B} {GGUF}},
+  howpublished  = {Hugging Face model repository},
+  url           = {https://huggingface.co/lmstudio-community/Qwen3-14B-GGUF},
+  note          = {Used as qwen3-14b (Q4\_K\_M). Check the model card for the license.}
+}
+
+@misc{gemma4_12b_gguf,
+  author        = {{Google (original model); LM Studio community (GGUF conversion)}},
+  title         = {{Gemma-4-12B-it QAT} {GGUF}},
+  howpublished  = {Hugging Face model repository},
+  url           = {https://huggingface.co/lmstudio-community/gemma-4-12B-it-QAT-GGUF},
+  note          = {Used as gemma4-12b (Q4\_0). Check the model card for the terms of use.}
+}
+
+@misc{gptoss20b_gguf,
+  author        = {{OpenAI (original model); LM Studio community (GGUF conversion)}},
+  title         = {{gpt-oss-20b} {GGUF}},
+  howpublished  = {Hugging Face model repository},
+  url           = {https://huggingface.co/lmstudio-community/gpt-oss-20b-GGUF},
+  note          = {Used as gpt-oss-20b. Check the model card for the license.}
+}
+
+% ---------- The event ----------
+
+@misc{apart2026sprint,
+  author        = {{Apart Research}},
+  title         = {{AI} Collusion Research Sprint, 23--25 October 2026},
+  howpublished  = {Event page and report template},
+  url           = {https://apartresearch.com/sprints/ai-collusion-research-sprint-2026-10-23-to-2026-10-25},
+  note          = {Research questions 1.2 and 3.3, report template and judging rubric.}
+}
