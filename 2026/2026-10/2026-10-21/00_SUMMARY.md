@@ -15,6 +15,9 @@ Sprint: Apart Research AI Collusion Sprint, starts 2026-10-23. Today is pre-spri
 - Decided compute is local-only (no paid or hosted APIs).
 - Installed a pinned llama.cpp build (b11798, CUDA 13.4 prebuilt, third-party tool) in one shared location outside the repo, and wrote `tools/serve.ps1` + `tools/models.ini`, a launcher for a local model server in router mode: a playground (port 8081, web UI with a picker for 7 local models, renamed "Collusion Playground") and a real-run server (port 8080, locked until 2026-10-23). Tooling only.
 - Added keyboard shortcuts to the playground web UI (`tools/playground/shortcuts.js`, press `?` in the UI for the list). Tooling only.
+- Playground follow-ups (2026-10-22): 32k context per chat (1 slot; real-run mode keeps 4 slots of 8k), an opt-in `-Lan` switch in `tools/serve.ps1` (off by default, playground only), and the UI sends gpt-oss its native low/medium/high reasoning level instead of a token cap. Tooling only.
+- Wrote a pre-registration draft (`03_PREREG.md`: fixed game, gate, outcomes, exclusions). No code or data.
+- Read the sprint page again: report template, starter repos and Oct 22 talks found. The three starter repos (LLMCartel, focal-points, LLM-Trust-Breaking) have no license, so none of their code is used.
 
 ## NOT done today (important for the prior-work disclosure)
 - No experiment code written (the launcher script only starts a model server; no game, agents, episodes or metrics).
@@ -26,9 +29,11 @@ Sprint: Apart Research AI Collusion Sprint, starts 2026-10-23. Today is pre-spri
 - Page shows "Starts Oct 23" but also "submission window has closed": confirm with Apart (Discord/email) that submission is open.
 - Confirm llama.cpp CUDA build location (or use a local OpenAI-compatible server instead).
 - Check rate limits and test keys for the free-tier APIs; collect exact starter-repo links and licenses from the sprint page (read only).
-- Find the official report template link.
+- Official report template link found (see 01_DISCLOSURE_LOG.md and the sprint page); make a copy.
+- Review and freeze 03_PREREG.md before the first pilot (2026-10-23).
 
 ## Files in this folder
 - 00_SUMMARY.md - this file
 - 01_DISCLOSURE_LOG.md - prior-work disclosure and timestamped log
 - 02_PLAN.md - chosen question and weekend plan
+- 03_PREREG.md - pre-registration draft (game, gate, outcomes)
