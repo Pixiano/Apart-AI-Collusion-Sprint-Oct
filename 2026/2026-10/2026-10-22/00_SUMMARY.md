@@ -10,6 +10,7 @@ Sprint: Apart Research AI Collusion Sprint, starts 2026-10-23. Today is the last
 - Wrote the report skeleton (`01_REPORT_SKELETON.md`) from the official template's section list, then added the judging rubric, the 8-page maximum and the required ethics appendix after reading the sprint page Guidelines tab.
 - Downloaded six related papers (kept locally, not committed; list in `papers/README.md`), read abstracts and introductions, wrote `02_LITERATURE_NOTES.md` (closest work: Keppo et al. 2026, which uses fixed heterogeneity, not replacement mid-run).
 - Read the design sections of the papers and wrote `04_PAPER_INSIGHTS.md` (theory, methods and risks drawn from them; expectations written before any data, labelled exploratory). Changed the harness spec: the agents are not told the number of rounds, long-run-profit prompt, one-firm and one-shot sanity checks.
+- Chased the CoopEval lead (Tewolde et al.): downloaded, read the results sections, wrote `05_COOPEVAL_ANALYSIS.md`; it re-matches strangers each round, not a replacement in a stable group. Added to the bibliography.
 - Wrote the harness spec on paper (`03_HARNESS_SPEC.md`). No code.
 - Fixed `02_PLAN.md`: abstract is 150 to 250 words (the plan said 150 or fewer).
 - Froze the pre-registration (`prereg-v1` tag) and refreshed the `pre-sprint` tag.
@@ -27,3 +28,4 @@ Sprint: Apart Research AI Collusion Sprint, starts 2026-10-23. Today is the last
 - 02_LITERATURE_NOTES.md - what the six related papers did and how this differs
 - 03_HARNESS_SPEC.md - how to build the harness (paper only)
 - 04_PAPER_INSIGHTS.md - what the papers give us: theory, methods, risks, expectations
+- 05_COOPEVAL_ANALYSIS.md - analysis of the CoopEval paper

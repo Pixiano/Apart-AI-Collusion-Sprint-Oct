@@ -25,7 +25,7 @@ Read for this note: Keppo et al. sections 1 to 3 (introduction, model summary, e
 - **Prompt sensitivity** (Fish et al.): small wording changes move prices a lot. Our results are about our prompt; say so, and log any change.
 - **Mixed-model groups behave differently on their own** (Shi et al., Keppo et al.). Always report the different-family swap next to the same-model clone.
 - **Different game.** Both LLM pricing papers use logit demand (Calvano-style); ours is a simple homogeneous Bertrand game with integer prices. Comparisons to their price-elevation percentages are not like for like. Report our index only.
-- **Starting point for novelty.** Keppo et al. (heterogeneity fixed from the start) is the closest work; Shi et al. cite another paper (Tewolde et al. 2026, not read, not in our bibliography) that reports cooperation deteriorating when co-players vary. Find and read it before claiming novelty beyond "to our knowledge".
+- **Starting point for novelty.** Keppo et al. (heterogeneity fixed from the start) is the closest work; Shi et al. cite Tewolde et al. 2026 (CoopEval), which reports cooperation deteriorating when co-players vary. Now read: it re-matches strangers every round and does not replace one member of a stable group (see `05_COOPEVAL_ANALYSIS.md`), so the novelty wording stays "to our knowledge".
 
 ## 4. Expectations written before any data (exploratory, not part of the pre-registration)
 1. **Undercutter:** collusion breaks (positive control; if it does not, the harness or the index is wrong).
