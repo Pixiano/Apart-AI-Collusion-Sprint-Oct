@@ -24,3 +24,6 @@ Purpose: show what existed before the sprint (2026-10-23) versus what was built 
 | 2026-10-21 | `tools/serve.ps1` launcher for a local model server (playground and real modes); no game or experiment code | Pre-sprint |
 | 2026-10-21 | `tools/models.ini` model presets (router mode, 7 local models); playground web UI is a locally renamed copy of the llama.cpp built-in web UI (third-party, kept outside the repo) | Pre-sprint |
 | 2026-10-21 | `tools/playground/shortcuts.js`: keyboard shortcuts script for the playground UI; no game or experiment code | Pre-sprint |
+| 2026-10-22 | `tools/serve.ps1` `-Lan` option and 32k context settings in `tools/models.ini`; UI copy patched to send gpt-oss its native reasoning level; no game or experiment code | Pre-sprint |
+| 2026-10-22 | `03_PREREG.md` pre-registration draft written; no code or data | Pre-sprint |
+| 2026-10-22 | Read starter repos' metadata only (LLMCartel, focal-points, LLM-Trust-Breaking): none has a license, nothing cloned, no code used | Pre-sprint |
