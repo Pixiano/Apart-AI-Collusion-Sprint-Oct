@@ -1,0 +1,21 @@
+# Literature notes (2026-10-22)
+
+Read status: title, abstract and introduction of each paper, plus keyword searches (replace, swap, turnover, mid-episode) and a look at each setup. Not read in full. Every statement below is from those parts. PDFs: see `papers/README.md`.
+
+| Paper | What they did | Relation to this project |
+|---|---|---|
+| Fish, Gonczarowski, Shorrer, Algorithmic Collusion by LLMs (arXiv 2404.00806) | LLM pricing agents (GPT family and others) in oligopoly: 300 periods, logit demand, each agent keeps its own plans and insights between calls. Agents reach supracompetitive prices; wording of the prompt changes the degree of collusion; price-war concern found as a driver. | Baseline that LLM agents collude. Our game is simpler (homogeneous Bertrand) and shorter (60 rounds) because of local compute, so collusion is not guaranteed: hence the pilot gate. Prompt wording matters, so we log the prompt change allowed in the pilot. |
+| Keppo, Li, Tsoukalas, Yuan, On the Fragility of AI Agent Collusion (arXiv 2603.20281) | Two DeepSeek-R1 sellers in repeated Bertrand, over 2,000 compute hours. Heterogeneity in patience (price lift 22% to 10%), data access (to 7%), more competitors, and LLM vs Q-learning break collusion; model-size gaps (32B vs 14B) do not, they make leader-follower dynamics that stabilise it. | Closest work. Their heterogeneity is fixed for the whole run ("replacing Agent 2 with a myopic agent" means a different agent from round 1). We replace an agent mid-episode after collusion has formed and compare to a control from the same checkpoint. |
+| Eschenbaum, Mellgren, Zahn, Robust Algorithmic Collusion (arXiv 2201.00345) | Q-learning agents in repeated Bertrand: collusion learned in training breaks down against other counterparts in testing and falls back to Nash play. | Motivation for asking whether collusion is tied to the specific partners. This is reinforcement learning, not LLMs. The sprint page cites an OpenReview link for this work that returned 403, so I used the arXiv version (same authors and title, not confirmed to be the identical version). |
+| Shi, Zhang, Scholkopf, Conitzer, Jin, When Agents Lie (ICML 2026, arXiv 2607.05132) | Repeated n-player games with a private plan, public announcement and action; three frontier models, homogeneous and mixed groups; models read announcements incompatibly (binding vs cheap talk), payoff gaps from round 0. | Relevant to our announced vs hidden swap and to messages as cheap talk. Cross-model groups behave differently from same-model groups. |
+| Dietrich, Can Multi-Agent LLMs Identify Their Peers? (arXiv 2606.09854) | A fine-tuned T5 classifier and LLM classifiers identify the model family behind short role-constrained texts (political analysis) with high accuracy even after anonymisation. | Suggests a swapped model may be identifiable from its messages (question 3.3). Different domain; classifiers, not the agents themselves. |
+| Aharon et al., Tacit Coordination of LLMs (arXiv 2601.22184) | Focal-point coordination games across 20+ models; LLMs often coordinate without communication, fail on numerical common sense. | Background for tacit coordination and for why a different-family replacement may not share the cartel's focal price. Not about pricing. |
+
+## Novelty statement (to use carefully)
+From these six papers and keyword searches, none studies replacing an agent in the middle of a run after collusion has formed, with paired branches from one checkpoint. This is not a full literature search. The report should say "to our knowledge" and name the closest work (Keppo et al. 2026).
+
+## Consequences for the design
+- Keep the no-swap control from the same checkpoint (isolates the swap effect from natural drift).
+- Collusion is prompt-sensitive (Fish et al.): the single allowed pilot prompt change is a legitimate, logged lever. An option for it is the per-agent notes field Fish et al. use; it is not in prereg-v1, so using it would be logged as a deviation.
+- Mixed-model groups can behave differently regardless of any swap (Shi et al., Keppo et al.): report the different-family swap against both the control and the same-model clone.
+- Cite with care: do not describe any paper's results beyond what is stated in the abstracts above.

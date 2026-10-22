@@ -23,7 +23,7 @@ Working title: Does the cartel survive turnover? Collusion persistence under age
 - Contributions (numbered, filled from results only).
 
 ## 2. Related Work
-- Verified citations only (read before citing). Candidates to read: Eschenbaum et al. 2022; Keppo et al. 2026 (arXiv 2603.20281); Aharon et al. 2026 (arXiv 2601.22184); LLMCartel and focal-points repos (no license, ideas only).
+- Verified citations only (read before citing). Read so far (abstract and introduction only, see `02_LITERATURE_NOTES.md`): Fish et al. (arXiv 2404.00806), Keppo et al. 2026 (arXiv 2603.20281, closest work), Eschenbaum et al. (arXiv 2201.00345), Shi et al. 2026 (arXiv 2607.05132), Dietrich 2026 (arXiv 2606.09854), Aharon et al. 2026 (arXiv 2601.22184). LLMCartel and focal-points repos have no license (ideas only). Read the full text of any paper before citing a specific result.
 - How this differs; the gap.
 
 ## 3. Methods
