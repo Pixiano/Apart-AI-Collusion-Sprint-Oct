@@ -1,9 +1,17 @@
 # Report skeleton (follows the official template; structure only, no results)
 
 Template: https://docs.google.com/document/d/1Y5wd3VRbXU5N08BvAGiJUQTaWbMCSPjhzXsR-ozuehg/copy?usp=sharing (make your own copy, delete all guidance text and the info box before submitting).
-Length: about 4 pages excluding references and appendix (Introduction + Related Work 1 page, Methods + Results 2.5, Discussion 0.5). The template asks that the report is primarily written by the author; use AI help for checking and code, and say so in the LLM usage statement.
+Length: the sprint page allows a maximum of 8 pages excluding references and appendices; the template recommends about 4 (Introduction + Related Work 1 page, Methods + Results 2.5, Discussion 0.5). Aim for 4 to 5 and keep it tight. PDF, up to 25 MB. Abstract 150 to 250 words. The template asks that the report is primarily written by the author; use AI help for checking and code, and say so in the LLM usage statement.
 
 Working title: Does the cartel survive turnover? Collusion persistence under agent replacement in a repeated pricing game (stylised model of model updates)
+
+## What judges score (sprint page Guidelines tab, each 1 to 5)
+- Impact Potential and Innovation: important or neglected problem, original approach, new rather than a replication of recent work, clear theory of change.
+- Execution Quality: sound method, convincing validation, results that support the conclusions, limitations acknowledged.
+- Presentation and Clarity: easy to follow, problem, method, findings and limitations all present, no key information buried.
+- Rewarded: acknowledged limitations, variance, seeds, baselines, and a positive control. Penalised: made-up results or references, undisclosed prior work.
+- Required appendix: "Limitations and Dual-Use / Ethical Considerations": what the result does and does not establish, and any way the setup could make real-world collusion easier to carry out or harder to detect.
+- Our controls: the no-swap branch is the baseline; the scripted undercutter is the positive control (it should break collusion by construction); report seeds and bootstrap intervals.
 
 ## Front matter
 - Author, affiliation (school or independent), event credit: AI Collusion Research Sprint, October 2026.
@@ -43,7 +51,7 @@ Working title: Does the cartel survive turnover? Collusion persistence under age
 
 ## 9. References (one consistent format)
 
-## 10. Appendix (optional): prompts, full parameters, per-seed plots
+## 10. Appendix: prompts, full parameters, per-seed plots, and the REQUIRED "Limitations and Dual-Use / Ethical Considerations" appendix
 
 ## 11. LLM Usage Statement
 - Which tools helped with what (planning debate, coding, checking), confirmation that every claim and citation was verified by the author.
