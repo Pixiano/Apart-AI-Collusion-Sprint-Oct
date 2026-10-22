@@ -7,7 +7,9 @@ Sprint: Apart Research AI Collusion Sprint, starts 2026-10-23. Today is the last
 - Wrote a pre-registration draft (`../2026-10-21/03_PREREG.md`: fixed game, gate, outcomes, exclusions). No code or data.
 - Re-read the sprint page: found the report template, starter repos and Oct 22 talks. The three starter repos (LLMCartel, focal-points, LLM-Trust-Breaking) have no license, so none of their code is used (see the disclosure log, `../2026-10-21/01_DISCLOSURE_LOG.md`).
 - Project Python environment (`.venv`, gitignored) with openai, numpy, pandas, matplotlib. No game code.
-- Wrote the report skeleton (`01_REPORT_SKELETON.md`) from the official template's section list.
+- Wrote the report skeleton (`01_REPORT_SKELETON.md`) from the official template's section list, then added the judging rubric, the 8-page maximum and the required ethics appendix after reading the sprint page Guidelines tab.
+- Fixed `02_PLAN.md`: abstract is 150 to 250 words (the plan said 150 or fewer).
+- Froze the pre-registration (`prereg-v1` tag) and refreshed the `pre-sprint` tag.
 
 ## NOT done today (important for the prior-work disclosure)
 - No experiment code, simulations, model runs, results or data.
@@ -15,7 +17,6 @@ Sprint: Apart Research AI Collusion Sprint, starts 2026-10-23. Today is the last
 
 ## Open items
 - Author: review and freeze the pre-registration; copy the official report template; confirm the submission form is live (page shows both "Starts Oct 23" and "submission window has closed").
-- Refresh the `pre-sprint` tag at the end of today.
 
 ## Files in this folder
 - 00_SUMMARY.md - this file

@@ -37,5 +37,5 @@ Plus-factor collusion detector (messages-only vs actions-only vs plus-factor rep
 
 ## Rules to respect
 - Disclose all prior work in the report (see 01_DISCLOSURE_LOG.md).
-- Report needs: PDF on official template, abstract <=150 words, Limitations and Dual-Use/Ethics appendix.
+- Report needs: PDF on official template, abstract 150 to 250 words, maximum 8 pages excluding references and appendices (the template suggests about 4); judged on Impact and Innovation, Execution Quality, Presentation and Clarity (see 2026-10-22/01_REPORT_SKELETON.md), Limitations and Dual-Use/Ethics appendix.
 - Never fabricate results or references.
