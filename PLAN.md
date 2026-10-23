@@ -44,4 +44,3 @@ Plus-factor collusion detector (messages-only vs actions-only vs plus-factor rep
 
 ## Later (queued ideas, not yet run)
 - Round-1 spread test (added 2026-10-23): play only round 1 for 50 seeds on phi4-14b with the easy prompt (`$env:EASY='profit'; powershell -ExecutionPolicy Bypass -File tools/round1_spread.ps1 -Model phi4-14b -N 50`) and plot the opening-price counts, to show how much of the 0.84 vs 0.22 seed gap is just the opening draw. Run when the server is free. Repeat on the base prompt for gemma4-12b if time allows.
-ound1_spread.ps1 -Model phi4-14b -N 50`) and plot the opening-price counts, to show how much of the 0.84 vs 0.22 seed gap is just the opening draw. Run when the server is free. Repeat on the base prompt for gemma4-12b if time allows.
