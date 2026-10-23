@@ -21,6 +21,8 @@ Three fresh agents, prices only, 30 rounds, seed 1, `data/dev/ext3off`. The harn
 ## A4 result (seed 1, comm off)
 All three agents held 55 in all 30 rounds, with no messages at all (CI 1.00). Their stated reasons: 55 maximises joint profit, the others matched it every round, undercutting pays once and risks a price war. So for these agents the cartel needs no cheap talk: matching on the focal price is enough. Single game, descriptive only; agents keep their own context, unlike the stateless local calls.
 
+Raw data for all of these is in `data/additional/` (see its README); `data/dev/` is the ignored scratch copy.
+
 ## Batch plan (2026-10-23, author's request): four experiments, messages ON first, then OFF
 All are branches of the A3 (messages on) and A4 (messages off) cartels at the round-30 checkpoint, rounds 31-60, seed 1, three agents at the start. Agents are fresh each time; newcomers and replacements see none of the old history or messages. Hidden swaps except entry (new column in the price table and an entry note). All additional, never pooled, data in `data/dev/`.
 

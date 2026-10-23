@@ -1,0 +1,16 @@
+{
+ "swap": "entry",
+ "k": 2,
+ "announce": true,
+ "replaced": [
+  3,
+  4
+ ],
+ "models": [
+  "ext:h1",
+  "ext:h2",
+  "ext:h3",
+  "ext:h4",
+  "ext:h5"
+ ]
+}
