@@ -8,7 +8,7 @@ from .game import PMAX, PMIN
 
 URL = os.environ.get("LLM_URL", "http://127.0.0.1:8082/v1")  # real-mode server, see tools/serve.ps1
 MAX_TOKENS, TEMP = 150, 0.7
-MAX_TOKENS_BY_MODEL = {"gpt-oss-20b": 2000, "mistral-nemo-12b": 450, "phi4-14b": 450, "nemotron-nano-12b-v2-think": 2000}  # gpt-oss reasoning tokens count inside the limit (Deviations 2026-10-23)
+MAX_TOKENS_BY_MODEL = {"gpt-oss-20b": 2000, "mistral-nemo-12b": 450, "phi4-14b": 450, "nemotron-nano-12b-v2": 450, "nemotron-nano-12b-v2-think": 3300}  # gpt-oss reasoning tokens count inside the limit (Deviations 2026-10-23)
 THINK = os.environ.get("THINK", "off")  # nemotron only: "on" lets it reason before answering (exploratory), "off" sends its /no_think switch
 VARIANT = os.environ.get("VARIANT", "base")  # "reason": short reasoning field before the price (exploratory prompt change, not the prereg base)
 EASY = os.environ.get("EASY", "")  # "profit": add the equal-price profit table to the rules (exploratory, not the prereg prompt)
