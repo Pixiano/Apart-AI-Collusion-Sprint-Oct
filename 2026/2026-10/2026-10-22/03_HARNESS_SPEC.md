@@ -70,7 +70,7 @@ run id, round, firm, model, swap, prompt hash, raw reply, parsed price, message,
 Per base run: CI over rounds 16 to 30 (gate). Per branch: CI over rounds 31 to 60 minus the control branch's CI (primary), re-convergence round, parse-failure rate. Aggregates: bootstrap (10,000 resamples over base runs) per swap type and model, CI also for non-replaced firms only. Figures: mean price by round with the swap marked (one panel per swap type, bands = 95% bootstrap), and one table of effects with intervals.
 
 ## Pilot (Friday)
-3 seeds x (qwen3-8b, gemma4-12b) x comm on = 6 base runs to round 30, plus the control branch for each if the gate passes. Gate rule: prereg. Pilot data is kept in `data/pilot/` and never pooled with the main data.
+3 seeds x (qwen3-8b, gemma4-12b) x comm on = 6 base runs to round 30, plus the control branch for each if the gate passes. Gate rule: prereg. Pilot data is kept in `data/pilot/` and never pooled with the main data. Launcher: `tools/pilot.ps1` (base runs, then the gate table); control branches by hand with `python -m harness.run branch --run data/pilot/<run> --swap none`.
 
 ## Not doing
 No plotting before data exists, no config files, no async framework, no database, no wrapper classes for one implementation.
