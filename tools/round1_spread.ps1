@@ -5,7 +5,12 @@ param([string]$Model = 'phi4-14b', [int]$N = 50, [string]$Out = 'data/round1')
 Set-Location (Split-Path $PSScriptRoot)
 $py = '.\.venv\Scripts\python.exe'
 $env:ROUNDS = '1'
-foreach ($s in 1..$N) { & $py -m harness.run base --model $Model --comm on --seed $s --out $Out *> $null }
+foreach ($s in 1..$N) {
+    $f = "$Out/${Model}_common_s$s/base/rounds.jsonl"  # restart-safe: a seed with its round logged is skipped, a partial one is redone
+    if ((Test-Path $f) -and (Get-Item $f).Length -gt 0) { continue }
+    Remove-Item -Recurse -Force "$Out/${Model}_common_s$s" -ErrorAction SilentlyContinue
+    & $py -m harness.run base --model $Model --comm on --seed $s --out $Out *> $null
+}
 & $py -I -c "
 import collections, glob, json
 c = collections.Counter(p for f in glob.glob('$Out/${Model}_common_s*/base/rounds.jsonl') for p in json.loads(open(f).readline())['prices'])
