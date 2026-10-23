@@ -91,15 +91,21 @@ def ext_reply(name, system, user, timeout=600):
     if os.path.exists(reply):
         os.remove(reply)
     t = time.time()
+    rnd = re.match(r"Round (\d+)\.", user).group(1)
     with open(os.path.join(EXT_DIR, f"{name}.prompt.txt"), "w", encoding="utf-8") as f:
-        f.write(system + "\n\n" + user + "\n")
-    while not os.path.exists(reply):
+        f.write(f'{system}\n\n{user}\n\n(File-protocol note, not part of the game: also put "round": {rnd} in your JSON.)\n')
+    while True:  # a reply only counts if it names this round, so a late duplicate write cannot answer the next round
         if time.time() - t > timeout:
             raise TimeoutError(f"no reply from {name} in {timeout}s")
+        if os.path.exists(reply):
+            time.sleep(0.2)
+            text = open(reply, encoding="utf-8").read()
+            os.remove(reply)
+            m = re.search(r'"round"\s*:\s*(\d+)', text)
+            if m and m.group(1) == rnd:
+                break
+            print(f"WARN ext {name}: discarded reply without matching round {rnd}: {text[:60]!r}")
         time.sleep(0.5)
-    time.sleep(0.2)
-    text = open(reply, encoding="utf-8").read()
-    os.remove(reply)
     return {"text": text, "finish": "stop", "ptok": 0, "ctok": 0, "rchars": 0, "lat": time.time() - t}
 
 
