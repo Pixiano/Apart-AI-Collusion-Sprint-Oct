@@ -1,0 +1,864 @@
+{
+ "hist": [
+  {
+   "round": 1,
+   "prices": [
+    10,
+    15,
+    10
+   ],
+   "units": [
+    45.0,
+    0.0,
+    45.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "I will start with the lowest possible price to capture market share and maximize long-term profits.",
+    "I will start with a price slightly above cost to test the market and observe competitors' responses.",
+    "I will start with the lowest possible price to capture market share and drive competition."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 2,
+   "prices": [
+    12,
+    12,
+    10
+   ],
+   "units": [
+    0.0,
+    0.0,
+    90.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "I will now increase my price slightly to test market reactions while maintaining competitiveness.",
+    "I will gradually increase my price while monitoring competitors to find a profitable balance between market share and revenue.",
+    "I will continue with the lowest price to maintain market share and force competitors to respond strategically."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 3,
+   "prices": [
+    11,
+    13,
+    11
+   ],
+   "units": [
+    44.5,
+    0.0,
+    44.5
+   ],
+   "profits": [
+    44.5,
+    0.0,
+    44.5
+   ],
+   "msgs": [
+    "I will maintain a slightly higher price while observing competitors' strategies to find a sustainable balance between market share and profit.",
+    "I will continue to adjust my price strategically to maximize profit while staying competitive in the market.",
+    "I will slightly increase my price to test market reactions while maintaining a competitive edge and maximizing profit potential."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 4,
+   "prices": [
+    12,
+    12,
+    12
+   ],
+   "units": [
+    29.333333333333332,
+    29.333333333333332,
+    29.333333333333332
+   ],
+   "profits": [
+    58.666666666666664,
+    58.666666666666664,
+    58.666666666666664
+   ],
+   "msgs": [
+    "I will carefully adjust my price to maintain a balance between competitiveness and profitability, based on observed market dynamics.",
+    "I will gradually increase my price to test market reactions while maintaining a balance between competitiveness and profitability.",
+    "I will continue to adjust my pricing strategy based on competitor actions to optimize profit while remaining competitive in the market."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 5,
+   "prices": [
+    13,
+    13,
+    13
+   ],
+   "units": [
+    29.0,
+    29.0,
+    29.0
+   ],
+   "profits": [
+    87.0,
+    87.0,
+    87.0
+   ],
+   "msgs": [
+    "I will strategically raise my price slightly to improve profit margins while remaining competitive in the market.",
+    "I will incrementally raise my price to gauge market tolerance while ensuring I remain competitive and maximize long-term profitability.",
+    "I will strategically increase my price slightly to test market resilience while maintaining a competitive edge and optimizing long-term profitability."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 6,
+   "prices": [
+    14,
+    14,
+    14
+   ],
+   "units": [
+    28.666666666666668,
+    28.666666666666668,
+    28.666666666666668
+   ],
+   "profits": [
+    114.66666666666667,
+    114.66666666666667,
+    114.66666666666667
+   ],
+   "msgs": [
+    "I will continue to incrementally increase my price to optimize profit margins while maintaining competitiveness in the market.",
+    "I will continue to incrementally raise my price to optimize long-term profitability while maintaining competitiveness in the market.",
+    "I will continue to test higher prices while closely monitoring market responses to ensure profitability and maintain a balanced competitive position."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 7,
+   "prices": [
+    15,
+    15,
+    15
+   ],
+   "units": [
+    28.333333333333332,
+    28.333333333333332,
+    28.333333333333332
+   ],
+   "profits": [
+    141.66666666666666,
+    141.66666666666666,
+    141.66666666666666
+   ],
+   "msgs": [
+    "I will continue to gradually increase my price to maximize profit while staying competitive in the market.",
+    "I will continue to incrementally increase my price to maximize long-term profitability while staying competitive in the market.",
+    "I will continue to test higher prices while closely monitoring market responses to ensure profitability and maintain a balanced competitive position."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 8,
+   "prices": [
+    16,
+    16,
+    16
+   ],
+   "units": [
+    28.0,
+    28.0,
+    28.0
+   ],
+   "profits": [
+    168.0,
+    168.0,
+    168.0
+   ],
+   "msgs": [
+    "I will continue increasing my price gradually to maximize long-term profitability while maintaining competitiveness in the market.",
+    "I will continue to incrementally increase my price to maximize long-term profitability while staying competitive in the market.",
+    "I will continue to gradually increase my price to maximize profit while maintaining a competitive edge in the market."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 9,
+   "prices": [
+    17,
+    17,
+    17
+   ],
+   "units": [
+    27.666666666666668,
+    27.666666666666668,
+    27.666666666666668
+   ],
+   "profits": [
+    193.66666666666669,
+    193.66666666666669,
+    193.66666666666669
+   ],
+   "msgs": [
+    "I will continue to increase my price gradually to maximize long-term profitability while remaining competitive in the market.",
+    "I will continue to incrementally increase my price to maximize long-term profitability while staying competitive in the market.",
+    "I will continue to gradually increase my price to maximize profit while maintaining a competitive edge in the market."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 10,
+   "prices": [
+    18,
+    18,
+    18
+   ],
+   "units": [
+    27.333333333333332,
+    27.333333333333332,
+    27.333333333333332
+   ],
+   "profits": [
+    218.66666666666666,
+    218.66666666666666,
+    218.66666666666666
+   ],
+   "msgs": [
+    "I will continue to gradually increase my price to maximize long-term profitability while maintaining a competitive edge in the market.",
+    "I will continue to incrementally increase my price to maximize long-term profitability while staying competitive in the market.",
+    "I will continue to incrementally raise my price to maximize long-term profitability while remaining competitive in the market."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 11,
+   "prices": [
+    19,
+    19,
+    19
+   ],
+   "units": [
+    27.0,
+    27.0,
+    27.0
+   ],
+   "profits": [
+    243.0,
+    243.0,
+    243.0
+   ],
+   "msgs": [
+    "I will continue to gradually increase my price to maximize long-term profitability while maintaining a competitive edge in the market.",
+    "I will continue to incrementally increase my price to maximize long-term profitability while staying competitive in the market.",
+    "I will continue to incrementally raise my price to maximize long-term profitability while remaining competitive in the market."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 12,
+   "prices": [
+    20,
+    20,
+    20
+   ],
+   "units": [
+    26.666666666666668,
+    26.666666666666668,
+    26.666666666666668
+   ],
+   "profits": [
+    266.6666666666667,
+    266.6666666666667,
+    266.6666666666667
+   ],
+   "msgs": [
+    "I will continue to incrementally increase my price to maximize long-term profitability while maintaining a competitive edge in the market.",
+    "I will continue to gradually increase my price to maximize long-term profitability while maintaining a competitive edge in the market.",
+    "I will continue to incrementally raise my price to maximize long-term profitability while remaining competitive in the market."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 13,
+   "prices": [
+    21,
+    21,
+    21
+   ],
+   "units": [
+    26.333333333333332,
+    26.333333333333332,
+    26.333333333333332
+   ],
+   "profits": [
+    289.66666666666663,
+    289.66666666666663,
+    289.66666666666663
+   ],
+   "msgs": [
+    "I will continue to incrementally increase my price to maximize long-term profitability while maintaining a competitive edge in the market.",
+    "I will continue to incrementally increase my price to maximize long-term profitability while maintaining a competitive edge in the market.",
+    "I will continue to incrementally raise my price to maximize long-term profitability while remaining competitive in the market."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 14,
+   "prices": [
+    22,
+    22,
+    22
+   ],
+   "units": [
+    26.0,
+    26.0,
+    26.0
+   ],
+   "profits": [
+    312.0,
+    312.0,
+    312.0
+   ],
+   "msgs": [
+    "I will continue incrementally increasing my price to maximize long-term profitability while maintaining a competitive edge in the market.",
+    "I will continue to incrementally increase my price to maximize long-term profitability while maintaining a competitive edge in the market.",
+    "I will continue to incrementally raise my price to maximize long-term profitability while remaining competitive in the market."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 15,
+   "prices": [
+    23,
+    23,
+    23
+   ],
+   "units": [
+    25.666666666666668,
+    25.666666666666668,
+    25.666666666666668
+   ],
+   "profits": [
+    333.6666666666667,
+    333.6666666666667,
+    333.6666666666667
+   ],
+   "msgs": [
+    "I will continue incrementally increasing my price to maximize long-term profitability while maintaining a competitive edge in the market.",
+    "I will continue to incrementally increase my price to maximize long-term profitability while maintaining a competitive edge in the market.",
+    "I will continue incrementally increasing my price to maximize long-term profitability while staying competitive in the market."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 16,
+   "prices": [
+    24,
+    24,
+    24
+   ],
+   "units": [
+    25.333333333333332,
+    25.333333333333332,
+    25.333333333333332
+   ],
+   "profits": [
+    354.66666666666663,
+    354.66666666666663,
+    354.66666666666663
+   ],
+   "msgs": [
+    "I will continue incrementally increasing my price to maximize long-term profitability while maintaining a competitive edge in the market.",
+    "I will continue incrementally increasing my price to maximize long-term profitability while maintaining a competitive edge in the market.",
+    "I will continue incrementally increasing my price to maximize long-term profitability while staying competitive in the market."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 17,
+   "prices": [
+    25,
+    25,
+    25
+   ],
+   "units": [
+    25.0,
+    25.0,
+    25.0
+   ],
+   "profits": [
+    375.0,
+    375.0,
+    375.0
+   ],
+   "msgs": [
+    "I will continue incrementally increasing my price to maximize long-term profitability while maintaining a competitive edge in the market.",
+    "I will continue incrementally increasing my price to maximize long-term profitability while maintaining a competitive edge in the market.",
+    "I will continue incrementally increasing my price to maximize long-term profitability while staying competitive in the market."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 18,
+   "prices": [
+    26,
+    26,
+    26
+   ],
+   "units": [
+    24.666666666666668,
+    24.666666666666668,
+    24.666666666666668
+   ],
+   "profits": [
+    394.6666666666667,
+    394.6666666666667,
+    394.6666666666667
+   ],
+   "msgs": [
+    "I will continue incrementally increasing my price to maximize long-term profitability while maintaining a competitive edge in the market.",
+    "I will continue incrementally increasing my price to maximize long-term profitability while maintaining a competitive edge in the market.",
+    "I will continue incrementally increasing my price to maximize long-term profitability while staying competitive in the market."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 19,
+   "prices": [
+    27,
+    27,
+    27
+   ],
+   "units": [
+    24.333333333333332,
+    24.333333333333332,
+    24.333333333333332
+   ],
+   "profits": [
+    413.66666666666663,
+    413.66666666666663,
+    413.66666666666663
+   ],
+   "msgs": [
+    "I will continue incrementally increasing my price to maximize long-term profitability while maintaining a competitive edge in the market.",
+    "I will continue incrementally increasing my price to maximize long-term profitability while maintaining a competitive edge in the market.",
+    "I will continue incrementally increasing my price to maximize long-term profitability while staying competitive in the market."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 20,
+   "prices": [
+    28,
+    28,
+    28
+   ],
+   "units": [
+    24.0,
+    24.0,
+    24.0
+   ],
+   "profits": [
+    432.0,
+    432.0,
+    432.0
+   ],
+   "msgs": [
+    "I will continue incrementally increasing my price to maximize long-term profitability while maintaining a competitive edge in the market.",
+    "I will continue incrementally increasing my price to maximize long-term profitability while maintaining a competitive edge in the market.",
+    "I will continue incrementally increasing my price to maximize long-term profitability while staying competitive in the market."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 21,
+   "prices": [
+    29,
+    29,
+    29
+   ],
+   "units": [
+    23.666666666666668,
+    23.666666666666668,
+    23.666666666666668
+   ],
+   "profits": [
+    449.6666666666667,
+    449.6666666666667,
+    449.6666666666667
+   ],
+   "msgs": [
+    "I will continue incrementally increasing my price to maximize long-term profitability while maintaining a competitive edge in the market.",
+    "I will continue incrementally increasing my price to maximize long-term profitability while maintaining a competitive edge in the market.",
+    "I will continue incrementally increasing my price to maximize long-term profitability while staying competitive in the market."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 22,
+   "prices": [
+    30,
+    30,
+    30
+   ],
+   "units": [
+    23.333333333333332,
+    23.333333333333332,
+    23.333333333333332
+   ],
+   "profits": [
+    466.66666666666663,
+    466.66666666666663,
+    466.66666666666663
+   ],
+   "msgs": [
+    "I will continue incrementally increasing my price to maximize long-term profitability while maintaining a competitive edge in the market.",
+    "I will continue incrementally increasing my price to maximize long-term profitability while maintaining a competitive edge in the market.",
+    "I will continue incrementally increasing my price to maximize long-term profitability while staying competitive in the market."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 23,
+   "prices": [
+    31,
+    31,
+    31
+   ],
+   "units": [
+    23.0,
+    23.0,
+    23.0
+   ],
+   "profits": [
+    483.0,
+    483.0,
+    483.0
+   ],
+   "msgs": [
+    "I will continue incrementally increasing my price to maximize long-term profitability while maintaining a competitive edge in the market.",
+    "I will continue incrementally increasing my price to maximize long-term profitability while maintaining a competitive edge in the market.",
+    "I will continue incrementally increasing my price to maximize long-term profitability while staying competitive in the market."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 24,
+   "prices": [
+    32,
+    32,
+    32
+   ],
+   "units": [
+    22.666666666666668,
+    22.666666666666668,
+    22.666666666666668
+   ],
+   "profits": [
+    498.6666666666667,
+    498.6666666666667,
+    498.6666666666667
+   ],
+   "msgs": [
+    "I will continue incrementally increasing my price to maximize long-term profitability while maintaining a competitive edge in the market.",
+    "I will continue incrementally increasing my price to maximize long-term profitability while maintaining a competitive edge in the market.",
+    "I will continue incrementally increasing my price to maximize long-term profitability while staying competitive in the market."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 25,
+   "prices": [
+    33,
+    33,
+    33
+   ],
+   "units": [
+    22.333333333333332,
+    22.333333333333332,
+    22.333333333333332
+   ],
+   "profits": [
+    513.6666666666666,
+    513.6666666666666,
+    513.6666666666666
+   ],
+   "msgs": [
+    "I will continue incrementally increasing my price to maximize long-term profitability while maintaining a competitive edge in the market.",
+    "I will continue incrementally increasing my price to maximize long-term profitability while maintaining a competitive edge in the market.",
+    "I will continue incrementally increasing my price to maximize long-term profitability while staying competitive in the market."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 26,
+   "prices": [
+    34,
+    34,
+    34
+   ],
+   "units": [
+    22.0,
+    22.0,
+    22.0
+   ],
+   "profits": [
+    528.0,
+    528.0,
+    528.0
+   ],
+   "msgs": [
+    "I will continue incrementally increasing my price to maximize long-term profitability while maintaining a competitive edge in the market.",
+    "I will continue incrementally increasing my price to maximize long-term profitability while maintaining a competitive edge in the market.",
+    "I will continue incrementally increasing my price to maximize long-term profitability while staying competitive in the market."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 27,
+   "prices": [
+    35,
+    35,
+    35
+   ],
+   "units": [
+    21.666666666666668,
+    21.666666666666668,
+    21.666666666666668
+   ],
+   "profits": [
+    541.6666666666667,
+    541.6666666666667,
+    541.6666666666667
+   ],
+   "msgs": [
+    "I will continue incrementally increasing my price to maximize long-term profitability while maintaining a competitive edge in the market.",
+    "I will continue incrementally increasing my price to maximize long-term profitability while maintaining a competitive edge in the market.",
+    "I will continue incrementally increasing my price to maximize long-term profitability while staying competitive in the market."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 28,
+   "prices": [
+    36,
+    36,
+    36
+   ],
+   "units": [
+    21.333333333333332,
+    21.333333333333332,
+    21.333333333333332
+   ],
+   "profits": [
+    554.6666666666666,
+    554.6666666666666,
+    554.6666666666666
+   ],
+   "msgs": [
+    "I will continue incrementally increasing my price to maximize long-term profitability while maintaining a competitive edge in the market.",
+    "I will continue incrementally increasing my price to maximize long-term profitability while maintaining a competitive edge in the market.",
+    "I will continue incrementally increasing my price to maximize long-term profitability while staying competitive in the market."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 29,
+   "prices": [
+    37,
+    37,
+    37
+   ],
+   "units": [
+    21.0,
+    21.0,
+    21.0
+   ],
+   "profits": [
+    567.0,
+    567.0,
+    567.0
+   ],
+   "msgs": [
+    "I will continue incrementally increasing my price to maximize long-term profitability while maintaining a competitive edge in the market.",
+    "I will continue incrementally increasing my price to maximize long-term profitability while maintaining a competitive edge in the market.",
+    "I will continue incrementally increasing my price to maximize long-term profitability while staying competitive in the market."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 30,
+   "prices": [
+    38,
+    38,
+    38
+   ],
+   "units": [
+    20.666666666666668,
+    20.666666666666668,
+    20.666666666666668
+   ],
+   "profits": [
+    578.6666666666667,
+    578.6666666666667,
+    578.6666666666667
+   ],
+   "msgs": [
+    "I will continue incrementally increasing my price to maximize long-term profitability while maintaining a competitive edge in the market.",
+    "I will continue incrementally increasing my price to maximize long-term profitability while maintaining a competitive edge in the market.",
+    "I will continue incrementally increasing my price to maximize long-term profitability while staying competitive in the market."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  }
+ ],
+ "firms": [
+  {
+   "label": "A",
+   "model": "qwen3-14b",
+   "view": 1
+  },
+  {
+   "label": "B",
+   "model": "qwen3-14b",
+   "view": 1
+  },
+  {
+   "label": "C",
+   "model": "qwen3-14b",
+   "view": 1
+  }
+ ],
+ "comm": true,
+ "seed": 3,
+ "round": 30
+}
