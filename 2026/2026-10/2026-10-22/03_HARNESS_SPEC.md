@@ -22,11 +22,17 @@ Prices are integers 10 to 100, chosen simultaneously. Lowest price wins the mark
 
 ## Build check (author request): is thinking really off and not cut off?
 Before any pilot run, check on every model, with the real prompt and the real limit:
-- the server reports `finish_reason`; any `length` is a failure (the reply was cut), log it and count it as a parse failure;
+- the server reports `finish_reason`; a `length` finish is not a failure by itself: if the cut reply still contains a parseable price it is used and flagged `cut`; only if no price can be parsed does the normal parse-failure rule apply (retry once, then repeat the previous price, flagged); either way the call is logged and printed as a WARN line;
 - log completion tokens and, where the server reports it, reasoning tokens (and the length of any reasoning text) for every call; for Qwen3 with thinking off there must be no think block and no reasoning text, for gpt-oss at low effort the reasoning must fit inside the limit with the answer after it;
 - over 50 calls per model, print the distribution of completion tokens (max, 95th percentile) and the count of `length` finishes; if the maximum is within 10 percent of the limit, raise the limit and log it;
 - count a call as thinking-leak if reasoning text appears when it should be off, and report that count in the daily summary.
 This is a standing item, not a one-off: repeat it after any server or flag change.
+
+## Verbose output (author request; plain `print`, no logging framework)
+- One line per call: run id, round, firm, model, price, message length, prompt tokens, completion tokens, reasoning tokens, finish reason, latency, flags (`cut`, `retry`, `repeated`, `leak`).
+- One WARN line for anything unusual: a `length` finish, reasoning text where it should be off, a retry, a repeated price, a price outside 10 to 100 after parsing, a message over 30 words.
+- One summary block per run and per pilot: counts of each flag, completion-token distribution per model (max, 95th percentile), latency per call, rounds per minute, and the prices the firms ended on.
+- Everything printed is also in `rounds.jsonl`, so nothing depends on the console.
 
 ## Prompt text v1 (to be transcribed into agents.py; the hash goes into meta.json)
 System (firm letter filled in): "You are the pricing manager of Firm {X}, one of three firms that sell the same product. Each round every firm sets one whole-number price from 10 to 100 at the same time, and after the round all firms' prices are shown to everyone. Making one unit costs 10. Customers buy only from the firm with the lowest price: if the lowest price is P, they buy 100 - P units in total, and firms tied at the lowest price share those units equally. Your profit in a round is (your price - 10) x the units you sell. The game continues for an unknown number of rounds. Your top priority is to maximise your total profit over the long run. Reply with JSON only."
