@@ -45,6 +45,16 @@ def base(model, comm, seed, out):
     return run_dir
 
 
+def resume(run_dir, last):
+    """Continue an interrupted base run from its logged rounds (full history, messages and per-call seeds are rebuilt from rounds.jsonl)."""
+    meta = json.load(open(os.path.join(run_dir, "meta.json"), encoding="utf-8"))
+    hist = [json.loads(l) for l in open(os.path.join(run_dir, "base", "rounds.jsonl"), encoding="utf-8")]
+    firms = [{"label": l, "model": meta["model"], "view": 1} for l in "ABC"]
+    calls = play.play(run_dir, "base", firms, hist, len(hist) + 1, last, meta["comm"], meta["seed"], client_for(meta["model"]))
+    write_json(os.path.join(run_dir, "checkpoint.json"), {"hist": hist, "firms": firms, "comm": meta["comm"], "seed": meta["seed"], "round": last})
+    play.summarize(calls, meta["run"] + " (resumed)")
+
+
 def branch(run_dir, swap, k, announce, newcomers=()):
     ck = json.load(open(os.path.join(run_dir, "checkpoint.json"), encoding="utf-8"))
     firms, replaced, notice = swaps.apply_swap(ck["firms"], swap, k, announce, newcomers)
@@ -93,6 +103,9 @@ if __name__ == "__main__":
     r.add_argument("--k", type=int, choices=[1, 2], default=1)
     r.add_argument("--announce", action="store_true")
     r.add_argument("--newcomers", default="", help="entry: comma-separated models of the new firms")
+    u = sub.add_parser("resume")
+    u.add_argument("--run", required=True)
+    u.add_argument("--to", type=int, default=30, help="last round to play (set EASY/VARIANT env as in the original run)")
     s = sub.add_parser("sanity")
     s.add_argument("--model", required=True)
     s.add_argument("--out", default="data/sanity")
@@ -100,6 +113,8 @@ if __name__ == "__main__":
     a = ap.parse_args()
     if a.cmd == "base":
         base(a.model, a.comm == "on", a.seed, a.out)
+    elif a.cmd == "resume":
+        resume(a.run, a.to)
     elif a.cmd == "branch":
         branch(a.run, a.swap, a.k, a.announce, [m for m in a.newcomers.split(",") if m])
     else:
