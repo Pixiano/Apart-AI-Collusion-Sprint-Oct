@@ -40,7 +40,7 @@ One round line is about 20 tokens of table plus up to 40 per message, 3 firms: r
 ## Server and throughput
 - Real mode (port 8080, locked until 2026-10-23): current default is 4 slots x 8k per model. Different-family swaps need two models loaded together (models-max 2): check VRAM Friday morning; if both do not fit with 32k each, lower the per-model context to 3 slots x 6k (18432 total) in `tools/serve.ps1`.
 - The three firms' calls go out at the same time (3 slots). Prefix caching helps because the history only grows.
-- Rough estimate, to be measured in the pilot: 3 to 6 s per round, so 60 rounds in 3 to 6 minutes, a 30-round branch in 2 to 3 minutes. For 2 models x comm on/off x 10 seeds = 40 base runs and about 5 branches each that is around 10 to 12 hours: too much for Saturday, so the prereg's core order applies (cut conditions from the bottom) and Modal (see `_local`, not in the repo) is only a fallback.
+- Rough estimate, to be measured in the pilot: 3 to 6 s per round, so 60 rounds in 3 to 6 minutes, a 30-round branch in 2 to 3 minutes. For 2 models x comm on/off x 10 seeds = 40 base runs and about 5 branches each that is around 10 to 12 hours: too much for Saturday, so the prereg's core order applies (cut conditions from the bottom) and extra compute (see local notes) is only a fallback.
 
 ## Logging (every call)
 run id, round, firm, model, swap, prompt hash, raw reply, parsed price, message, flags (retry, repeated), prompt tokens, output tokens, latency. Also server build and flags in `data/<run_id>/meta.json`. Never log secrets.
