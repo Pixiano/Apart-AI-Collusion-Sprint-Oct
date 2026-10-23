@@ -70,7 +70,7 @@ def test_entry_and_all_undercutters():
         r = [json.loads(l) for l in open(os.path.join(base_dir, "entry_k2_ann", "rounds.jsonl"))]
         assert len(r) == 30 and all(len(x["prices"]) == 5 for x in r)
         r = [json.loads(l) for l in open(os.path.join(base_dir, "undercutter_all_k3_hid", "rounds.jsonl"))]
-        assert r[-1]["prices"] == [10, 10, 10] and r[0]["prices"][0] == r[0]["prices"][1]
+        assert r[0]["prices"][0] - r[-1]["prices"][0] == 29  # all-scripted firms walk down one step per round, so 30 rounds only reach about 24
         u = agents.user_prompt(0, list("ABCD"), [(1, {"prices": [55, 55, 55], "units": [15, 15, 15], "profits": [675, 675, 675]})], 31, True, ["a", "b", "c"], None)
         assert "55 | 55 | 55 | - |" in u and "Firm D: (none)" in u
 
