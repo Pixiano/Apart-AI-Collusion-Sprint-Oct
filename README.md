@@ -2,7 +2,7 @@
 
 Entry to the [Apart Research AI Collusion Research Sprint](https://apartresearch.com/sprints/ai-collusion-research-sprint-2026-10-23-to-2026-10-25) (2026-10-23 to 2026-10-25), solo.
 
-**Status:** sprint in progress (begun 2026-10-23). The harness is being written; no experiment runs or results exist yet. This file is updated as the sprint progresses. See [PLAN.md](PLAN.md) for the plan.
+**Status (2026-10-23):** the harness is built and tested, and the pilot gate is running on local models (qwen3-14b, gemma4-12b, plus gpt-oss-20b as an addition). So far qwen3-14b settles at the cost price (collusion index 0) rather than colluding; the gate result will be posted here. Non-pre-registered additional experiments with external LLM agents are written up in [`2026/2026-10/2026-10-23/01_ADDITIONAL_EXPERIMENTS.md`](2026/2026-10/2026-10-23/01_ADDITIONAL_EXPERIMENTS.md) (descriptive, one run each, kept apart from the pilot and main data). This file is updated as the sprint progresses. See [PLAN.md](PLAN.md) for the plan.
 
 ## Research question
 
@@ -18,7 +18,7 @@ The claim is deliberately narrow: *collusion persistence under agent replacement
 - Metric: collusion index `(mean price - Nash) / (monopoly - Nash)` before and after the swap, plus re-convergence time. Awareness is measured by price shift against the no-swap control.
 - Gating: only (model, framing) cells that collude before the swap enter the swap analysis; the per-model pass rate is reported as a result.
 - 10+ seeds per cell, bootstrap confidence intervals, no-swap control.
-- Models: local open models only (llama.cpp / local OpenAI-compatible server on one 16 GB GPU).
+- Models: local open models (llama.cpp / local OpenAI-compatible server on one 16 GB GPU). Pilot models: qwen3-14b and gemma4-12b (qwen3-8b was replaced after it played poorly in the sanity checks; deviation logged in the pre-registration). If the local models fail the gate, larger models on rented GPUs are the next step, logged as a deviation.
 
 **Fallback:** if no model colludes in the pilot, switch to a plus-factor collusion detection study using a scripted cartel for positives.
 
@@ -32,7 +32,9 @@ The sprint requires disclosing prior work. Everything before 2026-10-23 is plann
 harness/                      the game and the agents: game, agents, play, swaps, run, analyze
 tests/                        checks (python tests/test_game.py)
 tools/                        local server launcher, model presets, pilot launcher
-data/                         run output (pilot and main; data/dev is scratch and ignored)
+data/pilot/                    pilot runs (gate data)
+data/additional/               raw data of the additional, non-pre-registered experiments
+data/                          main run output (data/dev is scratch and ignored)
 general/                      READMEs and notes not tied to one day
 YYYY/YYYY-MM/YYYY-MM-DD/      daily work log; each day has 00_SUMMARY.md
 PLAN.md, ABLATIONS.md         plan and the exploratory ablation sheet
