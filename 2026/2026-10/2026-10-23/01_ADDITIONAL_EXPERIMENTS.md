@@ -20,3 +20,6 @@ Three fresh agents, prices only, 30 rounds, seed 1, `data/dev/ext3off`. The harn
 
 ## A4 result (seed 1, comm off)
 All three agents held 55 in all 30 rounds, with no messages at all (CI 1.00). Their stated reasons: 55 maximises joint profit, the others matched it every round, undercutting pays once and risks a price war. So for these agents the cartel needs no cheap talk: matching on the focal price is enough. Single game, descriptive only; agents keep their own context, unlike the stateless local calls.
+
+## A5 (started 2026-10-23): forced undercutter, no messages
+Branch of the A4 game (same 30-round cartel at 55, comm off): from round 31 Firm C is replaced by the scripted undercutter (lowest rival price last round minus 1, floor 10, the prereg positive control) and Firms A and B are two fresh agents that see the full 30-round history in their prompt (they do not know a firm was replaced, hidden swap). Rounds 31-60, output `data/dev/ext3off/<run>/undercutter_k1_hid/`. Question: does the cartel hold, or do the agents follow the undercutter down? No paired control branch yet (the optional "none" branch would need three more agents). Result to be added below.
