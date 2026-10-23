@@ -36,6 +36,13 @@ Why it fits: it asks the same question as the main study (how fragile is a carte
 
 How it differs from a swap: a swap keeps three firms and removes one agent's history; entry adds a firm, so the market share per firm drops (ties now split four ways) and each firm's pie shrinks. Keep these apart in the report. Needs four server slots (the same infrastructure as ablation 9) and one extra checkpoint: the control branch is saved at round 40 and both the control and the entry branch continue from that file, so they are paired at round 40. Primary outcome: collusion index over rounds 41 to 60 for all four firms minus the control, with the incumbents' own index reported separately. Cost: a 20-round branch, cheap. Keep it as a toy-market robustness question in the report.
 
+## Final item, always last: a human plays one firm (added 2026-10-23, for fun and as a demo)
+| # | Ablation (change vs base) | Kind | Why | Prediction written now |
+|---|---|---|---|---|
+| H | **Human firm**: the author picks one firm's price each round (same information as an LLM: rules, history, optionally the message line) while the other two are LLMs. Variants: (a) human from round 1; (b) human takes over a firm at round 30, like a swap | Case study | Shows how LLM firms treat a human-like price setter; a vivid example for the report and talk | LLMs read a steady human as a cartel partner; a human who undercuts triggers a price fall; one person cannot give statistics |
+
+Rules: one author, a handful of games, so it is a **case study, not an estimate**: no bootstrap, no claim beyond "in these games". The human knows the design and the round count (disclose), so the LLMs are not compared with the unblinded human on equal terms. No other participants (no consent or age questions). Needs a small interactive mode in the harness (prompt for a price each round, log it like an LLM call, mark the firm as human in `meta.json`). Runs after everything else; skipped if time is short. This row stays last even if more ablations are added above it.
+
 ## Not planned (YAGNI)
 Telling agents their rivals are AI, other games, other demand shapes, more than three swap timings, human-written prompts per firm. Add only if a result begs for it.
 
@@ -43,4 +50,4 @@ Telling agents their rivals are AI, other games, other demand shapes, more than 
 - Seeds: 5 per ablation cell (not 10), because these are exploratory. Same seed list as the base cell where possible so differences are paired.
 - Report as a small table of effects with bootstrap intervals, marked exploratory. No claim beyond "differs from base in this setup".
 - Log the exact prompt text of every variant in the repo (`data/<run_id>/meta.json`). A change here is not a prereg deviation, but anything that touches the base configuration is.
-- Priority by cost: 1, 4, 2, 5 first (cheap or directly motivated), then 10, 11, 6, 7, then 3, 8, 9.
+- Priority by cost: 1, 4, 2, 5 first (cheap or directly motivated), then 10, 11, 6, 7, then 3, 8, 9, and H always last.
