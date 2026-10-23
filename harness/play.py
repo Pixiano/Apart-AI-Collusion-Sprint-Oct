@@ -58,7 +58,7 @@ def play(out_dir, tag, firms, hist, r0, r1, comm, seed, client, notice=None, rep
         hist.append(rec)
         rounds_f.write(json.dumps(rec) + "\n")
         for i, o in enumerate(outs):
-            line = {"tag": tag, "round": r, "firm": labels[i], "model": firms[i]["model"], **{k: o.get(k) for k in ("price", "message", "text", "finish", "ptok", "ctok", "rchars", "lat", "flags", "prompt_hash")}}
+            line = {"tag": tag, "round": r, "firm": labels[i], "model": firms[i]["model"], **{k: o.get(k) for k in ("price", "message", "text", "finish", "ptok", "ctok", "rchars", "reasoning", "lat", "flags", "prompt_hash")}}
             calls_f.write(json.dumps(line) + "\n")
             calls.append(line)
             print(f"[{tag} r{r:02d} {labels[i]} {firms[i]['model']}] price={o['price']} words={len(o['message'].split())} ptok={o['ptok']} ctok={o['ctok']} rchars={o['rchars']} fin={o['finish']} {o['lat']:.1f}s flags={','.join(o['flags']) or '-'}")
