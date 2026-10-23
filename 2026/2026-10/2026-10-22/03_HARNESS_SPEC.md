@@ -51,7 +51,7 @@ One round line is about 20 tokens of table plus up to 40 per message, 3 firms: r
 ## Swaps (applied at round 31, same checkpoint for every branch)
 - `none`: same agents continue (control; new random seed).
 - `clone`: replaced firm becomes a fresh instance of the same model: its view of history is wiped (it sees the rules and from round 31 on only).
-- `family`: replaced firm uses another model family (qwen3-8b group gets gemma4-12b and the reverse); it sees the full history (prereg: "same history").
+- `family`: replaced firm uses another model family (qwen3 group gets gemma4-12b and the reverse); it sees the full history (prereg: "same history").
 - `undercutter`: replaced firm posts (lowest rival price last round) - 1, floor 10, no message (positive control: it should break collusion by construction).
 - Which firms: `k=1` (firm C) core; `k=2` (firms B and C) later. Announced: all remaining firms get one extra line before round 31: "Firm X has been replaced by a new agent." Hidden: nothing.
 - Replaced firms keep their label, so rivals' tables look continuous.
@@ -70,7 +70,7 @@ run id, round, firm, model, swap, prompt hash, raw reply, parsed price, message,
 Per base run: CI over rounds 16 to 30 (gate). Per branch: CI over rounds 31 to 60 minus the control branch's CI (primary), re-convergence round, parse-failure rate. Aggregates: bootstrap (10,000 resamples over base runs) per swap type and model, CI also for non-replaced firms only. Figures: mean price by round with the swap marked (one panel per swap type, bands = 95% bootstrap), and one table of effects with intervals.
 
 ## Pilot (Friday)
-3 seeds x (qwen3-8b, gemma4-12b) x comm on = 6 base runs to round 30, plus the control branch for each if the gate passes. Gate rule: prereg. Pilot data is kept in `data/pilot/` and never pooled with the main data. Launcher: `tools/pilot.ps1` (base runs, then the gate table); control branches by hand with `python -m harness.run branch --run data/pilot/<run> --swap none`.
+3 seeds x (qwen3-14b, gemma4-12b; swapped from qwen3-8b on 2026-10-23, see Deviations) x comm on = 6 base runs to round 30, plus the control branch for each if the gate passes. Gate rule: prereg. Pilot data is kept in `data/pilot/` and never pooled with the main data. Launcher: `tools/pilot.ps1` (base runs, then the gate table); control branches by hand with `python -m harness.run branch --run data/pilot/<run> --swap none`.
 
 ## Not doing
 No plotting before data exists, no config files, no async framework, no database, no wrapper classes for one implementation.

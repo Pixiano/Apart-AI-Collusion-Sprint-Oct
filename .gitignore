@@ -30,3 +30,6 @@ papers/txt/
 # scratch smoke-test output (pilot and main data are tracked)
 data/dev/
 __pycache__/
+
+# author notes and talk transcripts (local only)
+talks/
