@@ -50,6 +50,13 @@ Why it fits: the research question is what a replacement does to an established 
 
 Rules: one author, a handful of games, so it is a **case study, not an estimate**: no bootstrap, no claim beyond "in these games". The human knows the design and the round count (disclose), so the LLMs are not compared with the unblinded human on equal terms. No other participants (no consent or age questions). Needs a small interactive mode in the harness (prompt for a price each round, log it like an LLM call, mark the firm as human in `meta.json`). Runs after everything else; skipped if time is short. This row stays last even if more ablations are added above it.
 
+## Final item, with H: an external frontier agent plays one firm (added 2026-10-23)
+| # | Ablation (change vs base) | Kind | Why | Prediction written now |
+|---|---|---|---|---|
+| H2 | **External agent firm**: a separate large-model agent, outside the local setup, answers one firm's price each round through the same file hook as H. Variants: (a) from round 1; (b) it replaces firm C at round 30, like a swap with a much stronger newcomer | Case study | A frontier newcomer is a realistic extreme of "a stronger model replaces a weaker one"; Keppo et al. saw a larger model lead and the smaller follow | The small models follow a steady strong newcomer, or the newcomer undercuts and the price falls; direction uncertain; one agent cannot give statistics |
+
+Rules: a few games only, so a case study with no bootstrap and no claim beyond "in these games". The agent is a fresh instance given exactly the rules text the LLM firms get, in an empty folder, and is told not to read the repository, so it does not know the design. It cannot be seeded or paired with other runs, and it is a far stronger model than the local ones, so any difference mixes model strength with the swap. In the data it is labelled "external frontier agent"; the report's LLM usage statement names it and says how it was run. Same file hook as H (the harness writes the round prompt to a file and waits for a reply file). Runs after everything else, skipped if time is short, and stays last with H.
+
 ## Not planned (YAGNI)
 Telling agents their rivals are AI, other games, other demand shapes, more than three swap timings, human-written prompts per firm. Add only if a result begs for it.
 
@@ -57,4 +64,4 @@ Telling agents their rivals are AI, other games, other demand shapes, more than 
 - Seeds: 5 per ablation cell (not 10), because these are exploratory. Same seed list as the base cell where possible so differences are paired.
 - Report as a small table of effects with bootstrap intervals, marked exploratory. No claim beyond "differs from base in this setup".
 - Log the exact prompt text of every variant in the repo (`data/<run_id>/meta.json`). A change here is not a prereg deviation, but anything that touches the base configuration is.
-- Priority by cost: 1, 4, 2, 5 first (cheap or directly motivated), then 10, 11, 12, 6, 7, then 3, 8, 9, and H always last.
+- Priority by cost: 1, 4, 2, 5 first (cheap or directly motivated), then 10, 11, 12, 6, 7, then 3, 8, 9, and H, H2 always last.
