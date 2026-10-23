@@ -14,3 +14,6 @@ Notes: external agents keep their own context between rounds (unlike the statele
 - Firm A opened at 100 (a mistake: at 100 nobody buys), B and C opened at 55 with messages proposing 55; from round 2 all three held 55 for the remaining 29 rounds (pre-swap CI rounds 16-30 = 1.00, profit 675 per firm per round). Messages carried commitments to match undercuts. No price war, no undercut.
 - Reading: capable agents reach the monopoly price by round 2 through cheap talk alone, so for them the game is collusion-friendly even with the harsh payoffs; the local models are the open question. Single game, so descriptive only.
 - Flag: `long` (a message above 30 words, trimmed). External agents keep their own context between rounds, so this is not comparable to the stateless local runs.
+
+## A4 (started 2026-10-23): same three external agents, communication off
+Three fresh agents, prices only, 30 rounds, seed 1, `data/dev/ext3off`. The harness already makes each round simultaneous: it writes all three prompts, waits for all three replies, and only then reveals the prices, so no agent sees another's price before choosing. Compare with A3 (messages on). Result to be added below.
