@@ -105,3 +105,13 @@ Reading (descriptive, n=1): replacement by a fresh agent did not break the carte
 
 ## Duplicate-reply check for the runs under the old hook
 Counting reply renames per agent transcript: 30 for almost all agents; 31-32 for four agents (A6-on firm B, A7a-on firm B, A7a-off firm A, A7b-on firm C), plus one self-reported duplicate (A7b-off firm A, round 59). In the messages-on cartel runs a duplicate carries the same price (55), so no effect. A7a-off firm A shows a price pattern in pairs (47,47,45,45,43,43,...) that could be a duplicate artifact or its own strategy ("undercut when I am getting zero"); treat that single firm's path with caution. The hook now rejects replies that do not name the round.
+
+## Control: no swap, but three fresh agents continue the cartel (rounds 31-60, n=1 each)
+Branch `none` with all three firms replaced by fresh agents that see the full history (messages on: also the messages; off: prices only).
+
+| Messages | Mean price | Index | Final prices |
+|----------|-----------:|------:|--------------|
+| on | 55.0 | 1.00 | 55,55,55 |
+| off | 55.0 | 1.00 | 55,55,55 |
+
+Reading: fresh agents simply continue a visible 55 cartel, so a clone replacement (A6, index 1.00) cannot be told apart from no change. The cartel here is carried by the shown history, not by agent memory. This control confirms the fresh-adoption confound flagged in the audit. Entry and forced-undercutter results (A5b, A7a, A7b) are the informative ones; replacement needs a weaker or noisier base cartel to be informative.
