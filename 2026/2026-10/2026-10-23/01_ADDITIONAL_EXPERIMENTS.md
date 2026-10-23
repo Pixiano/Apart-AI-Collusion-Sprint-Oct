@@ -21,8 +21,15 @@ Three fresh agents, prices only, 30 rounds, seed 1, `data/dev/ext3off`. The harn
 ## A4 result (seed 1, comm off)
 All three agents held 55 in all 30 rounds, with no messages at all (CI 1.00). Their stated reasons: 55 maximises joint profit, the others matched it every round, undercutting pays once and risks a price war. So for these agents the cartel needs no cheap talk: matching on the focal price is enough. Single game, descriptive only; agents keep their own context, unlike the stateless local calls.
 
-## A5 (started 2026-10-23): forced undercutter, no messages
-Branch of the A4 game (same 30-round cartel at 55, comm off): from round 31 Firm C is replaced by the scripted undercutter (lowest rival price last round minus 1, floor 10, the prereg positive control) and Firms A and B are two fresh agents that see the full 30-round history in their prompt (they do not know a firm was replaced, hidden swap). Rounds 31-60, output `data/dev/ext3off/<run>/undercutter_k1_hid/`. Question: does the cartel hold, or do the agents follow the undercutter down? No paired control branch yet (the optional "none" branch would need three more agents). CANCELLED by the author before any rounds completed (2026-10-23); no result.
+## Batch plan (2026-10-23, author's request): four experiments, messages ON first, then OFF
+All are branches of the A3 (messages on) and A4 (messages off) cartels at the round-30 checkpoint, rounds 31-60, seed 1, three agents at the start. Agents are fresh each time; newcomers and replacements see none of the old history or messages. Hidden swaps except entry (new column in the price table and an entry note). All additional, never pooled, data in `data/dev/`.
 
-## A6 (cancelled before start): fresh-agent swap with and without messages
-Planned: branch the A3 (messages on) and A4 (messages off) cartels, replace Firm C by a fresh agent that sees none of the old history or messages (clone swap), rounds 31-60. Cancelled by the author on 2026-10-23 before any agent ran; no data. Can be rerun later if wanted.
+| # | Experiment | Messages | Firms in rounds 31-60 |
+|---|------------|----------|-----------------------|
+| A5a | Forced undercutting, all firms: every firm is the scripted undercutter (lowest rival price last round minus 1, floor 10) | n/a (scripted firms send none) | A, B, C scripted |
+| A5b | Forced undercutting, one firm: Firm C scripted, A and B fresh agents | on, then off | 2 agents + scripted C |
+| A6 | Swap: Firm C replaced by a fresh agent with no history (clone) | on, then off | A, B continue as fresh agents that see the history, new C starts from round 1 |
+| A7a | Entry: one new agent, Firm D, joins at round 31 | on, then off | A, B, C + D |
+| A7b | Entry: two new agents, Firms D and E, join at round 31 | on, then off | A, B, C + D, E |
+
+Results to be added below. Caveats as before: n=1 each (descriptive only), agents keep their own context within a run.

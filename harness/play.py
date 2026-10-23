@@ -27,7 +27,7 @@ def one_call(client, firm, i, labels, hist, r, comm, seed, tag, notice, replaced
         rivals = [p for j, p in enumerate(hist[-1]["prices"]) if j != i]
         return {"price": game.undercutter(rivals), "message": "", "flags": [], "finish": "", "ptok": 0, "ctok": 0, "rchars": 0, "lat": 0.0, "text": ""}
     rows, shown = view(firm, hist, r)
-    msgs = hist[r - 2]["msgs"] if comm and r - 1 >= firm["view"] and hist else None
+    msgs = hist[r - 2]["msgs"] if comm and r - 1 >= firm["view"] and hist else None  # may be shorter than the firm list after entry
     note = notice if notice and i not in replaced else None
     system = agents.system_prompt(labels[i], len(labels), horizon)
     user = agents.user_prompt(i, labels, rows, shown, comm, msgs, note)
