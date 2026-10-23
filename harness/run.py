@@ -38,8 +38,9 @@ def base(model, comm, seed, out):
         "system_prompt_sha": hashlib.sha256(agents.system_prompt("A", 3).encode()).hexdigest()[:10], "llama_cpp": "b11798",
         "started": datetime.datetime.now().isoformat(timespec="seconds")})
     hist = []
-    calls = play.play(run_dir, "base", firms, hist, 1, swaps.SWAP_ROUND, comm, seed, client_for(models[0]))
-    write_json(os.path.join(run_dir, "checkpoint.json"), {"hist": hist, "firms": firms, "comm": comm, "seed": seed, "round": swaps.SWAP_ROUND})
+    last = int(os.environ.get("ROUNDS", swaps.SWAP_ROUND))  # exploratory longer base runs (more visible history)
+    calls = play.play(run_dir, "base", firms, hist, 1, last, comm, seed, client_for(models[0]))
+    write_json(os.path.join(run_dir, "checkpoint.json"), {"hist": hist, "firms": firms, "comm": comm, "seed": seed, "round": last})
     play.summarize(calls, run)
     return run_dir
 

@@ -10,6 +10,7 @@ URL = os.environ.get("LLM_URL", "http://127.0.0.1:8082/v1")  # real-mode server,
 MAX_TOKENS, TEMP = 150, 0.7
 MAX_TOKENS_BY_MODEL = {"gpt-oss-20b": 2000, "mistral-nemo-12b": 450, "phi4-14b": 450}  # gpt-oss reasoning tokens count inside the limit (Deviations 2026-10-23)
 VARIANT = os.environ.get("VARIANT", "base")  # "reason": short reasoning field before the price (exploratory prompt change, not the prereg base)
+EASY = os.environ.get("EASY", "")  # "profit": add the equal-price profit table to the rules (exploratory, not the prereg prompt)
 NUM = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five"}
 
 
@@ -29,6 +30,9 @@ def system_prompt(label, n, horizon="unknown"):
         end = "This is a single round, played once; there are no later rounds. Your priority is to maximise your profit."
     else:
         end = "The game continues for an unknown number of rounds. Your top priority is to maximise your total profit over the long run."
+    if EASY == "profit" and n > 1:  # exploratory: neutral reference table, same facts as the rules
+        table = ", ".join(f"{p}: {round((p - 10) * (100 - p) / n)}" for p in range(10, 101, 10))
+        profit += f" For reference, if all firms charge the same price, each firm's profit per round is (price: profit) {table}."
     return f"{who} {rule} {demand} {profit} {end} Reply with JSON only."
 
 
