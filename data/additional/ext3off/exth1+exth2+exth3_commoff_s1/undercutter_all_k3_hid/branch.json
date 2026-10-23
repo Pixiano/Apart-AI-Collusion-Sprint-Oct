@@ -1,0 +1,15 @@
+{
+ "swap": "undercutter_all",
+ "k": 3,
+ "announce": false,
+ "replaced": [
+  0,
+  1,
+  2
+ ],
+ "models": [
+  "undercutter",
+  "undercutter",
+  "undercutter"
+ ]
+}

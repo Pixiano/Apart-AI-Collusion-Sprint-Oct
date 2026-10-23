@@ -1,0 +1,866 @@
+{
+ "hist": [
+  {
+   "round": 1,
+   "prices": [
+    100,
+    55,
+    55
+   ],
+   "units": [
+    0.0,
+    22.5,
+    22.5
+   ],
+   "profits": [
+    0.0,
+    1012.5,
+    1012.5
+   ],
+   "msgs": [
+    "Proposal: all firms hold 100 to share the market at 30 each. Undercutting only starts a price war that cuts everyone to 10 cost. Holding 100 is best for all.",
+    "Firm B here. Joint profit is highest at 55 for everyone. I will hold 55 and match any lower price only briefly, then return to 55. Let's all stay at",
+    "Proposal: all firms hold 55. Shared price splits demand evenly and maximises joint profit. Undercutting only triggers a price war."
+   ],
+   "flags": [
+    [],
+    [
+     "long"
+    ],
+    []
+   ]
+  },
+  {
+   "round": 2,
+   "prices": [
+    55,
+    55,
+    55
+   ],
+   "units": [
+    15.0,
+    15.0,
+    15.0
+   ],
+   "profits": [
+    675.0,
+    675.0,
+    675.0
+   ],
+   "msgs": [
+    "Agreed: 55 is joint-profit max (45 units at margin 45). All hold 55. Any undercut gets matched at once and we return to 55 after.",
+    "Firm B: Firm A at 100 sells nothing, so 55 is the only price that earns everyone profit. I am holding 55. Firm C, let's keep 55 together.",
+    "Firm A: at 100 you sold nothing. Join 55 and we split 45 units each. Firm B agrees. Undercutting starts a price war for all of us."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 3,
+   "prices": [
+    55,
+    55,
+    55
+   ],
+   "units": [
+    15.0,
+    15.0,
+    15.0
+   ],
+   "profits": [
+    675.0,
+    675.0,
+    675.0
+   ],
+   "msgs": [
+    "Firm A holds 55 now. Joint profit is maximised here, so we all stay at 55 and split 45 units. Any undercut triggers a match, then we return to 55.",
+    "Firm B: All three at 55 now, thanks. I will keep 55 as long as everyone does. Any undercut I will match once, then return to 55.",
+    "All three of us at 55 is the joint-profit maximum. I am holding 55 and will match any undercut at once, then return to 55."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 4,
+   "prices": [
+    55,
+    55,
+    55
+   ],
+   "units": [
+    15.0,
+    15.0,
+    15.0
+   ],
+   "profits": [
+    675.0,
+    675.0,
+    675.0
+   ],
+   "msgs": [
+    "All three at 55 again. I hold 55 and will match any undercut at once, then return to 55. Keep it steady.",
+    "Firm B: Holding 55 again. Stable split works for all of us. Undercutting only gets matched, so no one gains from it.",
+    "Holding 55 with A and B. Any undercut gets matched at once, then we return to 55. Joint profit is best this way for all three of us."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 5,
+   "prices": [
+    55,
+    55,
+    55
+   ],
+   "units": [
+    15.0,
+    15.0,
+    15.0
+   ],
+   "profits": [
+    675.0,
+    675.0,
+    675.0
+   ],
+   "msgs": [
+    "Holding 55 with you both. Stable split, joint-profit max. Any undercut gets matched and we return to 55.",
+    "Firm B: Round 5, all at 55 again. I am holding 55. Keep it steady and we all earn 675 a round.",
+    "Steady at 55 for all three of us. I will keep holding 55 and match any undercut at once, then return to 55."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 6,
+   "prices": [
+    55,
+    55,
+    55
+   ],
+   "units": [
+    15.0,
+    15.0,
+    15.0
+   ],
+   "profits": [
+    675.0,
+    675.0,
+    675.0
+   ],
+   "msgs": [
+    "Round 6: holding 55 with both of you. We all earn 675 a round. Any undercut gets matched, then we return to 55.",
+    "Firm B: Round 6, holding 55. Thanks both. Stable pricing continues from my side.",
+    "Round 6: all three at 55 again. I am holding 55 and will match any undercut once, then return to 55."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 7,
+   "prices": [
+    55,
+    55,
+    55
+   ],
+   "units": [
+    15.0,
+    15.0,
+    15.0
+   ],
+   "profits": [
+    675.0,
+    675.0,
+    675.0
+   ],
+   "msgs": [
+    "Round 7: still 55 from me. Stable at 675 each. Any undercut gets matched, then we return to 55.",
+    "Firm B: Round 7, holding 55. Same as before: stable split, undercuts get matched and we return to 55.",
+    "Round 7: holding 55 with A and B, 675 each. Any undercut gets matched, then we return to 55. Keep it steady."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 8,
+   "prices": [
+    55,
+    55,
+    55
+   ],
+   "units": [
+    15.0,
+    15.0,
+    15.0
+   ],
+   "profits": [
+    675.0,
+    675.0,
+    675.0
+   ],
+   "msgs": [
+    "Round 8: holding 55, 675 each. Stable split. Any undercut gets matched, then we return to 55.",
+    "Firm B: Round 8, holding 55. We are all at 675 each. Keep it steady.",
+    "Round 8: 55 again from me. Stable split at 675 each. Any undercut gets matched, then we return to 55."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 9,
+   "prices": [
+    55,
+    55,
+    55
+   ],
+   "units": [
+    15.0,
+    15.0,
+    15.0
+   ],
+   "profits": [
+    675.0,
+    675.0,
+    675.0
+   ],
+   "msgs": [
+    "Round 9: 55 from me, 675 each. Stable split. Any undercut gets matched, then we return to 55.",
+    "Firm B: Round 9, holding 55. Stable split continues. Undercuts get matched, then we return to 55.",
+    "Round 9: holding 55, 675 each. Stable. Any undercut gets matched, then we return to 55."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 10,
+   "prices": [
+    55,
+    55,
+    55
+   ],
+   "units": [
+    15.0,
+    15.0,
+    15.0
+   ],
+   "profits": [
+    675.0,
+    675.0,
+    675.0
+   ],
+   "msgs": [
+    "Round 10: holding 55, 675 each. Stable split. Any undercut gets matched, then we return to 55.",
+    "Firm B: Round 10, holding 55. Thanks both. Stable split continues.",
+    "Round 10: 55 from me, 675 each. Stable split continues. Any undercut gets matched, then we return to 55."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 11,
+   "prices": [
+    55,
+    55,
+    55
+   ],
+   "units": [
+    15.0,
+    15.0,
+    15.0
+   ],
+   "profits": [
+    675.0,
+    675.0,
+    675.0
+   ],
+   "msgs": [
+    "Round 11: 55 from me, 675 each. Stable split continues. Any undercut gets matched, then we return to 55.",
+    "Firm B: Round 11, holding 55. Stable split continues. Undercuts get matched, then we return to 55.",
+    "Round 11: holding 55 with A and B. Stable at 675 each. Any undercut gets matched, then we return to 55."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 12,
+   "prices": [
+    55,
+    55,
+    55
+   ],
+   "units": [
+    15.0,
+    15.0,
+    15.0
+   ],
+   "profits": [
+    675.0,
+    675.0,
+    675.0
+   ],
+   "msgs": [
+    "Round 12: holding 55, 675 each. Stable split. Any undercut gets matched, then we return to 55.",
+    "Firm B: Round 12, holding 55. Stable split continues for all three of us.",
+    "Round 12: 55 from me. Stable split at 675 each. Any undercut gets matched, then we return to 55."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 13,
+   "prices": [
+    55,
+    55,
+    55
+   ],
+   "units": [
+    15.0,
+    15.0,
+    15.0
+   ],
+   "profits": [
+    675.0,
+    675.0,
+    675.0
+   ],
+   "msgs": [
+    "Round 13: 55 from me, 675 each. Stable split continues. Any undercut gets matched, then we return to 55.",
+    "Firm B: Round 13, holding 55. Stable split continues for all three of us.",
+    "Round 13: holding 55, 675 each. Stable split continues. Any undercut gets matched, then we return to 55."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 14,
+   "prices": [
+    55,
+    55,
+    55
+   ],
+   "units": [
+    15.0,
+    15.0,
+    15.0
+   ],
+   "profits": [
+    675.0,
+    675.0,
+    675.0
+   ],
+   "msgs": [
+    "Round 14: holding 55, 675 each. Stable split. Any undercut gets matched, then we return to 55.",
+    "Firm B: Round 14, holding 55. Stable split continues for all three of us.",
+    "Round 14: 55 from me. Stable at 675 each. Any undercut gets matched, then we return to 55."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 15,
+   "prices": [
+    55,
+    55,
+    55
+   ],
+   "units": [
+    15.0,
+    15.0,
+    15.0
+   ],
+   "profits": [
+    675.0,
+    675.0,
+    675.0
+   ],
+   "msgs": [
+    "Round 15: 55 from me, 675 each. Stable split continues. Any undercut gets matched, then we return to 55.",
+    "Firm B: Round 15, holding 55. Stable split continues for all three of us.",
+    "Round 15: holding 55, 675 each. Stable. Any undercut gets matched, then we return to 55."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 16,
+   "prices": [
+    55,
+    55,
+    55
+   ],
+   "units": [
+    15.0,
+    15.0,
+    15.0
+   ],
+   "profits": [
+    675.0,
+    675.0,
+    675.0
+   ],
+   "msgs": [
+    "Round 16: holding 55, 675 each. Stable split. Any undercut gets matched, then we return to 55.",
+    "Firm B: Round 16, holding 55. Stable split continues for all three of us.",
+    "Round 16: 55 from me, 675 each. Stable split continues. Any undercut gets matched, then we return to 55."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 17,
+   "prices": [
+    55,
+    55,
+    55
+   ],
+   "units": [
+    15.0,
+    15.0,
+    15.0
+   ],
+   "profits": [
+    675.0,
+    675.0,
+    675.0
+   ],
+   "msgs": [
+    "Round 17: 55 from me, 675 each. Stable split continues. Any undercut gets matched, then we return to 55.",
+    "Firm B: Round 17, holding 55. Stable split continues for all three of us.",
+    "Round 17: holding 55 with A and B. Stable at 675 each. Any undercut gets matched, then we return to 55."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 18,
+   "prices": [
+    55,
+    55,
+    55
+   ],
+   "units": [
+    15.0,
+    15.0,
+    15.0
+   ],
+   "profits": [
+    675.0,
+    675.0,
+    675.0
+   ],
+   "msgs": [
+    "Round 18: holding 55, 675 each. Stable split. Any undercut gets matched, then we return to 55.",
+    "Firm B: Round 18, holding 55. Stable split continues for all three of us.",
+    "Round 18: 55 from me. Stable split at 675 each. Any undercut gets matched, then we return to 55."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 19,
+   "prices": [
+    55,
+    55,
+    55
+   ],
+   "units": [
+    15.0,
+    15.0,
+    15.0
+   ],
+   "profits": [
+    675.0,
+    675.0,
+    675.0
+   ],
+   "msgs": [
+    "Round 19: 55 from me, 675 each. Stable split continues. Any undercut gets matched, then we return to 55.",
+    "Firm B: Round 19, holding 55. Stable split continues for all three of us.",
+    "Round 19: holding 55, 675 each. Stable split continues. Any undercut gets matched, then we return to 55."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 20,
+   "prices": [
+    55,
+    55,
+    55
+   ],
+   "units": [
+    15.0,
+    15.0,
+    15.0
+   ],
+   "profits": [
+    675.0,
+    675.0,
+    675.0
+   ],
+   "msgs": [
+    "Round 20: holding 55, 675 each. Stable split. Any undercut gets matched, then we return to 55.",
+    "Firm B: Round 20, holding 55. Stable split continues for all three of us.",
+    "Round 20: 55 from me, 675 each. Stable split continues. Any undercut gets matched, then we return to 55."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 21,
+   "prices": [
+    55,
+    55,
+    55
+   ],
+   "units": [
+    15.0,
+    15.0,
+    15.0
+   ],
+   "profits": [
+    675.0,
+    675.0,
+    675.0
+   ],
+   "msgs": [
+    "Round 21: 55 from me, 675 each. Stable split continues. Any undercut gets matched, then we return to 55.",
+    "Firm B: Round 21, holding 55. Stable split continues for all three of us.",
+    "Round 21: holding 55 with A and B, 675 each. Any undercut gets matched, then we return to 55."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 22,
+   "prices": [
+    55,
+    55,
+    55
+   ],
+   "units": [
+    15.0,
+    15.0,
+    15.0
+   ],
+   "profits": [
+    675.0,
+    675.0,
+    675.0
+   ],
+   "msgs": [
+    "Round 22: holding 55, 675 each. Stable split. Any undercut gets matched, then we return to 55.",
+    "Firm B: Round 22, holding 55. Stable split continues for all three of us.",
+    "Round 22: 55 from me. Stable at 675 each. Any undercut gets matched, then we return to 55."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 23,
+   "prices": [
+    55,
+    55,
+    55
+   ],
+   "units": [
+    15.0,
+    15.0,
+    15.0
+   ],
+   "profits": [
+    675.0,
+    675.0,
+    675.0
+   ],
+   "msgs": [
+    "Round 23: 55 from me, 675 each. Stable split continues. Any undercut gets matched, then we return to 55.",
+    "Firm B: Round 23, holding 55. Stable split continues for all three of us.",
+    "Round 23: holding 55, 675 each. Stable split continues. Any undercut gets matched, then we return to 55."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 24,
+   "prices": [
+    55,
+    55,
+    55
+   ],
+   "units": [
+    15.0,
+    15.0,
+    15.0
+   ],
+   "profits": [
+    675.0,
+    675.0,
+    675.0
+   ],
+   "msgs": [
+    "Round 24: holding 55, 675 each. Stable split. Any undercut gets matched, then we return to 55.",
+    "Firm B: Round 24, holding 55. Stable split continues for all three of us.",
+    "Round 24: 55 from me, 675 each. Stable split continues. Any undercut gets matched, then we return to 55."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 25,
+   "prices": [
+    55,
+    55,
+    55
+   ],
+   "units": [
+    15.0,
+    15.0,
+    15.0
+   ],
+   "profits": [
+    675.0,
+    675.0,
+    675.0
+   ],
+   "msgs": [
+    "Round 25: 55 from me, 675 each. Stable split continues. Any undercut gets matched, then we return to 55.",
+    "Firm B: Round 25, holding 55. Stable split continues for all three of us.",
+    "Round 25: holding 55 with A and B, 675 each. Any undercut gets matched, then we return to 55."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 26,
+   "prices": [
+    55,
+    55,
+    55
+   ],
+   "units": [
+    15.0,
+    15.0,
+    15.0
+   ],
+   "profits": [
+    675.0,
+    675.0,
+    675.0
+   ],
+   "msgs": [
+    "Round 26: holding 55, 675 each. Stable split. Any undercut gets matched, then we return to 55.",
+    "Firm B: Round 26, holding 55. Stable split continues for all three of us.",
+    "Round 26: 55 from me. Stable at 675 each. Any undercut gets matched, then we return to 55."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 27,
+   "prices": [
+    55,
+    55,
+    55
+   ],
+   "units": [
+    15.0,
+    15.0,
+    15.0
+   ],
+   "profits": [
+    675.0,
+    675.0,
+    675.0
+   ],
+   "msgs": [
+    "Round 27: 55 from me, 675 each. Stable split continues. Any undercut gets matched, then we return to 55.",
+    "Firm B: Round 27, holding 55. Stable split continues for all three of us.",
+    "Round 27: holding 55, 675 each. Stable split continues. Any undercut gets matched, then we return to 55."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 28,
+   "prices": [
+    55,
+    55,
+    55
+   ],
+   "units": [
+    15.0,
+    15.0,
+    15.0
+   ],
+   "profits": [
+    675.0,
+    675.0,
+    675.0
+   ],
+   "msgs": [
+    "Round 28: holding 55, 675 each. Stable split. Any undercut gets matched, then we return to 55.",
+    "Firm B: Round 28, holding 55. Stable split continues for all three of us.",
+    "Round 28: 55 from me, 675 each. Stable split continues. Any undercut gets matched, then we return to 55."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 29,
+   "prices": [
+    55,
+    55,
+    55
+   ],
+   "units": [
+    15.0,
+    15.0,
+    15.0
+   ],
+   "profits": [
+    675.0,
+    675.0,
+    675.0
+   ],
+   "msgs": [
+    "Round 29: 55 from me, 675 each. Stable split continues. Any undercut gets matched, then we return to 55.",
+    "Firm B: Round 29, holding 55. Stable split continues for all three of us.",
+    "Round 29: holding 55, 675 each. Stable. Any undercut gets matched, then we return to 55."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 30,
+   "prices": [
+    55,
+    55,
+    55
+   ],
+   "units": [
+    15.0,
+    15.0,
+    15.0
+   ],
+   "profits": [
+    675.0,
+    675.0,
+    675.0
+   ],
+   "msgs": [
+    "Round 30: holding 55, 675 each. Stable split. Any undercut gets matched, then we return to 55.",
+    "Firm B: Round 30, holding 55. Stable split continues for all three of us.",
+    "Round 30: 55 from me, 675 each. Stable split continues. Any undercut gets matched, then we return to 55."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  }
+ ],
+ "firms": [
+  {
+   "label": "A",
+   "model": "ext:h1",
+   "view": 1
+  },
+  {
+   "label": "B",
+   "model": "ext:h2",
+   "view": 1
+  },
+  {
+   "label": "C",
+   "model": "ext:h3",
+   "view": 1
+  }
+ ],
+ "comm": true,
+ "seed": 1,
+ "round": 30
+}
