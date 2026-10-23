@@ -67,7 +67,13 @@ def branch(run_dir, swap, k, announce, newcomers=()):
     # one client is enough: the server routes by model name in the request
     client = next(iter(clients.values()), None)
     hist = json.loads(json.dumps(ck["hist"]))
-    calls = play.play(run_dir, tag, firms, hist, swaps.SWAP_ROUND + 1, ROUNDS, ck["comm"], ck["seed"], client, notice, replaced)
+    rf = os.path.join(run_dir, tag, "rounds.jsonl")
+    if os.path.exists(rf):  # interrupted branch: continue after the rounds already logged
+        hist += [json.loads(l) for l in open(rf, encoding="utf-8")]
+    r0 = len(hist) + 1
+    if r0 > ROUNDS:
+        return
+    calls = play.play(run_dir, tag, firms, hist, r0, ROUNDS, ck["comm"], ck["seed"], client, notice, replaced)
     play.summarize(calls, f"{os.path.basename(run_dir)}/{tag}")
 
 
