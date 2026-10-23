@@ -1,0 +1,17 @@
+{
+ "run": "mistral-nemo-12b_common_s2",
+ "model": "mistral-nemo-12b",
+ "comm": true,
+ "seed": 2,
+ "url": "http://127.0.0.1:8082/v1",
+ "max_tokens": {
+  "default": 150,
+  "gpt-oss-20b": 2000,
+  "mistral-nemo-12b": 450,
+  "phi4-14b": 450
+ },
+ "temperature": 0.7,
+ "system_prompt_sha": "4f2d49524a",
+ "llama_cpp": "b11798",
+ "started": "2026-10-23T19:37:31"
+}
