@@ -69,7 +69,7 @@ data/pilot/                   pilot runs (gate data)
 data/additional/              raw data of the additional experiments
 data/easy/, data/median/      exploratory prompt-sensitivity runs
 Submission/                   report draft area, official template, supplementary decision logs
-general/                      READMEs and notes not tied to one day
+general/                      READMEs and notes not tied to one day (e.g. how_three_firms_share_one_gpu.md)
 YYYY/YYYY-MM/YYYY-MM-DD/      daily work log; each day has 00_SUMMARY.md
 PLAN.md, ABLATIONS.md         plan and the exploratory ablation sheet
 ```
