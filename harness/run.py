@@ -27,16 +27,18 @@ def write_json(path, obj):
 
 
 def base(model, comm, seed, out):
+    models = model.split(",") * (3 if "," not in model else 1)  # one model for all firms, or three comma-separated (mixed or external)
+    model = model.replace(":", "").replace(",", "+")
     run = f"{model}_comm{'on' if comm else 'off'}_s{seed}"
     run_dir = os.path.join(out, run)
     os.makedirs(run_dir, exist_ok=True)
-    firms = [{"label": l, "model": model, "view": 1} for l in "ABC"]
+    firms = [{"label": l, "model": m, "view": 1} for l, m in zip("ABC", models)]
     write_json(os.path.join(run_dir, "meta.json"), {
         "run": run, "model": model, "comm": comm, "seed": seed, "url": agents.URL, "max_tokens": agents.MAX_TOKENS, "temperature": agents.TEMP,
         "system_prompt_sha": hashlib.sha256(agents.system_prompt("A", 3).encode()).hexdigest()[:10], "llama_cpp": "b11798",
         "started": datetime.datetime.now().isoformat(timespec="seconds")})
     hist = []
-    calls = play.play(run_dir, "base", firms, hist, 1, swaps.SWAP_ROUND, comm, seed, client_for(model))
+    calls = play.play(run_dir, "base", firms, hist, 1, swaps.SWAP_ROUND, comm, seed, client_for(models[0]))
     write_json(os.path.join(run_dir, "checkpoint.json"), {"hist": hist, "firms": firms, "comm": comm, "seed": seed, "round": swaps.SWAP_ROUND})
     play.summarize(calls, run)
     return run_dir
