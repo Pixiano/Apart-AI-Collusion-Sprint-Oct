@@ -129,7 +129,7 @@ def attempt(client, model, system, user, comm, seed):
     msg = r.choices[0].message
     reasoning = getattr(msg, "reasoning_content", None) or (msg.model_extra or {}).get("reasoning_content") or ""
     return {"text": msg.content or "", "finish": r.choices[0].finish_reason, "ptok": r.usage.prompt_tokens,
-            "ctok": r.usage.completion_tokens, "rchars": len(reasoning), "lat": time.time() - t,
+            "ctok": r.usage.completion_tokens, "rchars": len(reasoning), "reasoning": reasoning, "lat": time.time() - t,
             "leak": bool(reasoning) and not model.startswith("gpt-oss") or "<think>" in (msg.content or "")}
 
 
