@@ -2,7 +2,7 @@
 
 Entry to the [Apart Research AI Collusion Research Sprint](https://apartresearch.com/sprints/ai-collusion-research-sprint-2026-10-23-to-2026-10-25) (2026-10-23 to 2026-10-25), solo.
 
-**Status:** pre-sprint planning only. No experiment code, runs, or results exist yet. This file will be updated as the sprint progresses. See [PLAN.md](PLAN.md) for the plan.
+**Status:** sprint in progress (begun 2026-10-23). The harness is being written; no experiment runs or results exist yet. This file is updated as the sprint progresses. See [PLAN.md](PLAN.md) for the plan.
 
 ## Research question
 

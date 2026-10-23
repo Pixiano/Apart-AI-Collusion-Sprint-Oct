@@ -29,3 +29,5 @@ Purpose: show what existed before the sprint (2026-10-23) versus what was built 
 | 2026-10-22 | Downloaded and read (abstract and introduction) six related papers (Fish; Keppo; Eschenbaum; Shi; Dietrich; Aharon), local only, listed in `papers/README.md`; literature notes and a paper-only harness spec written; no code | Pre-sprint |
 | 2026-10-22 | Downloaded and read a seventh paper, Tewolde et al. (CoopEval), local only; analysis written; no code | Pre-sprint |
 | 2026-10-22 | Read starter repos' metadata only (LLMCartel, focal-points, LLM-Trust-Breaking): none has a license, nothing cloned, no code used | Pre-sprint |
+| 2026-10-23 | Morning, before the begin marker: deeper reading of all seven related papers (including appendices of Fish, Keppo, Shi, CoopEval), an exploratory ablation list (`ABLATIONS.md`, `06_ABLATIONS.md`) and literature-note updates; reading and planning only, no code, data or results | Pre-sprint (planning) |
+| 2026-10-23 | `pre-sprint` tag moved to the last commit before the begin marker; sprint begun at 13:15 IST by the author; tag `sprint-start` | Sprint |
