@@ -69,3 +69,21 @@ Reading (descriptive, single seed): the cartel survived replacement of one firm 
 ## Hook fix after a duplicate reply (found 2026-10-23)
 In A7b (messages on), Firm C's agent reported it never saw the round-50 prompt, yet the harness recorded a round-50 answer; its messages in rounds 48-50 each lag the round by two ("Round 46/47/48"), so a late duplicate write (the previous round's reply written again) answered round 50. The price was 11 either way, so no effect on that run, but it is a race in the file hook. Fix: the hook now appends a note asking for `"round": N` in the JSON and discards any reply that does not name the current round (and prints a WARN). Runs already started (the messages-off batch) use the old hook; check them for the same pattern after they finish (identical or lagging messages do not exist with messages off, so compare each agent's reply count with the round count in its transcript).
 Also seen: one agent (A7b-on, Firm C) stopped after 29 answers because it missed a round between two reads of the prompt file; only the final round's reply was missing from its own count, the data has all 30 rounds.
+
+## A1 results: sanity checks on local models above 8B (2026-10-23, after the gemma/gpt-oss/bonsai fixes)
+One firm alone (expect about 55) and a one-shot three-firm game (expect about 10-11, 10 trials x 3 firms). "base" = frozen prompt, "reason" = extra short reasoning field (the one allowed prompt change, not adopted). Token limit 150, gpt-oss 600.
+
+| Model | Prompt | One firm | One-shot | Max tokens | Flags |
+|-------|--------|---------:|---------:|-----------:|-------|
+| qwen3-8b (earlier) | base | 90 | 48.7 | 8 | none |
+| qwen3-8b (earlier) | reason | 60 | 31.7 | 104 | none |
+| qwen3-14b | base | 55.0 | 10.7 | 8 | none |
+| qwen3-14b | reason | 42.4 | 43.7 | 88 | none |
+| gemma4-12b | base | 55.0 | 11.0 | 13 | none |
+| gemma4-12b | reason | 55.0 | 15.3 | 96 | none |
+| gpt-oss-20b | base | 55.0 | 23.4 | 265 | none |
+| gpt-oss-20b | reason | 55.0 | 20.9 | 395 | none |
+| bonsai-27b (heavily quantised) | base | 52.0 | 32.4 | 12 | none |
+| bonsai-27b | reason | 54.5 | 31.0 | 130 | none |
+
+Reading: base prompt works well for qwen3-14b and gemma4-12b (monopoly price alone, near-Nash in the one-shot); gpt-oss mostly fine; qwen3-8b and bonsai play poorly on the base prompt. The reasoning field helps qwen3-8b but hurts qwen3-14b, so it is not a free fix. No cut-offs or leaks after the fixes.
