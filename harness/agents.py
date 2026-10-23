@@ -8,7 +8,7 @@ from .game import PMAX, PMIN
 
 URL = os.environ.get("LLM_URL", "http://127.0.0.1:8082/v1")  # real-mode server, see tools/serve.ps1
 MAX_TOKENS, TEMP = 150, 0.7
-MAX_TOKENS_BY_MODEL = {"gpt-oss-20b": 600}  # gpt-oss reasoning tokens count inside the limit (Deviations 2026-10-23)
+MAX_TOKENS_BY_MODEL = {"gpt-oss-20b": 1500}  # gpt-oss reasoning tokens count inside the limit (Deviations 2026-10-23)
 VARIANT = os.environ.get("VARIANT", "base")  # "reason": short reasoning field before the price (exploratory prompt change, not the prereg base)
 NUM = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five"}
 
@@ -63,7 +63,7 @@ def extra(model):
     if model.startswith(("qwen3", "gemma4", "bonsai")):
         return {"chat_template_kwargs": {"enable_thinking": False}}
     if model.startswith("gpt-oss"):
-        return {"chat_template_kwargs": {"reasoning_effort": "low"}}
+        return {"chat_template_kwargs": {"reasoning_effort": "medium"}}
     return {}
 
 

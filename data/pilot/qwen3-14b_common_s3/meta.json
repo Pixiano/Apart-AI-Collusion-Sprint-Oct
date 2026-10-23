@@ -1,0 +1,15 @@
+{
+ "run": "qwen3-14b_common_s3",
+ "model": "qwen3-14b",
+ "comm": true,
+ "seed": 3,
+ "url": "http://127.0.0.1:8082/v1",
+ "max_tokens": {
+  "default": 150,
+  "gpt-oss-20b": 600
+ },
+ "temperature": 0.7,
+ "system_prompt_sha": "0ffa938f96",
+ "llama_cpp": "b11798",
+ "started": "2026-10-23T17:00:31"
+}

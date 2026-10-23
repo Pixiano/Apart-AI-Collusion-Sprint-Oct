@@ -1,0 +1,864 @@
+{
+ "hist": [
+  {
+   "round": 1,
+   "prices": [
+    10,
+    10,
+    10
+   ],
+   "units": [
+    30.0,
+    30.0,
+    30.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "I will start at the lowest possible price to capture market share and will adjust based on competitors' actions in future rounds.",
+    "I will start at the lowest possible price to capture market share and build a foundation for future rounds.",
+    "I will start at the lowest possible price to capture market share and build a foundation for future rounds."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 2,
+   "prices": [
+    10,
+    10,
+    10
+   ],
+   "units": [
+    30.0,
+    30.0,
+    30.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "I will maintain the lowest price to secure market share and ensure long-term profitability despite initial low margins.",
+    "I will continue to match the lowest price to ensure market share and maintain stability in the competitive landscape.",
+    "I will continue to match the lowest price to ensure maximum market share and long-term profitability."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 3,
+   "prices": [
+    10,
+    10,
+    10
+   ],
+   "units": [
+    30.0,
+    30.0,
+    30.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "I will continue to set the lowest price to maximize market share and drive long-term profitability for Firm A.",
+    "I will continue to match the lowest price to secure market share and ensure long-term profitability despite current low margins.",
+    "I will continue to maintain the lowest price to ensure maximum market share and long-term profitability."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 4,
+   "prices": [
+    10,
+    10,
+    10
+   ],
+   "units": [
+    30.0,
+    30.0,
+    30.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "I will continue to set the lowest price to maximize market share and drive long-term profitability for Firm A.",
+    "I will continue to match the lowest price to secure market share and ensure long-term profitability despite current low margins.",
+    "I will continue to set the lowest price to maximize market share and drive long-term profitability for Firm C."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 5,
+   "prices": [
+    10,
+    10,
+    10
+   ],
+   "units": [
+    30.0,
+    30.0,
+    30.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "I will continue to set the lowest price to maximize market share and drive long-term profitability for Firm A.",
+    "I will continue to match the lowest price to secure market share and ensure long-term profitability despite current low margins.",
+    "I will continue to set the lowest price to maximize market share and drive long-term profitability for Firm C."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 6,
+   "prices": [
+    10,
+    10,
+    10
+   ],
+   "units": [
+    30.0,
+    30.0,
+    30.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "I will continue to set the lowest price to maximize market share and drive long-term profitability for Firm A.",
+    "I will continue to match the lowest price to secure market share and ensure long-term profitability despite current low margins.",
+    "I will continue to set the lowest price to maximize market share and drive long-term profitability for Firm C."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 7,
+   "prices": [
+    10,
+    10,
+    10
+   ],
+   "units": [
+    30.0,
+    30.0,
+    30.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "I will continue to set the lowest price to maximize market share and drive long-term profitability for Firm A.",
+    "I will continue to match the lowest price to secure market share and ensure long-term profitability despite current low margins.",
+    "I will continue to set the lowest price to maximize market share and drive long-term profitability for Firm C."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 8,
+   "prices": [
+    10,
+    10,
+    10
+   ],
+   "units": [
+    30.0,
+    30.0,
+    30.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "I will continue to set the lowest price to maximize market share and drive long-term profitability for Firm A.",
+    "I will continue to match the lowest price to secure market share and ensure long-term profitability despite current low margins.",
+    "I will continue to set the lowest price to maximize market share and drive long-term profitability for Firm C."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 9,
+   "prices": [
+    10,
+    10,
+    10
+   ],
+   "units": [
+    30.0,
+    30.0,
+    30.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "I will continue to set the lowest price to maximize market share and drive long-term profitability for Firm A.",
+    "I will continue to match the lowest price to secure market share and ensure long-term profitability despite current low margins.",
+    "I will continue to set the lowest price to maximize market share and drive long-term profitability for Firm C."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 10,
+   "prices": [
+    10,
+    10,
+    10
+   ],
+   "units": [
+    30.0,
+    30.0,
+    30.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "I will continue to set the lowest price to maximize market share and drive long-term profitability for Firm A.",
+    "I will continue to match the lowest price to secure market share and ensure long-term profitability despite current low margins.",
+    "I will continue to set the lowest price to maximize market share and drive long-term profitability for Firm C."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 11,
+   "prices": [
+    10,
+    10,
+    10
+   ],
+   "units": [
+    30.0,
+    30.0,
+    30.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "I will continue to set the lowest price to maximize market share and drive long-term profitability for Firm A.",
+    "I will continue to match the lowest price to secure market share and ensure long-term profitability despite current low margins.",
+    "I will continue to set the lowest price to maximize market share and drive long-term profitability for Firm C."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 12,
+   "prices": [
+    10,
+    10,
+    10
+   ],
+   "units": [
+    30.0,
+    30.0,
+    30.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "I will continue to set the lowest price to maximize market share and drive long-term profitability for Firm A.",
+    "I will continue to match the lowest price to secure market share and ensure long-term profitability despite current low margins.",
+    "I will continue to set the lowest price to maximize market share and drive long-term profitability for Firm C."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 13,
+   "prices": [
+    10,
+    10,
+    10
+   ],
+   "units": [
+    30.0,
+    30.0,
+    30.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "I will continue to set the lowest price to maximize market share and drive long-term profitability for Firm A.",
+    "I will continue to match the lowest price to secure market share and ensure long-term profitability despite current low margins.",
+    "I will continue to set the lowest price to maximize market share and drive long-term profitability for Firm C."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 14,
+   "prices": [
+    10,
+    10,
+    10
+   ],
+   "units": [
+    30.0,
+    30.0,
+    30.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "I will continue to set the lowest price to maximize market share and drive long-term profitability for Firm A.",
+    "I will continue to match the lowest price to secure market share and ensure long-term profitability despite current low margins.",
+    "I will continue to set the lowest price to maximize market share and drive long-term profitability for Firm C."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 15,
+   "prices": [
+    10,
+    10,
+    10
+   ],
+   "units": [
+    30.0,
+    30.0,
+    30.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Firm A will continue to set the lowest price to maximize market share and drive long-term profitability for Firm A.",
+    "I will continue to match the lowest price to secure market share and ensure long-term profitability despite current low margins.",
+    "I will continue to set the lowest price to maximize market share and drive long-term profitability for Firm C."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 16,
+   "prices": [
+    10,
+    10,
+    10
+   ],
+   "units": [
+    30.0,
+    30.0,
+    30.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Firm A will continue to set the lowest price to maximize market share and drive long-term profitability for Firm A.",
+    "I will continue to match the lowest price to secure market share and ensure long-term profitability despite current low margins.",
+    "Firm C will continue to set the lowest price to maximize market share and drive long-term profitability for Firm C."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 17,
+   "prices": [
+    10,
+    10,
+    10
+   ],
+   "units": [
+    30.0,
+    30.0,
+    30.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Firm A will continue to set the lowest price to maximize market share and drive long-term profitability for Firm A.",
+    "Firm B will continue to match the lowest price to secure market share and ensure long-term profitability despite current low margins.",
+    "Firm C will continue to set the lowest price to maximize market share and drive long-term profitability for Firm C."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 18,
+   "prices": [
+    10,
+    10,
+    10
+   ],
+   "units": [
+    30.0,
+    30.0,
+    30.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Firm A will continue to set the lowest price to maximize market share and drive long-term profitability for Firm A.",
+    "Firm B will continue to match the lowest price to secure market share and ensure long-term profitability despite current low margins.",
+    "Firm C will continue to set the lowest price to maximize market share and drive long-term profitability for Firm C."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 19,
+   "prices": [
+    10,
+    10,
+    10
+   ],
+   "units": [
+    30.0,
+    30.0,
+    30.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Firm A will continue to set the lowest price to maximize market share and drive long-term profitability for Firm A.",
+    "Firm B will continue to match the lowest price to secure market share and ensure long-term profitability despite current low margins.",
+    "Firm C will continue to set the lowest price to maximize market share and drive long-term profitability for Firm C."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 20,
+   "prices": [
+    10,
+    10,
+    10
+   ],
+   "units": [
+    30.0,
+    30.0,
+    30.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Firm A will continue to set the lowest price to maximize market share and drive long-term profitability for Firm A.",
+    "Firm B will continue to match the lowest price to secure market share and ensure long-term profitability despite current low margins.",
+    "Firm C will continue to set the lowest price to maximize market share and drive long-term profitability for Firm C."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 21,
+   "prices": [
+    10,
+    10,
+    10
+   ],
+   "units": [
+    30.0,
+    30.0,
+    30.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Firm A will continue to set the lowest price to maximize market share and drive long-term profitability for Firm A.",
+    "Firm B will continue to match the lowest price to secure market share and ensure long-term profitability despite current low margins.",
+    "Firm C will continue to set the lowest price to maximize market share and drive long-term profitability for Firm C."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 22,
+   "prices": [
+    10,
+    10,
+    10
+   ],
+   "units": [
+    30.0,
+    30.0,
+    30.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Firm A will continue to set the lowest price to maximize market share and drive long-term profitability for Firm A.",
+    "Firm B will continue to match the lowest price to secure market share and ensure long-term profitability despite current low margins.",
+    "Firm C will continue to set the lowest price to maximize market share and drive long-term profitability for Firm C."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 23,
+   "prices": [
+    10,
+    10,
+    10
+   ],
+   "units": [
+    30.0,
+    30.0,
+    30.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Firm A will continue to set the lowest price to maximize market share and drive long-term profitability for Firm A.",
+    "Firm B will continue to match the lowest price to secure market share and ensure long-term profitability despite current low margins.",
+    "Firm C will continue to set the lowest price to maximize market share and drive long-term profitability for Firm C."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 24,
+   "prices": [
+    10,
+    10,
+    10
+   ],
+   "units": [
+    30.0,
+    30.0,
+    30.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Firm A will continue to set the lowest price to maximize market share and drive long-term profitability for Firm A.",
+    "Firm B will continue to match the lowest price to secure market share and ensure long-term profitability despite current low margins.",
+    "Firm C will continue to set the lowest price to maximize market share and drive long-term profitability for Firm C."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 25,
+   "prices": [
+    10,
+    10,
+    10
+   ],
+   "units": [
+    30.0,
+    30.0,
+    30.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Firm A will continue to set the lowest price to maximize market share and drive long-term profitability for Firm A.",
+    "Firm B will continue to match the lowest price to secure market share and ensure long-term profitability despite current low margins.",
+    "Firm C will continue to set the lowest price to maximize market share and drive long-term profitability for Firm C."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 26,
+   "prices": [
+    10,
+    10,
+    10
+   ],
+   "units": [
+    30.0,
+    30.0,
+    30.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Firm A will continue to set the lowest price to maximize market share and drive long-term profitability for Firm A.",
+    "Firm B will continue to match the lowest price to secure market share and ensure long-term profitability despite current low margins.",
+    "Firm C will continue to set the lowest price to maximize market share and drive long-term profitability for Firm C."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 27,
+   "prices": [
+    10,
+    10,
+    10
+   ],
+   "units": [
+    30.0,
+    30.0,
+    30.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Firm A will continue to set the lowest price to maximize market share and drive long-term profitability for Firm A.",
+    "Firm B will continue to match the lowest price to secure market share and ensure long-term profitability despite current low margins.",
+    "Firm C will continue to set the lowest price to maximize market share and drive long-term profitability for Firm C."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 28,
+   "prices": [
+    10,
+    10,
+    10
+   ],
+   "units": [
+    30.0,
+    30.0,
+    30.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Firm A will continue to set the lowest price to maximize market share and drive long-term profitability for Firm A.",
+    "Firm B will continue to match the lowest price to secure market share and ensure long-term profitability despite current low margins.",
+    "Firm C will continue to set the lowest price to maximize market share and drive long-term profitability for Firm C."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 29,
+   "prices": [
+    10,
+    10,
+    10
+   ],
+   "units": [
+    30.0,
+    30.0,
+    30.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Firm A will continue to set the lowest price to maximize market share and drive long-term profitability for Firm A.",
+    "Firm B will continue to match the lowest price to secure market share and ensure long-term profitability despite current low margins.",
+    "Firm C will continue to set the lowest price to maximize market share and drive long-term profitability for Firm C."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 30,
+   "prices": [
+    10,
+    10,
+    10
+   ],
+   "units": [
+    30.0,
+    30.0,
+    30.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Firm A will continue to set the lowest price to maximize market share and drive long-term profitability for Firm A.",
+    "Firm B will continue to match the lowest price to secure market share and ensure long-term profitability despite current low margins.",
+    "Firm C will continue to set the lowest price to maximize market share and drive long-term profitability for Firm C."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  }
+ ],
+ "firms": [
+  {
+   "label": "A",
+   "model": "qwen3-14b",
+   "view": 1
+  },
+  {
+   "label": "B",
+   "model": "qwen3-14b",
+   "view": 1
+  },
+  {
+   "label": "C",
+   "model": "qwen3-14b",
+   "view": 1
+  }
+ ],
+ "comm": true,
+ "seed": 2,
+ "round": 30
+}
