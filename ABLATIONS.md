@@ -1,6 +1,6 @@
 # Ablation candidates (review sheet)
 
-The nine exploratory configurations to run after the base configuration and the core swaps. Not part of the pre-registration (`prereg-v1`). Full reasoning, costs and rules: [`2026/2026-10/2026-10-22/06_ABLATIONS.md`](2026/2026-10/2026-10-22/06_ABLATIONS.md). Papers: [`papers/README.md`](papers/README.md), citations in [`references.bib`](references.bib).
+The ten exploratory configurations to run after the base configuration and the core swaps. Not part of the pre-registration (`prereg-v1`). Full reasoning, costs and rules: [`2026/2026-10/2026-10-22/06_ABLATIONS.md`](2026/2026-10/2026-10-22/06_ABLATIONS.md). Papers: [`papers/README.md`](papers/README.md), citations in [`references.bib`](references.bib).
 
 How to use this sheet: read the section named in "Where to read", check that the paper really says what we use it for, then fill "Review notes" and "Decision" (keep, change, drop). Section numbers are from the versions in `papers/` and may shift between versions.
 
@@ -15,5 +15,6 @@ How to use this sheet: read the section named in "Where to read", check that the
 | 7 | Replacement strength: a larger model replaces a smaller one, and the reverse | Keppo et al. section 5.3 (model size, leader and follower) | Which model led? Were both patient agents? Does it hold in groups of 3? | | |
 | 8 | Temperature: 0.3 and 1.0 | Fish et al. Appendix B (technical settings) | What temperature they used and whether they varied it | | |
 | 9 | Number of firms: 2 and 4 instead of 3 | Keppo et al. section 5.2 (number of sellers) | Their 2, 3, 4, 5-seller results and the exact collusion measure used | | |
+| 10 | Anchor price in the prompt: a round reference price (e.g. 55) in all prompts, in one prompt only, or a non-monopoly anchor (e.g. 30), versus none (added 2026-10-23) | Aharon et al. (focal points; read so far: abstract, introduction, related work only, so read their method for how they pose numeric tasks); Fish et al. section 2.2 item 2 (their prompt gives a price-ceiling hint) | How they build salience and whether numbers behave differently from other cues; whether the ceiling hint in Fish et al. acts as an anchor | | |
 
 Status: none run yet. Update the Decision column after your review, then I fold the decisions into `06_ABLATIONS.md`.

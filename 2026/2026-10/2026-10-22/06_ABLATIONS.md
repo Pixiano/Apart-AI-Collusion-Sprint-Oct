@@ -22,6 +22,13 @@ Status: NOT part of the pre-registration (`prereg-v1`). Run only after the base 
 | 8 | **Temperature**: 0.3 and 1.0 | Formation | Randomness may drive accidental undercuts | Lower temperature, steadier prices |
 | 9 | **Number of firms**: 2 and 4 instead of 3 | Formation | Keppo: more firms break collusion | 2 firms collude most, 4 least |
 
+## Added 2026-10-23: focal-point anchor (idea from Aharon et al.)
+| # | Ablation (change vs base) | Kind | Why (source) | Prediction written now |
+|---|---|---|---|---|
+| 10 | **Anchor price in the prompt**: one innocuous line giving a round reference price, e.g. "your usual list price is 55", in (a) all three prompts, (b) one prompt only, (c) all three with a non-monopoly anchor (e.g. 30), against no anchor | Formation, then persistence | Aharon et al.: agents coordinate on salient numbers without talking; Fish et al.'s prompt already carried a price ceiling hint. Question: can a firm nudge its AI toward a shared price without ever asking it to collude? | (a) prices cluster at or near the anchor, collusion index up; (b) one firm leads and the others follow, as Keppo et al. saw for a larger model; (c) a stable middle price. After a swap: a replacement given the same anchor rejoins faster than one given a different anchor or none. |
+
+Why it fits: it asks the same question as the main study (how fragile is a cartel) from the other side, how little it takes to start one, and it ties into the replacement design (the anchor can differ for the new agent). It is also a plus-factor question for the fallback detector (which prompt cues look like facilitation). Cost: formation runs are cheap (30 rounds). Handling: describe it as a robustness and detection question; the ethics appendix must say what it does and does not show and that it is a toy market, not a recipe for real pricing.
+
 ## Not planned (YAGNI)
 Telling agents their rivals are AI, other games, other demand shapes, more than three swap timings, human-written prompts per firm. Add only if a result begs for it.
 
@@ -29,4 +36,4 @@ Telling agents their rivals are AI, other games, other demand shapes, more than 
 - Seeds: 5 per ablation cell (not 10), because these are exploratory. Same seed list as the base cell where possible so differences are paired.
 - Report as a small table of effects with bootstrap intervals, marked exploratory. No claim beyond "differs from base in this setup".
 - Log the exact prompt text of every variant in the repo (`data/<run_id>/meta.json`). A change here is not a prereg deviation, but anything that touches the base configuration is.
-- Priority by cost: 1, 4, 2, 5 first (cheap or directly motivated), then 6, 7, then 3, 8, 9.
+- Priority by cost: 1, 4, 2, 5 first (cheap or directly motivated), then 10, 6, 7, then 3, 8, 9.
