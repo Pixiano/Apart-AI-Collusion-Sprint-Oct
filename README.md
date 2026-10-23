@@ -31,7 +31,7 @@ The sprint requires disclosing prior work. Everything before 2026-10-23 is plann
 ```
 harness/                      the game and the agents: game, agents, play, swaps, run, analyze
 tests/                        checks (python tests/test_game.py)
-tools/                        local server launcher and model presets
+tools/                        local server launcher, model presets, pilot launcher
 data/                         run output (pilot and main; data/dev is scratch and ignored)
 general/                      READMEs and notes not tied to one day
 YYYY/YYYY-MM/YYYY-MM-DD/      daily work log; each day has 00_SUMMARY.md
