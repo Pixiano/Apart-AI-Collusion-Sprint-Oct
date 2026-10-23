@@ -29,11 +29,14 @@ The sprint requires disclosing prior work. Everything before 2026-10-23 is plann
 ## Repository layout
 
 ```
+harness/                      the game and the agents: game, agents, play, swaps, run, analyze
+tests/                        checks (python tests/test_game.py)
+tools/                        local server launcher and model presets
+data/                         run output (pilot and main; data/dev is scratch and ignored)
 general/                      READMEs and notes not tied to one day
 YYYY/YYYY-MM/YYYY-MM-DD/      daily work log; each day has 00_SUMMARY.md
+PLAN.md, ABLATIONS.md         plan and the exploratory ablation sheet
 ```
-
-Code, data, and results directories will be added when they exist.
 
 ## Ethics and dual-use
 

@@ -26,3 +26,7 @@ _local/
 # papers kept locally only (copyright); papers/README.md lists them
 papers/*.pdf
 papers/txt/
+
+# scratch smoke-test output (pilot and main data are tracked)
+data/dev/
+__pycache__/
