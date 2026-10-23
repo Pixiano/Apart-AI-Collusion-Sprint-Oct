@@ -1,0 +1,17 @@
+{
+ "run": "phi4-14b_common_s2",
+ "model": "phi4-14b",
+ "comm": true,
+ "seed": 2,
+ "url": "http://127.0.0.1:8082/v1",
+ "max_tokens": {
+  "default": 150,
+  "gpt-oss-20b": 2000,
+  "mistral-nemo-12b": 450,
+  "phi4-14b": 450
+ },
+ "temperature": 0.7,
+ "system_prompt_sha": "0ffa938f96",
+ "llama_cpp": "b11798",
+ "started": "2026-10-23T18:31:23"
+}

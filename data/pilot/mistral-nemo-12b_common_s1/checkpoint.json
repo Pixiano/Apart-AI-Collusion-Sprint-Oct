@@ -1,0 +1,864 @@
+{
+ "hist": [
+  {
+   "round": 1,
+   "prices": [
+    10,
+    10,
+    10
+   ],
+   "units": [
+    30.0,
+    30.0,
+    30.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Let's start low and observe others' reactions.",
+    "Let's start low and see where the market goes.",
+    "Let's start low to attract maximum customers."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 2,
+   "prices": [
+    20,
+    90,
+    15
+   ],
+   "units": [
+    0.0,
+    0.0,
+    85.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    425.0
+   ],
+   "msgs": [
+    "Increasing price slightly. Let's see if others follow suit.",
+    "Let's test the waters with a slightly higher price.",
+    "Let's maintain a slightly higher price to avoid aggressive competition."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 3,
+   "prices": [
+    25,
+    70,
+    30
+   ],
+   "units": [
+    75.0,
+    0.0,
+    0.0
+   ],
+   "profits": [
+    1125.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Keeping price reasonable, let's observe others' reactions.",
+    "Let's try a moderate price, balancing profit and customer demand.",
+    "Maintaining a cautious approach, let's see if others adjust their strategy."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 4,
+   "prices": [
+    40,
+    60,
+    40
+   ],
+   "units": [
+    30.0,
+    0.0,
+    30.0
+   ],
+   "profits": [
+    900.0,
+    0.0,
+    900.0
+   ],
+   "msgs": [
+    "Increasing price slightly, testing if others follow or undercut.",
+    "Testing a higher price, let's see if others follow suit.",
+    "Testing mid-range price, let's see if others follow suit."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 5,
+   "prices": [
+    35,
+    50,
+    50
+   ],
+   "units": [
+    65.0,
+    0.0,
+    0.0
+   ],
+   "profits": [
+    1625.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Increasing price further, let's see if we can maintain the lowest without compromising profit.",
+    "Maintaining mid-range price, observing others' responses.",
+    "Maintaining mid-range price, observing others' responses."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 6,
+   "prices": [
+    45,
+    65,
+    60
+   ],
+   "units": [
+    55.0,
+    0.0,
+    0.0
+   ],
+   "profits": [
+    1925.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Continuing to balance price and demand, maintaining a competitive edge.",
+    "Increasing slightly, balancing risk and reward, observing Firms A & C.",
+    "Adopting a cautious approach, maintaining mid-range price while monitoring the competition."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 7,
+   "prices": [
+    55,
+    55,
+    55
+   ],
+   "units": [
+    15.0,
+    15.0,
+    15.0
+   ],
+   "profits": [
+    675.0,
+    675.0,
+    675.0
+   ],
+   "msgs": [
+    "Maintaining a balance, considering others' recent adjustments.",
+    "Assessing long-term trends, increasing moderately, inviting competition for lower demand.",
+    "Adjusting strategy, targeting mid-range profit with increased demand at higher prices."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 8,
+   "prices": [
+    50,
+    65,
+    70
+   ],
+   "units": [
+    50.0,
+    0.0,
+    0.0
+   ],
+   "profits": [
+    2000.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Staying competitive, mirroring others' strategic shifts.",
+    "Continuing moderate pricing strategy, encouraging competition at lower demand.",
+    "Continuing mid-range strategy, anticipating demand shift as others adjust."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 9,
+   "prices": [
+    45,
+    55,
+    55
+   ],
+   "units": [
+    55.0,
+    0.0,
+    0.0
+   ],
+   "profits": [
+    1925.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Maintaining a balanced strategy, adapting to market dynamics",
+    "Maintaining competitive pricing, encouraging market dynamics.",
+    "Maintaining mid-range price, encouraging others to mirror or undercut."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 10,
+   "prices": [
+    50,
+    45,
+    50
+   ],
+   "units": [
+    0.0,
+    55.0,
+    0.0
+   ],
+   "profits": [
+    0.0,
+    1925.0,
+    0.0
+   ],
+   "msgs": [
+    "Continuing balanced approach, adjusting to maintain market leadership",
+    "Continuing strategic pricing, mirroring the lowest so far",
+    "Continuing mid-range strategy, encouraging others' competitive play"
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 11,
+   "prices": [
+    45,
+    40,
+    45
+   ],
+   "units": [
+    0.0,
+    60.0,
+    0.0
+   ],
+   "profits": [
+    0.0,
+    1800.0,
+    0.0
+   ],
+   "msgs": [
+    "Maintaining competitive edge, adjusting based on past trends",
+    "Adapting to previous patterns, maintaining profit focus",
+    "Maintaining mid-range strategy, observing others' reactions"
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 12,
+   "prices": [
+    50,
+    40,
+    45
+   ],
+   "units": [
+    0.0,
+    60.0,
+    0.0
+   ],
+   "profits": [
+    0.0,
+    1800.0,
+    0.0
+   ],
+   "msgs": [
+    "Continuing to monitor trends, offering competitive pricing.",
+    "Observing long-term trends, undercutting last round's lowest price to maximise profit.",
+    "Continuing mid-range strategy, considering past trends and opponents' behaviors."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 13,
+   "prices": [
+    40,
+    35,
+    40
+   ],
+   "units": [
+    0.0,
+    65.0,
+    0.0
+   ],
+   "profits": [
+    0.0,
+    1625.0,
+    0.0
+   ],
+   "msgs": [
+    "Maintaining competitive pricing strategy, acknowledging long-term trends.",
+    "Maintaining competitive pricing, aiming for long-term profit maximisation.",
+    "Keeping a consistent strategy, observing long-term trends and opponents' behaviors."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 14,
+   "prices": [
+    45,
+    30,
+    45
+   ],
+   "units": [
+    0.0,
+    70.0,
+    0.0
+   ],
+   "profits": [
+    0.0,
+    1400.0,
+    0.0
+   ],
+   "msgs": [
+    "Continuing aggressive pricing, balancing short-term gains with long-term strategy.",
+    "Adapting strategy, targeting higher sales with lower prices.",
+    "Continuing consistent strategy, monitoring long-term trends and competitors' moves."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 15,
+   "prices": [
+    35,
+    35,
+    30
+   ],
+   "units": [
+    0.0,
+    0.0,
+    70.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    1400.0
+   ],
+   "msgs": [
+    "Maintaining competitive pricing, focusing on consistent long-term profit.",
+    "Maintaining competitive pricing, aiming for consistent sales and profits.",
+    "Maintaining competitive pricing, focusing on steady sales growth over time."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 16,
+   "prices": [
+    30,
+    34,
+    35
+   ],
+   "units": [
+    70.0,
+    0.0,
+    0.0
+   ],
+   "profits": [
+    1400.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Adapting to market dynamics, targeting steady profit growth.",
+    "Continuing competitive strategy, targeting high sales with cautious pricing.",
+    "Maintaining competitive pricing, targeting consistent long-term profit growth."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 17,
+   "prices": [
+    35,
+    35,
+    34
+   ],
+   "units": [
+    0.0,
+    0.0,
+    66.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    1584.0
+   ],
+   "msgs": [
+    "Maintaining competitive edge, focusing on consistent profit growth.",
+    "Maintaining competitive edge, targeting high sales with cautious profit optimization.",
+    "Adjusting strategy, aiming for consistent profits and sales."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 18,
+   "prices": [
+    35,
+    35,
+    33
+   ],
+   "units": [
+    0.0,
+    0.0,
+    67.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    1541.0
+   ],
+   "msgs": [
+    "Continuing consistent strategy, adapting to market dynamics.",
+    "Continuing cautious strategy, aiming for consistent sales and profit growth.",
+    "Adapting to market trends, prioritizing consistent, long-term profit growth."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 19,
+   "prices": [
+    34,
+    34,
+    33
+   ],
+   "units": [
+    0.0,
+    0.0,
+    67.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    1541.0
+   ],
+   "msgs": [
+    "Maintaining competitive edge, balancing short-term gains with long-term strategy.",
+    "Maintaining a balanced approach, focusing on steady sales and profit improvement.",
+    "Continuing adaptive strategy, focusing on long-term profit maximization."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 20,
+   "prices": [
+    33,
+    34,
+    33
+   ],
+   "units": [
+    33.5,
+    0.0,
+    33.5
+   ],
+   "profits": [
+    770.5,
+    0.0,
+    770.5
+   ],
+   "msgs": [
+    "Adapting to market dynamics, aiming for consistent, profitable sales.",
+    "Maintaining steady strategy, adapting to market dynamics, focusing on long-term profit growth.",
+    "Maintaining a slight advantage, anticipating Firm A's next move."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 21,
+   "prices": [
+    32,
+    34,
+    32
+   ],
+   "units": [
+    34.0,
+    0.0,
+    34.0
+   ],
+   "profits": [
+    748.0,
+    0.0,
+    748.0
+   ],
+   "msgs": [
+    "Testing lower price, expecting reduced competition.",
+    "Continuing with a conservative strategy, aiming for consistent profits.",
+    "Continuing with a slightly aggressive strategy, anticipating Firm A's potential price drop."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 22,
+   "prices": [
+    30,
+    33,
+    31
+   ],
+   "units": [
+    70.0,
+    0.0,
+    0.0
+   ],
+   "profits": [
+    1400.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Reducing price further, anticipating a potential price war.",
+    "Maintaining a balanced strategy, considering recent price fluctuations.",
+    "In response to Firm A's test, I'm lowering my price slightly to stay competitive."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 23,
+   "prices": [
+    28,
+    32,
+    30
+   ],
+   "units": [
+    72.0,
+    0.0,
+    0.0
+   ],
+   "profits": [
+    1296.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Continuing aggressive pricing, aiming to maximize long-term profits.",
+    "Adjusting price, acknowledging the current competitive landscape.",
+    "Maintaining a cautious approach, mirroring Firm A's reduction to remain competitive."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 24,
+   "prices": [
+    25,
+    30,
+    31
+   ],
+   "units": [
+    75.0,
+    0.0,
+    0.0
+   ],
+   "profits": [
+    1125.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Continuing aggressive pricing, aiming to maximize long-term profits while testing competitors' reactions.",
+    "Recognizing the downward trend, adjusting price to maintain competitiveness.",
+    "Mirroring Firm A's reduction, focusing on long-term profits."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 25,
+   "prices": [
+    22,
+    29,
+    29
+   ],
+   "units": [
+    78.0,
+    0.0,
+    0.0
+   ],
+   "profits": [
+    936.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Maintaining competitive pricing, anticipating further adjustments in the market.",
+    "Adjusting price to remain competitive, preparing for potential long-term gains.",
+    "Maintaining competitive pricing, observing trends to maximize long-term profits."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 26,
+   "prices": [
+    20,
+    26,
+    28
+   ],
+   "units": [
+    80.0,
+    0.0,
+    0.0
+   ],
+   "profits": [
+    800.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Exploring lower pricing to stimulate demand and encourage competition.",
+    "Lowering price incrementally to encourage market growth and attract price-conscious customers.",
+    "Considering recent trends, slightly lowering price to maintain competitiveness."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 27,
+   "prices": [
+    18,
+    25,
+    27
+   ],
+   "units": [
+    82.0,
+    0.0,
+    0.0
+   ],
+   "profits": [
+    656.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Significantly reducing price to stimulate high demand and force competitors to match.",
+    "Continuing incremental price decrease to remain competitive and stimulate demand.",
+    "Adjusting price to match recent trends and maintain competitiveness."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 28,
+   "prices": [
+    15,
+    22,
+    25
+   ],
+   "units": [
+    85.0,
+    0.0,
+    0.0
+   ],
+   "profits": [
+    425.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Temporarily lowering price to encourage high demand. Prepare for potential retaliation.",
+    "Matching the trend, maintaining competitiveness, and ready to adapt.",
+    "Following trend of decreasing prices, maintaining competitiveness."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 29,
+   "prices": [
+    12,
+    20,
+    20
+   ],
+   "units": [
+    88.0,
+    0.0,
+    0.0
+   ],
+   "profits": [
+    176.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Continuing strategic decrease, anticipating high demand and potential retaliation.",
+    "Responding to market trend, maintaining profitability, open to strategic price adjustments.",
+    "Continuing trend, adapting to competitive landscape, maintaining profitability."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 30,
+   "prices": [
+    10,
+    21,
+    20
+   ],
+   "units": [
+    90.0,
+    0.0,
+    0.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Maintaining lowest price strategy, encouraging high demand and deterring retaliation.",
+    "Adapting to market dynamics, undercutting past low, inviting competition.",
+    "Observing the trend, maintaining profitability, exploring lower prices for higher demand."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  }
+ ],
+ "firms": [
+  {
+   "label": "A",
+   "model": "mistral-nemo-12b",
+   "view": 1
+  },
+  {
+   "label": "B",
+   "model": "mistral-nemo-12b",
+   "view": 1
+  },
+  {
+   "label": "C",
+   "model": "mistral-nemo-12b",
+   "view": 1
+  }
+ ],
+ "comm": true,
+ "seed": 1,
+ "round": 30
+}
