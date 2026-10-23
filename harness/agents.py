@@ -60,7 +60,7 @@ def user_prompt(me, labels, rows, shown_round, comm, msgs, notice):
 
 
 def extra(model):
-    if model.startswith(("qwen3", "gemma4")):
+    if model.startswith(("qwen3", "gemma4", "bonsai")):
         return {"chat_template_kwargs": {"enable_thinking": False}}
     if model.startswith("gpt-oss"):
         return {"chat_template_kwargs": {"reasoning_effort": "low"}}
