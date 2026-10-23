@@ -12,7 +12,7 @@ Claim wording: "collusion persistence under agent replacement, as a stylised mod
 ## Design
 - Repeated Bertrand pricing game, 3 agents, 60 rounds, swap at round 30.
 - Swap types: none (control), fresh clone (memory wiped), different-family model, scripted undercutter.
-- Other factors: 1 vs 2 of 3 replaced, hidden vs announced, communication on/off.
+- Other factors: 1 vs 2 of 3 replaced, hidden vs announced, communication on/off, persistent notes on/off (each agent keeps a private scratchpad it rewrites every round, as suggested on the sprint page for question 1.2 and used by Fish et al.; added 2026-10-23, exploratory, harness support still to be written).
 - Metrics: collusion index (mean price - Nash) / (monopoly - Nash) before and after swap; re-convergence time; awareness as price shift vs control (self-report only as cheap talk).
 - Gating: only (model, framing) cells with pre-swap collusion above a threshold enter the swap analysis; report per-model pass rate.
 - 10+ seeds per cell, bootstrap CIs, no-swap control.

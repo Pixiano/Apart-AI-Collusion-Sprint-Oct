@@ -24,7 +24,7 @@ Working title: Does the cartel survive turnover? Collusion persistence under age
 
 ## 2. Related Work
 - Verified citations only (read before citing). Read so far (abstract and introduction only, see `02_LITERATURE_NOTES.md`): Fish et al. (arXiv 2404.00806), Keppo et al. 2026 (arXiv 2603.20281, closest work), Eschenbaum et al. (arXiv 2201.00345), Shi et al. 2026 (arXiv 2607.05132), Dietrich 2026 (arXiv 2606.09854), Aharon et al. 2026 (arXiv 2601.22184). LLMCartel and focal-points repos have no license (ideas only). Read the full text of any paper before citing a specific result.
-- How this differs; the gap.
+- How this differs; the gap. Citable line (paraphrase, checked 2026-10-23): the sprint organisers state that no study yet substitutes models mid-run and asks whether newcomers re-form the collusion (Apart Research, 2026, AI Collusion Research Sprint page, Resources tab, question 1.2: https://apartresearch.com/sprints/ai-collusion-research-sprint-2026-10-23-to-2026-10-25). Related results named there: Q-learning cartels dissolve with a new rival (Eschenbaum et al. 2022); LLM pairs of mismatched size still collude (Keppo et al. 2026); a single no-regret player can destabilise a collusive equilibrium (Collina et al. 2025, not yet read; read before citing).
 
 ## 3. Methods
 - Game (from 03_PREREG.md): 3 firms, prices 10 to 100, cost 10, demand 100 - P, 60 rounds; collusion index.
