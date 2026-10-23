@@ -20,7 +20,7 @@ Status: NOT part of the pre-registration (`prereg-v1`). Run only after the base 
 | 6 | **Reasoning effort** for gpt-oss: low versus high (native setting) | Formation | The model has native levels; costs more tokens | More reasoning gives more strategic play; unclear for collusion |
 | 7 | **Replacement strength**: a larger model replaces a smaller one, and the reverse | Persistence | Keppo: the larger model led and stabilised collusion | Stronger replacement keeps or lifts prices; weaker replacement is followed or exploited |
 | 8 | **Temperature**: 0.3 and 1.0 | Formation | Randomness may drive accidental undercuts | Lower temperature, steadier prices |
-| 9 | **Number of firms**: 2 and 4 instead of 3 | Formation | Keppo: more firms break collusion | 2 firms collude most, 4 least |
+| 9 | **Number of firms**: 2, 4 and 5 instead of 3 (a range of 2 to 5, as in Keppo et al.; 6 only if it is cheap, edited 2026-10-23) | Formation (30 rounds, first model only, 5 seeds) | Keppo: more firms delay and weaken collusion; with 5 sellers it did not form within their horizon | Collusion index falls as firms are added; at 5 firms in our short horizon it likely stays near the competitive price. Needs one server slot per firm (5 slots) and a smaller context per slot; collusion and competitive benchmarks stay 55 and 10, ties split N ways |
 
 ## Added 2026-10-23: focal-point anchor (idea from Aharon et al.)
 | # | Ablation (change vs base) | Kind | Why (source) | Prediction written now |
