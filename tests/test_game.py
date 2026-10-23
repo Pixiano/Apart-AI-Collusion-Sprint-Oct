@@ -61,6 +61,20 @@ def test_prompt_and_views():
         assert len(json.load(open(os.path.join(base_dir, "checkpoint.json")))["hist"]) == 30
 
 
+def test_entry_and_all_undercutters():
+    with tempfile.TemporaryDirectory() as d:
+        base_dir = run.base("fake", True, 5, d)
+        run.branch(base_dir, "entry", 1, True, ["fake", "fake"][:1])
+        run.branch(base_dir, "entry", 2, True, ["fake", "fake"])
+        run.branch(base_dir, "undercutter_all", 1, False)
+        r = [json.loads(l) for l in open(os.path.join(base_dir, "entry_k2_ann", "rounds.jsonl"))]
+        assert len(r) == 30 and all(len(x["prices"]) == 5 for x in r)
+        r = [json.loads(l) for l in open(os.path.join(base_dir, "undercutter_all_k3_hid", "rounds.jsonl"))]
+        assert r[-1]["prices"] == [10, 10, 10] and r[0]["prices"][0] == r[0]["prices"][1]
+        u = agents.user_prompt(0, list("ABCD"), [(1, {"prices": [55, 55, 55], "units": [15, 15, 15], "profits": [675, 675, 675]})], 31, True, ["a", "b", "c"], None)
+        assert "55 | 55 | 55 | - |" in u and "Firm D: (none)" in u
+
+
 def test_swaps():
     firms = [{"label": l, "model": "qwen3-8b", "view": 1} for l in "ABC"]
     new, replaced, notice = swaps.apply_swap(firms, "family", 2, False)

@@ -44,9 +44,10 @@ def base(model, comm, seed, out):
     return run_dir
 
 
-def branch(run_dir, swap, k, announce):
+def branch(run_dir, swap, k, announce, newcomers=()):
     ck = json.load(open(os.path.join(run_dir, "checkpoint.json"), encoding="utf-8"))
-    firms, replaced, notice = swaps.apply_swap(ck["firms"], swap, k, announce)
+    firms, replaced, notice = swaps.apply_swap(ck["firms"], swap, k, announce, newcomers)
+    k = len(newcomers) if swap == "entry" else 3 if swap == "undercutter_all" else k
     tag = "none" if swap == "none" else f"{swap}_k{k}_{'ann' if announce else 'hid'}"
     os.makedirs(os.path.join(run_dir, tag), exist_ok=True)
     write_json(os.path.join(run_dir, tag, "branch.json"), {"swap": swap, "k": k, "announce": announce, "replaced": replaced, "models": [f["model"] for f in firms]})
@@ -90,6 +91,7 @@ if __name__ == "__main__":
     r.add_argument("--swap", choices=swaps.KINDS, required=True)
     r.add_argument("--k", type=int, choices=[1, 2], default=1)
     r.add_argument("--announce", action="store_true")
+    r.add_argument("--newcomers", default="", help="entry: comma-separated models of the new firms")
     s = sub.add_parser("sanity")
     s.add_argument("--model", required=True)
     s.add_argument("--out", default="data/sanity")
@@ -98,6 +100,6 @@ if __name__ == "__main__":
     if a.cmd == "base":
         base(a.model, a.comm == "on", a.seed, a.out)
     elif a.cmd == "branch":
-        branch(a.run, a.swap, a.k, a.announce)
+        branch(a.run, a.swap, a.k, a.announce, [m for m in a.newcomers.split(",") if m])
     else:
         sanity(a.model, a.out, a.oneshot)

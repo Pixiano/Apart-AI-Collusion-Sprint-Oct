@@ -46,13 +46,13 @@ def user_prompt(me, labels, rows, shown_round, comm, msgs, notice):
         lines.append("Past rounds:")
         lines.append(" | ".join(head))
         for k, rec in rows:
-            lines.append(" | ".join([str(k)] + [str(p) for p in rec["prices"]] + [fmt(rec["units"][me]), fmt(rec["profits"][me])]))
+            lines.append(" | ".join([str(k)] + [str(p) for p in rec["prices"]] + ["-"] * (len(labels) - len(rec["prices"])) + [fmt(rec["units"][me]), fmt(rec["profits"][me])]))
     else:
         lines.append("No rounds have been played yet.")
     if comm and msgs:
         lines.append("Messages from the last round:")
         for i, l in enumerate(labels):
-            lines.append(f"Firm {l}" + (" (you)" if i == me else "") + f": {msgs[i] or '(none)'}")
+            lines.append(f"Firm {l}" + (" (you)" if i == me else "") + f": {(msgs[i] if i < len(msgs) else '') or '(none)'}")
     why = '"reasoning": <one or two sentences on how you decide>, ' if VARIANT == "reason" else ""
     reply = '{' + why + '"price": <whole number from 10 to 100>' + (', "message": <note of up to 30 words that the other firms will read at the start of the next round>}' if comm else "}")
     lines.append(f"Reply as JSON: {reply}")
