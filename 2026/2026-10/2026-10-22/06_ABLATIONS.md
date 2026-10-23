@@ -29,6 +29,13 @@ Status: NOT part of the pre-registration (`prereg-v1`). Run only after the base 
 
 Why it fits: it asks the same question as the main study (how fragile is a cartel) from the other side, how little it takes to start one, and it ties into the replacement design (the anchor can differ for the new agent). It is also a plus-factor question for the fallback detector (which prompt cues look like facilitation). Cost: formation runs are cheap (30 rounds). Handling: describe it as a robustness and detection question; the ethics appendix must say what it does and does not show and that it is a toy market, not a recipe for real pricing.
 
+## Added 2026-10-23: a fourth firm enters at round 40
+| # | Ablation (change vs base) | Kind | Why (source) | Prediction written now |
+|---|---|---|---|---|
+| 11 | **Entry**: a fourth firm joins at round 40 (the market grows from 3 to 4; nobody is replaced). Entrant variants: (a) same model, fresh context (rules only, no history); (b) a different model family, fresh context; (c) scripted undercutter (positive control). Compared with the no-entry control from the same round-40 checkpoint | Persistence | Classic cartel-stability question (entry); Keppo et al.: more sellers delay and weaken collusion (4 patient LLMs +11% against +36% for 3); Eschenbaum et al.: an unseen partner breaks learned collusion | (a) the newcomer starts low and incumbents either punish it or pull it up; direction uncertain. (b) like (a), possibly a different price level. (c) collusion breaks by construction. In all cases the index after entry is below the control, and larger than a swap if incumbents also face a fourth set of competing interests. |
+
+How it differs from a swap: a swap keeps three firms and removes one agent's history; entry adds a firm, so the market share per firm drops (ties now split four ways) and each firm's pie shrinks. Keep these apart in the report. Needs four server slots (the same infrastructure as ablation 9) and one extra checkpoint: the control branch is saved at round 40 and both the control and the entry branch continue from that file, so they are paired at round 40. Primary outcome: collusion index over rounds 41 to 60 for all four firms minus the control, with the incumbents' own index reported separately. Cost: a 20-round branch, cheap. Keep it as a toy-market robustness question in the report.
+
 ## Not planned (YAGNI)
 Telling agents their rivals are AI, other games, other demand shapes, more than three swap timings, human-written prompts per firm. Add only if a result begs for it.
 
@@ -36,4 +43,4 @@ Telling agents their rivals are AI, other games, other demand shapes, more than 
 - Seeds: 5 per ablation cell (not 10), because these are exploratory. Same seed list as the base cell where possible so differences are paired.
 - Report as a small table of effects with bootstrap intervals, marked exploratory. No claim beyond "differs from base in this setup".
 - Log the exact prompt text of every variant in the repo (`data/<run_id>/meta.json`). A change here is not a prereg deviation, but anything that touches the base configuration is.
-- Priority by cost: 1, 4, 2, 5 first (cheap or directly motivated), then 10, 6, 7, then 3, 8, 9.
+- Priority by cost: 1, 4, 2, 5 first (cheap or directly motivated), then 10, 11, 6, 7, then 3, 8, 9.

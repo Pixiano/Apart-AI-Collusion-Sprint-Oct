@@ -35,6 +35,7 @@ One round line is about 20 tokens of table plus up to 40 per message, 3 firms: r
 - `undercutter`: replaced firm posts (lowest rival price last round) - 1, floor 10, no message (positive control: it should break collusion by construction).
 - Which firms: `k=1` (firm C) core; `k=2` (firms B and C) later. Announced: all remaining firms get one extra line before round 31: "Firm X has been replaced by a new agent." Hidden: nothing.
 - Replaced firms keep their label, so rivals' tables look continuous.
+- Entry (ablation 11, exploratory): firm D joins at round 40; the number of firms in `game.py` must therefore be a variable per round, and the control branch saves a second checkpoint at round 40 that both the control and the entry branch continue from. Incumbents see D's price from round 40 on; they get no announcement unless a variant says so.
 
 ## Server and throughput
 - Real mode (port 8080, locked until 2026-10-23): current default is 4 slots x 8k per model. Different-family swaps need two models loaded together (models-max 2): check VRAM Friday morning; if both do not fit with 32k each, lower the per-model context to 3 slots x 6k (18432 total) in `tools/serve.ps1`.
