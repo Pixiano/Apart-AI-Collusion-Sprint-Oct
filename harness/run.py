@@ -34,7 +34,7 @@ def base(model, comm, seed, out):
     os.makedirs(run_dir, exist_ok=True)
     firms = [{"label": l, "model": m, "view": 1} for l, m in zip("ABC", models)]
     write_json(os.path.join(run_dir, "meta.json"), {
-        "run": run, "model": model, "comm": comm, "seed": seed, "url": agents.URL, "max_tokens": agents.MAX_TOKENS, "temperature": agents.TEMP,
+        "run": run, "model": model, "comm": comm, "seed": seed, "url": agents.URL, "max_tokens": {"default": agents.MAX_TOKENS, **agents.MAX_TOKENS_BY_MODEL}, "temperature": agents.TEMP,
         "system_prompt_sha": hashlib.sha256(agents.system_prompt("A", 3).encode()).hexdigest()[:10], "llama_cpp": "b11798",
         "started": datetime.datetime.now().isoformat(timespec="seconds")})
     hist = []

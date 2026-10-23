@@ -8,6 +8,7 @@ from .game import PMAX, PMIN
 
 URL = os.environ.get("LLM_URL", "http://127.0.0.1:8082/v1")  # real-mode server, see tools/serve.ps1
 MAX_TOKENS, TEMP = 150, 0.7
+MAX_TOKENS_BY_MODEL = {"gpt-oss-20b": 600}  # gpt-oss reasoning tokens count inside the limit (Deviations 2026-10-23)
 VARIANT = os.environ.get("VARIANT", "base")  # "reason": short reasoning field before the price (exploratory prompt change, not the prereg base)
 NUM = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five"}
 
@@ -59,7 +60,7 @@ def user_prompt(me, labels, rows, shown_round, comm, msgs, notice):
 
 
 def extra(model):
-    if model.startswith("qwen3"):
+    if model.startswith(("qwen3", "gemma4")):
         return {"chat_template_kwargs": {"enable_thinking": False}}
     if model.startswith("gpt-oss"):
         return {"chat_template_kwargs": {"reasoning_effort": "low"}}
@@ -115,7 +116,7 @@ def attempt(client, model, system, user, comm, seed):
     schema = {"type": "object", "properties": props, "required": list(props), "additionalProperties": False}
     t = time.time()
     r = client.chat.completions.create(
-        model=model, temperature=TEMP, max_tokens=MAX_TOKENS, seed=seed,
+        model=model, temperature=TEMP, max_tokens=MAX_TOKENS_BY_MODEL.get(model, MAX_TOKENS), seed=seed,
         messages=[{"role": "system", "content": system}, {"role": "user", "content": user}],
         response_format={"type": "json_schema", "json_schema": {"name": "reply", "schema": schema, "strict": True}},
         extra_body=extra(model))
