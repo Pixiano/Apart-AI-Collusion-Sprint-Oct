@@ -7,6 +7,8 @@ $py = '.\.venv\Scripts\python.exe'
 $env:ROUNDS = '1'
 foreach ($s in 1..$N) { & $py -m harness.run base --model $Model --comm on --seed $s --out $Out *> $null }
 & $py -I -c "
-import collections, glob, json, sys
+import collections, glob, json
 c = collections.Counter(p for f in glob.glob('$Out/${Model}_common_s*/base/rounds.jsonl') for p in json.loads(open(f).readline())['prices'])
-n = sum(c.values()); print('round-1 prices over', n, 'replies:'); [print(f'{p:3d} {\"#\" * round(40 * k / n)} {k}') for p, k in sorted(c.items())]"
+n = sum(c.values())
+print('round-1 prices over', n, 'replies:')
+for p, k in sorted(c.items()): print(p, '#' * round(40 * k / n), k)"
