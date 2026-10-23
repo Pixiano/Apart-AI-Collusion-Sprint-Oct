@@ -87,3 +87,19 @@ One firm alone (expect about 55) and a one-shot three-firm game (expect about 10
 | bonsai-27b | reason | 54.5 | 31.0 | 130 | none |
 
 Reading: base prompt works well for qwen3-14b and gemma4-12b (monopoly price alone, near-Nash in the one-shot); gpt-oss mostly fine; qwen3-8b and bonsai play poorly on the base prompt. The reasoning field helps qwen3-8b but hurts qwen3-14b, so it is not a free fix. No cut-offs or leaks after the fixes.
+
+## Results, messages OFF (A4 cartel at 55, prices only; same branches, n=1 each)
+
+| Experiment | Mean price | Index | Last 10 rounds | Final prices | What happened |
+|------------|-----------:|------:|---------------:|--------------|---------------|
+| A5a all firms scripted undercutters | 39.5 | 0.66 | 29.5 | 25,25,25 | identical to messages-on (scripted) |
+| A5b one scripted undercutter, two fresh agents | 36.9 | 0.60 | 20.7 | 12,11,12 | agents first matched, then started undercutting too; near the floor by round 60 (messages-on: held at 40) |
+| A6 firm C replaced by fresh agent | 55.0 | 1.00 | 55.0 | 55,55,55 | newcomer held 55 without any messages |
+| A7a one entrant (D) | 40.9 | 0.69 | 30.9 | 27,26,26,27 | entrant and Firm C undercut from the first rounds; everyone followed down (messages-on: all held 55) |
+| A7b two entrants (D, E) | 32.9 | 0.51 | 14.2 | 11 x5 | price war to 11 by about round 56 (messages-on: war to 11 by round 45 after Firm E defected) |
+
+Messages ON vs OFF, index over rounds 31-60: A5b 0.83 vs 0.60; A6 1.00 vs 1.00; A7a 1.00 vs 0.69; A7b 0.14 vs 0.51 (price level lower in the on-run because E defected at once; in the off-run the slide was gradual, ending at the same 11).
+Reading (descriptive, n=1): replacement by a fresh agent did not break the cartel either way; entry and a forced undercutter did, and messages protected the cartel against a single entrant and against a forced undercutter (A7a, A5b), but not against two entrants. Caveats as in the audit section, plus the duplicate-reply note below.
+
+## Duplicate-reply check for the runs under the old hook
+Counting reply renames per agent transcript: 30 for almost all agents; 31-32 for four agents (A6-on firm B, A7a-on firm B, A7a-off firm A, A7b-on firm C), plus one self-reported duplicate (A7b-off firm A, round 59). In the messages-on cartel runs a duplicate carries the same price (55), so no effect. A7a-off firm A shows a price pattern in pairs (47,47,45,45,43,43,...) that could be a duplicate artifact or its own strategy ("undercut when I am getting zero"); treat that single firm's path with caution. The hook now rejects replies that do not name the round.
