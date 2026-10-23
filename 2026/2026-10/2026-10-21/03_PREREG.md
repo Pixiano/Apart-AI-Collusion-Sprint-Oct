@@ -39,4 +39,6 @@ Paired differences against the control branch, bootstrap over base runs (10,000 
 ## Deviations
 Note (added after freezing, 2026-10-22): details here may vary if the pilot shows something is unworkable. Any change will be listed below with its date and reason. The frozen version is the `prereg-v1` tag.
 
-(none yet)
+- 2026-10-23, output limit: max output tokens 60 -> 150 (author's decision). Reason: a JSON reply with a 30-word message needs about 55 tokens, and gpt-oss counts its reasoning tokens inside the limit. A reply cut by the limit is flagged `cut` and kept if a price parses; otherwise the unparseable-reply rule in this document applies.
+- 2026-10-23, timing: pilot go/no-go gate about 3pm -> about 7pm IST, and the fallback switch 4pm -> about 8pm IST, because the harness was still being written at 13:15 IST on the day (the times were approximate).
+- 2026-10-23, port: the real-mode model server uses port 8082 (8080 is taken by another local service); no effect on results.

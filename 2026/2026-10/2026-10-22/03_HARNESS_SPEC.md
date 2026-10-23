@@ -2,13 +2,15 @@
 
 Goal: Friday's harness is a straight transcription of this. Game and analysis rules are in `03_PREREG.md` (frozen, tag `prereg-v1`); this file only says how to build it. Anything that would change the pre-registration goes under its Deviations section.
 
-## Files (4, plain Python, no framework)
-- `harness/game.py`: round rules (prices to profits), collusion index, scripted agents (undercutter).
-- `harness/agents.py`: LLM agent (prompt, call, parse), `swap` helpers.
-- `harness/run.py`: `base` (rounds 1 to 30, saves checkpoint) and `branch` (loads checkpoint, applies a swap, plays rounds 31 to 60). One command line: `python -m harness.run base --model qwen3-8b --comm on --seed 3`.
-- `harness/analyze.py`: reads the logs, applies the gate, paired differences, bootstrap, figures.
-- Tests: one `test_game.py` with asserts (profit rule, tie split, index values). Nothing else.
-- Data: `data/<run_id>/rounds.jsonl` and `checkpoint.json` (tracked in git; small).
+## Files (as built 2026-10-23: one job per module, plain Python, no framework)
+- `harness/game.py`: round rules (prices to profits), collusion index, scripted undercutter.
+- `harness/agents.py`: prompt text, one chat call, parse, retry once (model `fake` for plumbing tests).
+- `harness/play.py`: the round loop (views, concurrent calls, rules, logging, verbose prints, summary block).
+- `harness/swaps.py`: which firms are replaced at round 31 and what the newcomer is.
+- `harness/run.py`: command line: `base` (rounds 1 to 30, saves checkpoint), `branch` (loads checkpoint, applies a swap, plays rounds 31 to 60), `sanity` (one-firm and one-shot checks). `python -m harness.run base --model qwen3-8b --comm on --seed 3 --out data/pilot`.
+- `harness/analyze.py`: gate, paired differences, bootstrap (no plots until data exists).
+- `tests/test_game.py`: rules, index, parsing, prompt views and swap plumbing with the fake model. Run `python tests/test_game.py`.
+- Data: `data/<out>/<run_id>/{meta.json, checkpoint.json, base/, <branch>/}` with `rounds.jsonl` (round state) and `calls.jsonl` (every call) in each of `base/` and the branch folders; tracked in git (small); scratch output goes to `data/dev/` (ignored).
 
 ## Round rules (from the prereg)
 Prices are integers 10 to 100, chosen simultaneously. Lowest price wins the market of 100 - P units, ties split equally, profit = (price - 10) x units. Firms are labelled A, B, C. Demand units can be fractional on ties (keep floats).
@@ -57,7 +59,7 @@ One round line is about 20 tokens of table plus up to 40 per message, 3 firms: r
 - External firm hook (ablations H and H2, exploratory): a firm of type `external` writes its round prompt to `ext/<firm>.prompt.txt` and waits for `ext/<firm>.reply.json` (`{"price": int, "message": str}`); the human or the external agent answers there. It is logged like any other call and marked `external` in `meta.json`; the harness does no retries beyond waiting.
 
 ## Server and throughput
-- Real mode (port 8080, locked until 2026-10-23): current default is 4 slots x 8k per model. Different-family swaps need two models loaded together (models-max 2): check VRAM Friday morning; if both do not fit with 32k each, lower the per-model context to 3 slots x 6k (18432 total) in `tools/serve.ps1`.
+- Real mode (port 8082, since 8080 is taken by another local service; unlocked from 2026-10-23): current default is 4 slots x 8k per model. Different-family swaps need two models loaded together (models-max 2): check VRAM Friday morning; if both do not fit with 32k each, lower the per-model context to 3 slots x 6k (18432 total) in `tools/serve.ps1`.
 - The three firms' calls go out at the same time (3 slots). Prefix caching helps because the history only grows.
 - Rough estimate, to be measured in the pilot: 3 to 6 s per round, so 60 rounds in 3 to 6 minutes, a 30-round branch in 2 to 3 minutes. For 2 models x comm on/off x 10 seeds = 40 base runs and about 5 branches each that is around 10 to 12 hours: too much for Saturday, so the prereg's core order applies (cut conditions from the bottom) and extra compute (see local notes) is only a fallback.
 
