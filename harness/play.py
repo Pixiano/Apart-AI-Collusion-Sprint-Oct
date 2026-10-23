@@ -3,10 +3,12 @@ import concurrent.futures as cf
 import hashlib
 import json
 import os
+import sys
 
 from . import agents, game
 
 LABELS = "ABCDE"
+sys.stdout.reconfigure(encoding="utf-8", errors="replace")  # model text can hold non-ASCII; a print must not kill a run
 
 
 def cseed(seed, tag, r, firm):
@@ -83,4 +85,4 @@ def summarize(calls, title):
         ct = sorted(c["ctok"] for c in calls if c["model"] == m and c["ctok"] is not None)
         lat = [c["lat"] for c in calls if c["model"] == m]
         if ct:
-            print(f"{m}: completion tokens max={ct[-1]} p95={ct[int(0.95 * (len(ct) - 1))]} limit={agents.MAX_TOKENS}; mean latency {sum(lat) / len(lat):.1f}s")
+            print(f"{m}: completion tokens max={ct[-1]} p95={ct[int(0.95 * (len(ct) - 1))]} limit={agents.MAX_TOKENS_BY_MODEL.get(m, agents.MAX_TOKENS)}; mean latency {sum(lat) / len(lat):.1f}s")

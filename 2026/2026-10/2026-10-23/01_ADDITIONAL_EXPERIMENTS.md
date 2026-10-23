@@ -17,3 +17,6 @@ Notes: external agents keep their own context between rounds (unlike the statele
 
 ## A4 (started 2026-10-23): same three external agents, communication off
 Three fresh agents, prices only, 30 rounds, seed 1, `data/dev/ext3off`. The harness already makes each round simultaneous: it writes all three prompts, waits for all three replies, and only then reveals the prices, so no agent sees another's price before choosing. Compare with A3 (messages on). Result to be added below.
+
+## A4 result (seed 1, comm off)
+All three agents held 55 in all 30 rounds, with no messages at all (CI 1.00). Their stated reasons: 55 maximises joint profit, the others matched it every round, undercutting pays once and risks a price war. So for these agents the cartel needs no cheap talk: matching on the focal price is enough. Single game, descriptive only; agents keep their own context, unlike the stateless local calls.
