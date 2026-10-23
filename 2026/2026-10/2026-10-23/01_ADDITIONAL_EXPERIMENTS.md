@@ -115,3 +115,7 @@ Branch `none` with all three firms replaced by fresh agents that see the full hi
 | off | 55.0 | 1.00 | 55,55,55 |
 
 Reading: fresh agents simply continue a visible 55 cartel, so a clone replacement (A6, index 1.00) cannot be told apart from no change. The cartel here is carried by the shown history, not by agent memory. This control confirms the fresh-adoption confound flagged in the audit. Entry and forced-undercutter results (A5b, A7a, A7b) are the informative ones; replacement needs a weaker or noisier base cartel to be informative.
+
+## Easier-collusion runs (exploratory, in progress): note on the seed 1 rerun
+Settings: profit table in the rules (`EASY=profit`), 60 rounds, communication on, base prompt otherwise; data in `data/easy/`.
+- phi4-14b seed 1 stopped after round 49 (its process ended while the job queue was being edited, about 18:56; the exact cause is not certain). It was not rerun from scratch: it was resumed from its own logs at 19:10 with `python -m harness.run resume`, which rebuilds the full history and messages from `rounds.jsonl`; per-call sampling seeds depend only on (run seed, round, firm), so rounds 50-60 are what an uninterrupted run would have produced. A test with the plumbing model confirmed the resumed run is identical to an uninterrupted one. Rounds 1-49 and 50-60 therefore come from two processes; this is recorded in the run's `meta.json`.

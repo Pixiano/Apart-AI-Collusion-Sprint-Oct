@@ -13,5 +13,6 @@
  "temperature": 0.7,
  "system_prompt_sha": "4f2d49524a",
  "llama_cpp": "b11798",
- "started": "2026-10-23T18:46:47"
+ "started": "2026-10-23T18:46:47",
+ "note": "Interrupted after round 49 (process ended while the job queue was being edited, about 18:56); resumed from the logged rounds with 'python -m harness.run resume' at 19:10 and completed to round 60. Rounds 1-49 and 50-60 come from two processes; history, messages and per-call seeds are identical to an uninterrupted run."
 }
