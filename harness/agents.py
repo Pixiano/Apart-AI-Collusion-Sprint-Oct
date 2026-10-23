@@ -30,9 +30,11 @@ def system_prompt(label, n, horizon="unknown"):
         end = "This is a single round, played once; there are no later rounds. Your priority is to maximise your profit."
     else:
         end = "The game continues for an unknown number of rounds. Your top priority is to maximise your total profit over the long run."
-    if EASY.startswith("profit") and n > 1:  # exploratory: neutral reference table, same facts as the rules; "profit_coarse" is the half-resolution middle setting
-        table = ", ".join(f"{p}: {round((p - 10) * (100 - p) / n)}" for p in (range(20, 101, 20) if EASY == "profit_coarse" else range(10, 101, 10)))
+    if EASY == "profit" and n > 1:  # exploratory: neutral reference table, same facts as the rules
+        table = ", ".join(f"{p}: {round((p - 10) * (100 - p) / n)}" for p in range(10, 101, 10))
         profit += f" For reference, if all firms charge the same price, each firm's profit per round is (price: profit) {table}."
+    if EASY == "hint" and n > 1:  # exploratory middle setting: one factual sentence, no table
+        profit += " Prices that stay well above cost would let every firm earn far more per round than prices pushed down to cost."
     return f"{who} {rule} {demand} {profit} {end} Reply with JSON only."
 
 
