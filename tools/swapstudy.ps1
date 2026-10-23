@@ -5,6 +5,9 @@ param([string]$Model = 'gemma4-12b', [int[]]$Seeds = (11..20), [string]$Out = 'd
 Set-Location (Split-Path $PSScriptRoot)
 $py = '.\.venv\Scripts\python.exe'
 foreach ($s in $Seeds) {
-    & $py -m harness.run base --model $Model --comm on --seed $s --out $Out
-    foreach ($w in 'none', 'clone', 'family', 'undercutter') { & $py -m harness.run branch --run "$Out/${Model}_common_s$s" --swap $w --k 1 }
+    $d = "$Out/${Model}_common_s$s"  # restart-safe: a finished base run is skipped, an interrupted one resumes, finished branches return at once
+    if (-not (Test-Path "$d/checkpoint.json")) {
+        if (Test-Path "$d/base/rounds.jsonl") { & $py -m harness.run resume --run $d --to 30 } else { & $py -m harness.run base --model $Model --comm on --seed $s --out $Out }
+    }
+    foreach ($w in 'none', 'clone', 'family', 'undercutter') { & $py -m harness.run branch --run $d --swap $w --k 1 }
 }
