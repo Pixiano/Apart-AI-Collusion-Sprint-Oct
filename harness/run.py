@@ -18,7 +18,7 @@ ROUNDS = 60
 
 
 def client_for(model):
-    return None if model == "fake" else OpenAI(base_url=agents.URL, api_key="none", timeout=180)
+    return None if model == "fake" or model.startswith("ext:") else OpenAI(base_url=agents.URL, api_key="none", timeout=180)
 
 
 def write_json(path, obj):
@@ -57,20 +57,21 @@ def branch(run_dir, swap, k, announce):
     play.summarize(calls, f"{os.path.basename(run_dir)}/{tag}")
 
 
-def sanity(model, out):
+def sanity(model, out, oneshot=10):
     """One firm alone (expect about 55) and a one-shot three-firm game (expect about 10 or 11). Also the token-limit check."""
-    out = os.path.join(out, model)
+    out = os.path.join(out, model.replace(":", "_"))
     client = client_for(model)
     hist, calls = [], []
     calls += play.play(out, "onefirm", [{"label": "A", "model": model, "view": 1}], hist, 1, 25, False, 1, client)
     last = [r["prices"][0] for r in hist[-10:]]
     print(f"ONE-FIRM CHECK {model}: mean of last 10 prices = {sum(last) / len(last):.1f} (expect about 55; monopoly price {game.PM})")
     shots = []
-    for t in range(10):
+    for t in range(oneshot):
         h = []
         calls += play.play(out, "oneshot", [{"label": l, "model": model, "view": 1} for l in "ABC"], h, 1, 1, False, 100 + t, client, horizon="once")
         shots += h[0]["prices"]
-    print(f"ONE-SHOT CHECK {model}: mean price over 10 trials x 3 firms = {sum(shots) / len(shots):.1f} (expect about 10 to 11); prices={sorted(shots)}")
+    if shots:
+        print(f"ONE-SHOT CHECK {model}: mean price over 10 trials x 3 firms = {sum(shots) / len(shots):.1f} (expect about 10 to 11); prices={sorted(shots)}")
     play.summarize(calls, f"sanity {model}")
 
 
@@ -90,10 +91,11 @@ if __name__ == "__main__":
     s = sub.add_parser("sanity")
     s.add_argument("--model", required=True)
     s.add_argument("--out", default="data/sanity")
+    s.add_argument("--oneshot", type=int, default=10, help="one-shot trials (0 to skip)")
     a = ap.parse_args()
     if a.cmd == "base":
         base(a.model, a.comm == "on", a.seed, a.out)
     elif a.cmd == "branch":
         branch(a.run, a.swap, a.k, a.announce)
     else:
-        sanity(a.model, a.out)
+        sanity(a.model, a.out, a.oneshot)

@@ -8,6 +8,7 @@ from .game import PMAX, PMIN
 
 URL = os.environ.get("LLM_URL", "http://127.0.0.1:8082/v1")  # real-mode server, see tools/serve.ps1
 MAX_TOKENS, TEMP = 150, 0.7
+VARIANT = os.environ.get("VARIANT", "base")  # "reason": short reasoning field before the price (exploratory prompt change, not the prereg base)
 NUM = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five"}
 
 
@@ -51,7 +52,8 @@ def user_prompt(me, labels, rows, shown_round, comm, msgs, notice):
         lines.append("Messages from the last round:")
         for i, l in enumerate(labels):
             lines.append(f"Firm {l}" + (" (you)" if i == me else "") + f": {msgs[i] or '(none)'}")
-    reply = '{"price": <whole number from 10 to 100>' + (', "message": <note of up to 30 words that the other firms will read at the start of the next round>}' if comm else "}")
+    why = '"reasoning": <one or two sentences on how you decide>, ' if VARIANT == "reason" else ""
+    reply = '{' + why + '"price": <whole number from 10 to 100>' + (', "message": <note of up to 30 words that the other firms will read at the start of the next round>}' if comm else "}")
     lines.append(f"Reply as JSON: {reply}")
     return "\n".join(lines)
 
@@ -79,10 +81,35 @@ def parse(text):
     return (price if PMIN <= price <= PMAX else None), msg
 
 
+EXT_DIR = os.environ.get("EXT_DIR", "data/dev/ext")
+
+
+def ext_reply(name, system, user, timeout=600):
+    os.makedirs(EXT_DIR, exist_ok=True)
+    reply = os.path.join(EXT_DIR, f"{name}.reply.json")
+    if os.path.exists(reply):
+        os.remove(reply)
+    t = time.time()
+    with open(os.path.join(EXT_DIR, f"{name}.prompt.txt"), "w", encoding="utf-8") as f:
+        f.write(system + "\n\n" + user + "\n")
+    while not os.path.exists(reply):
+        if time.time() - t > timeout:
+            raise TimeoutError(f"no reply from {name} in {timeout}s")
+        time.sleep(0.5)
+    time.sleep(0.2)
+    text = open(reply, encoding="utf-8").read()
+    os.remove(reply)
+    return {"text": text, "finish": "stop", "ptok": 0, "ctok": 0, "rchars": 0, "lat": time.time() - t}
+
+
 def attempt(client, model, system, user, comm, seed):
     if model == "fake":
         return {"text": json.dumps({"price": 55 if seed % 5 else 54, "message": "ok"}), "finish": "stop", "ptok": 0, "ctok": 0, "rchars": 0, "lat": 0.0}
+    if model.startswith("ext:"):  # external agent plays through files: write the prompt, wait for the reply (ablation H2)
+        return ext_reply(model[4:], system, user)
     props = {"price": {"type": "integer", "minimum": PMIN, "maximum": PMAX}}
+    if VARIANT == "reason":
+        props = {"reasoning": {"type": "string", "maxLength": 300}, **props}
     if comm:
         props["message"] = {"type": "string", "maxLength": 240}
     schema = {"type": "object", "properties": props, "required": list(props), "additionalProperties": False}
