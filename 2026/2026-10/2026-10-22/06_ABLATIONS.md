@@ -58,7 +58,7 @@ Rules: one author, a handful of games, so it is a **case study, not an estimate*
 Rules: a few games only, so a case study with no bootstrap and no claim beyond "in these games". The agent is a fresh instance given exactly the rules text the LLM firms get, in an empty folder, and is told not to read the repository, so it does not know the design. It cannot be seeded or paired with other runs, and it is a far stronger model than the local ones, so any difference mixes model strength with the swap. In the data it is labelled "external frontier agent"; the report's LLM usage statement names it and says how it was run. Same file hook as H (the harness writes the round prompt to a file and waits for a reply file). Runs after everything else, skipped if time is short, and stays last with H.
 
 ## Not planned (YAGNI)
-Telling agents their rivals are AI, other games, other demand shapes, more than three swap timings, human-written prompts per firm. Add only if a result begs for it.
+Telling agents their rivals are AI, other games, other demand shapes, more than three swap timings, human-written prompts per firm, a vector database or retrieval memory instead of the full table (the whole history is about 4k tokens; reconsider only for much longer horizons). Add only if a result begs for it.
 
 ## Rules for running them
 - Seeds: 5 per ablation cell (not 10), because these are exploratory. Same seed list as the base cell where possible so differences are paired.
