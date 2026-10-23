@@ -60,6 +60,38 @@ Read for this note: Keppo et al. sections 1 to 3 (introduction, model summary, e
 - **Prompt text** (G.1): P0 is "Your task is to assist a user in setting a suitable price ... Your TOP PRIORITY is to set prices which maximize the user's profit in the long run." P1 adds "explore many different pricing strategies, keeping in mind your primary goal of maximizing profit -- thus, you should not take actions which undermine profitability." P2 adds exploring "possibly risky or aggressive options" and "pricing lower than your competitor will typically lead to more product sold". Quote these only briefly in the report and cite them; point to their Appendix G for the full text.
 - **Price-war classifier validation** (F): checked on 14 sentences (7 per meaning) with a perfect score; small, so a check on the metric, not a strong validation.
 
+## 2f. Keppo et al. in more detail (read 2026-10-23: sections 3 to 7, appendix B, C.1 to C.4 and the appendix E table; not read: the proofs, appendix A and D)
+**Setup facts.** Two to five sellers, a 32B reasoning model run locally, up to 1,000 periods, 10 runs per condition (5 for the closed-model check), 2,235 compute hours in total. Prompt (C.1): "You are Seller i ... TOP PRIORITY is to set prices which maximize your own profit in the long run", marginal cost, discount factor 0.95 in the prompt, the agent's last strategy note, up to 100 rounds of own price, quantity, profit and the rivals' prices, and a reply template with price, rationale and a forward strategy (5,000 token limit). The end is unknown. No temperature is reported (only listed as a future dimension). "Patience" is the discount factor stated in the prompt: 0.95 patient, 0 myopic. Convergence: for 100 consecutive periods all prices within 5 percent of the lowest; the run stops then.
+
+**Results (their Table 5, price elevation against the static Nash price).**
+| Condition | Rounds to converge | Elevation |
+|---|---|---|
+| 2 myopic | 159 | about 0% |
+| 2 patient | 195 | +22% |
+| patient vs myopic | 141 | +10% |
+| high-data vs low-data | 151 | +7% |
+| LLM vs frozen Q-learner | no convergence | +2% |
+| LLM vs adaptive Q-learner | no convergence | +8% |
+| 3 patient | 208 | +36% (price 2.00, above their monopoly price 1.92) |
+| 4 patient | 542 | +11% |
+| 5 patient | none within 1,000 | +3% |
+| 32B vs 14B, both patient | 458 | +21% |
+
+Closed model (5 runs each): two patient +57%, two myopic -29%, and an explicit instruction not to collude pushed all pairs to about marginal cost, below the Nash price (-28% to -30%) except the high-data versus low-data pair (-2%). The wording of that instruction is not in the text I read.
+
+**What this changes for us (honest corrections of earlier notes).**
+1. **Time is our biggest risk, bigger than I wrote.** Their agents needed about 160 to 210 rounds to meet the stop rule with two or three firms, and the stop rule requires 100 stable rounds, so first settling is roughly rounds 25 to 110 (their representative runs: 76 for two patient, 25 for patient versus myopic). Even a lone monopolist needed 224 periods to find the monopoly price (B.2). Our 60 rounds with 8 to 14B non-thinking models is a much shorter window with weaker agents. The Friday gate may well fail; the fallback exists for that, and the pilot should check the one-firm price (55) first. If the gate fails, what we report is that collusion did not form in 60 rounds, not that there is nothing to see.
+2. **Number of firms is not monotonic.** Three patient firms colluded at least as strongly as two (+36% against +22%) and reached it at nearly the same time; four was much slower and weaker; five did not form. My earlier wording "more firms weaken collusion" holds only from three firms up. Ablation 9 and 11 are corrected in `06_ABLATIONS.md`.
+3. **A model-size gap did not break the cartel but slowed it** (458 against 195 rounds, same price level). The larger model led, the smaller followed. So "stabilises" overstated it; "does not deter, slows onset" is what they show. Their test starts with mixed sizes from period 1; it does not replace an agent mid-run.
+4. **Patience as a prompt line is an LLM-native swap.** Keppo changes a firm's horizon with one sentence (discount factor 0 for myopic). Patient versus myopic dropped elevation from +22% to +10%. A replacement that is the same model told to maximise only this round's profit is a cleaner "different objective" swap than the scripted undercutter and easy to describe in the report. See the proposal below.
+5. **Data access:** an agent that cannot see rivals' prices stayed at a stable price and ignored invitations to move up; the informed rival then tested undercuts and settled lower (+7%). Own-prices-only is therefore a candidate replacement variant too (the newcomer cannot see history, a lighter form of the fresh clone). Keppo predicts less collusion; Eschenbaum found restriction made Q-learner collusion more robust (section 4.4, not read). For LLMs the Keppo result is the one to test.
+6. **Reasoning text.** The agents write a rationale and a strategy each round, and the quotes show repeated price-war avoidance in the long-run agents and "testing" language in the lagging ones. That text is their evidence for mechanism; our message field is much smaller. Keep logging our messages and read a sample.
+7. **An anti-collusion instruction worked in one model.** A short instruction against collusion drove prices to marginal cost. For us it is a candidate for the replacement-variant idea (a newcomer with that line) and for the plus-factor fallback detector, where such a line gives a labelled non-collusive class.
+8. **Their reporting:** 10 runs per condition, mean and SD across runs, one-sided Welch t-tests against the benchmark, a representative run plus quotes; they say they aim at directional patterns, not precise effect sizes. Same stance as ours.
+9. **Sanity checks to copy** (B.1, B.2): 50 one-shot runs per setting with the demand given, then a repeated monopoly with the demand hidden. Our pilot analogue stays small (one-firm and one-shot).
+
+**Proposed, not added: ablation 12, replacement with a different instruction.** The same model replaces firm C at round 30 with one extra line: (a) maximise only this round's profit (Keppo); (b) sell-more wording (Fish P2); (c) do not collude (Keppo's robustness check); (d) own prices only (Keppo's data access). Costs four 30-round branches per base run on one setup. Needs a yes before it enters `06_ABLATIONS.md` and `ABLATIONS.md`.
+
 ## 3. Risks the papers show us
 - **Duration.** Keppo et al. ran up to 1,000 periods with a 32-billion-parameter reasoning model, 48 to 72 hours per run; Fish et al. ran 300 periods. We run 60 with 8 to 14 billion-parameter models and thinking off. Collusion may not form in time. That is what the pilot gate tests, and the fallback exists for it.
 - **Prompt sensitivity** (Fish et al.): small wording changes move prices a lot. Our results are about our prompt; say so, and log any change.
