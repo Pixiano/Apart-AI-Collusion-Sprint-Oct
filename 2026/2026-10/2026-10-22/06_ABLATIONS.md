@@ -36,6 +36,13 @@ Why it fits: it asks the same question as the main study (how fragile is a carte
 
 How it differs from a swap: a swap keeps three firms and removes one agent's history; entry adds a firm, so the market share per firm drops (ties now split four ways) and each firm's pie shrinks. Keep these apart in the report. Needs four server slots (the same infrastructure as ablation 9) and one extra checkpoint: the control branch is saved at round 40 and both the control and the entry branch continue from that file, so they are paired at round 40. Primary outcome: collusion index over rounds 41 to 60 for all four firms minus the control, with the incumbents' own index reported separately. Cost: a 20-round branch, cheap. Keep it as a toy-market robustness question in the report.
 
+## Added 2026-10-23: replacement with a different instruction
+| # | Ablation (change vs base) | Kind | Why (source) | Prediction written now |
+|---|---|---|---|---|
+| 12 | **Same model replaces firm C at round 30, but with one extra instruction line**: (a) myopic, "maximise only this round's profit, ignore the future"; (b) sell-more wording from Fish et al. (pricing lower than a competitor typically sells more); (c) a line telling it not to collude; (d) own prices only (it cannot see rivals' price history). Compared with the no-swap control and with the plain fresh clone, from the same round-30 checkpoint | Persistence | Keppo et al.: patience set by one prompt line (patient versus myopic +22% to +10%); a no-collusion line drove prices to cost in their closed-model check; an agent without rivals' data ignored invitations to raise prices and was undercut. Fish et al. A.3: the long-run agent priced lower against a sell-more agent. | (a) the largest fall, close to the scripted undercutter but less extreme; (b) a smaller fall than (a), since the sell-more wording still colluded at about 0.5 in Fish et al.; (c) a fall to near the competitive price if the model obeys, smaller or none for small models; (d) the newcomer stays near its own stable price and the incumbents either undercut or hold; direction uncertain. Compared with the plain clone, (a) and (c) should be lower, (b) and (d) similar. |
+
+Why it fits: the research question is what a replacement does to an established cartel; a replacement that is the same model with a different objective is the most realistic stand-in for a model or setting update, and it sits between the plain clone and the scripted undercutter. Cost: four 30-round branches per base run, on the single strongest setup only, five base runs. Exact line texts are logged in `meta.json`; none of the lines mentions collusion except (c). Variant (c) tests whether a prompt-level instruction can undo a cartel; report it as a mitigation test, not as a recipe.
+
 ## Final item, always last: a human plays one firm (added 2026-10-23, for fun and as a demo)
 | # | Ablation (change vs base) | Kind | Why | Prediction written now |
 |---|---|---|---|---|
@@ -50,4 +57,4 @@ Telling agents their rivals are AI, other games, other demand shapes, more than 
 - Seeds: 5 per ablation cell (not 10), because these are exploratory. Same seed list as the base cell where possible so differences are paired.
 - Report as a small table of effects with bootstrap intervals, marked exploratory. No claim beyond "differs from base in this setup".
 - Log the exact prompt text of every variant in the repo (`data/<run_id>/meta.json`). A change here is not a prereg deviation, but anything that touches the base configuration is.
-- Priority by cost: 1, 4, 2, 5 first (cheap or directly motivated), then 10, 11, 6, 7, then 3, 8, 9, and H always last.
+- Priority by cost: 1, 4, 2, 5 first (cheap or directly motivated), then 10, 11, 12, 6, 7, then 3, 8, 9, and H always last.

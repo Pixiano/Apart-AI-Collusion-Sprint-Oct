@@ -90,7 +90,7 @@ Closed model (5 runs each): two patient +57%, two myopic -29%, and an explicit i
 8. **Their reporting:** 10 runs per condition, mean and SD across runs, one-sided Welch t-tests against the benchmark, a representative run plus quotes; they say they aim at directional patterns, not precise effect sizes. Same stance as ours.
 9. **Sanity checks to copy** (B.1, B.2): 50 one-shot runs per setting with the demand given, then a repeated monopoly with the demand hidden. Our pilot analogue stays small (one-firm and one-shot).
 
-**Proposed, not added: ablation 12, replacement with a different instruction.** The same model replaces firm C at round 30 with one extra line: (a) maximise only this round's profit (Keppo); (b) sell-more wording (Fish P2); (c) do not collude (Keppo's robustness check); (d) own prices only (Keppo's data access). Costs four 30-round branches per base run on one setup. Needs a yes before it enters `06_ABLATIONS.md` and `ABLATIONS.md`.
+**Added as ablation 12 (2026-10-23): replacement with a different instruction.** The same model replaces firm C at round 30 with one extra line: (a) maximise only this round's profit (Keppo); (b) sell-more wording (Fish P2); (c) do not collude (Keppo's robustness check); (d) own prices only (Keppo's data access). Costs four 30-round branches per base run on one setup. Now in `06_ABLATIONS.md` and `ABLATIONS.md`.
 
 ## 3. Risks the papers show us
 - **Duration.** Keppo et al. ran up to 1,000 periods with a 32-billion-parameter reasoning model, 48 to 72 hours per run; Fish et al. ran 300 periods. We run 60 with 8 to 14 billion-parameter models and thinking off. Collusion may not form in time. That is what the pilot gate tests, and the fallback exists for it.
