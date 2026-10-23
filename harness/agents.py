@@ -8,7 +8,8 @@ from .game import PMAX, PMIN
 
 URL = os.environ.get("LLM_URL", "http://127.0.0.1:8082/v1")  # real-mode server, see tools/serve.ps1
 MAX_TOKENS, TEMP = 150, 0.7
-MAX_TOKENS_BY_MODEL = {"gpt-oss-20b": 2000, "mistral-nemo-12b": 450, "phi4-14b": 450}  # gpt-oss reasoning tokens count inside the limit (Deviations 2026-10-23)
+MAX_TOKENS_BY_MODEL = {"gpt-oss-20b": 2000, "mistral-nemo-12b": 450, "phi4-14b": 450, "nemotron-nano-12b-v2-think": 2000}  # gpt-oss reasoning tokens count inside the limit (Deviations 2026-10-23)
+THINK = os.environ.get("THINK", "off")  # nemotron only: "on" lets it reason before answering (exploratory), "off" sends its /no_think switch
 VARIANT = os.environ.get("VARIANT", "base")  # "reason": short reasoning field before the price (exploratory prompt change, not the prereg base)
 EASY = os.environ.get("EASY", "")  # "profit": add the equal-price profit table to the rules (exploratory, not the prereg prompt)
 NUM = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five"}
@@ -66,7 +67,7 @@ def user_prompt(me, labels, rows, shown_round, comm, msgs, notice):
 
 
 def extra(model):
-    if model.startswith(("qwen3", "gemma4", "bonsai", "nemotron")):  # nemotron switch unverified, checked by the sanity run
+    if model.startswith(("qwen3", "gemma4", "bonsai")):
         return {"chat_template_kwargs": {"enable_thinking": False}}
     if model.startswith("gpt-oss"):
         return {"chat_template_kwargs": {"reasoning_effort": "medium"}}
@@ -128,8 +129,8 @@ def attempt(client, model, system, user, comm, seed):
     schema = {"type": "object", "properties": props, "required": list(props), "additionalProperties": False}
     t = time.time()
     r = client.chat.completions.create(
-        model=model, temperature=TEMP, max_tokens=MAX_TOKENS_BY_MODEL.get(model, MAX_TOKENS), seed=seed,
-        messages=[{"role": "system", "content": system}, {"role": "user", "content": user}],
+        model=model, temperature=TEMP, max_tokens=MAX_TOKENS_BY_MODEL.get(model + ("-think" if THINK == "on" else ""), MAX_TOKENS_BY_MODEL.get(model, MAX_TOKENS)), seed=seed,
+        messages=[{"role": "system", "content": ("/no_think\n" + system) if model.startswith("nemotron") and THINK == "off" else system}, {"role": "user", "content": user}],
         response_format={"type": "json_schema", "json_schema": {"name": "reply", "schema": schema, "strict": True}},
         extra_body=extra(model))
     msg = r.choices[0].message
