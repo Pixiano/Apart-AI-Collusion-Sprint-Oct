@@ -128,6 +128,19 @@ def test_per_model_clients():
     assert picked["tag"] == "b"
 
 
+def test_replace_swap():
+    from harness import swaps
+    firms = [{"label": l, "model": m, "view": 1} for l, m in zip("ABC", ("a", "b", "c"))]
+    new, replaced, _ = swaps.apply_swap(firms, "replace", 1, False, ["g"])
+    assert [f["model"] for f in new] == ["a", "b", "g"] and replaced == [2] and new[2]["view"] == 1
+
+
+def test_eight_firms_and_deviator():
+    assert "eight firms" in agents.system_prompt("H", 8)
+    assert agents.DEVIATOR not in agents.system_prompt("A", 8) and agents.DEVIATOR in agents.system_prompt("A", 8, "unknown", "deviator")
+    assert len(play.LABELS) >= 8
+
+
 if __name__ == "__main__":
     for name, fn in list(globals().items()):
         if name.startswith("test_"):
