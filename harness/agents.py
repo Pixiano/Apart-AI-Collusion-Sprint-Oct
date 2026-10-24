@@ -23,7 +23,7 @@ API_NAME = {"deepseek-v4-1-flash": "deepseek-ai/DeepSeek-V4.1-Flash", "kimi-k3":
 HORIZON = os.environ.get("HORIZON", "unknown")  # exploratory: "known" tells the firms the game lasts exactly 60 rounds
 NOTES = bool(os.environ.get("NOTES"))  # exploratory factor: each firm also writes private notes that only it sees at the start of its next round
 MAX_TOKENS, TEMP = (300 if NOTES else 150), 0.7  # the notes field needs the longer limit (logged deviation)
-MAX_TOKENS_BY_MODEL = {"gpt-oss-20b": 2000, "mistral-nemo-12b": 450, "phi4-14b": 450, "nemotron-nano-12b-v2": 450, "nemotron-nano-12b-v2-think": 3300, "kimi-k3": 1200, "qw38": 450}  # gpt-oss reasoning tokens count inside the limit (Deviations 2026-10-23)
+MAX_TOKENS_BY_MODEL = {"gpt-oss-20b": 2000, "mistral-nemo-12b": 450, "phi4-14b": 450, "nemotron-nano-12b-v2": 450, "nemotron-nano-12b-v2-think": 3300, "kimi-k3": 1200, "qw38": 450, "glm53f": 600}  # gpt-oss reasoning tokens count inside the limit (Deviations 2026-10-23)
 THINK = os.environ.get("THINK", "off")  # nemotron only: "on" lets it reason before answering (exploratory), "off" sends its /no_think switch
 VARIANT = os.environ.get("VARIANT", "base")  # "reason": short reasoning field before the price (exploratory prompt change, not the prereg base)
 HIST = int(os.environ["HIST"]) if os.environ.get("HIST") else None  # history window (exploratory factor): 0 = no past rounds shown, 1 = only the last round; unset = all rounds
@@ -89,6 +89,8 @@ def user_prompt(me, labels, rows, shown_round, comm, msgs, notice, notes=None):
 
 
 def extra(model):
+    if model.startswith("glm"):
+        return {"reasoning_effort": "low"}  # thinking cannot be switched off (9 settings tested); "low" gives about 56 output tokens per call, the default 2500+
     if model.startswith("qw38"):
         return {"reasoning_effort": "none"}  # the model page says thinking is mandatory, but "none" works (tested: 30 output tokens, no reasoning)
     if model.startswith("kimi"):
