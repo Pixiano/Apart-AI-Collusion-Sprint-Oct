@@ -1,0 +1,14 @@
+{
+ "swap": "undercutter",
+ "k": 2,
+ "announce": false,
+ "replaced": [
+  1,
+  2
+ ],
+ "models": [
+  "qw38",
+  "undercutter",
+  "undercutter"
+ ]
+}
