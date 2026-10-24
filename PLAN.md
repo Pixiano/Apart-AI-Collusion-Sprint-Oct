@@ -80,3 +80,6 @@ Replaced: Kimi by Qwen3.8-2.4T-A95B (shared endpoint, `reasoning_effort: none`):
 Next, in order: Qwen gate; awareness probe; LLM deviator with four instruction variants (myopic, sell more, do not collude, own prices only) and the deceptive newcomer; swap timing (round 15 and 45) and longer horizon (to 120 rounds); ablations temperature (0.3, 1.0), number of firms (2, 4, 5), entry of a fourth firm; mixed-family run. Each logged in `03_PREREG.md` before it runs.
 Cost estimate for the rest of the hosted runs: about 25 to 30 USD with a 30% margin; stop and ask at 40 USD spent in total.
 
+## Schedule changes (author, 2026-10-24 evening)
+Swap timing (round 15 and 45) cancelled. Longer horizon (to 120 rounds) and the ablations (temperature, number of firms, entry) moved to overnight runs. Analysis and docs tomorrow. Added: a few big runs with several model families in one market (deepseek, qwen, glm, gemma, an external agent in the first run only), required variants only; and one or two eight-firm runs with two copies of each of four models.
+

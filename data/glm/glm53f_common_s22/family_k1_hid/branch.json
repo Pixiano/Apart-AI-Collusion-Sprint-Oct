@@ -1,0 +1,13 @@
+{
+ "swap": "family",
+ "k": 1,
+ "announce": false,
+ "replaced": [
+  2
+ ],
+ "models": [
+  "glm53f",
+  "glm53f",
+  "deepseek-v4-1-flash"
+ ]
+}

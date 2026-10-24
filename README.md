@@ -18,7 +18,7 @@ Frozen pre-registration (git tag `prereg-v1`): [`03_PREREG.md`](2026/2026-10/202
 ## Models
 
 - **Local** (llama.cpp on one 16 GB GPU): gemma4-12b is the only local model that passes the pilot gate (3 of 3 seeds, index 0.84 to 0.89). qwen3-14b fails it (0 of 3) and serves as gemma's different-family replacement. Also tried and failing the gate: gpt-oss-20b, mistral-nemo-12b, phi4-14b, Nemotron-Nano-12B-v2 ([`02_PILOT_RESULTS.md`](2026/2026-10/2026-10-23/02_PILOT_RESULTS.md), [`02_OTHER_RESULTS.md`](2026/2026-10/2026-10-24/02_OTHER_RESULTS.md)).
-- **Hosted open-weight models** (per-token billing, thinking off): DeepSeek V4.1 Flash (`deepseek-v4-1-flash`), second model for every cell; Qwen3.8-2.4T-A95B (`qw38`), running now.
+- **Hosted open-weight models** (per-token billing, thinking off): DeepSeek V4.1 Flash (`deepseek-v4-1-flash`), second model for every cell; Qwen3.8-2.4T-A95B (`qw38`) and GLM-5.3-Flash (`glm53f`), each with a full swap study (seeds 21-25; GLM thinking cannot be switched off, so it runs at low reasoning effort).
 - **Kimi K3**: gate only (3 seeds, index 1.00, price exactly 55 every round). Dropped as too costly, because its thinking cannot be switched off (about 0.01 USD per call).
 
 ## Results so far
@@ -37,7 +37,7 @@ Effect on the collusion index, rounds 31-60, against the no-swap branch of the s
 | Communication cut at the swap | 9 of 10 | -0.207 (-0.407, -0.012) | -0.177 (-0.181, -0.173) | -0.338 (-0.338, -0.338) |
 | Communication off | 1 of 5 | fails the gate | | |
 
-Also: two clones -0.001; clone that inherits the notes +0.000; family replacement (qwen3-14b) 0.00; cutting messages with no swap +0.000. Known end date: partly run, not reported.
+Also: two clones -0.001; clone that inherits the notes +0.000; family replacement (qwen3-14b) 0.00; cutting messages with no swap +0.000. Known end date: only 2 of 5 base runs pass the gate (index 0.82, 0.82); undercutter k=1 -0.093, k=2 -0.334, clone -0.010 (n=2, descriptive).
 
 **deepseek-v4-1-flash** (hosted)
 
@@ -52,7 +52,7 @@ Also: two clones -0.001; clone that inherits the notes +0.000; family replacemen
 | Known end date | 5 of 5 | -0.034 | -0.069 (-0.160, +0.017) | -0.195 (-0.307, -0.084) |
 | Communication off | 0 of 10 | fails the gate | | |
 
-Also: two clones +0.009 (-0.074, +0.103); clone that keeps the notes +0.012 (+0.000, +0.035); cutting messages with no swap -0.051 (-0.100, -0.008). No family branch yet (Qwen replacement running).
+Also: two clones +0.009 (-0.074, +0.103); clone that keeps the notes +0.012 (+0.000, +0.035); cutting messages with no swap -0.051 (-0.100, -0.008). Family branch (Qwen replaces 1 firm): +0.060 (+0.007, +0.130); 2 firms: +0.055 (-0.006, +0.135).
 
 Sources: [`01_GEMMA_SWAP_RESULTS.md`](2026/2026-10/2026-10-24/01_GEMMA_SWAP_RESULTS.md), [`03_HOSTED_DEEPSEEK.md`](2026/2026-10/2026-10-24/03_HOSTED_DEEPSEEK.md), [`04_FACTOR_RESULTS.md`](2026/2026-10/2026-10-24/04_FACTOR_RESULTS.md), [`06_MORE_CELLS.md`](2026/2026-10/2026-10-24/06_MORE_CELLS.md). Message content, reaction timing, re-convergence and per-seed trajectories: [`05_DEEPER_ANALYSIS.md`](2026/2026-10/2026-10-24/05_DEEPER_ANALYSIS.md).
 
@@ -85,7 +85,7 @@ data/pilot/, data/pilot_nemotron_off/   pilot gate runs
 data/main/                    swap studies, seeds 11-20 (gemma4-12b, deepseek-v4-1-flash, mistral-nemo-12b), incl. communication-off and communication-cut branches
 data/hist0/, data/hist1/      history none / last round
 data/notes/, data/horizon/    persistent notes; known end date
-data/kimi/, data/qwen/        hosted gate runs (Kimi K3) and the Qwen study (running)
+data/kimi/, data/qwen/        hosted gate runs (Kimi K3) the Qwen study and the GLM study
 data/easy/, data/median/, data/round1/   prompt-sensitivity and opening-price runs
 data/additional/              additional experiments (2026-10-23/01_ADDITIONAL_EXPERIMENTS.md)
 Submission/                   report draft area, official template, form checklist, supplementary decision logs
@@ -128,7 +128,7 @@ Environment switches:
 ## Status and next steps (2026-10-24 evening)
 
 - Done: pilot gate, gemma4-12b and deepseek-v4-1-flash swap studies, all factor cells above, deeper analysis of existing runs, Kimi K3 gate.
-- Running: Qwen3.8-2.4T-A95B swap study, and deepseek-v4-1-flash branches with firms replaced by Qwen (cross-family swap). No results yet.
+- Done: Qwen3.8-2.4T-A95B swap study (seeds 21-25, 5 of 5 gated, index 1.00): clone +0.000; DeepSeek replacing 1 or 2 firms +0.000; undercutter k=1 -0.082 (-0.097, -0.067), k=2 -0.300 (-0.326, -0.274). GLM-5.3-Flash swap study (seeds 21-25, 5 of 5 gated, index 0.80 to 1.24): clone +0.007; DeepSeek replacing 1 or 2 firms +0.000; undercutter k=1 -0.276 (-0.298, -0.243), k=2 -0.349 (-0.360, -0.341). See `2026/2026-10/2026-10-24/06_MORE_CELLS.md`.
 - Next, in order (from [`PLAN.md`](PLAN.md)): awareness probe; LLM deviator with four instruction variants and a deceptive newcomer; swap timing (round 15 and 45) and a longer horizon (to 120 rounds); ablations on temperature, number of firms and entry of a fourth firm; mixed-family run. Each is logged in `03_PREREG.md` before it runs. New runs stop by Sunday midday; then the report.
 
 ## Prior work and disclosure
