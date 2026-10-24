@@ -112,6 +112,22 @@ def test_known_horizon():
     assert "unknown number of rounds" in agents.system_prompt("A", 3)
 
 
+def test_per_model_clients():
+    class Dummy:
+        def __init__(self, name): self.name = name
+    os.environ.pop("REMOTE", None)
+    assert agents.endpoint("qw38") == (agents.URL, "none")  # hosted models stay local unless REMOTE is set
+    picked = {}
+    class C:
+        def __init__(self, tag): self.chat = self; self.completions = self; self.tag = tag
+        def create(self, **kw): picked["tag"] = self.tag; raise RuntimeError("stop")
+    try:
+        agents.attempt({"qw38": C("a"), "deepseek-v4-1-flash": C("b")}, "deepseek-v4-1-flash", "s", "u", True, 1)
+    except RuntimeError:
+        pass
+    assert picked["tag"] == "b"
+
+
 if __name__ == "__main__":
     for name, fn in list(globals().items()):
         if name.startswith("test_"):
