@@ -18,7 +18,7 @@ Frozen pre-registration (git tag `prereg-v1`): [`03_PREREG.md`](2026/2026-10/202
 ## Models
 
 - **Local** (llama.cpp on one 16 GB GPU): gemma4-12b is the only local model that passes the pilot gate (3 of 3 seeds, index 0.84 to 0.89). qwen3-14b fails it (0 of 3) and serves as gemma's different-family replacement. Also tried and failing the gate: gpt-oss-20b, mistral-nemo-12b, phi4-14b, Nemotron-Nano-12B-v2 ([`02_PILOT_RESULTS.md`](2026/2026-10/2026-10-23/02_PILOT_RESULTS.md), [`02_OTHER_RESULTS.md`](2026/2026-10/2026-10-24/02_OTHER_RESULTS.md)).
-- **Hosted open-weight models** (per-token billing, thinking off): DeepSeek V4.1 Flash (`deepseek-v4-1-flash`), second model for every cell; Qwen3.8-2.4T-A95B (`qw38`) and GLM-5.3-Flash (`glm53f`), each with a full swap study (seeds 21-25; GLM thinking cannot be switched off, so it runs at low reasoning effort).
+- **Hosted open-weight models** (per-token billing, thinking off): DeepSeek V4.1 Flash (`deepseek-v4-1-flash`), second model for every cell; Qwen3.8-2.4T-A95B (`qw38`) and GLM-5.3-Flash (`glm53f`), each with a full swap study (Qwen seeds 21-25, GLM seeds 21-30; GLM thinking cannot be switched off, so it runs at low reasoning effort). A small hosted chat model also plays one firm as an external agent through a prompt/reply file hook (two seeds, descriptive).
 - **Kimi K3**: gate only (3 seeds, index 1.00, price exactly 55 every round). Dropped as too costly, because its thinking cannot be switched off (about 0.01 USD per call).
 
 ## Results so far
@@ -57,7 +57,9 @@ Also: two clones +0.009 (-0.074, +0.103); clone that keeps the notes +0.012 (+0.
 Sources: [`01_GEMMA_SWAP_RESULTS.md`](2026/2026-10/2026-10-24/01_GEMMA_SWAP_RESULTS.md), [`03_HOSTED_DEEPSEEK.md`](2026/2026-10/2026-10-24/03_HOSTED_DEEPSEEK.md), [`04_FACTOR_RESULTS.md`](2026/2026-10/2026-10-24/04_FACTOR_RESULTS.md), [`06_MORE_CELLS.md`](2026/2026-10/2026-10-24/06_MORE_CELLS.md). Message content, reaction timing, re-convergence and per-seed trajectories: [`05_DEEPER_ANALYSIS.md`](2026/2026-10/2026-10-24/05_DEEPER_ANALYSIS.md).
 
 ## Mixed markets, eight firms, an external agent
-Details in `2026/2026-10/2026-10-24/06_MORE_CELLS.md` (sections 12 to 16). Mixed market (deepseek-v4-1-flash, qw38, glm53f; seeds 31-35, 5 of 5 gated): clone +0.037, gemma replaces firm C +0.035, gemma enters as a fourth firm +0.008, undercutter k=1 -0.056, k=2 -0.267; after a communication cut a clone gives -0.170. With gemma as firm C instead of glm: clone 0.000, undercutter k=1 -0.089, k=2 -0.306, communication cut then clone -0.605. More seeds: deepseek seeds 31-40 reproduce seeds 11-20 (undercutter k=1 -0.031, announced -0.100, k=2 -0.254); glm53f over 10 seeds loses -0.297 to one undercutter. Eight firms (two copies of each of four models, seeds 51-53): the cartel forms in only 1 of 3 base runs per variant and decays toward cost. External agent as firm C (n=2, descriptive): it joins the cartel at 50, a fresh clone agent does the same, an undercutter costs about -0.07.
+Details in `2026/2026-10/2026-10-24/06_MORE_CELLS.md` (sections 12 to 18). Mixed market (deepseek-v4-1-flash, qw38, glm53f; seeds 31-35, 5 of 5 gated): clone +0.037, gemma replaces firm C +0.035, gemma enters as a fourth firm +0.008, undercutter k=1 -0.056, k=2 -0.267; after a communication cut a clone gives -0.170. With gemma as firm C instead of glm: clone 0.000, undercutter k=1 -0.089, k=2 -0.306, communication cut then clone -0.605. More seeds: deepseek seeds 31-40 reproduce seeds 11-20 (undercutter k=1 -0.031, announced -0.100, k=2 -0.254); glm53f over 10 seeds loses -0.297 to one undercutter. Eight firms (two copies of each of four models, seeds 51-53): the cartel forms in only 1 of 3 base runs per variant and decays toward cost. External agent as firm C (n=2, descriptive): it joins the cartel at 50, a fresh clone agent does the same, an undercutter costs about -0.07.
+
+Ablations on gemma4-12b (seeds 11, 13, 14; sections 17 and 18): sampling temperature 0.3, 0.7 and 1.0 leaves the cartel (index 0.84 to 0.87) and the clone effect (exactly 0.000) unchanged, and the undercutter effect shows no temperature trend; one new gemma firm entering at round 31 changes nothing, two lower the index in 1 of 5 seeds (0.87 to 0.43). Coverage by model is in section 18: qw38 and glm53f have the core cells and the known end date but not the announced, communication-cut, history or notes cells.
 
 ## Main findings
 
@@ -67,11 +69,16 @@ Details in `2026/2026-10/2026-10-24/06_MORE_CELLS.md` (sections 12 to 16). Mixed
 - **Messages carry the cartel to newcomers.** Without messages neither model forms a cartel. An existing cartel survives losing its messages at round 30, but a fresh clone that joins without messages breaks it (-0.207 gemma, -0.222 deepseek).
 - **Price history matters less than messages.** With no past prices both models still collude through messages; one undercutter then goes nearly unnoticed, two still break the cartel. With only the last round shown, deepseek reacts strongly to one undercutter (-0.18) and gemma hardly (-0.02).
 - **A known end date unravels the cartel near the end** (deepseek): in the no-swap control the mean price falls over the last five rounds in 4 of 5 seeds.
+- **Newcomers from other families join the cartel.** A fresh clone, gemma, glm, deepseek, qwen or an external agent replacing or joining a cartel of other models moves the index by -0.03 to +0.06; only a scripted undercutter moves it more.
+- **Fragility depends on the model.** One undercutter costs glm53f -0.297 (10 seeds), about four to six times what it costs the others (-0.03 to -0.09); qw38 holds the monopoly price to round 60 even with a known end date, deepseek and glm do not.
+- **Group size matters.** With eight firms (two copies each of four models) the cartel formed in 1 of 3 base runs per variant and decayed toward cost; three firms formed it in every gated run.
+- **A communication cut raises the cost of a newcomer further in mixed markets:** a clone after the cut gives -0.605 in a deepseek, qwen and gemma market against -0.207 in an all-gemma market.
 - With persistent notes, deepseek reacts much more strongly to undercutters; different seeds and n=5, so suggestive only.
 
 ## Limitations
 
-- Small samples: 9 to 10 gated runs in the main cells, 4 to 5 in most factor cells. Results are descriptive; gemma's narrow intervals reflect very similar runs (most settle at a steady price of 50).
+- Small samples: 9 to 20 gated runs in the main cells, 5 in most factor, mixed-market and hosted cells, 3 in the eight-firm runs and 2 with the external agent.
+- Uneven coverage: not every model has every cell (see section 18 of the results note); qw38 and glm53f lack the announced, communication-cut, history and notes cells, gemma lacks the two-replaced family branch, deepseek lacks entry. Results are descriptive; gemma's narrow intervals reflect very similar runs (most settle at a steady price of 50).
 - Everything after the frozen plan is exploratory: the hosted models, history window, notes, communication cut and known end date are logged as dated deviations in [`03_PREREG.md`](2026/2026-10/2026-10-21/03_PREREG.md) against the frozen version tagged `prereg-v1`.
 - The hosted endpoint ignores the seed parameter, so hosted runs are independent replicates, not reproducible runs. Local runs are only approximately reproducible (requests share one GPU).
 - One game, one prompt, three firms. Prompt sensitivity is large for the models that failed the gate ([`02_OTHER_RESULTS.md`](2026/2026-10/2026-10-24/02_OTHER_RESULTS.md)).
@@ -128,11 +135,12 @@ Environment switches:
 | `REMOTE=1` | use the hosted endpoint; address and key come from an untracked `.env` file (one `.env.<name>` per extra hosted model) |
 | `EASY=profit\|hint`, `ROUNDS=60`, `THINK=on\|off` | prompt-sensitivity additions, longer base runs, Nemotron thinking |
 
-## Status and next steps (2026-10-24 evening)
+## Status and next steps (2026-10-24 night)
 
-- Done: pilot gate, gemma4-12b and deepseek-v4-1-flash swap studies, all factor cells above, deeper analysis of existing runs, Kimi K3 gate.
-- Done: Qwen3.8-2.4T-A95B swap study (seeds 21-25, 5 of 5 gated, index 1.00): clone +0.000; DeepSeek replacing 1 or 2 firms +0.000; undercutter k=1 -0.082 (-0.097, -0.067), k=2 -0.300 (-0.326, -0.274). GLM-5.3-Flash swap study (seeds 21-25, 5 of 5 gated, index 0.80 to 1.24): clone +0.007; DeepSeek replacing 1 or 2 firms +0.000; undercutter k=1 -0.276 (-0.298, -0.243), k=2 -0.349 (-0.360, -0.341). Known end date on both (seeds 21-25): Qwen holds 55 to the end (no-swap index 1.00, undercutter k=1 -0.091, k=2 -0.327); GLM's cartel weakens and falls near round 60 in all five seeds (no-swap index 0.49, clone -0.032, undercutter k=1 -0.179, k=2 -0.214). See `2026/2026-10/2026-10-24/06_MORE_CELLS.md`.
-- Next, in order (from [`PLAN.md`](PLAN.md)): awareness probe; LLM deviator with four instruction variants and a deceptive newcomer; swap timing (round 15 and 45) and a longer horizon (to 120 rounds); ablations on temperature, number of firms and entry of a fourth firm; mixed-family run. Each is logged in `03_PREREG.md` before it runs. New runs stop by Sunday midday; then the report.
+- Done: pilot gate; swap studies on gemma4-12b, deepseek-v4-1-flash, qw38 and glm53f; factor cells (announced swap, communication off and cut, history none and last round, persistent notes, known end date) on gemma and deepseek; known end date on all four; three mixed markets; eight-firm runs; external-agent firm; temperature and entry ablations on gemma; more seeds for deepseek and glm53f; deeper analysis of existing runs; Kimi K3 gate only.
+- Held (start on request): gemma main-study seeds 31-40 on the local GPU; filling the coverage gaps (gemma family k=2, glm53f factor cells, deepseek entry).
+- Not run: awareness probe, LLM deviator and deceptive newcomer, swap timing (round 15 and 45, cancelled), longer horizon (120 rounds), ablation on number of firms (the eight-firm runs are the nearest result). Each would be logged in `03_PREREG.md` before it runs. Plan in [`PLAN.md`](PLAN.md).
+- New runs stop by Sunday midday; then the report. Hosted credit is nearly spent (about 14 USD left), so further hosted runs are limited to cheap models.
 
 ## Prior work and disclosure
 
