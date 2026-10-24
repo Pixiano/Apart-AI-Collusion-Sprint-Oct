@@ -138,8 +138,9 @@ Environment switches:
 ## Status and next steps (2026-10-24 night)
 
 - Done: pilot gate; swap studies on gemma4-12b, deepseek-v4-1-flash, qw38 and glm53f; factor cells (announced swap, communication off and cut, history none and last round, persistent notes, known end date) on gemma and deepseek; known end date on all four; three mixed markets; eight-firm runs; external-agent firm; temperature and entry ablations on gemma; more seeds for deepseek and glm53f; deeper analysis of existing runs; Kimi K3 gate only.
-- Held (start on request): gemma main-study seeds 31-40 on the local GPU; filling the coverage gaps (gemma family k=2, glm53f factor cells, deepseek entry).
-- Not run: awareness probe, LLM deviator and deceptive newcomer, swap timing (round 15 and 45, cancelled), longer horizon (120 rounds), ablation on number of firms (the eight-firm runs are the nearest result). Each would be logged in `03_PREREG.md` before it runs. Plan in [`PLAN.md`](PLAN.md).
+- Done 2026-10-25 night: glm53f announced, communication-cut, history none and last-round, notes, clone k=2 and communication-off cells; deepseek entry; deepseek awareness probe (undercutter noticed by 5 of 10 firms, clone by 1 of 10, no swap 1 of 15) and five LLM newcomer variants (told not to collude -0.218, myopic -0.135, deceptive +0.002); gemma family k=2 (0.000). Details: section 19 of `06_MORE_CELLS.md`. A communication cut then a clone costs glm53f -0.325 (gemma -0.207, deepseek -0.222); one undercutter costs it about -0.06 even with no history.
+- Running or held: gemma probes, newcomer variants, 120-round horizon and number-of-firms ablation (local GPU, after the family chain); gemma main-study seeds 31-40 held.
+- Not run: swap timing (round 15 and 45, cancelled), qw38 announced, communication-cut, history and notes cells (cost); gemma and deepseek not covered by every model's cells (see section 18). Each addition is logged in `03_PREREG.md` before it runs. Plan in [`PLAN.md`](PLAN.md).
 - New runs stop by Sunday midday; then the report. Hosted credit is nearly spent (about 14 USD left), so further hosted runs are limited to cheap models.
 
 ## Prior work and disclosure
