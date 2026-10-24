@@ -1,0 +1,14 @@
+{
+ "swap": "family",
+ "k": 2,
+ "announce": false,
+ "replaced": [
+  1,
+  2
+ ],
+ "models": [
+  "gemma4-12b",
+  "qwen3-14b",
+  "qwen3-14b"
+ ]
+}

@@ -1,0 +1,13 @@
+{
+ "swap": "newcomer_share",
+ "k": 1,
+ "announce": false,
+ "replaced": [
+  2
+ ],
+ "models": [
+  "deepseek-v4-1-flash",
+  "deepseek-v4-1-flash",
+  "deepseek-v4-1-flash"
+ ]
+}
