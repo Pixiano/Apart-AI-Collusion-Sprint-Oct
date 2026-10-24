@@ -73,3 +73,10 @@ All items after the first are exploratory additions; each is logged in `03_PRERE
 4. **Ablation studies** (`ABLATIONS.md`; the author fills the Decision column).
 5. **Report** (author): needs a free evening; stop new runs by Sunday midday (deadline Monday 17:29 IST).
 Open requirement for item 3: the author creates the Kimi and Qwen 3.8 endpoints and puts each address and key in its own untracked `.env.<name>` file.
+
+## Decisions of 2026-10-24 evening (author agreed)
+Cancelled, with reasons: Qwen3.8-2.4T as first planned (checked: shared endpoint, thinking can be set to none, so it is used after all, see below); gpt-oss low vs high reasoning (ablation 6: gpt-oss never passes the gate); history window of 20 rounds (ablation 3: covered by history none and last-round); human firm H (needs the author's time, deferred); external-agent firm H2 (already done in the additional experiments); Kimi swap studies and Kimi history runs (thinking cannot be switched off, about 0.01 USD per call, so only the 3-seed gate was run); anchor-price and prompt-wording ablations (low value). Merged: ablation 7 into the cross-family swaps, ablations 1, 2, 5 into the known-end-date, notes and swap-timing runs, ablation 12 with the LLM deviator.
+Replaced: Kimi by Qwen3.8-2.4T-A95B (shared endpoint, `reasoning_effort: none`): gate first, then swaps with DeepSeek (both directions, full history), then a mixed-family run.
+Next, in order: Qwen gate; awareness probe; LLM deviator with four instruction variants (myopic, sell more, do not collude, own prices only) and the deceptive newcomer; swap timing (round 15 and 45) and longer horizon (to 120 rounds); ablations temperature (0.3, 1.0), number of firms (2, 4, 5), entry of a fourth firm; mixed-family run. Each logged in `03_PREREG.md` before it runs.
+Cost estimate for the rest of the hosted runs: about 25 to 30 USD with a 30% margin; stop and ask at 40 USD spent in total.
+
