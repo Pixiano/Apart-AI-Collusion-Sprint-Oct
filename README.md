@@ -6,7 +6,7 @@ Entry to the [Apart Research AI Collusion Research Sprint](https://apartresearch
 
 The claim is deliberately narrow: *collusion persistence under agent replacement, as a stylised model of model updates.* It is not a claim about real markets. Addresses sprint questions 1.2 and 3.3.
 
-## Status (2026-10-24, midday)
+## Status (2026-10-24, afternoon)
 
 | Step | State |
 |------|-------|
@@ -16,7 +16,10 @@ The claim is deliberately narrow: *collusion persistence under agent replacement
 | Prompt-sensitivity runs (profit table, one-sentence hint) | done for phi4, mistral-nemo, Nemotron; gpt-oss-20b dropped (not needed) |
 | Swap study, gemma4-12b (10 seeds) | **done**: clone and different-model replacement change nothing; scripted undercutter -0.05 |
 | Swap study, mistral-nemo-12b | stopped at seed 16: does not collude reliably (1 of 6 seeds pass), so it does not enter the analysis |
-| Other factors (2 of 3 replaced, announced swap, communication off, persistent notes) | not run yet |
+| 2 of 3 replaced, announced swap (gemma4-12b, seeds 11-20) | **done**: two undercutters -0.32, announced undercutter -0.075 |
+| Second model: deepseek-v4-1-flash on a hosted endpoint (thinking off) | swap study seeds 11-20 running |
+| Communication off (gemma4-12b, seeds 21-25) | running |
+| History off, persistent notes | queued (need harness code), see `PLAN.md` |
 | Report | in progress (author) |
 
 ## Pilot gate result
@@ -46,6 +49,19 @@ Most local models settle at or near the competitive price; gemma4-12b holds pric
 
 A single replacement did not break the cartel: newcomers that see the visible history copy it, and a fresh clone converges within a round. The positive control works but is gentle: prices slide about one step per round and the others follow slowly. Caveats: one model, one replaced firm, hidden swap; the different-model partner copies the history. Write-up: [`01_GEMMA_SWAP_RESULTS.md`](2026/2026-10/2026-10-24/01_GEMMA_SWAP_RESULTS.md).
 
+### More factors (same 10 base runs, 9 gated, bootstrap 95% interval)
+
+| Replacement | 1 replaced, hidden | 2 replaced, hidden | 1 replaced, announced |
+|-------------|-------------------:|-------------------:|----------------------:|
+| fresh clone | -0.001 | -0.001 | +0.000 |
+| scripted undercutter | -0.046 (-0.058 to -0.036) | **-0.317** (-0.329 to -0.302) | -0.075 (-0.101 to -0.052) |
+
+Two replaced undercutters break the cartel in every seed; two fresh clones still change nothing. Announcing the undercutter increases the damage a little (small effect, intervals overlap). Details: [`01_GEMMA_SWAP_RESULTS.md`](2026/2026-10/2026-10-24/01_GEMMA_SWAP_RESULTS.md).
+
+## Second model on a hosted endpoint (exploratory)
+
+deepseek-v4-1-flash, thinking off, same game and prompt. The endpoint ignores the seed parameter, so these runs are independent replicates, not reproducible runs. A smoke run reached an index of about 0.84 (rounds 16-30) with no parse flags. Swap study running; setup and findings in [`03_HOSTED_DEEPSEEK.md`](2026/2026-10/2026-10-24/03_HOSTED_DEEPSEEK.md).
+
 ## Prompt sensitivity (exploratory, not pre-registered)
 
 Adding to the rules a table of equal-price profits ("easy") or one sentence hinting that prices above cost pay more ("hint"), 60 rounds, communication on:
@@ -71,7 +87,7 @@ Written up in [`01_ADDITIONAL_EXPERIMENTS.md`](2026/2026-10/2026-10-23/01_ADDITI
 
 - Repeated Bertrand pricing game, 3 LLM agents, integer prices 10-100, cost 10, 60 rounds, swap at round 30.
 - Swap types: none (control), fresh clone with no memory, different-family model, scripted undercutter (positive control).
-- Other factors (planned): 1 vs 2 of 3 agents replaced, hidden vs announced swap, communication on or off, persistent notes on or off.
+- Other factors: 1 vs 2 of 3 agents replaced and hidden vs announced swap (done), communication on or off (running), history on or off and persistent notes on or off (planned).
 - Metric: collusion index before and after the swap, plus re-convergence time. Awareness is measured by price shift against the no-swap control.
 - Gating: only (model, framing) cells that collude before the swap enter the swap analysis; the per-model pass rate is reported as a result.
 - Models: local open models (llama.cpp on one 16 GB GPU, up to two resident). If the gate had failed everywhere, the fallback was a plus-factor collusion detection study. How three firms share one GPU: [`general/how_three_firms_share_one_gpu.md`](general/how_three_firms_share_one_gpu.md).
@@ -85,12 +101,14 @@ python tests\test_game.py                                         # rules and pl
 .\tools\pilot.ps1                                                 # pilot: 3 seeds x models, then the gate table
 .\tools\swapstudy.ps1 -Model gemma4-12b                           # swap study: base run + none/clone/family/undercutter branches (restart-safe)
 python -m harness.run branch --run <run_dir> --swap clone --k 1   # one swap branch from a base run's checkpoint
+.	ools\swapstudy.ps1 -K 2 -Swaps clone,undercutter                # more factors: -K 2 (two replaced), -Announce, -Comm off, -Seeds 21,22,23
+REMOTE=1 python -m harness.run base --model deepseek-v4-1-flash ...  # hosted model: LLM_URL and LLM_KEY in an untracked .env file
 python -m harness.run resume --run <run_dir> --to 30              # continue an interrupted base run from its logs
 .\tools\round1_spread.ps1 -Model phi4-14b -N 50                   # opening-price spread over seeds
 python -m harness.analyze gate <dir>                              # pass rates; also: effects <dir>
 python tools\export_decisions.py <out_dir> <run_dir> ...          # per-decision CSV logs
 ```
-Environment switches: `EASY=profit|hint` (prompt addition), `ROUNDS=60` (longer base runs), `THINK=on|off` (Nemotron only).
+Environment switches: `EASY=profit|hint` (prompt addition), `ROUNDS=60` (longer base runs), `THINK=on|off` (Nemotron only), `REMOTE=1` (hosted endpoint from `.env`).
 
 ## Repository layout
 

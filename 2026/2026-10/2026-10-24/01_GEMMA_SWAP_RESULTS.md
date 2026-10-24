@@ -21,3 +21,17 @@ Firm C is a different agent in each branch (models recorded in `calls.jsonl`). T
 - A single replacement did not break the cartel, whoever the newcomer was, because newcomers that see the visible history copy it; a fresh clone also converges within a round.
 - The positive control works but is gentle: the cartel erodes slowly, about -0.05 over 30 rounds, not a collapse.
 - Caveats: only one firm is replaced and the swap is hidden; two of three replaced, announced swaps and persistent notes are not yet run; one model; the different-model partner (qwen3-14b) copies the history rather than pricing on its own. Not pooled with the pilot runs.
+
+## Added 2026-10-24 afternoon: two of three replaced, announced swap (same 10 base runs, same checkpoints)
+
+Branches start from the existing round-30 checkpoints, hidden unless stated, gated on the same 9 runs. Index change in rounds 31-60 against the no-swap control, bootstrap 95% interval over the 9 runs:
+
+| Replacement | 1 replaced, hidden | 2 replaced, hidden | 1 replaced, announced |
+|-------------|-------------------:|-------------------:|----------------------:|
+| fresh clone | -0.001 | -0.001 (-0.004 to +0.001) | +0.000 (0.000 to +0.001) |
+| scripted undercutter | -0.046 (-0.058 to -0.036) | **-0.317** (-0.329 to -0.302) | -0.075 (-0.101 to -0.052) |
+
+- Two undercutters break the cartel in every seed (per-seed change -0.27 to -0.34), about 7 times the one-undercutter effect. Fresh clones still change nothing at two replaced.
+- Announcing the undercutter makes the damage larger (-0.075 against -0.046; announced minus hidden -0.03 on average, 7 of 9 runs in the same direction). Intervals overlap, so this is a small effect. Announcing a clone changes nothing.
+- Different-family model with two replaced was not run (about 40 minutes per branch); family at one replaced is in the table above.
+- Branch folders: `clone_k2_hid`, `undercutter_k2_hid`, `clone_k1_ann`, `undercutter_k1_ann` under each `data/main/gemma4-12b_common_s*`. Run with `tools/swapstudy.ps1 -K 2 -Swaps clone,undercutter` and `-Announce`.

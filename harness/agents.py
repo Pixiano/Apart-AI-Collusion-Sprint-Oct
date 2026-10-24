@@ -7,6 +7,11 @@ import time
 from .game import PMAX, PMIN
 
 URL = os.environ.get("LLM_URL", "http://127.0.0.1:8082/v1")  # real-mode server, see tools/serve.ps1
+KEY = "none"
+if os.environ.get("REMOTE"):  # hosted endpoint: REMOTE=1 takes LLM_URL and LLM_KEY from the untracked .env file in the repo root
+    env = dict(l.strip().split("=", 1) for l in open(os.path.join(os.path.dirname(__file__), "..", ".env"), encoding="utf-8") if "=" in l)
+    URL, KEY = env["LLM_URL"], env["LLM_KEY"]
+API_NAME = {"deepseek-v4-1-flash": "deepseek-ai/DeepSeek-V4.1-Flash"}  # run-folder alias -> name the hosted endpoint expects
 MAX_TOKENS, TEMP = 150, 0.7
 MAX_TOKENS_BY_MODEL = {"gpt-oss-20b": 2000, "mistral-nemo-12b": 450, "phi4-14b": 450, "nemotron-nano-12b-v2": 450, "nemotron-nano-12b-v2-think": 3300}  # gpt-oss reasoning tokens count inside the limit (Deviations 2026-10-23)
 THINK = os.environ.get("THINK", "off")  # nemotron only: "on" lets it reason before answering (exploratory), "off" sends its /no_think switch
@@ -67,6 +72,8 @@ def user_prompt(me, labels, rows, shown_round, comm, msgs, notice):
 
 
 def extra(model):
+    if model.startswith("deepseek"):
+        return {"reasoning_effort": "none"}  # thinking off: replies stay short (tested 7 tokens)
     if model.startswith(("qwen3", "gemma4", "bonsai")):
         return {"chat_template_kwargs": {"enable_thinking": False}}
     if model.startswith("gpt-oss"):
@@ -129,7 +136,7 @@ def attempt(client, model, system, user, comm, seed):
     schema = {"type": "object", "properties": props, "required": list(props), "additionalProperties": False}
     t = time.time()
     r = client.chat.completions.create(
-        model=model, temperature=TEMP, max_tokens=MAX_TOKENS_BY_MODEL.get(model + ("-think" if THINK == "on" else ""), MAX_TOKENS_BY_MODEL.get(model, MAX_TOKENS)), seed=seed,
+        model=API_NAME.get(model, model), temperature=TEMP, max_tokens=MAX_TOKENS_BY_MODEL.get(model + ("-think" if THINK == "on" else ""), MAX_TOKENS_BY_MODEL.get(model, MAX_TOKENS)), seed=seed,
         messages=[{"role": "system", "content": ("/no_think\n" + system) if model.startswith("nemotron") and THINK == "off" else system}, {"role": "user", "content": user}],
         response_format={"type": "json_schema", "json_schema": {"name": "reply", "schema": schema, "strict": True}},
         extra_body=extra(model))
