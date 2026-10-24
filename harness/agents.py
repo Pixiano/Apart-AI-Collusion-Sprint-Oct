@@ -7,11 +7,19 @@ import time
 from .game import PMAX, PMIN
 
 URL = os.environ.get("LLM_URL", "http://127.0.0.1:8082/v1")  # real-mode server, see tools/serve.ps1
-KEY = "none"
-if os.environ.get("REMOTE"):  # hosted endpoint: REMOTE=1 takes LLM_URL and LLM_KEY from the untracked .env file in the repo root; REMOTE=<name> from .env.<name> (one file per endpoint)
-    env = dict(l.strip().split("=", 1) for l in open(os.path.join(os.path.dirname(__file__), "..", ".env" if os.environ["REMOTE"] == "1" else ".env." + os.environ["REMOTE"]), encoding="utf-8") if "=" in l)
-    URL, KEY = env["LLM_URL"], env["LLM_KEY"]
-API_NAME = {"deepseek-v4-1-flash": "deepseek-ai/DeepSeek-V4.1-Flash", "kimi-k3": "moonshotai/Kimi-K3", "qw38": "Qwen/Qwen3.8-2.4T-A95B"}  # run-folder alias -> name the hosted endpoint expects
+REMOTE_ENV = {"deepseek-v4-1-flash": ".env", "kimi-k3": ".env.kimi", "qw38": ".env.qwen", "glm53f": ".env.glm"}  # hosted models: address (LLM_URL) and key (LLM_KEY) live in untracked files in the repo root
+
+
+def endpoint(model):
+    """(address, key) for a model: hosted models read their file when REMOTE is set; everything else uses the local server."""
+    f = REMOTE_ENV.get(model) if os.environ.get("REMOTE") else None
+    if not f:
+        return URL, "none"
+    env = dict(l.strip().split("=", 1) for l in open(os.path.join(os.path.dirname(__file__), "..", f), encoding="utf-8") if "=" in l)
+    return env["LLM_URL"], env["LLM_KEY"]
+
+
+API_NAME = {"deepseek-v4-1-flash": "deepseek-ai/DeepSeek-V4.1-Flash", "kimi-k3": "moonshotai/Kimi-K3", "qw38": "Qwen/Qwen3.8-2.4T-A95B", "glm53f": "zai-org/GLM-5.3-Flash"}  # run-folder alias -> name the hosted endpoint expects
 HORIZON = os.environ.get("HORIZON", "unknown")  # exploratory: "known" tells the firms the game lasts exactly 60 rounds
 NOTES = bool(os.environ.get("NOTES"))  # exploratory factor: each firm also writes private notes that only it sees at the start of its next round
 MAX_TOKENS, TEMP = (300 if NOTES else 150), 0.7  # the notes field needs the longer limit (logged deviation)
@@ -145,6 +153,8 @@ def ext_reply(name, system, user, timeout=600):
 
 
 def attempt(client, model, system, user, comm, seed):
+    if isinstance(client, dict):  # one client per model (mixed-family runs)
+        client = client[model]
     if model == "fake":
         return {"text": json.dumps({"price": 55 if seed % 5 else 54, "message": "ok", **({"notes": f"seen {seed % 7}"} if NOTES else {})}), "finish": "stop", "ptok": 0, "ctok": 0, "rchars": 0, "lat": 0.0}
     if model.startswith("ext:"):  # external agent plays through files: write the prompt, wait for the reply (ablation H2)

@@ -1,0 +1,14 @@
+{
+ "swap": "family",
+ "k": 2,
+ "announce": false,
+ "replaced": [
+  1,
+  2
+ ],
+ "models": [
+  "deepseek-v4-1-flash",
+  "qw38",
+  "qw38"
+ ]
+}

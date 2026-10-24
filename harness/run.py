@@ -18,7 +18,7 @@ ROUNDS = 60
 
 
 def client_for(model):
-    return None if model == "fake" or model.startswith("ext:") else OpenAI(base_url=agents.URL, api_key=agents.KEY, timeout=180)
+    return None if model == "fake" or model.startswith("ext:") else OpenAI(base_url=agents.endpoint(model)[0], api_key=agents.endpoint(model)[1], timeout=180)
 
 
 def write_json(path, obj):
@@ -39,7 +39,7 @@ def base(model, comm, seed, out):
         "started": datetime.datetime.now().isoformat(timespec="seconds")})
     hist = []
     last = int(os.environ.get("ROUNDS", swaps.SWAP_ROUND))  # exploratory longer base runs (more visible history)
-    calls = play.play(run_dir, "base", firms, hist, 1, last, comm, seed, client_for(models[0]))
+    calls = play.play(run_dir, "base", firms, hist, 1, last, comm, seed, {m: client_for(m) for m in set(models)})
     write_json(os.path.join(run_dir, "checkpoint.json"), {"hist": hist, "firms": firms, "comm": comm, "seed": seed, "round": last})
     play.summarize(calls, run)
     return run_dir
@@ -50,7 +50,7 @@ def resume(run_dir, last):
     meta = json.load(open(os.path.join(run_dir, "meta.json"), encoding="utf-8"))
     hist = [json.loads(l) for l in open(os.path.join(run_dir, "base", "rounds.jsonl"), encoding="utf-8")]
     firms = [{"label": l, "model": meta["model"], "view": 1} for l in "ABC"]
-    calls = play.play(run_dir, "base", firms, hist, len(hist) + 1, last, meta["comm"], meta["seed"], client_for(meta["model"]))
+    calls = play.play(run_dir, "base", firms, hist, len(hist) + 1, last, meta["comm"], meta["seed"], {meta["model"]: client_for(meta["model"])})
     write_json(os.path.join(run_dir, "checkpoint.json"), {"hist": hist, "firms": firms, "comm": meta["comm"], "seed": meta["seed"], "round": last})
     play.summarize(calls, meta["run"] + " (resumed)")
 
@@ -67,8 +67,7 @@ def branch(run_dir, swap, k, announce, newcomers=(), comm_after=None):
     write_json(os.path.join(run_dir, tag, "branch.json"), {"swap": swap, "k": k, "announce": announce, "replaced": replaced, "models": [f["model"] for f in firms]})
     models = {f["model"] for f in firms if f["model"] != "undercutter"}
     clients = {m: client_for(m) for m in models}
-    # one client is enough: the server routes by model name in the request
-    client = next(iter(clients.values()), None)
+    client = clients  # one client per model: models may sit on different endpoints
     hist = json.loads(json.dumps(ck["hist"]))
     rf = os.path.join(run_dir, tag, "rounds.jsonl")
     if os.path.exists(rf):  # interrupted branch: continue after the rounds already logged
