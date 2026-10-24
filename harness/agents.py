@@ -22,7 +22,7 @@ def endpoint(model):
 API_NAME = {"deepseek-v4-1-flash": "deepseek-ai/DeepSeek-V4.1-Flash", "kimi-k3": "moonshotai/Kimi-K3", "qw38": "Qwen/Qwen3.8-2.4T-A95B", "glm53f": "zai-org/GLM-5.3-Flash"}  # run-folder alias -> name the hosted endpoint expects
 HORIZON = os.environ.get("HORIZON", "unknown")  # exploratory: "known" tells the firms the game lasts exactly 60 rounds
 NOTES = bool(os.environ.get("NOTES"))  # exploratory factor: each firm also writes private notes that only it sees at the start of its next round
-MAX_TOKENS, TEMP = (300 if NOTES else 150), 0.7  # the notes field needs the longer limit (logged deviation)
+MAX_TOKENS, TEMP = (300 if NOTES else 150), float(os.environ.get("TEMPERATURE", 0.7))  # the notes field needs the longer limit (logged deviation); TEMPERATURE is an exploratory ablation (frozen value 0.7)
 MAX_TOKENS_BY_MODEL = {"gpt-oss-20b": 2000, "mistral-nemo-12b": 450, "phi4-14b": 450, "nemotron-nano-12b-v2": 450, "nemotron-nano-12b-v2-think": 3300, "kimi-k3": 1200, "qw38": 450, "glm53f": 600}  # gpt-oss reasoning tokens count inside the limit (Deviations 2026-10-23)
 THINK = os.environ.get("THINK", "off")  # nemotron only: "on" lets it reason before answering (exploratory), "off" sends its /no_think switch
 VARIANT = os.environ.get("VARIANT", "base")  # "reason": short reasoning field before the price (exploratory prompt change, not the prereg base)
