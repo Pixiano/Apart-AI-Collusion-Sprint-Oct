@@ -13,7 +13,7 @@ The claim is deliberately narrow: *collusion persistence under agent replacement
 | Pre-registration (`prereg-v1`), plan, ablation sheet | frozen / done |
 | Harness (game, agents, swaps, resume, runs, analysis) | built and tested |
 | Pilot gate (do the models collude before any swap?) | **done: GO on gemma4-12b only** |
-| Prompt-sensitivity runs (profit table, one-sentence hint) | done for phi4, mistral-nemo, Nemotron; gpt-oss-20b on hold |
+| Prompt-sensitivity runs (profit table, one-sentence hint) | done for phi4, mistral-nemo, Nemotron; gpt-oss-20b dropped (not needed) |
 | Swap study, gemma4-12b (10 seeds) | **done**: clone and different-model replacement change nothing; scripted undercutter -0.05 |
 | Swap study, mistral-nemo-12b | stopped at seed 16: does not collude reliably (1 of 6 seeds pass), so it does not enter the analysis |
 | Other factors (2 of 3 replaced, announced swap, communication off, persistent notes) | not run yet |

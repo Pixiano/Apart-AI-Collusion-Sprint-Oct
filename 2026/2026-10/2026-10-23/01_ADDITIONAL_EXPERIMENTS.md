@@ -122,4 +122,4 @@ Settings: profit table in the rules (`EASY=profit`), 60 rounds, communication on
 
 ### mistral-nemo-12b and gpt-oss-20b on the easy prompt (profit table, 60 rounds)
 - mistral-nemo-12b, 3 seeds: index over rounds 16-30 of 1.02, 0.69, 0.41 (2 of 3 pass the 0.5 line, so GO); over rounds 31-60 (no swap) 1.09, 0.44, 0.38. Seed 1 stayed at 56-57 to the end; seeds 2 and 3 eroded after round 30 with no replacement, so some of what a later swap shows will be erosion that happens anyway. Base prompt for comparison: 0.40, 0.07, 0.02.
-- gpt-oss-20b: cancelled by the author at round 21 of seed 1 (index 0.04 over rounds 16-21, last prices 11, 20, 20) to move the queue on; not a gate result. Data kept in `data/easy/gpt-oss-20b_common_s1`; how to continue is in `PLAN.md`.
+- gpt-oss-20b: cancelled by the author at round 21 of seed 1 (index 0.04 over rounds 16-21, last prices 11, 20, 20) to move the queue on; not a gate result. On 2026-10-24 the author dropped this run for good (not needed); the partial data stays as a record. Data kept in `data/easy/gpt-oss-20b_common_s1`; how to continue is in `PLAN.md`.
