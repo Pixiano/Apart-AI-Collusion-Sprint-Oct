@@ -130,3 +130,10 @@ Both base runs pass the gate (0.89 and 0.89): the agent opened at 90 and 55 in r
 ## 16. Hosted spend
 About 36 USD of the 50 USD credit at the end of the mixed and eight-firm runs (logged tokens about 38.3 USD without any cached-token discount): Qwen 23.5, deepseek 9.5, GLM 3.4, Kimi 1.9. The hosted per-token price of Qwen and its growing history prompt (about 480 input tokens in round 1, 1,640 by round 60) dominate.
 
+## 17. Ablations on gemma4-12b (local), seeds 11, 13, 14
+Entry of new firms at round 31 (seeds 11, 13, 14, 15, 16, no-swap index 0.84 to 0.87): one new gemma firm D changes nothing in any seed; two new firms (D and E) change nothing in four seeds and lower the index from 0.87 to 0.43 in seed 13.
+Sampling temperature (new base runs and branches; the same seeds at the frozen 0.7 in data/main for comparison): the cartel forms at every temperature (base index 0.84 to 0.87 at 0.3, 0.7 and 1.0) and a fresh clone is exactly 0.000 in every seed at every temperature. One undercutter: 0.3 gives -0.017, -0.110, -0.091; 0.7 gives -0.070, -0.045, -0.036; 1.0 gives -0.113, -0.036, -0.039. No temperature trend; the between-seed spread is larger than any temperature difference. Three seeds, descriptive only. Data in data/temp03 and data/temp10.
+
+## 18. Coverage by model (complete branches with a finished base run, all seeds pooled)
+Full history, hidden swap: clone k=1, family k=1 and undercutter k=1 and k=2 exist for gemma (10), deepseek (20), qw38 (5) and glm53f (10); clone k=2 only for gemma and deepseek; family k=2 for deepseek (10), qw38 (5), glm53f (5), not gemma. Announced swap, communication cut, history none, history last, persistent notes: gemma and deepseek only (announced and cut: 10 or 20 seeds; history and notes: 5). Known end date: all four models (5 seeds each). Communication off from the start: gemma (5 base runs) and deepseek (10) only. Entry: gemma only. Qwen and glm53f therefore lack announced, communication cut, history and notes cells.
+
