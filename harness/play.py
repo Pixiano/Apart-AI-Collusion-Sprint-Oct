@@ -19,7 +19,8 @@ def cseed(seed, tag, r, firm):
 def view(firm, hist, r):
     """Rounds a firm may see before round r, numbered from its own first round, and the round number it is told."""
     s = firm["view"]
-    return [(k - s + 1, hist[k - 1]) for k in range(s, r)], r - s + 1
+    lo = s if agents.HIST is None else max(s, r - agents.HIST)  # HIST window: only the last agents.HIST rounds are shown
+    return [(k - s + 1, hist[k - 1]) for k in range(lo, r)], r - s + 1
 
 
 def one_call(client, firm, i, labels, hist, r, comm, seed, tag, notice, replaced, horizon):

@@ -6,4 +6,4 @@
 - Open: author decides `ABLATIONS.md` items, which extra runs go in the report, and whether to use bigger models; report text is the author's.
 - Afternoon, frozen plan resumed (author: "complete the frozen plan first"): 2 of 3 replaced done (two undercutters -0.32 against -0.05 for one; clones still 0.00) and announced swap done (undercutter -0.075 announced against -0.046 hidden); `01_GEMMA_SWAP_RESULTS.md`.
 - Hosted DeepSeek V4.1 Flash added as a second model (author's decision): connection tests, seed not honoured, thinking off works, smoke run index about 0.84, swap study seeds 11-20 running; `03_HOSTED_DEEPSEEK.md`.
-- Communication off started 14:12 (gemma4-12b, seeds 21-25). History off queued after it (needs design and code). Notes on/off after that. Order in `PLAN.md`, "Next runs".
+- Communication off and history off (two windows) run on gemma4-12b and deepseek-v4-1-flash; in `04_FACTOR_RESULTS.md`. Neither model keeps a cartel without messages (gate 1 of 5 and 0 of 10). With no price history both still collude through messages; one undercutter is then invisible, two still break it. Notes on/off not run. Kimi parked (author's decision).

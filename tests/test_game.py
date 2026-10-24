@@ -82,6 +82,18 @@ def test_swaps():
     assert swaps.apply_swap(firms, "none", 1, True) == (firms, [], None)
 
 
+def test_history_window():
+    hist = [{"prices": [50, 50, 50]}] * 10
+    firm = {"label": "A", "model": "fake", "view": 1}
+    assert len(play.view(firm, hist, 11)[0]) == 10
+    agents.HIST = 0
+    assert play.view(firm, hist, 11) == ([], 11)
+    agents.HIST = 1
+    rows, shown = play.view(firm, hist, 11)
+    assert [k for k, _ in rows] == [10] and shown == 11
+    agents.HIST = None
+
+
 if __name__ == "__main__":
     for name, fn in list(globals().items()):
         if name.startswith("test_"):
