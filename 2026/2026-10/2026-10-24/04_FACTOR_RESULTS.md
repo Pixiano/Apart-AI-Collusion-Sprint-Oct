@@ -32,3 +32,19 @@ Window A: firms see no past prices (messages still shown). Window B: firms see o
 
 ## Cost of the hosted runs
 All deepseek runs together: 13,500 calls, 7.55 million input and 0.28 million output tokens, about 2.6 USD at the listed rates (0.30 and 1.20 per million tokens). Mean 1.1 s per call.
+
+## Persistent notes (gemma4-12b, seeds 21-25, communication on, full history; evening addition)
+
+Each firm also writes a private note of up to 60 words, shown only to that firm at the start of its next round (a blank note keeps the previous one; output limit 300 tokens). The branch `clone_notes` wipes the newcomer's history but gives it the replaced firm's notes; `clone` wipes both. Notes-off baseline: the main sweep (seeds 11-20).
+
+| Replacement | With notes (n=5, all gated) | Without notes (main sweep, n=9) |
+|-------------|----------------------------:|--------------------------------:|
+| fresh clone (history and notes wiped) | +0.000 | -0.001 |
+| clone that inherits the notes | +0.000 | not run |
+| undercutter, 1 replaced | -0.069 (-0.090 to -0.052) | -0.046 (-0.058 to -0.036) |
+| undercutter, 2 replaced | -0.322 (-0.330 to -0.313) | -0.317 (-0.329 to -0.302) |
+
+- All 5 base runs pass the gate (index 0.87 to 0.89); notes do not stop the cartel from forming.
+- Fresh clones change nothing whether or not they inherit the notes, so the notes are not what carries the cartel to a newcomer.
+- One undercutter costs a little more with notes (-0.069 against -0.046), two cost the same; with n=5 and tight spread the intervals do not overlap for the one-undercutter cell, but the difference is small and the seeds differ between the two conditions, so treat it as suggestive only.
+- 2,700 calls, 1 flagged, no blank notes, no cut replies. Data: `data/notes`.

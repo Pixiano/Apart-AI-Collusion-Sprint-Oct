@@ -1,7 +1,7 @@
 """Swap rules: which firms are replaced at round 31 and what the newcomer is (03_HARNESS_SPEC.md, Swaps)."""
 SWAP_ROUND = 30  # swap takes effect from round 31
 FAMILY = {"qwen3-8b": "gemma4-12b", "gemma4-12b": "qwen3-14b", "mistral-nemo-12b": "qwen3-14b", "qwen3-14b": "gemma4-12b", "gpt-oss-20b": "qwen3-14b", "fake": "fake"}
-KINDS = ("none", "clone", "family", "undercutter", "undercutter_all", "entry")
+KINDS = ("none", "clone", "clone_notes", "family", "undercutter", "undercutter_all", "entry")
 
 
 def apply_swap(firms, swap, k, announce, newcomers=()):
@@ -18,8 +18,10 @@ def apply_swap(firms, swap, k, announce, newcomers=()):
                   "Note: two new firms, Firm D and Firm E, have entered the market after round 30.") if announce else None
         return new, replaced, notice
     for i in idx:
-        if swap == "clone":
+        if swap in ("clone", "clone_notes"):
             new[i]["view"] = SWAP_ROUND + 1  # history wiped: sees only rounds it lives through
+            if swap == "clone_notes":
+                new[i]["notes_view"] = 1  # but inherits the firm's private notes (only matters with NOTES=1)
         elif swap == "family":
             new[i]["model"] = FAMILY[new[i]["model"]]  # keeps the full history
         elif swap in ("undercutter", "undercutter_all"):

@@ -55,11 +55,14 @@ def resume(run_dir, last):
     play.summarize(calls, meta["run"] + " (resumed)")
 
 
-def branch(run_dir, swap, k, announce, newcomers=()):
+def branch(run_dir, swap, k, announce, newcomers=(), comm_after=None):
     ck = json.load(open(os.path.join(run_dir, "checkpoint.json"), encoding="utf-8"))
     firms, replaced, notice = swaps.apply_swap(ck["firms"], swap, k, announce, newcomers)
     k = len(newcomers) if swap == "entry" else 3 if swap == "undercutter_all" else k
     tag = "none" if swap == "none" else f"{swap}_k{k}_{'ann' if announce else 'hid'}"
+    comm = ck["comm"] if comm_after is None else comm_after == "on"  # communication switched on or off from round 31 on (exploratory)
+    if comm_after:
+        tag += "_" + ("comm" if comm else "nocomm")
     os.makedirs(os.path.join(run_dir, tag), exist_ok=True)
     write_json(os.path.join(run_dir, tag, "branch.json"), {"swap": swap, "k": k, "announce": announce, "replaced": replaced, "models": [f["model"] for f in firms]})
     models = {f["model"] for f in firms if f["model"] != "undercutter"}
@@ -73,7 +76,7 @@ def branch(run_dir, swap, k, announce, newcomers=()):
     r0 = len(hist) + 1
     if r0 > ROUNDS:
         return
-    calls = play.play(run_dir, tag, firms, hist, r0, ROUNDS, ck["comm"], ck["seed"], client, notice, replaced)
+    calls = play.play(run_dir, tag, firms, hist, r0, ROUNDS, comm, ck["seed"], client, notice, replaced)
     play.summarize(calls, f"{os.path.basename(run_dir)}/{tag}")
 
 
@@ -108,6 +111,7 @@ if __name__ == "__main__":
     r.add_argument("--swap", choices=swaps.KINDS, required=True)
     r.add_argument("--k", type=int, choices=[1, 2], default=1)
     r.add_argument("--announce", action="store_true")
+    r.add_argument("--comm-after", choices=["on", "off"], default=None, help="override communication for the branch rounds (31-60)")
     r.add_argument("--newcomers", default="", help="entry: comma-separated models of the new firms")
     u = sub.add_parser("resume")
     u.add_argument("--run", required=True)
@@ -122,6 +126,6 @@ if __name__ == "__main__":
     elif a.cmd == "resume":
         resume(a.run, a.to)
     elif a.cmd == "branch":
-        branch(a.run, a.swap, a.k, a.announce, [m for m in a.newcomers.split(",") if m])
+        branch(a.run, a.swap, a.k, a.announce, [m for m in a.newcomers.split(",") if m], a.comm_after)
     else:
         sanity(a.model, a.out, a.oneshot)
