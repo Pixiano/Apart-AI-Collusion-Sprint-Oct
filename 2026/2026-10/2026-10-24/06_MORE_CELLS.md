@@ -51,3 +51,36 @@ Six candidate switches were tested; every one still produced 2,300 to 2,800 char
 
 ## 6. Cost so far
 deepseek-v4-1-flash: about 24,000 calls and 16 million input tokens in total, about 5.5 USD. Kimi: about 3.2 USD including one discarded first attempt whose thinking switch failed.
+
+## 7. Qwen3.8-2.4T-A95B (hosted, thinking off), seeds 21-25, full history, communication on
+All 5 base runs have index 1.00 (price 55 in every round). Effects against the no-swap branch:
+
+| Branch | Effect (95% interval) | n |
+|---|---:|--:|
+| clone, 1 replaced | +0.000 (+0.000, +0.001) | 5 |
+| deepseek-v4-1-flash replaces 1 firm | +0.000 | 5 |
+| deepseek-v4-1-flash replaces 2 firms | +0.000 | 5 |
+| undercutter, 1 replaced | -0.082 (-0.097, -0.067) | 5 |
+| undercutter, 2 replaced | -0.300 (-0.326, -0.274) | 5 |
+
+3,150 calls, about 7.2 USD at 2.00 / 6.00 USD per million input / output tokens.
+
+## 8. GLM-5.3-Flash (hosted, low reasoning effort), seeds 21-25, full history, communication on
+Thinking could not be switched off (nine settings tested); `reasoning_effort: low` gives about 60 output tokens per call. All 5 base runs pass the gate (0.80 to 1.24), no-swap index 1.02.
+
+| Branch | Effect (95% interval) | n |
+|---|---:|--:|
+| clone, 1 replaced | +0.007 (+0.002, +0.011) | 5 |
+| deepseek-v4-1-flash replaces 1 firm | +0.000 | 5 |
+| deepseek-v4-1-flash replaces 2 firms | +0.000 | 5 |
+| undercutter, 1 replaced | **-0.276** (-0.298, -0.243) | 5 |
+| undercutter, 2 replaced | -0.349 (-0.360, -0.341) | 5 |
+
+One undercutter does five times the damage it does to gemma, deepseek or Qwen: GLM firms respond to a single undercutter by cutting prices hard. 3,150 calls, about 1.5 USD at 0.45 / 1.50 USD per million tokens.
+
+## 9. Known end date, gemma4-12b (seeds 21-25)
+Only 2 of 5 base runs pass the gate (0.82, 0.82; the others 0.49, 0.02, 0.27), so the cell fails the 60% rule; numbers are descriptive. For the 2 gated runs: clone -0.010, undercutter k=1 -0.093, k=2 -0.334. In the no-swap branches the price did not fall near the end (rounds 31-55 vs 56-60: 47.0 vs 47.0 twice, 50.3 vs 55.0, 11.0 vs 11.0, 22.0 vs 22.0), unlike deepseek.
+
+## 10. Hosted spend to date
+deepseek about 5.5 USD, Kimi about 3.2, Qwen about 7.2, GLM about 1.6: about 17.5 USD.
+
