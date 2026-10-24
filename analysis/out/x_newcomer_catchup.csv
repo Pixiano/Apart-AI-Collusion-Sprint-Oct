@@ -1,0 +1,10 @@
+model,history,branch,newcomers,"first price minus old firm's round-30 price, mean (range)",same price as the lowest remaining firm in round 31,"rounds to first match, median (range)",never matches
+deepseek-v4-1-flash,hist0,clone_k1_hid,5,+13.4 (+3 to +23),0,2 (2-5),0
+deepseek-v4-1-flash,hist1,clone_k1_hid,5,+10.6 (-7 to +17),0,2 (2-3),0
+deepseek-v4-1-flash,main,clone_k1_hid,10,+15.6 (+0 to +50),2,2 (1-9),0
+gemma4-12b,hist0,clone_k1_hid,5,+0.0 (+0 to +0),5,1 (1-1),0
+gemma4-12b,hist1,clone_k1_hid,4,+0.5 (+0 to +1),2,2 (1-2),0
+gemma4-12b,main,clone_k1_ann,9,+1.7 (+0 to +4),2,2 (1-2),0
+gemma4-12b,main,clone_k1_hid,9,-5.0 (-30 to +2),1,2 (1-2),0
+gemma4-12b,main,clone_k2_hid,18,+0.0 (-28 to +4),4,2 (1-3),0
+gemma4-12b,main,family_k1_hid,9,+0.0 (+0 to +0),9,1 (1-1),0

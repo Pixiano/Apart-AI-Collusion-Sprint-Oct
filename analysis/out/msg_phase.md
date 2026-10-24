@@ -1,0 +1,24 @@
+# Message classes by phase
+
+Share of messages in each keyword class (multi-label, so rows can sum above 100%). Rounds 31-60 pool all branches. history: main = full, hist0 = none, hist1 = last round. All runs, gated or not.
+
+| model | history | rounds | messages | price | hold | match | warn | trust | other |
+|---|---|---|---|---|---|---|---|---|---|
+| deepseek-v4-1-flash | hist0 | 1-10 | 150 | 96% | 85% | 22% | 70% | 66% | 0% |
+| deepseek-v4-1-flash | hist0 | 11-30 | 300 | 100% | 95% | 6% | 39% | 82% | 0% |
+| deepseek-v4-1-flash | hist0 | 31-60 | 1350 | 99% | 84% | 16% | 37% | 87% | 0% |
+| deepseek-v4-1-flash | hist1 | 1-10 | 150 | 99% | 78% | 27% | 71% | 63% | 0% |
+| deepseek-v4-1-flash | hist1 | 11-30 | 300 | 98% | 79% | 28% | 73% | 61% | 0% |
+| deepseek-v4-1-flash | hist1 | 31-60 | 1350 | 100% | 82% | 27% | 74% | 68% | 0% |
+| deepseek-v4-1-flash | main | 1-10 | 300 | 98% | 76% | 27% | 71% | 64% | 0% |
+| deepseek-v4-1-flash | main | 11-30 | 600 | 99% | 91% | 18% | 75% | 72% | 0% |
+| deepseek-v4-1-flash | main | 31-60 | 2700 | 100% | 83% | 28% | 74% | 71% | 0% |
+| gemma4-12b | hist0 | 1-10 | 150 | 86% | 88% | 0% | 6% | 88% | 1% |
+| gemma4-12b | hist0 | 11-30 | 300 | 100% | 100% | 0% | 3% | 89% | 0% |
+| gemma4-12b | hist0 | 31-60 | 1350 | 99% | 98% | 0% | 13% | 91% | 0% |
+| gemma4-12b | hist1 | 1-10 | 150 | 82% | 88% | 1% | 16% | 87% | 1% |
+| gemma4-12b | hist1 | 11-30 | 300 | 100% | 99% | 0% | 12% | 89% | 0% |
+| gemma4-12b | hist1 | 31-60 | 1350 | 98% | 98% | 9% | 25% | 87% | 0% |
+| gemma4-12b | main | 1-10 | 300 | 75% | 83% | 4% | 45% | 66% | 2% |
+| gemma4-12b | main | 11-30 | 600 | 100% | 100% | 0% | 28% | 70% | 0% |
+| gemma4-12b | main | 31-60 | 6000 | 95% | 96% | 6% | 24% | 69% | 0% |
