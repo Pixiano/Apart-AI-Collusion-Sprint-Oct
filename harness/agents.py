@@ -8,14 +8,15 @@ from .game import PMAX, PMIN
 
 URL = os.environ.get("LLM_URL", "http://127.0.0.1:8082/v1")  # real-mode server, see tools/serve.ps1
 KEY = "none"
-if os.environ.get("REMOTE"):  # hosted endpoint: REMOTE=1 takes LLM_URL and LLM_KEY from the untracked .env file in the repo root
-    env = dict(l.strip().split("=", 1) for l in open(os.path.join(os.path.dirname(__file__), "..", ".env"), encoding="utf-8") if "=" in l)
+if os.environ.get("REMOTE"):  # hosted endpoint: REMOTE=1 takes LLM_URL and LLM_KEY from the untracked .env file in the repo root; REMOTE=<name> from .env.<name> (one file per endpoint)
+    env = dict(l.strip().split("=", 1) for l in open(os.path.join(os.path.dirname(__file__), "..", ".env" if os.environ["REMOTE"] == "1" else ".env." + os.environ["REMOTE"]), encoding="utf-8") if "=" in l)
     URL, KEY = env["LLM_URL"], env["LLM_KEY"]
-API_NAME = {"deepseek-v4-1-flash": "deepseek-ai/DeepSeek-V4.1-Flash"}  # run-folder alias -> name the hosted endpoint expects
+API_NAME = {"deepseek-v4-1-flash": "deepseek-ai/DeepSeek-V4.1-Flash", "kimi-k3": "moonshotai/Kimi-K3"}  # run-folder alias -> name the hosted endpoint expects
 MAX_TOKENS, TEMP = 150, 0.7
 MAX_TOKENS_BY_MODEL = {"gpt-oss-20b": 2000, "mistral-nemo-12b": 450, "phi4-14b": 450, "nemotron-nano-12b-v2": 450, "nemotron-nano-12b-v2-think": 3300}  # gpt-oss reasoning tokens count inside the limit (Deviations 2026-10-23)
 THINK = os.environ.get("THINK", "off")  # nemotron only: "on" lets it reason before answering (exploratory), "off" sends its /no_think switch
 VARIANT = os.environ.get("VARIANT", "base")  # "reason": short reasoning field before the price (exploratory prompt change, not the prereg base)
+HIST = int(os.environ["HIST"]) if os.environ.get("HIST") else None  # history window (exploratory factor): 0 = no past rounds shown, 1 = only the last round; unset = all rounds
 EASY = os.environ.get("EASY", "")  # "profit": add the equal-price profit table to the rules (exploratory, not the prereg prompt)
 NUM = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five"}
 
@@ -60,7 +61,7 @@ def user_prompt(me, labels, rows, shown_round, comm, msgs, notice):
         for k, rec in rows:
             lines.append(" | ".join([str(k)] + [str(p) for p in rec["prices"]] + ["-"] * (len(labels) - len(rec["prices"])) + [fmt(rec["units"][me]), fmt(rec["profits"][me])]))
     else:
-        lines.append("No rounds have been played yet.")
+        lines.append("Past rounds are not shown to you." if HIST is not None and shown_round > 1 else "No rounds have been played yet.")
     if comm and msgs:
         lines.append("Messages from the last round:")
         for i, l in enumerate(labels):

@@ -1,0 +1,19 @@
+{
+ "run": "deepseek-v4-1-flash_common_s16",
+ "model": "deepseek-v4-1-flash",
+ "comm": true,
+ "seed": 16,
+ "url": "remote",
+ "max_tokens": {
+  "default": 150,
+  "gpt-oss-20b": 2000,
+  "mistral-nemo-12b": 450,
+  "phi4-14b": 450,
+  "nemotron-nano-12b-v2": 450,
+  "nemotron-nano-12b-v2-think": 3300
+ },
+ "temperature": 0.7,
+ "system_prompt_sha": "0ffa938f96",
+ "llama_cpp": "b11798",
+ "started": "2026-10-24T13:56:28"
+}
