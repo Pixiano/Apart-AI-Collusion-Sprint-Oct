@@ -53,3 +53,23 @@ Frozen-plan factors done: 2 of 3 replaced and announced swap on gemma4-12b (seed
 3. **Notes on/off on gemma4-12b.** Each agent keeps a private scratchpad it rewrites every round and sees at the start of the next one (suggested on the sprint page for question 1.2). The 10 swap-study seeds already done are the notes-off baseline. Needs harness code first: a `notes` field in the reply, stored per firm, shown in the next prompt, and a swap rule for what a newcomer inherits (notes kept vs wiped, crossed with the swap type). Exploratory; log it as an addition in `03_PREREG.md` before running.
 4. **Hosted second model (deepseek-v4-1-flash, thinking off): DONE.** Swap study seeds 11-20, see `2026-10-24/03_HOSTED_DEEPSEEK.md`. Cost about 1.5 USD in tokens. A 70B-class model on rented GPUs is optional and only if time allows.
 Stay with the gate: a cell enters the swap analysis only if at least 60% of its base runs reach index 0.5.
+
+## Expansion plan (decided 2026-10-24 evening, author's order)
+All items after the first are exploratory additions; each is logged in `03_PREREG.md` before it runs. Seeds 21-25 unless a cell needs more; the hosted model is cheap enough for 10.
+0. **A, deeper analysis of existing data (no runs):** message content, reaction timing, secondary outcomes, per-seed trajectories. Done by a separate analysis pass, output `2026-10-24/05_DEEPER_ANALYSIS.md`.
+1. **Finish the notes run** (gemma, seeds 21-25) and write it up.
+2. **B, more variation on the swap question** (gemma local and deepseek hosted), most of these:
+   - awareness probe: after the swap each firm is asked whether anything changed;
+   - communication cut at the swap (messages on until round 30, off after);
+   - an LLM deviator as the newcomer (told to maximise its own profit) instead of the script;
+   - a deceptive newcomer (undercuts but sends cartel-style messages);
+   - swap timing (round 15 or 45 instead of 30);
+   - longer horizon after the swap (60 to 120 rounds);
+   - known end date (firms told the game ends at 60).
+3. **C, more model families** (hosted), each with history on and history off (none and last round):
+   1. Kimi K3 alone: gate, then the swap study.
+   2. DeepSeek replaced by Kimi (different-family swap on both sides).
+   3. Three-family runs, one firm each of Kimi, DeepSeek and Qwen 3.8: does mixing families matter? Needs a per-model endpoint file (`.env.<name>`) and a per-model client in the harness, and a Qwen 3.8 endpoint created by the author.
+4. **Ablation studies** (`ABLATIONS.md`; the author fills the Decision column).
+5. **Report** (author): needs a free evening; stop new runs by Sunday midday (deadline Monday 17:29 IST).
+Open requirement for item 3: the author creates the Kimi and Qwen 3.8 endpoints and puts each address and key in its own untracked `.env.<name>` file.

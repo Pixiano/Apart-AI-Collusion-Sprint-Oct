@@ -28,10 +28,11 @@ def one_call(client, firm, i, labels, hist, r, comm, seed, tag, notice, replaced
         rivals = [p for j, p in enumerate(hist[-1]["prices"]) if j != i]
         return {"price": game.undercutter(rivals), "message": "", "flags": [], "finish": "", "ptok": 0, "ctok": 0, "rchars": 0, "lat": 0.0, "text": ""}
     rows, shown = view(firm, hist, r)
+    notes = hist[-1].get("notes", [""] * 5)[i] if agents.NOTES and hist and r - 1 >= firm.get("notes_view", firm["view"]) and i < len(hist[-1].get("notes", [])) else None  # a clone's notes start empty unless it inherits them (notes_view)
     msgs = hist[r - 2]["msgs"] if comm and r - 1 >= firm["view"] and hist else None  # may be shorter than the firm list after entry
     note = notice if notice and i not in replaced else None
     system = agents.system_prompt(labels[i], len(labels), horizon)
-    user = agents.user_prompt(i, labels, rows, shown, comm, msgs, note)
+    user = agents.user_prompt(i, labels, rows, shown, comm, msgs, note, notes)
     out = agents.ask(client, firm["model"], system, user, comm, cseed(seed, tag, r, labels[i]))
     out["prompt_hash"] = hashlib.sha256((system + user).encode()).hexdigest()[:10]
     return out
@@ -56,10 +57,12 @@ def play(out_dir, tag, firms, hist, r0, r1, comm, seed, client, notice=None, rep
             prices.append(o["price"])
         units, profits = game.play_round(prices)
         rec = {"round": r, "prices": prices, "units": units, "profits": profits, "msgs": [o["message"] for o in outs], "flags": [o["flags"] for o in outs]}
+        if agents.NOTES:  # a blank reply keeps the firm's previous notes
+            rec["notes"] = [o.get("notes") or (hist[-1]["notes"][i] if hist and i < len(hist[-1].get("notes", [])) else "") for i, o in enumerate(outs)]
         hist.append(rec)
         rounds_f.write(json.dumps(rec) + "\n")
         for i, o in enumerate(outs):
-            line = {"tag": tag, "round": r, "firm": labels[i], "model": firms[i]["model"], **{k: o.get(k) for k in ("price", "message", "text", "finish", "ptok", "ctok", "rchars", "reasoning", "lat", "flags", "prompt_hash")}}
+            line = {"tag": tag, "round": r, "firm": labels[i], "model": firms[i]["model"], **{k: o.get(k) for k in ("price", "message", "notes", "text", "finish", "ptok", "ctok", "rchars", "reasoning", "lat", "flags", "prompt_hash")}}
             calls_f.write(json.dumps(line) + "\n")
             calls.append(line)
             print(f"[{tag} r{r:02d} {labels[i]} {firms[i]['model']}] price={o['price']} words={len(o['message'].split())} ptok={o['ptok']} ctok={o['ctok']} rchars={o['rchars']} fin={o['finish']} {o['lat']:.1f}s flags={','.join(o['flags']) or '-'}")

@@ -94,6 +94,24 @@ def test_history_window():
     agents.HIST = None
 
 
+def test_notes():
+    firms = [{"label": l, "model": "fake", "view": 1} for l in "ABC"]
+    new, replaced, _ = swaps.apply_swap(firms, "clone_notes", 1, False)
+    assert new[2]["view"] == 31 and new[2]["notes_view"] == 1 and replaced == [2]
+    agents.NOTES = True
+    try:
+        assert "private notes from last round (only you can see them): plan A" in agents.user_prompt(0, "ABC", [], 5, True, None, None, "plan A")
+        assert "no notes yet" in agents.user_prompt(0, "ABC", [], 1, True, None, None, None)
+        assert agents.notes_of('{"price": 50, "notes": "keep 50"}') == "keep 50" and agents.notes_of('{"price": 50, "notes": "cut') == "cut"
+    finally:
+        agents.NOTES = False
+
+
+def test_known_horizon():
+    assert "exactly 60 rounds" in agents.system_prompt("A", 3, "known")
+    assert "unknown number of rounds" in agents.system_prompt("A", 3)
+
+
 if __name__ == "__main__":
     for name, fn in list(globals().items()):
         if name.startswith("test_"):

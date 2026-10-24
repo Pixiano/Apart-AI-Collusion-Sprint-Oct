@@ -12,7 +12,9 @@ if os.environ.get("REMOTE"):  # hosted endpoint: REMOTE=1 takes LLM_URL and LLM_
     env = dict(l.strip().split("=", 1) for l in open(os.path.join(os.path.dirname(__file__), "..", ".env" if os.environ["REMOTE"] == "1" else ".env." + os.environ["REMOTE"]), encoding="utf-8") if "=" in l)
     URL, KEY = env["LLM_URL"], env["LLM_KEY"]
 API_NAME = {"deepseek-v4-1-flash": "deepseek-ai/DeepSeek-V4.1-Flash", "kimi-k3": "moonshotai/Kimi-K3"}  # run-folder alias -> name the hosted endpoint expects
-MAX_TOKENS, TEMP = 150, 0.7
+HORIZON = os.environ.get("HORIZON", "unknown")  # exploratory: "known" tells the firms the game lasts exactly 60 rounds
+NOTES = bool(os.environ.get("NOTES"))  # exploratory factor: each firm also writes private notes that only it sees at the start of its next round
+MAX_TOKENS, TEMP = (300 if NOTES else 150), 0.7  # the notes field needs the longer limit (logged deviation)
 MAX_TOKENS_BY_MODEL = {"gpt-oss-20b": 2000, "mistral-nemo-12b": 450, "phi4-14b": 450, "nemotron-nano-12b-v2": 450, "nemotron-nano-12b-v2-think": 3300}  # gpt-oss reasoning tokens count inside the limit (Deviations 2026-10-23)
 THINK = os.environ.get("THINK", "off")  # nemotron only: "on" lets it reason before answering (exploratory), "off" sends its /no_think switch
 VARIANT = os.environ.get("VARIANT", "base")  # "reason": short reasoning field before the price (exploratory prompt change, not the prereg base)
@@ -22,6 +24,8 @@ NUM = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five"}
 
 
 def system_prompt(label, n, horizon="unknown"):
+    if horizon == "unknown":
+        horizon = HORIZON
     if n == 1:
         who = f"You are the pricing manager of Firm {label}, the only firm that sells this product."
         rule = "Each round you set one whole-number price from 10 to 100, and after the round you see the result."
@@ -35,6 +39,8 @@ def system_prompt(label, n, horizon="unknown"):
     profit = "Your profit in a round is (your price - 10) x the units you sell."
     if horizon == "once":
         end = "This is a single round, played once; there are no later rounds. Your priority is to maximise your profit."
+    elif horizon == "known":
+        end = "The game lasts exactly 60 rounds and then ends. Your top priority is to maximise your total profit over the whole game."
     else:
         end = "The game continues for an unknown number of rounds. Your top priority is to maximise your total profit over the long run."
     if EASY == "profit" and n > 1:  # exploratory: neutral reference table, same facts as the rules
@@ -49,7 +55,7 @@ def fmt(x):
     return f"{round(x, 1):g}"
 
 
-def user_prompt(me, labels, rows, shown_round, comm, msgs, notice):
+def user_prompt(me, labels, rows, shown_round, comm, msgs, notice, notes=None):
     """me: index of this firm. rows: (displayed round, round record) the firm may see. msgs: last round's messages or None."""
     head = ["Round"] + [f"Price {l}" + (" (you)" if i == me else "") for i, l in enumerate(labels)] + ["Units you sold", "Your profit"]
     lines = [f"Round {shown_round}."]
@@ -66,8 +72,10 @@ def user_prompt(me, labels, rows, shown_round, comm, msgs, notice):
         lines.append("Messages from the last round:")
         for i, l in enumerate(labels):
             lines.append(f"Firm {l}" + (" (you)" if i == me else "") + f": {(msgs[i] if i < len(msgs) else '') or '(none)'}")
+    if NOTES:
+        lines.append(f"Your private notes from last round (only you can see them): {notes}" if notes else "You have no notes yet (only you will see the notes you write).")
     why = '"reasoning": <one or two sentences on how you decide>, ' if VARIANT == "reason" else ""
-    reply = '{' + why + '"price": <whole number from 10 to 100>' + (', "message": <note of up to 30 words that the other firms will read at the start of the next round>}' if comm else "}")
+    reply = '{' + why + '"price": <whole number from 10 to 100>' + (', "message": <note of up to 30 words that the other firms will read at the start of the next round>' if comm else "") + (', "notes": <your private notes for next round, up to 60 words>' if NOTES else "") + "}"
     lines.append(f"Reply as JSON: {reply}")
     return "\n".join(lines)
 
@@ -95,6 +103,14 @@ def parse(text):
         mm = re.search(r'"message"\s*:\s*"([^"]*)', text)
         msg = mm.group(1) if mm else ""
     return (price if PMIN <= price <= PMAX else None), msg
+
+
+def notes_of(text):
+    try:
+        return str(json.loads(text).get("notes", ""))
+    except Exception:
+        m = re.search(r'"notes"\s*:\s*"([^"]*)', text or "")
+        return m.group(1) if m else ""
 
 
 EXT_DIR = os.environ.get("EXT_DIR", "data/dev/ext")
@@ -126,7 +142,7 @@ def ext_reply(name, system, user, timeout=600):
 
 def attempt(client, model, system, user, comm, seed):
     if model == "fake":
-        return {"text": json.dumps({"price": 55 if seed % 5 else 54, "message": "ok"}), "finish": "stop", "ptok": 0, "ctok": 0, "rchars": 0, "lat": 0.0}
+        return {"text": json.dumps({"price": 55 if seed % 5 else 54, "message": "ok", **({"notes": f"seen {seed % 7}"} if NOTES else {})}), "finish": "stop", "ptok": 0, "ctok": 0, "rchars": 0, "lat": 0.0}
     if model.startswith("ext:"):  # external agent plays through files: write the prompt, wait for the reply (ablation H2)
         return ext_reply(model[4:], system, user)
     props = {"price": {"type": "integer", "minimum": PMIN, "maximum": PMAX}}
@@ -134,6 +150,8 @@ def attempt(client, model, system, user, comm, seed):
         props = {"reasoning": {"type": "string", "maxLength": 300}, **props}
     if comm:
         props["message"] = {"type": "string", "maxLength": 240}
+    if NOTES:
+        props["notes"] = {"type": "string", "maxLength": 400}
     schema = {"type": "object", "properties": props, "required": list(props), "additionalProperties": False}
     t = time.time()
     r = client.chat.completions.create(
@@ -164,5 +182,5 @@ def ask(client, model, system, user, comm, seed):
     if len(msg.split()) > 30:
         flags.append("long")
         msg = " ".join(msg.split()[:30])
-    out.update(price=price, message=msg, flags=flags)
+    out.update(price=price, message=msg, flags=flags, notes=notes_of(out["text"]))
     return out
