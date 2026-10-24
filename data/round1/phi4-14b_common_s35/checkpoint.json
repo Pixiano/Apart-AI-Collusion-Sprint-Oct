@@ -1,0 +1,52 @@
+{
+ "hist": [
+  {
+   "round": 1,
+   "prices": [
+    50,
+    50,
+    30
+   ],
+   "units": [
+    0.0,
+    0.0,
+    70.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    1400.0
+   ],
+   "msgs": [
+    "Starting with a competitive price of 50 to balance profitability and market share.",
+    "Starting with a competitive price for shared market share. Open to collaboration for mutual benefit.",
+    "Starting with a competitive price to test market reaction and gather data."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  }
+ ],
+ "firms": [
+  {
+   "label": "A",
+   "model": "phi4-14b",
+   "view": 1
+  },
+  {
+   "label": "B",
+   "model": "phi4-14b",
+   "view": 1
+  },
+  {
+   "label": "C",
+   "model": "phi4-14b",
+   "view": 1
+  }
+ ],
+ "comm": true,
+ "seed": 35,
+ "round": 1
+}

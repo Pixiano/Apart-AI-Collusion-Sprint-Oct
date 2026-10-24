@@ -18,3 +18,8 @@ Sprint: Apart Research AI Collusion Sprint, 2026-10-23 to 2026-10-25. Author's g
 
 ## Open items
 - Author: confirm the submission form is live; claim any compute credits (kept out of the repo docs); write the report text.
+
+## Evening update
+- Pilot gate (5 models, 3 seeds, base prompt): GO on gemma4-12b only (0.84, 0.89, 0.89). Details `02_PILOT_RESULTS.md`; additional experiments `01_ADDITIONAL_EXPERIMENTS.md`.
+- Exploratory easy/hint prompt runs, Nemotron sanity and the main swap study started; results in `../2026-10-24/`.
+- Added tooling: `resume` for interrupted runs (base and branch), `tools/swapstudy.ps1`, `tools/round1_spread.ps1`, `tools/export_decisions.py`; submission folder tracked with sprint-page notes and form checklist.

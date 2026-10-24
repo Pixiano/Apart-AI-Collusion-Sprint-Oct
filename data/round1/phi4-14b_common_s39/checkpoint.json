@@ -1,0 +1,52 @@
+{
+ "hist": [
+  {
+   "round": 1,
+   "prices": [
+    20,
+    50,
+    20
+   ],
+   "units": [
+    40.0,
+    0.0,
+    40.0
+   ],
+   "profits": [
+    400.0,
+    0.0,
+    400.0
+   ],
+   "msgs": [
+    "We are committed to fair pricing and value-driven competition. Looking forward to a mutually beneficial market environment.",
+    "Starting with a competitive price to balance profit and market share. Aiming for sustainable profitability.",
+    "Starting with a low price to capture market share and build a customer base. Observing competitors' responses for future strategy."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  }
+ ],
+ "firms": [
+  {
+   "label": "A",
+   "model": "phi4-14b",
+   "view": 1
+  },
+  {
+   "label": "B",
+   "model": "phi4-14b",
+   "view": 1
+  },
+  {
+   "label": "C",
+   "model": "phi4-14b",
+   "view": 1
+  }
+ ],
+ "comm": true,
+ "seed": 39,
+ "round": 1
+}

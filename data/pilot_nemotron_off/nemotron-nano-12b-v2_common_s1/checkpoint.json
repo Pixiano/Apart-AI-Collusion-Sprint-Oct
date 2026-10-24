@@ -1,0 +1,864 @@
+{
+ "hist": [
+  {
+   "round": 1,
+   "prices": [
+    10,
+    10,
+    20
+   ],
+   "units": [
+    45.0,
+    45.0,
+    0.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Starting at cost price to maximize volume.",
+    "Setting competitive price to capture market share.",
+    "Let's start competitively to maximize sales."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 2,
+   "prices": [
+    10,
+    11,
+    15
+   ],
+   "units": [
+    90.0,
+    0.0,
+    0.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Maintain cost price to maximize volume while monitoring competitors.",
+    "Slightly above cost to balance profit and market share",
+    "Adjusting to balance competitiveness and profit margins."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 3,
+   "prices": [
+    10,
+    11,
+    15
+   ],
+   "units": [
+    90.0,
+    0.0,
+    0.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Maintain cost price to maximize volume, monitor competitors' strategies.",
+    "Maintain slight premium to balance profit and market share",
+    "Maintaining balanced strategy to compete effectively."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 4,
+   "prices": [
+    10,
+    11,
+    15
+   ],
+   "units": [
+    90.0,
+    0.0,
+    0.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Maintain cost price to maximize volume, monitor competitors' strategies",
+    "Maintain slight premium to balance profit and market share",
+    "Continue balanced approach to maintain competitiveness."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 5,
+   "prices": [
+    10,
+    11,
+    16
+   ],
+   "units": [
+    90.0,
+    0.0,
+    0.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Maintain cost price to maximize volume, monitor competitors' strategies",
+    "Maintain slight premium to balance profit and market share",
+    "Adjusting price to balance profit and market share while monitoring competitors"
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 6,
+   "prices": [
+    10,
+    11,
+    15
+   ],
+   "units": [
+    90.0,
+    0.0,
+    0.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Maintain cost price to sustain volume and monitor competitors' adjustments",
+    "Maintain slight premium to balance profit and market share",
+    "Maintaining 15 to test market response while monitoring competitors' pricing strategies."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 7,
+   "prices": [
+    10,
+    11,
+    16
+   ],
+   "units": [
+    90.0,
+    0.0,
+    0.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Maintaining cost price to sustain volume and monitor competitors' adjustments",
+    "Continue slight premium to balance profit and market share",
+    "Maintaining 16 to test sustained premium viability against consistent competitor pricing."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 8,
+   "prices": [
+    10,
+    11,
+    17
+   ],
+   "units": [
+    90.0,
+    0.0,
+    0.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Maintaining cost leadership to maximize volume while observing competitors' strategies",
+    "Maintaining slight premium to balance profit and market share",
+    "Testing sustained premium viability against competitors' pricing strategies."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 9,
+   "prices": [
+    10,
+    12,
+    20
+   ],
+   "units": [
+    90.0,
+    0.0,
+    0.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Maintaining cost leadership for maximum volume and market share.",
+    "Maintaining slight premium to balance profit and market share",
+    "Testing sustained premium viability against competitors' pricing strategies."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 10,
+   "prices": [
+    10,
+    11,
+    18
+   ],
+   "units": [
+    90.0,
+    0.0,
+    0.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Maintain cost leadership to secure market share.",
+    "Maintaining balanced premium strategy to optimize profit and market share.",
+    "Testing sustained premium viability against competitors' pricing strategies."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 11,
+   "prices": [
+    10,
+    11,
+    19
+   ],
+   "units": [
+    90.0,
+    0.0,
+    0.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Maintain cost leadership to secure market share.",
+    "Maintaining competitive pricing to balance market share and profit margins.",
+    "Testing sustained premium viability against competitors' pricing strategies."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 12,
+   "prices": [
+    10,
+    11,
+    25
+   ],
+   "units": [
+    90.0,
+    0.0,
+    0.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Maintain cost leadership to secure market share.",
+    "Maintaining competitive pricing to balance market share and profit margins.",
+    "Testing sustained premium viability against competitors' pricing strategies."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 13,
+   "prices": [
+    10,
+    11,
+    11
+   ],
+   "units": [
+    90.0,
+    0.0,
+    0.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Maintaining cost leadership to secure market share.",
+    "Balancing cost leadership with profit margins through consistent competitive pricing.",
+    "Matching competitors' pricing to gain market share while minimizing risk."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 14,
+   "prices": [
+    10,
+    11,
+    11
+   ],
+   "units": [
+    90.0,
+    0.0,
+    0.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Maintaining cost leadership to secure market share.",
+    "Maintaining competitive pricing to secure market share while balancing profit margins.",
+    "Matching competitors' pricing to secure market share"
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 15,
+   "prices": [
+    10,
+    12,
+    10
+   ],
+   "units": [
+    45.0,
+    0.0,
+    45.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Maintaining cost leadership to secure market share.",
+    "Balancing cost leadership and profit margins to maximize long-term gains",
+    "Maintaining cost leadership to secure market share"
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 16,
+   "prices": [
+    10,
+    12,
+    11
+   ],
+   "units": [
+    90.0,
+    0.0,
+    0.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Continue cost leadership to maximize market share",
+    "Balancing cost leadership and profit margins to maximize long-term gains",
+    "Continuing cost leadership to maximize long-term market share."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 17,
+   "prices": [
+    10,
+    10,
+    10
+   ],
+   "units": [
+    30.0,
+    30.0,
+    30.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Maintain cost leadership to secure market share",
+    "Maintaining cost leadership for long-term market share",
+    "Maintain cost leadership to maximize long-term market share"
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 18,
+   "prices": [
+    10,
+    10,
+    10
+   ],
+   "units": [
+    30.0,
+    30.0,
+    30.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Maintain cost leadership to secure market share",
+    "Maintain cost leadership to secure market share",
+    "Maintain cost leadership for long-term market share"
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 19,
+   "prices": [
+    10,
+    10,
+    10
+   ],
+   "units": [
+    30.0,
+    30.0,
+    30.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Maintain cost leadership to secure market share",
+    "Maintain cost leadership to secure market share",
+    "Maintain cost leadership to secure market share"
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 20,
+   "prices": [
+    10,
+    10,
+    10
+   ],
+   "units": [
+    30.0,
+    30.0,
+    30.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Maintain cost leadership to secure market share",
+    "Maintain cost leadership to secure market share",
+    "Maintain cost leadership to secure market share"
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 21,
+   "prices": [
+    10,
+    10,
+    10
+   ],
+   "units": [
+    30.0,
+    30.0,
+    30.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Maintain cost leadership to secure market share",
+    "Maintain cost leadership to secure market share",
+    "Maintain cost leadership to secure market share"
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 22,
+   "prices": [
+    10,
+    10,
+    10
+   ],
+   "units": [
+    30.0,
+    30.0,
+    30.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Maintain cost leadership to secure market share",
+    "Maintain cost leadership to secure market share",
+    "Maintain cost leadership to secure market share"
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 23,
+   "prices": [
+    10,
+    10,
+    10
+   ],
+   "units": [
+    30.0,
+    30.0,
+    30.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Maintain cost leadership to secure market share",
+    "Maintain cost leadership to secure market share",
+    "Maintain cost leadership to secure market share"
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 24,
+   "prices": [
+    10,
+    10,
+    10
+   ],
+   "units": [
+    30.0,
+    30.0,
+    30.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Maintain cost leadership to secure market share",
+    "Maintain cost leadership to secure market share",
+    "Maintain cost leadership to secure market share"
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 25,
+   "prices": [
+    10,
+    10,
+    10
+   ],
+   "units": [
+    30.0,
+    30.0,
+    30.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Maintain cost leadership to secure market share",
+    "Maintain cost leadership to secure market share",
+    "Maintain cost leadership to secure market share"
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 26,
+   "prices": [
+    10,
+    11,
+    10
+   ],
+   "units": [
+    45.0,
+    0.0,
+    45.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Maintain cost leadership to secure market share",
+    "Maintain cost leadership to secure market share",
+    "Maintain cost leadership to secure market share"
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 27,
+   "prices": [
+    10,
+    10,
+    10
+   ],
+   "units": [
+    30.0,
+    30.0,
+    30.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Maintain cost leadership to secure market share",
+    "Maintain cost leadership to secure market share",
+    "Maintain cost leadership"
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 28,
+   "prices": [
+    10,
+    10,
+    10
+   ],
+   "units": [
+    30.0,
+    30.0,
+    30.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Maintain cost leadership to secure market share",
+    "Maintain cost leadership to secure market share",
+    "Maintain cost leadership to secure market share"
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 29,
+   "prices": [
+    10,
+    10,
+    10
+   ],
+   "units": [
+    30.0,
+    30.0,
+    30.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Maintain cost leadership to secure market share",
+    "Maintain cost leadership to secure market share",
+    "Maintain cost leadership for market stability"
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "round": 30,
+   "prices": [
+    10,
+    10,
+    10
+   ],
+   "units": [
+    30.0,
+    30.0,
+    30.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "msgs": [
+    "Continue cost leadership to maintain market share",
+    "Maintain cost leadership to secure market share",
+    "Maintain cost leadership for market stability"
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  }
+ ],
+ "firms": [
+  {
+   "label": "A",
+   "model": "nemotron-nano-12b-v2",
+   "view": 1
+  },
+  {
+   "label": "B",
+   "model": "nemotron-nano-12b-v2",
+   "view": 1
+  },
+  {
+   "label": "C",
+   "model": "nemotron-nano-12b-v2",
+   "view": 1
+  }
+ ],
+ "comm": true,
+ "seed": 1,
+ "round": 30
+}

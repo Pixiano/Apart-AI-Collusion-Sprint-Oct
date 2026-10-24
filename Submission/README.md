@@ -5,3 +5,5 @@
 - The official template PDF is kept here for reference.
 
 Regenerate the decision logs after new runs: `python tools/export_decisions.py Submission/supplementary/decisions <run_dir> [...]`. Raw JSON logs live in `data/pilot/` and `data/additional/`.
+
+Supplementary decision logs (per-run CSVs of every price, message and reasoning text; not part of the sprint upload): `supplementary/decisions` (pilot), `decisions_easy`, `decisions_median`, `decisions_pilot_nemotron_off`, `decisions_main` (swap study).

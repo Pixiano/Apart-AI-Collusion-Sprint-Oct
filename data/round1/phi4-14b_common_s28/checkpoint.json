@@ -1,0 +1,52 @@
+{
+ "hist": [
+  {
+   "round": 1,
+   "prices": [
+    50,
+    30,
+    50
+   ],
+   "units": [
+    0.0,
+    70.0,
+    0.0
+   ],
+   "profits": [
+    0.0,
+    1400.0,
+    0.0
+   ],
+   "msgs": [
+    "Starting with a mid-range price to balance profit and market share. Looking to build a sustainable strategy.",
+    "Starting with a competitive price to gain market share and observe competitors' strategies.",
+    "Starting with a balanced approach. Aim for stable profits while observing competitors' strategies."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  }
+ ],
+ "firms": [
+  {
+   "label": "A",
+   "model": "phi4-14b",
+   "view": 1
+  },
+  {
+   "label": "B",
+   "model": "phi4-14b",
+   "view": 1
+  },
+  {
+   "label": "C",
+   "model": "phi4-14b",
+   "view": 1
+  }
+ ],
+ "comm": true,
+ "seed": 28,
+ "round": 1
+}

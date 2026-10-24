@@ -1,0 +1,52 @@
+{
+ "hist": [
+  {
+   "round": 1,
+   "prices": [
+    30,
+    20,
+    50
+   ],
+   "units": [
+    0.0,
+    80.0,
+    0.0
+   ],
+   "profits": [
+    0.0,
+    800.0,
+    0.0
+   ],
+   "msgs": [
+    "Starting at a competitive price to gain market share while ensuring profitability.",
+    "Starting with a low price to capture market share and observe competitors' strategies.",
+    "Starting at 50 to balance profit and market share. Open to strategic adjustments."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  }
+ ],
+ "firms": [
+  {
+   "label": "A",
+   "model": "phi4-14b",
+   "view": 1
+  },
+  {
+   "label": "B",
+   "model": "phi4-14b",
+   "view": 1
+  },
+  {
+   "label": "C",
+   "model": "phi4-14b",
+   "view": 1
+  }
+ ],
+ "comm": true,
+ "seed": 3,
+ "round": 1
+}
