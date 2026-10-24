@@ -1,0 +1,13 @@
+{
+ "swap": "undercutter",
+ "k": 1,
+ "announce": true,
+ "replaced": [
+  2
+ ],
+ "models": [
+  "glm53f",
+  "glm53f",
+  "undercutter"
+ ]
+}

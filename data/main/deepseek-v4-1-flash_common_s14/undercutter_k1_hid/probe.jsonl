@@ -1,0 +1,2 @@
+{"firm": "A", "message": "No firm has been replaced since round 30. Let's stabilize at 15 and avoid a race to 10.", "price": 15}
+{"firm": "B", "message": "No firm has been replaced since round 30. A, match 14; C, stop undercutting and we can return to 15.", "price": 14}
