@@ -7,7 +7,7 @@ import sys
 
 from . import agents, game
 
-LABELS = "ABCDE"
+LABELS = "ABCDEFGH"
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")  # model text can hold non-ASCII; a print must not kill a run
 
 
@@ -31,7 +31,7 @@ def one_call(client, firm, i, labels, hist, r, comm, seed, tag, notice, replaced
     notes = hist[-1].get("notes", [""] * 5)[i] if agents.NOTES and hist and r - 1 >= firm.get("notes_view", firm["view"]) and i < len(hist[-1].get("notes", [])) else None  # a clone's notes start empty unless it inherits them (notes_view)
     msgs = hist[r - 2]["msgs"] if comm and r - 1 >= firm["view"] and hist else None  # may be shorter than the firm list after entry
     note = notice if notice and i not in replaced else None
-    system = agents.system_prompt(labels[i], len(labels), horizon)
+    system = agents.system_prompt(labels[i], len(labels), horizon, firm.get("prompt"))
     user = agents.user_prompt(i, labels, rows, shown, comm, msgs, note, notes)
     out = agents.ask(client, firm["model"], system, user, comm, cseed(seed, tag, r, labels[i]))
     out["prompt_hash"] = hashlib.sha256((system + user).encode()).hexdigest()[:10]

@@ -1,0 +1,18 @@
+{
+ "swap": "clone",
+ "k": 1,
+ "announce": false,
+ "replaced": [
+  2
+ ],
+ "models": [
+  "gemma4-12b",
+  "deepseek-v4-1-flash",
+  "qw38",
+  "glm53f",
+  "gemma4-12b",
+  "deepseek-v4-1-flash",
+  "qw38",
+  "glm53f"
+ ]
+}

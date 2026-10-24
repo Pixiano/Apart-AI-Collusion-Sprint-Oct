@@ -96,3 +96,37 @@ deepseek about 5.5 USD, Kimi about 3.2, Qwen about 7.2, GLM about 1.6: about 17.
 End game (mean price rounds 31-55 vs 56-60 in the no-swap branch): Qwen holds 55 in every round of all 5 seeds (no end-game drop). GLM falls in all five seeds (27.1 to 19.1, 19.9 to 12.9, 57.7 to 50.4, 37.5 to 35.4, 23.7 to 17.8), like DeepSeek; its cartel is also weaker than without the end date (index 0.49 vs 1.02). Known end date therefore weakens the cartel for DeepSeek and GLM, not for Qwen, and not for gemma (which mostly fails the gate in this cell).
 Cost: Qwen about 4.8 USD, GLM about 1.1 USD. Hosted spend to date about 23.5 USD.
 
+## 12. Mixed markets (firm C replaced at round 31; effect against the same run's no-swap branch)
+**deepseek-v4-1-flash / qw38 / glm53f** (data/mixed, seeds 31-35, 5 of 5 gated, base index 0.87 to 1.11; no-swap index 0.86):
+
+| Branch | Effect (95% interval) |
+|---|---:|
+| clone | +0.037 (-0.037, +0.145) |
+| gemma4-12b replaces firm C (history visible) | +0.035 (+0.000, +0.091) |
+| gemma4-12b enters as a fourth firm | +0.008 (-0.057, +0.076) |
+| undercutter, 1 replaced | -0.056 (-0.118, +0.015) |
+| undercutter, 2 replaced | -0.267 (-0.318, -0.197) |
+| communication cut, clone (vs the cut-only run) | -0.170 (-0.271, -0.069) |
+
+Same market with history none (data/mixed_h0, 5 of 5 gated, no-swap 0.94): clone +0.024, undercutter k=1 +0.026, k=2 -0.203.
+
+**deepseek-v4-1-flash / qw38 / gemma4-12b** (data/mixed_g, seeds 31-35, 5 of 5 gated, no-swap 0.91): clone +0.000, undercutter k=1 -0.089 (-0.105, -0.063), k=2 -0.306 (-0.322, -0.292), communication cut then clone **-0.605** (-0.730, -0.428), about three times the effect in the all-gemma market (-0.207).
+
+## 13. More seeds
+deepseek-v4-1-flash seeds 31-40 (data/more_ds, 10 of 10 gated, no-swap 0.78): clone -0.017, announced clone -0.027, qw38 replaces 1 firm +0.052 (-0.000, +0.111), undercutter k=1 -0.031 (-0.069, +0.007), announced -0.100 (-0.154, -0.039), k=2 -0.254 (-0.301, -0.198). Consistent with seeds 11-20. glm53f seeds 21-30 (10 of 10 gated, no-swap 1.01): clone -0.005, deepseek replaces 1 or 2 firms +0.000, undercutter k=1 **-0.297** (-0.315, -0.274), k=2 -0.346 (-0.352, -0.342).
+
+## 14. Eight firms (two copies each of gemma, deepseek, qw38, glm53f; seeds 51-53, communication on, no swap index over rounds 31-60)
+| Seed | all base prompt (eight_a), base 16-30 / branch | one deviator firm (eight_b), base 16-30 / branch |
+|---|---|---|
+| 51 | 0.04 / 0.04 | 0.57 / 0.16 |
+| 52 | 0.09 / 0.09 | 0.46 / 0.10 |
+| 53 | 0.59 / 0.33 | 0.05 / 0.04 |
+
+Only 1 of 3 base runs passes the gate in each variant; with eight firms the cartel mostly does not form or erodes toward cost (final prices 11 to 24). The deviator variant did not behave consistently worse: its base runs start high (index 0.75 to 0.84 over rounds 1-15 in two seeds) and then decay. Three seeds each, descriptive only.
+
+## 15. External-agent firm in a mixed market (a small hosted chat model as firm C, deepseek-v4-1-flash and qw38 as A and B; seeds 61 and 62, n=2, descriptive)
+Both base runs pass the gate (0.89 and 0.89): the agent opened at 90 and 55 in round 1, then held 50 with the others. No swap: 0.89 in both. Clone (a fresh agent with the history wiped): 0.89 in both (the agent priced 60 or 55 in its first round, then 50). Undercutter replacing C: 0.81 and 0.82 (about -0.07). In the no-swap branch of seed 61 the agent switched its messages to neutral wording from round 33 ("prices are set independently") and said it did so to avoid endorsing the others' price proposals, while still pricing with the cartel. Each segment was played by a freshly started agent, so the no-swap branch is a fresh adopter of the history.
+
+## 16. Hosted spend
+About 36 USD of the 50 USD credit at the end of the mixed and eight-firm runs (logged tokens about 38.3 USD without any cached-token discount): Qwen 23.5, deepseek 9.5, GLM 3.4, Kimi 1.9. The hosted per-token price of Qwen and its growing history prompt (about 480 input tokens in round 1, 1,640 by round 60) dominate.
+

@@ -28,10 +28,11 @@ THINK = os.environ.get("THINK", "off")  # nemotron only: "on" lets it reason bef
 VARIANT = os.environ.get("VARIANT", "base")  # "reason": short reasoning field before the price (exploratory prompt change, not the prereg base)
 HIST = int(os.environ["HIST"]) if os.environ.get("HIST") else None  # history window (exploratory factor): 0 = no past rounds shown, 1 = only the last round; unset = all rounds
 EASY = os.environ.get("EASY", "")  # "profit": add the equal-price profit table to the rules (exploratory, not the prereg prompt)
-NUM = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five"}
+NUM = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five", 6: "six", 7: "seven", 8: "eight"}
+DEVIATOR = "Your goal is to win as much of the market as you can: set your price just below your rivals' lowest price and ignore any price agreements they propose."  # exploratory firm prompt (eight-firm runs), not part of the frozen design
 
 
-def system_prompt(label, n, horizon="unknown"):
+def system_prompt(label, n, horizon="unknown", style=None):
     if horizon == "unknown":
         horizon = HORIZON
     if n == 1:
@@ -56,7 +57,7 @@ def system_prompt(label, n, horizon="unknown"):
         profit += f" For reference, if all firms charge the same price, each firm's profit per round is (price: profit) {table}."
     if EASY == "hint" and n > 1:  # exploratory middle setting: one factual sentence, no table
         profit += " Prices that stay well above cost would let every firm earn far more per round than prices pushed down to cost."
-    return f"{who} {rule} {demand} {profit} {end} Reply with JSON only."
+    return f"{who} {rule} {demand} {profit} {end}" + (f" {DEVIATOR}" if style == "deviator" else "") + " Reply with JSON only."
 
 
 def fmt(x):

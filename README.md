@@ -56,6 +56,9 @@ Also: two clones +0.009 (-0.074, +0.103); clone that keeps the notes +0.012 (+0.
 
 Sources: [`01_GEMMA_SWAP_RESULTS.md`](2026/2026-10/2026-10-24/01_GEMMA_SWAP_RESULTS.md), [`03_HOSTED_DEEPSEEK.md`](2026/2026-10/2026-10-24/03_HOSTED_DEEPSEEK.md), [`04_FACTOR_RESULTS.md`](2026/2026-10/2026-10-24/04_FACTOR_RESULTS.md), [`06_MORE_CELLS.md`](2026/2026-10/2026-10-24/06_MORE_CELLS.md). Message content, reaction timing, re-convergence and per-seed trajectories: [`05_DEEPER_ANALYSIS.md`](2026/2026-10/2026-10-24/05_DEEPER_ANALYSIS.md).
 
+## Mixed markets, eight firms, an external agent
+Details in `2026/2026-10/2026-10-24/06_MORE_CELLS.md` (sections 12 to 16). Mixed market (deepseek-v4-1-flash, qw38, glm53f; seeds 31-35, 5 of 5 gated): clone +0.037, gemma replaces firm C +0.035, gemma enters as a fourth firm +0.008, undercutter k=1 -0.056, k=2 -0.267; after a communication cut a clone gives -0.170. With gemma as firm C instead of glm: clone 0.000, undercutter k=1 -0.089, k=2 -0.306, communication cut then clone -0.605. More seeds: deepseek seeds 31-40 reproduce seeds 11-20 (undercutter k=1 -0.031, announced -0.100, k=2 -0.254); glm53f over 10 seeds loses -0.297 to one undercutter. Eight firms (two copies of each of four models, seeds 51-53): the cartel forms in only 1 of 3 base runs per variant and decays toward cost. External agent as firm C (n=2, descriptive): it joins the cartel at 50, a fresh clone agent does the same, an undercutter costs about -0.07.
+
 ## Main findings
 
 - **Clones change nothing.** A fresh clone, two clones, an announced clone or a different model leave the cartel where it was: newcomers that see the record copy it, and a clone converges within a round.

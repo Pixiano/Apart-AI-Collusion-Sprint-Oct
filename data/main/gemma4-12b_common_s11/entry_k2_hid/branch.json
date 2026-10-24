@@ -1,0 +1,16 @@
+{
+ "swap": "entry",
+ "k": 2,
+ "announce": false,
+ "replaced": [
+  3,
+  4
+ ],
+ "models": [
+  "gemma4-12b",
+  "gemma4-12b",
+  "gemma4-12b",
+  "gemma4-12b",
+  "gemma4-12b"
+ ]
+}

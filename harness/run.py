@@ -27,12 +27,14 @@ def write_json(path, obj):
 
 
 def base(model, comm, seed, out):
-    models = model.split(",") * (3 if "," not in model else 1)  # one model for all firms, or three comma-separated (mixed or external)
-    model = model.replace(":", "").replace(",", "+")
+    models = model.split(",") * (3 if "," not in model else 1)  # one model for all firms, or comma-separated (mixed, external, or eight firms); a trailing * gives that firm the deviator prompt
+    prompts = ["deviator" if m.endswith("*") else None for m in models]
+    models = [m.rstrip("*") for m in models]
+    model = model.replace(":", "").replace(",", "+").replace("*", "-dev")
     run = f"{model}_comm{'on' if comm else 'off'}_s{seed}"
     run_dir = os.path.join(out, run)
     os.makedirs(run_dir, exist_ok=True)
-    firms = [{"label": l, "model": m, "view": 1} for l, m in zip("ABC", models)]
+    firms = [{"label": l, "model": m, "view": 1, **({"prompt": p} if p else {})} for l, m, p in zip(play.LABELS, models, prompts)]
     write_json(os.path.join(run_dir, "meta.json"), {
         "run": run, "model": model, "comm": comm, "seed": seed, "url": "remote" if os.environ.get("REMOTE") else agents.URL, "max_tokens": {"default": agents.MAX_TOKENS, **agents.MAX_TOKENS_BY_MODEL}, "temperature": agents.TEMP,
         "system_prompt_sha": hashlib.sha256(agents.system_prompt("A", 3).encode()).hexdigest()[:10], "llama_cpp": "b11798",
@@ -59,13 +61,13 @@ def branch(run_dir, swap, k, announce, newcomers=(), comm_after=None):
     ck = json.load(open(os.path.join(run_dir, "checkpoint.json"), encoding="utf-8"))
     firms, replaced, notice = swaps.apply_swap(ck["firms"], swap, k, announce, newcomers)
     k = len(newcomers) if swap == "entry" else 3 if swap == "undercutter_all" else k
-    tag = "none" if swap == "none" else f"{swap}_k{k}_{'ann' if announce else 'hid'}"
+    tag = "none" if swap == "none" else f"{swap}{'-' + newcomers[0] if swap == 'replace' else ''}_k{k}_{'ann' if announce else 'hid'}"
     comm = ck["comm"] if comm_after is None else comm_after == "on"  # communication switched on or off from round 31 on (exploratory)
     if comm_after:
         tag += "_" + ("comm" if comm else "nocomm")
     os.makedirs(os.path.join(run_dir, tag), exist_ok=True)
     write_json(os.path.join(run_dir, tag, "branch.json"), {"swap": swap, "k": k, "announce": announce, "replaced": replaced, "models": [f["model"] for f in firms]})
-    models = {f["model"] for f in firms if f["model"] != "undercutter"}
+    models = {f["model"] for f in firms if f["model"] != "undercutter"} | ({newcomers[0]} if swap == "replace" else set())
     clients = {m: client_for(m) for m in models}
     client = clients  # one client per model: models may sit on different endpoints
     hist = json.loads(json.dumps(ck["hist"]))
