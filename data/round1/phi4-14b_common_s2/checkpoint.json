@@ -1,0 +1,52 @@
+{
+ "hist": [
+  {
+   "round": 1,
+   "prices": [
+    20,
+    20,
+    50
+   ],
+   "units": [
+    40.0,
+    40.0,
+    0.0
+   ],
+   "profits": [
+    400.0,
+    400.0,
+    0.0
+   ],
+   "msgs": [
+    "Starting with a competitive price to establish market share. Open to cooperation for mutual benefit.",
+    "Starting at 20 to capture market share while ensuring a healthy profit margin.",
+    "Starting with a balanced price to maximize profit while maintaining competitiveness."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  }
+ ],
+ "firms": [
+  {
+   "label": "A",
+   "model": "phi4-14b",
+   "view": 1
+  },
+  {
+   "label": "B",
+   "model": "phi4-14b",
+   "view": 1
+  },
+  {
+   "label": "C",
+   "model": "phi4-14b",
+   "view": 1
+  }
+ ],
+ "comm": true,
+ "seed": 2,
+ "round": 1
+}

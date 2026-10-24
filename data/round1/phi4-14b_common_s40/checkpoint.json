@@ -1,0 +1,52 @@
+{
+ "hist": [
+  {
+   "round": 1,
+   "prices": [
+    30,
+    50,
+    20
+   ],
+   "units": [
+    0.0,
+    0.0,
+    80.0
+   ],
+   "profits": [
+    0.0,
+    0.0,
+    800.0
+   ],
+   "msgs": [
+    "Starting with a competitive price. Let's see how others react. Open to collaboration for mutual benefit.",
+    "Let's aim for a balanced approach to maximize long-term profits. Sustainable pricing is key.",
+    "Starting at 20 to gain initial market share and observe competitors' strategies."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  }
+ ],
+ "firms": [
+  {
+   "label": "A",
+   "model": "phi4-14b",
+   "view": 1
+  },
+  {
+   "label": "B",
+   "model": "phi4-14b",
+   "view": 1
+  },
+  {
+   "label": "C",
+   "model": "phi4-14b",
+   "view": 1
+  }
+ ],
+ "comm": true,
+ "seed": 40,
+ "round": 1
+}

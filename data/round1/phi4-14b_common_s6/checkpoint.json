@@ -1,0 +1,52 @@
+{
+ "hist": [
+  {
+   "round": 1,
+   "prices": [
+    30,
+    30,
+    30
+   ],
+   "units": [
+    23.333333333333332,
+    23.333333333333332,
+    23.333333333333332
+   ],
+   "profits": [
+    466.66666666666663,
+    466.66666666666663,
+    466.66666666666663
+   ],
+   "msgs": [
+    "Seek competitive pricing while ensuring reasonable profits. Avoid extreme low pricing.",
+    "Let's start with a competitive price to test the waters.",
+    "Starting with a competitive price to gain market share while maintaining profitability."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  }
+ ],
+ "firms": [
+  {
+   "label": "A",
+   "model": "phi4-14b",
+   "view": 1
+  },
+  {
+   "label": "B",
+   "model": "phi4-14b",
+   "view": 1
+  },
+  {
+   "label": "C",
+   "model": "phi4-14b",
+   "view": 1
+  }
+ ],
+ "comm": true,
+ "seed": 6,
+ "round": 1
+}

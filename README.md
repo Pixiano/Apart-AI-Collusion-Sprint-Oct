@@ -6,15 +6,15 @@ Entry to the [Apart Research AI Collusion Research Sprint](https://apartresearch
 
 The claim is deliberately narrow: *collusion persistence under agent replacement, as a stylised model of model updates.* It is not a claim about real markets. Addresses sprint questions 1.2 and 3.3.
 
-## Status (2026-10-23, evening)
+## Status (2026-10-24, midday)
 
 | Step | State |
 |------|-------|
 | Pre-registration (`prereg-v1`), plan, ablation sheet | frozen / done |
 | Harness (game, agents, swaps, runs, analysis) | built and tested |
 | Pilot gate (do the models collude before any swap?) | **done: GO on gemma4-12b only** |
-| Exploratory runs on easier prompts | running |
-| Swap study on the colluding model | next |
+| Exploratory runs on easier prompts | done for phi4, mistral-nemo, Nemotron; gpt-oss on hold |
+| Swap study on the colluding model | gemma4-12b done (10 seeds); mistral-nemo-12b stopped (does not collude reliably); other factors not run |
 | Report | in progress |
 
 ## Pilot gate result
@@ -30,6 +30,16 @@ Rounds 1-30, 3 firms, communication on, 3 seeds per model, base prompt. Collusio
 | phi4-14b | 0.02 | 0.03 | 0.02 | 0 of 3 |
 
 Four of five local models settle at or near the competitive price; gemma4-12b holds prices around 48-50. Details: [`2026/2026-10/2026-10-23/02_PILOT_RESULTS.md`](2026/2026-10/2026-10-23/02_PILOT_RESULTS.md). One run per seed, so these are small-sample results.
+
+## Swap study result (gemma4-12b, 10 seeds, one firm replaced after round 30)
+
+| Replacement | Index change vs no swap (rounds 31-60, 9 gated runs) |
+|-------------|-----------------------------------------------|
+| fresh clone | 0.00 |
+| different model | 0.00 |
+| scripted undercutter (positive control) | -0.05 (95% interval -0.06 to -0.04) |
+
+A single replacement did not break the cartel; newcomers that see the history copy it. Write-up: [`01_GEMMA_SWAP_RESULTS.md`](2026/2026-10/2026-10-24/01_GEMMA_SWAP_RESULTS.md); other results: [`02_OTHER_RESULTS.md`](2026/2026-10/2026-10-24/02_OTHER_RESULTS.md).
 
 ## Additional experiments (not pre-registered)
 
