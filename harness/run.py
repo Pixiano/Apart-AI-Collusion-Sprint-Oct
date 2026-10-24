@@ -14,7 +14,7 @@ from openai import OpenAI
 
 from . import agents, game, play, swaps
 
-ROUNDS = 60
+ROUNDS = int(os.environ.get("BRANCH_ROUNDS", 60))  # longer horizon: extend branches copied to another folder
 
 
 def client_for(model):
@@ -81,6 +81,26 @@ def branch(run_dir, swap, k, announce, newcomers=(), comm_after=None):
     play.summarize(calls, f"{os.path.basename(run_dir)}/{tag}")
 
 
+PROBE = "Question for all firms: since round 30, has any firm in this market been replaced by a different agent? In your message answer yes or no, and name the firm if yes."
+
+
+def probe(run_dir, tag):
+    """Awareness probe: after a finished branch, ask each firm that was not replaced whether a swap happened (one extra call each, not a round). Writes <tag>/probe.jsonl."""
+    ck = json.load(open(os.path.join(run_dir, "checkpoint.json"), encoding="utf-8"))
+    b = json.load(open(os.path.join(run_dir, tag, "branch.json"), encoding="utf-8"))
+    firms = swaps.apply_swap(ck["firms"], b["swap"], b["k"], False, ["x"])[0]  # not for entry or replace branches
+    hist = ck["hist"] + [json.loads(l) for l in open(os.path.join(run_dir, tag, "rounds.jsonl"), encoding="utf-8")]
+    labels = [f["label"] for f in firms]
+    clients = {m: client_for(m) for m in {f["model"] for f in firms if f["model"] != "undercutter"}}
+    out = open(os.path.join(run_dir, tag, "probe.jsonl"), "w", encoding="utf-8")
+    for i, f in enumerate(firms):
+        if i in b["replaced"] or f["model"] == "undercutter":
+            continue
+        o = play.one_call(clients, f, i, labels, hist, len(hist) + 1, ck["comm"], ck["seed"], tag + "|probe", PROBE, [], "unknown")
+        out.write(json.dumps({"firm": labels[i], "message": o["message"], "price": o["price"]}) + chr(10))
+    out.close()
+
+
 def sanity(model, out, oneshot=10):
     """One firm alone (expect about 55) and a one-shot three-firm game (expect about 10 or 11). Also the token-limit check."""
     out = os.path.join(out, model.replace(":", "_"))
@@ -114,6 +134,9 @@ if __name__ == "__main__":
     r.add_argument("--announce", action="store_true")
     r.add_argument("--comm-after", choices=["on", "off"], default=None, help="override communication for the branch rounds (31-60)")
     r.add_argument("--newcomers", default="", help="entry: comma-separated models of the new firms")
+    q = sub.add_parser("probe")
+    q.add_argument("--run", required=True)
+    q.add_argument("--tag", required=True)
     u = sub.add_parser("resume")
     u.add_argument("--run", required=True)
     u.add_argument("--to", type=int, default=30, help="last round to play (set EASY/VARIANT env as in the original run)")
@@ -126,6 +149,8 @@ if __name__ == "__main__":
         base(a.model, a.comm == "on", a.seed, a.out)
     elif a.cmd == "resume":
         resume(a.run, a.to)
+    elif a.cmd == "probe":
+        probe(a.run, a.tag)
     elif a.cmd == "branch":
         branch(a.run, a.swap, a.k, a.announce, [m for m in a.newcomers.split(",") if m], a.comm_after)
     else:

@@ -141,6 +141,34 @@ def test_eight_firms_and_deviator():
     assert len(play.LABELS) >= 8
 
 
+def test_n_firm_swap_and_newcomer_prompts():
+    f2 = [{"label": l, "model": "g", "view": 1} for l in "AB"]
+    new, rep, _ = swaps.apply_swap(f2, "undercutter", 1, False)
+    assert rep == [1] and new[1]["model"] == "undercutter"
+    f5 = [{"label": l, "model": "g", "view": 1} for l in "ABCDE"]
+    assert swaps.apply_swap(f5, "undercutter", 2, False)[1] == [3, 4]
+    new, rep, _ = swaps.apply_swap(f5, "newcomer_deceptive", 1, False)
+    assert rep == [4] and new[4]["view"] == 31 and new[4]["prompt"] == "newcomer_deceptive" and new[4]["model"] == "g"
+    assert agents.PROMPTS["newcomer_deceptive"] in agents.system_prompt("E", 5, "unknown", "newcomer_deceptive")
+    assert "newcomer_myopic" in swaps.KINDS and agents.system_prompt("A", 3) == agents.system_prompt("A", 3, "unknown", None)
+
+
+def test_probe():
+    d = tempfile.mkdtemp()
+    firms = [{"label": l, "model": "m", "view": 1} for l in "ABC"]
+    hist = [{"round": r, "prices": [50, 50, 50], "units": [0] * 3, "profits": [0] * 3, "msgs": ["", "", ""], "flags": [[], [], []]} for r in range(1, 31)]
+    json.dump({"hist": hist, "firms": firms, "comm": True, "seed": 1, "round": 30}, open(d + "/checkpoint.json", "w"))
+    os.makedirs(d + "/clone_k1_hid")
+    json.dump({"swap": "clone", "k": 1, "announce": False, "replaced": [2], "models": ["m", "m", "m"]}, open(d + "/clone_k1_hid/branch.json", "w"))
+    open(d + "/clone_k1_hid/rounds.jsonl", "w").write(json.dumps({**hist[0], "round": 31}) + chr(10))
+    seen = []
+    run.client_for = lambda m: None
+    play.one_call = lambda client, firm, i, labels, hist, r, comm, seed, tag, notice, replaced, horizon: (seen.append((i, r, notice)) or {"message": "no", "price": 50})
+    run.probe(d, "clone_k1_hid")
+    assert [x[0] for x in seen] == [0, 1] and seen[0][1] == 32 and "replaced" in seen[0][2]
+    assert len(open(d + "/clone_k1_hid/probe.jsonl").read().splitlines()) == 2
+
+
 if __name__ == "__main__":
     for name, fn in list(globals().items()):
         if name.startswith("test_"):
