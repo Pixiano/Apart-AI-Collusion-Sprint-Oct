@@ -1,0 +1,34 @@
+# Re-convergence time after the swap
+
+Pre-swap level = base CI over rounds 16-30. A run 're-converges' at the first round r >= 31 whose 3-round mean CI (r..r+2) is within 0.1 of that level; time = r - 30, so 1 means it never left the band. Censored = never within the band by rounds 58-60. Note the no-swap control is in the table: its drift away from the pre-swap level is not caused by any swap. Supplementary (not preregistered): 'drop' = first r whose 3-round mean CI is more than 0.1 below the pre-swap level; 'back' = a later 3-round window inside the band again.
+
+| model | history | branch | gated runs | median rounds (re-converged runs) | range | within 0.1 from round 31 | censored (never) | runs that drop below the band (supplementary) | rounds to drop, median (range) | of those, back within the band |
+|---|---|---|---|---|---|---|---|---|---|---|
+| deepseek-v4-1-flash | hist0 | clone_k1_hid | 5 | 1 | 1-1 | 5 | 0 | 0 | n/a | 0 |
+| deepseek-v4-1-flash | hist0 | none | 5 | 1 | 1-1 | 5 | 0 | 1 | 9 (9-9) | 1 |
+| deepseek-v4-1-flash | hist0 | undercutter_k1_hid | 5 | 1 | 1-1 | 5 | 0 | 0 | n/a | 0 |
+| deepseek-v4-1-flash | hist0 | undercutter_k2_hid | 5 | 1 | 1-1 | 5 | 0 | 5 | 6 (4-6) | 1 |
+| deepseek-v4-1-flash | hist1 | clone_k1_hid | 5 | 1 | 1-7 | 4 | 0 | 4 | 4 (1-9) | 1 |
+| deepseek-v4-1-flash | hist1 | none | 5 | 1 | 1-1 | 4 | 1 | 2 | 11 (1-21) | 0 |
+| deepseek-v4-1-flash | hist1 | undercutter_k1_hid | 5 | 1 | 1-1 | 4 | 1 | 5 | 5 (1-9) | 0 |
+| deepseek-v4-1-flash | hist1 | undercutter_k2_hid | 5 | 1 | 1-1 | 3 | 2 | 5 | 3 (1-4) | 0 |
+| deepseek-v4-1-flash | main | clone_k1_hid | 10 | 1 | 1-2 | 9 | 0 | 3 | 4 (2-7) | 0 |
+| deepseek-v4-1-flash | main | none | 10 | 1 | 1-1 | 9 | 1 | 4 | 6 (1-22) | 2 |
+| deepseek-v4-1-flash | main | undercutter_k1_hid | 10 | 1 | 1-1 | 9 | 1 | 6 | 10 (1-23) | 0 |
+| deepseek-v4-1-flash | main | undercutter_k2_hid | 10 | 1 | 1-1 | 9 | 1 | 10 | 4 (1-6) | 0 |
+| gemma4-12b | hist0 | clone_k1_hid | 5 | 1 | 1-1 | 5 | 0 | 0 | n/a | 0 |
+| gemma4-12b | hist0 | none | 5 | 1 | 1-1 | 5 | 0 | 0 | n/a | 0 |
+| gemma4-12b | hist0 | undercutter_k1_hid | 5 | 1 | 1-1 | 5 | 0 | 0 | n/a | 0 |
+| gemma4-12b | hist0 | undercutter_k2_hid | 5 | 1 | 1-1 | 5 | 0 | 5 | 6 (6-6) | 0 |
+| gemma4-12b | hist1 | clone_k1_hid | 4 | 1 | 1-1 | 4 | 0 | 0 | n/a | 0 |
+| gemma4-12b | hist1 | none | 4 | 1 | 1-1 | 4 | 0 | 0 | n/a | 0 |
+| gemma4-12b | hist1 | undercutter_k1_hid | 4 | 1 | 1-1 | 4 | 0 | 0 | n/a | 0 |
+| gemma4-12b | hist1 | undercutter_k2_hid | 4 | 1 | 1-1 | 4 | 0 | 4 | 4 (4-4) | 0 |
+| gemma4-12b | main | clone_k1_ann | 9 | 1 | 1-1 | 9 | 0 | 0 | n/a | 0 |
+| gemma4-12b | main | clone_k1_hid | 9 | 1 | 1-1 | 9 | 0 | 0 | n/a | 0 |
+| gemma4-12b | main | clone_k2_hid | 9 | 1 | 1-2 | 8 | 0 | 1 | 1 (1-1) | 1 |
+| gemma4-12b | main | family_k1_hid | 9 | 1 | 1-1 | 9 | 0 | 0 | n/a | 0 |
+| gemma4-12b | main | none | 9 | 1 | 1-1 | 9 | 0 | 0 | n/a | 0 |
+| gemma4-12b | main | undercutter_k1_ann | 9 | 1 | 1-1 | 9 | 0 | 7 | 20 (9-27) | 0 |
+| gemma4-12b | main | undercutter_k1_hid | 9 | 1 | 1-1 | 9 | 0 | 2 | 23 (18-28) | 0 |
+| gemma4-12b | main | undercutter_k2_hid | 9 | 1 | 1-1 | 9 | 0 | 9 | 4 (4-4) | 0 |
