@@ -22,10 +22,11 @@ So the ablations are done except 5 and 6 (cancelled) and 10 (anchor, not done), 
 
 ## B. Other runs
 - glm53f newcomer variants: DONE for 21 of 25 branches (section 23); the credit ran out in seed 25.
-- Gemma main-study seeds 31-40: NOT run (paused; only seed 31 partly done: base, none, clone; family branch unfinished and untracked); not part of any reported count.
+- Gemma main-study seeds 31-40: RUNNING overnight 25-26 Oct (earlier note: paused; only seed 31 partly done: base, none, clone; family branch unfinished and untracked); not part of any reported count.
 - Qwen3.8 factor cells (announced, cut, history, notes, entry, probes, newcomers): NOT run (cost); say so in the report.
 - Round-1 spread test (PLAN.md "Later"): DONE 2026-10-25 (gemma, 50 seeds; section 24 of 06_MORE_CELLS): the seed spread is not from the opening draw.
 - Kimi K3 swap studies: not run (gate only).
+- If time after the gemma seeds 31-40 finish (stop adding runs by about 08:00 on 26 Oct): (1) a second local base model, qwen3-14b with gemma as the other model, to 10 seeds, as a labelled exploratory deviation; (2) swap timing on gemma (swap at round 15 and 45 as well as 30), which needs a small harness switch and a deviation note. Not started.
 - Gemma known end date: only 2 of 5 base runs pass the gate (descriptive).
 
 ## C. Analysis and documents
