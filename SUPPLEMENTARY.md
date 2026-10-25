@@ -41,3 +41,4 @@ On 2026-10-25 four read-only auditors (a leak and privacy check, a number-integr
 |---|---|
 | 2026-10-25 | Repository audit and clean-up; report remade as V2 (V1 archived); data map, requirements and citation file added; README redesigned with figures; this file added. |
 | 2026-10-25 | Gemma runs planned overnight: main-study seeds 31 to 40, plus communication-cut clone, entry (one and two new firms) and the myopic newcomer variant on the same seeds (thin cells found by the coverage check). Results will be added to the results note and this log. |
+| 2026-10-25 | Git history rewritten once to remove material not meant to be public (see the README history note); tags re-created. |

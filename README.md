@@ -261,6 +261,8 @@ Environment switches:
 
 ## Prior work and disclosure
 
+History note (2026-10-25): the git history was rewritten once to remove material that was not meant to be public (a copy of a third-party template, local file paths, and tool and provider names). The files, data and results at each step were not changed otherwise. Commit hashes from before this date differ, and the tags `pre-sprint`, `prereg-v1` and `sprint-start` were re-created on the equivalent commits.
+
 Everything before 2026-10-23 is planning and tooling inventory only, recorded with timestamps in [`01_DISCLOSURE_LOG.md`](2026/2026-10/2026-10-21/01_DISCLOSURE_LOG.md). The git tag `pre-sprint` marks the last commit before the sprint began.
 
 ## Ethics and dual-use
