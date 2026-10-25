@@ -4,7 +4,7 @@ Purpose: show what existed before the sprint (2026-10-23) versus what was built 
 
 ## Pre-sprint (before 2026-10-23)
 - Planning and question selection only (see 02_PLAN.md).
-- Hardware and tooling inventory: local GGUF models already on disk (LM Studio), API keys for hosted endpoint and hosted endpoint.
+- Hardware and tooling inventory: local GGUF models already on disk (LM Studio), API keys for hosted endpoints (unnamed).
 - This documentation folder.
 - No experiment code, no runs, no results, no paper text.
 - Starter code to be used, to be listed here when chosen (unverified names from planning: luciasauer/algorithmic_pricing_llms, andyjliu/llm-agent-collusion).
@@ -37,3 +37,11 @@ Purpose: show what existed before the sprint (2026-10-23) versus what was built 
 | 2026-10-25 | Overnight gap-fill runs, awareness probes, LLM newcomer variants, 120-round horizon, number of firms (2, 4, 5) | Sprint |
 | 2026-10-25 | Parity runs (deepseek temperature, number of firms and horizon; glm53f entry and probe; gemma newcomers) | Sprint |
 | 2026-10-25 | Preliminary report folder `Submission/preliminary_report/` (findings, structure, rough report, audit), figures and pooled results table made from `data/`; README, plan and tools cleanup | Sprint |
+| 2026-10-25 | Afternoon, fun research direction (case studies, not estimates): human games 1 to 5, the author as one firm against gemma4-12b firms through the external-agent file hook (3 firms three times, 5 firms, 10 firms); gemma firms debriefed after games 4 and 5 (`tools/debrief.py`); game 5 stopped by mistake at round 13 and resumed with two firms on an agree-with-the-human prompt (`RESUME_AGREE`, exploratory, game 5 only) | Sprint |
+| 2026-10-25 | Harness extended to up to ten firms (labels and number words); terminal player `tools/play_human.py` | Sprint |
+| 2026-10-25 | Round-1 spread test on gemma4-12b, 50 seeds (147 of 150 opening replies are 50) | Sprint |
+| 2026-10-25 | Gemma entry variants: a qwen3-14b entrant and a scripted-undercutter entrant (seeds 11, 13-16), reported for rounds 31-60 and 46-60 | Sprint |
+| 2026-10-25 | glm53f newcomer variants: 21 of 25 branches finished, the hosted credit ran out in seed 25 and the unfinished branches were deleted | Sprint |
+| 2026-10-25 | Gemma main-study seeds 31-40 attempted and paused after seed 31 (base, none, clone); nothing from it is reported | Sprint |
+| 2026-10-25 | Evening, human suite (fun research direction, case studies): the author as firm C in four information conditions, one game each (normal, no history, no messages, neither) | Sprint |
+| 2026-10-25 | Evening, audit by four read-only reviewers (leaks, numbers, documents, report readiness) and the fixes that followed: official template PDF untracked, provider names unnamed in tracked text, a home path removed, `tools/models.ini` untracked (an example file kept), the external-agent data folders renamed, this log, README, plan and results note refreshed; the report drafts are rebuilt as `Submission/preliminary_report/V2` (V1 kept as the record of the first draft) | Sprint |

@@ -1,7 +1,7 @@
 # Papers (reading list)
 
 PDFs are kept locally only (not committed: copyright). Download from the links below. Text extractions of the PDFs are in `papers/txt/` locally (also not committed).
-Master copy outside the repo: `%USERPROFILE%\VatsalDaPro\Research\AI_Collusion\papers`.
+Master copy: a local folder outside the repo.
 
 Read status (2026-10-23): Shi et al.: main text and appendix C to E tables; Keppo et al.: sections 3 to 7 and appendix B, C, E; Fish et al.: all except the auction results and appendix I; Eschenbaum et al.: sections 3.6, 4.1, 4.2; CoopEval: main text and appendix C, H, J, N.1 to N.2; Aharon et al. and Dietrich et al.: abstract and introduction only. Notes: `2026/2026-10/2026-10-22/02_LITERATURE_NOTES.md` and `04_PAPER_INSIGHTS.md`.
 

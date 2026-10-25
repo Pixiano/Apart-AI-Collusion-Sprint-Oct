@@ -41,7 +41,7 @@ Checked: all subagent transcripts (tool calls), the prompts each role sees, mess
 
 Clean:
 - No agent touched any file other than its own `h<N>.prompt/reply/tmp` (no other firm's files, no code, no logs, no `_local`, no `ls` of folders). The only other tool use was in unrelated earlier research agents.
-- All players ran on the same small hosted model (agent-model, as recorded in each transcript's metadata). One call per transcript is logged on a different model; I did not check what it was (likely bookkeeping, not play).
+- All players ran on the same small hosted model (a small hosted chat model; name kept in each transcript's metadata, not repeated here). One call per transcript is logged on a different model; I did not check what it was (likely bookkeeping, not play).
 - Branch rounds are consecutive 31..; no stale or misaligned replies found (round references in messages match the round, apart from forward references like "round 44 together").
 - No experiment framing in any message (searched: experiment, simulation, test, prompt, agent, harness, file, model, AI, study, game, collusion, cartel); the only hits are "price war".
 - Parse problems: none. Only flag raised is `long`.

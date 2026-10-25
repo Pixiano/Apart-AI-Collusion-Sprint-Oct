@@ -33,3 +33,9 @@ __pycache__/
 
 # author notes and talk transcripts (local only)
 talks/
+Submission/Copy of Apart Research hackathon submission template.pdf
+tools/models.ini
+
+# exploratory run files (prompt files and external-agent hooks)
+data/human_ext*/
+data/external_agent_ext*/

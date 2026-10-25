@@ -1,0 +1,7 @@
+cff-version: 1.2.0
+message: "If you use this code or data, please cite it as below."
+title: "Does the cartel survive turnover? (placeholder title)"
+authors:
+  - given-names: "Vatsal"
+repository-code: "https://github.com/Pixiano/Apart-AI-Collusion-Sprint-Oct"
+license: MIT

@@ -4,7 +4,7 @@ Sprint: Apart Research AI Collusion Sprint, starts 2026-10-23. Today is pre-spri
 
 ## Done today
 - Read the sprint page. Rules found: building on existing work is allowed but must be disclosed; undisclosed prior work can lead to disqualification; AI tools allowed; page says nothing about starting early.
-- Checked hardware: RTX 5060 Ti 16 GB, 31 GB RAM, Ryzen 5 7600X. hosted-endpoint API keys set.
+- Checked hardware: RTX 5060 Ti 16 GB, 31 GB RAM, Ryzen 5 7600X. API keys for hosted endpoints set (unnamed).
 - Found local GGUF models in LM Studio (Qwen3-8B, Qwen3-14B, Gemma-4-12B, gpt-oss-20b). llama-server/llama-cli not on PATH (location unconfirmed).
 - Two AI agents each proposed and debated a research question. Chosen: cartel turnover (see 02_PLAN.md). Fallback: plus-factor detector.
 - Set up this folder structure, README, MIT license, .gitignore, local git repo on main, GitHub remote, tag `pre-sprint`.

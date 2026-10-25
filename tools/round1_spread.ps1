@@ -1,7 +1,7 @@
 # Round-1 spread test: how much does the sampling seed alone change the opening prices? Plays only round 1, N seeds, then prints a price histogram.
 # Set EASY/VARIANT in the environment first to test a non-base prompt. Needs the real-mode server (use when no other run is active).
-# usage: .\tools\round1_spread.ps1 [-Model phi4-14b] [-N 50] [-Out data/round1]
-param([string]$Model = 'phi4-14b', [int]$N = 50, [string]$Out = 'data/round1')
+# usage: .\tools\round1_spread.ps1 [-Model gemma4-12b] [-N 50] [-Out data/round1]
+param([string]$Model = 'gemma4-12b', [int]$N = 50, [string]$Out = 'data/round1')
 Set-Location (Split-Path $PSScriptRoot)
 $py = '.\.venv\Scripts\python.exe'
 $env:ROUNDS = '1'
