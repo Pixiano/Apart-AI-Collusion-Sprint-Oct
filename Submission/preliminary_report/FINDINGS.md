@@ -4,7 +4,7 @@ Source of every number: `2026/2026-10/2026-10-24/` (01 to 06) and the run folder
 
 ## Status of runs when this was written
 Done: swap studies on gemma4-12b, deepseek-v4-1-flash, qw38, glm53f; factor cells on gemma and deepseek; known end date on all four; three mixed markets; eight-firm runs; external-agent firm (n=2); temperature and entry ablations on gemma; more seeds for deepseek and glm53f.
-Running or not yet written up at this time: glm53f factor cells (announced, communication cut, history none and last round, notes, communication off, clone k=2), gemma family k=2, deepseek entry, awareness probe, LLM newcomer variants, gemma 120-round horizon, number of firms. Fill these in `ROUGH_REPORT.md` section 4 when done (`FINDINGS.md` is refreshed once after the last run).
+Finished since: glm53f factor cells, gemma family k=2, deepseek entry, awareness probe (deepseek, gemma), LLM newcomer variants (deepseek, gemma). All overnight runs are finished (refresh 04:55). Not run: gemma main-study seeds 31-40 (held), qw38 factor cells (cost), swap timing (cancelled). Fill these in `ROUGH_REPORT.md` section 4 when done (`FINDINGS.md` is refreshed once after the last run).
 
 ## Headline findings
 1. **Replacing a firm with a fresh copy, a different model or a different family does not break a cartel.** Clone effect is -0.001 (gemma), +0.022 (deepseek), +0.000 (qw38), -0.005 (glm53f, 10 seeds). Newcomers who see the record copy it; a fresh clone converges within a round. A different-family replacement (qwen3-14b for gemma, Qwen for DeepSeek, DeepSeek for Qwen and GLM) is also near zero (-0.00 to +0.06).
@@ -15,6 +15,14 @@ Running or not yet written up at this time: glm53f factor cells (announced, comm
 6. **Group size matters.** Eight firms (two copies each of four models, seeds 51-53): the cartel formed in 1 of 3 base runs per variant and decayed toward cost.
 7. **Mixed markets** (deepseek/qw38/glm53f, seeds 31-35, 5 of 5 gated, no-swap 0.86): clone +0.037, gemma replacing C +0.035, gemma entering as a fourth firm +0.008, undercutter k=1 -0.056, k=2 -0.267, clone after a communication cut -0.170.
 8. **Ablations on gemma (seeds 11, 13, 14):** temperature 0.3 / 0.7 / 1.0 leaves the cartel (index 0.84-0.87) and the clone effect (0.000) unchanged; no temperature trend in the undercutter effect. One new gemma firm entering at round 31 changes nothing; two change it in 1 of 5 seeds (0.87 to 0.43).
+
+## New since the first draft (details: `06_MORE_CELLS.md` section 19)
+9. **glm53f reacts to one undercutter in every condition**, even with no history (-0.062); communication cut then clone -0.325 (gemma -0.207, deepseek -0.222); clone with 2 replaced -0.105; notes make k=2 worse (-0.451).
+10. **LLM newcomers.** deepseek: told not to collude -0.218, myopic -0.135, share -0.052, own price only -0.028, deceptive +0.002 (n=5). gemma: myopic -0.242 (interval -0.664 to -0.027), share -0.049, deceptive -0.017, do not collude -0.022, own price 0.000 (n=3). Only the myopic variant moves gemma; telling deepseek not to collude moves it as much as a scripted undercutter. A deceptive newcomer (agrees in messages, cheats on price) does not hurt either cartel.
+11. **Awareness probe** (each firm not replaced is asked once whether any firm was replaced): deepseek notices an undercutter in 5 of 10, a clone in 1 of 10, a no-swap in 1 of 15; gemma answers no in all 35 cases. Agents notice prices, not identity changes.
+12. **Entry and family:** deepseek entry (1 or 2 new firms) +0.005 / -0.003 (n=5); gemma family k=2 0.000 (n=9).
+13. **Longer horizon** (gemma, seeds 11-15, rounds 31-120): the unperturbed cartel stays frozen at the same price (48 or 49) for all 120 rounds; one undercutter erodes it slowly (index 0.84 to 0.67 in seed 11 and 0.70 in seed 15) and it never recovers; the damage grows after round 60 in 3 of 4 gated seeds, so 30 rounds understates a persistent defector.
+14. **Number of firms** (gemma, seeds 41 and 42): two firms collude at 50 in both; four firms in one seed (47) and not the other (21); five firms in neither seed (20 and 30). One undercutter costs -0.05 to -0.08 where a cartel exists. Same direction as the eight-firm runs: bigger groups rarely form a cartel.
 
 ## Results by model (core cells, full history, hidden swap)
 | Model | Gated runs | Clone | Family | Undercutter k=1 | Undercutter k=2 |

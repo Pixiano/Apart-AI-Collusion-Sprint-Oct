@@ -144,3 +144,29 @@ Full history, hidden swap: clone k=1, family k=1 and undercutter k=1 and k=2 exi
 **gemma4-12b family k=2** (6 of 10 done at writing): 0.000.
 **deepseek LLM newcomer in place of firm C** (history wiped, one instruction variant; seeds 11, 13-16): deceptive +0.002 (-0.077, +0.081), own price only -0.028, share -0.052, myopic **-0.135** (-0.222, -0.047), do-not-collude **-0.218** (-0.450, -0.064). An LLM told not to collude costs about as much as a scripted undercutter; one told to say yes and cheat does not (the cartel reads its words, not its prices, in the next round).
 **Awareness probe, deepseek** (each firm not replaced is asked once, after the branch, whether any firm was replaced since round 30; counted when the reply starts with yes): no swap 1 of 15 (false positive), clone 1 of 10, undercutter 5 of 10. The agents notice the undercutter's price, not the identity change of a clone; a clone goes unnoticed (9 of 10).
+
+## 20. Longer horizon, gemma4-12b (rounds 31-120; seeds 11-15 copied to data/long and extended; communication on, hidden swap)
+Index per 30-round window (no swap / one undercutter replacing firm C):
+
+| Seed | base 16-30 | none 31-60 | 61-90 | 91-120 | undercutter 31-60 | 61-90 | 91-120 |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| 11 | 0.84 | 0.84 | 0.84 | 0.84 | 0.77 | 0.70 | 0.67 |
+| 12 (fails the gate) | 0.22 | 0.22 | 0.22 | 0.22 | 0.17 | 0.18 | 0.15 |
+| 13 | 0.87 | 0.87 | 0.87 | 0.87 | 0.82 | 0.84 | 0.79 |
+| 14 | 0.84 | 0.84 | 0.84 | 0.84 | 0.81 | 0.82 | 0.80 |
+| 15 | 0.84 | 0.84 | 0.84 | 0.84 | 0.81 | 0.75 | 0.70 |
+
+The unperturbed cartel is frozen: the same price (48 or 49 per firm) in every round from 31 to 120. One undercutter erodes it slowly (seed 11: 0.84 to 0.67, seed 15: 0.84 to 0.70) and recovers in none of the runs. The undercutter's damage grows with time in 3 of 4 gated seeds, so the 30-round window understates a persistent defector's effect.
+
+## 21. Number of firms, gemma4-12b (identical firms, seeds 41 and 42, communication on; the last firm replaced by the scripted undercutter at round 31; index over rounds 31-60)
+| Firms | Seed | base 16-30 | no swap | undercutter | effect |
+|---|---|---:|---:|---:|---:|
+| 2 | 41 | 0.89 | 0.89 | 0.84 | -0.052 |
+| 2 | 42 | 0.89 | 0.89 | 0.82 | -0.066 |
+| 3 (main study, seeds 11-20) | | about 0.84 | about 0.85 | | -0.046 |
+| 4 | 41 | 0.82 | 0.82 | 0.74 | -0.084 |
+| 4 | 42 | 0.24 | 0.24 | 0.24 | -0.008 (fails the gate) |
+| 5 | 41 | 0.22 | 0.22 | 0.19 | -0.034 (fails the gate) |
+| 5 | 42 | 0.44 | 0.44 | 0.43 | -0.013 (fails the gate) |
+
+Two firms collude at the shared price 50 in both seeds; at four firms one seed holds 47 and one decays to 21; at five firms neither seed passes the gate (prices settle at 20 and 30). The cartel gets harder to form as the group grows, consistent with the eight-firm runs (section 14). With only two seeds per size, descriptive only. One undercutter among 2 to 4 gated firms costs about -0.05 to -0.08.

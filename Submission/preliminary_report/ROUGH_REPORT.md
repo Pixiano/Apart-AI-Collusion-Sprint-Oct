@@ -37,7 +37,12 @@ Prior work: before 2026-10-23 only planning and tooling (see `01_DISCLOSURE_LOG.
 4.5 Announcing: roughly doubles undercutter damage (gemma -0.075 vs -0.046; DeepSeek -0.098 vs -0.046).
 4.6 Known end date: end-game price drop in DeepSeek and GLM, not in Qwen or gemma.
 4.7 Mixed markets, eight firms, external agent: see FINDINGS.md items 6-7; external agent (n=2) joins the cartel at 50.
-4.8 Ablations: temperature, entry. [Add: GLM factor cells, awareness probe, LLM newcomer variants, 120-round horizon, number of firms, when finished.]
+4.8 Ablations: temperature, entry (deepseek +0.005 and -0.003 for one and two new firms).
+4.9 glm53f factor cells: one undercutter costs it -0.06 to -0.34 in every condition; communication cut then clone -0.325.
+4.10 LLM newcomer variants (deepseek n=5, gemma n=3): told not to collude -0.218 (deepseek) and -0.022 (gemma); myopic -0.135 and -0.242; deceptive +0.002 and -0.017.
+4.11 Awareness probe: deepseek notices an undercutter in 5 of 10 cases, a clone in 1 of 10 (1 of 15 false alarms with no swap); gemma never.
+4.12 Longer horizon (gemma, rounds 31-120): the unperturbed cartel holds the same price for 120 rounds; one undercutter erodes it slowly and the damage keeps growing (0.84 to 0.67 in seed 11).
+4.13 Number of firms (gemma, 2 seeds per size): two firms collude in both seeds, four in one of two, five in neither; one undercutter costs -0.05 to -0.08 where a cartel exists.
 
 ## 5. Discussion and limitations
 Meaning: replacement of a participant does not break an established cartel; defection and loss of messages do. Limits: one game, small models and small samples, a stylised swap, a scripted undercutter, hosted runs ignore the seed, uneven coverage across models, exploratory additions. The result does not show that real pricing agents collude or that model updates are harmless.

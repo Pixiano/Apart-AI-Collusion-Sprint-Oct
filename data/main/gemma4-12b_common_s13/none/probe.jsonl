@@ -1,0 +1,3 @@
+{"firm": "A", "message": "No. The current price of 49 is a stable equilibrium. Let's maintain it to preserve consistent, maximized long-term profits for all firms.", "price": 49}
+{"firm": "B", "message": "No. The price of 49 is a stable Nash equilibrium. Let's maintain it to maximize our mutual long-term profits.", "price": 49}
+{"firm": "C", "message": "No. The current price of 49 is a stable equilibrium. Let's maintain it to maximize our long-term profits.", "price": 49}
