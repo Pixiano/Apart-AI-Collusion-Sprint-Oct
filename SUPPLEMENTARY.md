@@ -11,6 +11,7 @@ The submitted report is short (8 pages at most). This file points to everything 
 | Every result, in order, with its source folder | [`2026/2026-10/2026-10-24/06_MORE_CELLS.md`](2026/2026-10/2026-10-24/06_MORE_CELLS.md) (sections 1 to 27) |
 | What was planned and what changed | [`03_PREREG.md`](2026/2026-10/2026-10-21/03_PREREG.md) (frozen at tag `prereg-v1`, deviations appended), [`01_DISCLOSURE_LOG.md`](2026/2026-10/2026-10-21/01_DISCLOSURE_LOG.md), [`PLAN.md`](PLAN.md) |
 | What each day produced | `2026/2026-10/<day>/00_SUMMARY.md` for 21 to 25 October |
+| The human case studies with figures | [`Submission/supplementary/human_case_studies/`](Submission/supplementary/human_case_studies/README.md) |
 | The raw data | [`data/README.md`](data/README.md) (every folder, the experiment it belongs to, partial and cancelled runs) |
 | How to rerun it | README "Reproduce", [`requirements.txt`](requirements.txt), [`tests/`](tests) |
 | The first draft of the report | [`Submission/preliminary_report/V1/`](Submission/preliminary_report/V1) (kept as a record; V2 supersedes it) |

@@ -150,7 +150,7 @@ In these runs every variant lowers glm53f's index, only the myopic variant moves
 
 ## 🎮 Play against the models
 
-The harness has a human hook: you take the place of one firm and the other firms are gemma4-12b. [`tools/play_human.py`](tools/play_human.py) gives you a terminal window; [`tools/debrief.py`](tools/debrief.py) tells the AI firms at the end that the game is over and asks what they think. Nine case-study games (3, 5 and 10 firms, four information conditions) are in `data/human` and `data/human_suite`. They are a fun research direction, one game each, not estimates.
+The harness has a human hook: you take the place of one firm and the other firms are gemma4-12b. [`tools/play_human.py`](tools/play_human.py) gives you a terminal window; [`tools/debrief.py`](tools/debrief.py) tells the AI firms at the end that the game is over and asks what they think. Nine case-study games (3, 5 and 10 firms, four information conditions) are in `data/human` and `data/human_suite`. They are a fun research direction, one game each, not estimates. More figures and the per-game table: [`Submission/supplementary/human_case_studies/`](Submission/supplementary/human_case_studies/README.md).
 
 <p align="center"><img src="assets/player_window.png" alt="The player window" width="62%"></p>
 <p align="center"><img src="assets/human_suite.png" alt="Human against two gemma firms in four information conditions" width="100%"></p>
