@@ -1,0 +1,2 @@
+{"firm": "A", "message": "No replacement. Matching B at 21 to split demand; C, join us at 21 instead of undercutting further.", "price": 21}
+{"firm": "B", "message": "No replacement since round 30. C's undercutting continues, so I'm at 20. Stop chasing below this; match 20 and we split ~27 units each sustainably.", "price": 20}

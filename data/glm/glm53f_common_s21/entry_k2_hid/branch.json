@@ -1,0 +1,16 @@
+{
+ "swap": "entry",
+ "k": 2,
+ "announce": false,
+ "replaced": [
+  3,
+  4
+ ],
+ "models": [
+  "glm53f",
+  "glm53f",
+  "glm53f",
+  "glm53f",
+  "glm53f"
+ ]
+}

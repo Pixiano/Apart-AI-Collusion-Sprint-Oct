@@ -170,3 +170,12 @@ The unperturbed cartel is frozen: the same price (48 or 49 per firm) in every ro
 | 5 | 42 | 0.44 | 0.44 | 0.43 | -0.013 (fails the gate) |
 
 Two firms collude at the shared price 50 in both seeds; at four firms one seed holds 47 and one decays to 21; at five firms neither seed passes the gate (prices settle at 20 and 30). The cartel gets harder to form as the group grows, consistent with the eight-firm runs (section 14). With only two seeds per size, descriptive only. One undercutter among 2 to 4 gated firms costs about -0.05 to -0.08.
+
+## 22. Parity runs (2026-10-25 midday; credit-limited, logged-cost cap 3.0 USD)
+**gemma4-12b**: newcomer variants now on seeds 11, 13-16 (5 seeds each), like deepseek.
+**glm53f entry** (seeds 21-25): one new firm **-0.151** (-0.301, -0.040), two new firms **-0.138** (-0.191, -0.069). Unlike gemma and deepseek (no effect), glm53f is hurt by newcomers who enter without the history. Undercutter k=2 with communication cut: -0.348 (-0.354, -0.337).
+**glm53f awareness probe**: no swap 0 of 15, clone 0 of 10, undercutter 0 of 10 (never notices, like gemma; deepseek notices an undercutter in 5 of 10).
+**deepseek temperature** (seeds 11, 13, 14; 0.3: 2 of 3 gated, 1.0: 3 of 3 gated): clone +0.000 (0.3, n=2) and -0.049 (1.0, n=3); undercutter k=1 -0.110 (0.3) and -0.099 (1.0), against -0.046 at the frozen 0.7. The cartel and the clone result do not depend on temperature; the undercutter effect is somewhat larger at 0.3 and 1.0 than at 0.7 but intervals are wide.
+**deepseek number of firms** (seeds 41, 42; effect of one undercutter over rounds 31-60): 2 firms -0.065 and -0.126; 4 firms -0.072 and -0.214; 5 firms +0.009 and -0.015, where the no-swap cartel has decayed (indices 0.58 and 0.28 against base 0.84 and 0.64). deepseek cartels survive at 2 to 4 firms in these seeds and decay at 5 (like gemma).
+**deepseek longer horizon** (seeds 11, 13, 14; index per 30 rounds, no swap / undercutter): seed 11 0.67, 0.67, 0.67 / 0.65, 0.54, 0.38; seed 13 0.44, 0.20, 0.14 / 0.44, 0.10, 0.01; seed 14 0.29, 0.10, 0.15 / 0.31, 0.03, 0.01. Unlike gemma (frozen to round 120), deepseek's no-swap cartel decays in 2 of 3 seeds, and one undercutter pushes it to about zero by rounds 91-120.
+**Not run** (credit): glm53f newcomer variants (1 of 25 started) and deepseek and glm53f cells not listed here. qw38 factor cells excluded earlier for cost.

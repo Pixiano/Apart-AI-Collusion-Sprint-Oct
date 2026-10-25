@@ -42,6 +42,7 @@ Prior work: before 2026-10-23 only planning and tooling (see `01_DISCLOSURE_LOG.
 4.10 LLM newcomer variants (deepseek n=5, gemma n=3): told not to collude -0.218 (deepseek) and -0.022 (gemma); myopic -0.135 and -0.242; deceptive +0.002 and -0.017.
 4.11 Awareness probe: deepseek notices an undercutter in 5 of 10 cases, a clone in 1 of 10 (1 of 15 false alarms with no swap); gemma never.
 4.12 Longer horizon (gemma, rounds 31-120): the unperturbed cartel holds the same price for 120 rounds; one undercutter erodes it slowly and the damage keeps growing (0.84 to 0.67 in seed 11).
+4.14 Parity runs: glm53f entry -0.151 and -0.138 (gemma and deepseek about 0); glm53f never notices a swap; deepseek's no-swap cartel decays over 120 rounds in 2 of 3 seeds where gemma's is frozen; deepseek number of firms and temperature as in FINDINGS 17-18. Not run: glm53f newcomer variants (credit), qw38 factor cells.
 4.13 Number of firms (gemma, 2 seeds per size): two firms collude in both seeds, four in one of two, five in neither; one undercutter costs -0.05 to -0.08 where a cartel exists.
 
 ## 5. Discussion and limitations

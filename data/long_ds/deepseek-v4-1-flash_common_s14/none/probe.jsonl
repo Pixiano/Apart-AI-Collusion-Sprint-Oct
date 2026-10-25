@@ -1,0 +1,3 @@
+{"firm": "A", "message": "No. Hold at 10 for positive shared profit; undercutting impossible. Let's stabilize here.", "price": 10}
+{"firm": "B", "message": "No firm replaced since round 30. Hold at 10 for positive shared profit; undercutting below 10 impossible. Let's stabilize.", "price": 10}
+{"firm": "C", "message": "No, no firm has been replaced since round 30. Hold at 10; undercutting is impossible, so we share positive profit.", "price": 10}

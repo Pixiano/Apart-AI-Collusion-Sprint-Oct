@@ -23,6 +23,12 @@ Finished since: glm53f factor cells, gemma family k=2, deepseek entry, awareness
 12. **Entry and family:** deepseek entry (1 or 2 new firms) +0.005 / -0.003 (n=5); gemma family k=2 0.000 (n=9).
 13. **Longer horizon** (gemma, seeds 11-15, rounds 31-120): the unperturbed cartel stays frozen at the same price (48 or 49) for all 120 rounds; one undercutter erodes it slowly (index 0.84 to 0.67 in seed 11 and 0.70 in seed 15) and it never recovers; the damage grows after round 60 in 3 of 4 gated seeds, so 30 rounds understates a persistent defector.
 14. **Number of firms** (gemma, seeds 41 and 42): two firms collude at 50 in both; four firms in one seed (47) and not the other (21); five firms in neither seed (20 and 30). One undercutter costs -0.05 to -0.08 where a cartel exists. Same direction as the eight-firm runs: bigger groups rarely form a cartel.
+15. **glm53f is hurt by newcomers** who enter without history: one new firm -0.151 (-0.301 to -0.040), two -0.138 (-0.191 to -0.069); gemma and deepseek show no effect. glm53f never notices a swap in the awareness probe (0 of 35).
+16. **deepseek longer horizon** (seeds 11, 13, 14): unlike gemma's frozen cartel, deepseek's no-swap cartel decays in 2 of 3 seeds (0.44 to 0.14), and one undercutter drives it to about zero by rounds 91-120.
+17. **deepseek number of firms** (seeds 41, 42): cartels at 2 to 4 firms, decayed at 5; one undercutter -0.07 to -0.21 where a cartel exists.
+18. **deepseek temperature** (0.3 and 1.0, seeds 11, 13, 14): clone effect about 0 (-0.049 at 1.0), undercutter -0.110 and -0.099 against -0.046 at 0.7; the cartel does not depend on temperature.
+
+Parity runs finished 11:45; gemma main-study seeds 31-40 are running locally (about 18:30). Not run: glm53f newcomer variants (credit used up), qw38 factor cells (cost), swap timing (cancelled). Details: `06_MORE_CELLS.md` sections 19 to 22.
 
 ## Results by model (core cells, full history, hidden swap)
 | Model | Gated runs | Clone | Family | Undercutter k=1 | Undercutter k=2 |
