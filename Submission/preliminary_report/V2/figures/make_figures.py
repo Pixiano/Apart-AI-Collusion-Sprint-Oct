@@ -23,6 +23,10 @@ MODELS = {  # HEADLINE pooling: label -> glob patterns of run dirs
 FIG_A = MODELS
 ALL_MODELS = {**MODELS, "deepseek-v4-1-flash": [f"{D}/main/deepseek-v4-1-flash_common_s*", f"{D}/more_ds/deepseek-v4-1-flash_common_s*"]}
 MIXED = {"mixed deepseek/qw38/glm53f": [f"{D}/mixed/*_common_s*"], "mixed deepseek/qw38/gemma4-12b": [f"{D}/mixed_g/*_common_s*"]}
+MIXLAB = {"mixed deepseek/qw38/glm53f": "Mixed:\nDeepSeek, Qwen, GLM", "mixed deepseek/qw38/gemma4-12b": "Mixed:\nDeepSeek, Qwen, Gemma"}
+DN = {"gemma4-12b": "Gemma", "deepseek-v4-1-flash": "DeepSeek", "qw38": "Qwen", "glm53f": "GLM"}  # short plot names; key in CAPTIONS.md
+LAB = {"clone": "fresh copy, 1 firm replaced", "family": "other model, 1 firm replaced", "undercutter k=1": "scripted undercutter, 1 firm replaced",
+       "undercutter k=2": "scripted undercutter, 2 firms replaced"}
 OI = dict(black="#000000", orange="#E69F00", sky="#56B4E9", green="#009E73", yellow="#F0E442", blue="#0072B2", verm="#D55E00", pink="#CC79A7")
 
 
@@ -97,8 +101,8 @@ open("Submission/preliminary_report/V2/RESULTS_TABLE.md", "w", encoding="utf-8")
 
 # ---- style
 plt.rcParams.update({"figure.facecolor": "white", "axes.facecolor": "white", "font.size": 10, "axes.grid": True, "grid.alpha": .25, "axes.spines.top": False, "axes.spines.right": False})
-SW = [("none", "no swap", OI["black"], "-"), ("clone_k1_hid", "clone", OI["sky"], "-"), ("family_k1_hid", "family", OI["green"], "--"),
-      ("undercutter_k1_hid", "undercutter k=1", OI["orange"], "-"), ("undercutter_k2_hid", "undercutter k=2", OI["verm"], "-")]
+SW = [("none", "no swap", OI["black"], "-"), ("clone_k1_hid", "fresh copy (1 replaced)", OI["sky"], "-"), ("family_k1_hid", "other model (1 replaced)", OI["green"], "--"),
+      ("undercutter_k1_hid", "scripted undercutter (1 replaced)", OI["orange"], "-"), ("undercutter_k2_hid", "scripted undercutter (2 replaced)", OI["verm"], "-")]
 def refs(ax):
     ax.axvline(30.5, color="grey", ls=":"); ax.axhline(10, color="grey", lw=.8); ax.axhline(55, color="grey", lw=.8)
 
@@ -116,12 +120,13 @@ for ax, (m, pats) in zip(axs, FIG_A.items()):
         if tag in ("none", "undercutter_k1_hid"):  # band = min to max over runs (base part: all gated runs)
             lo = np.concatenate([basem.min(axis=0), arr.min(axis=0)]); hi = np.concatenate([basem.max(axis=0), arr.max(axis=0)])
             ax.fill_between(range(1, 61), lo, hi, color=col, alpha=.12, lw=0)
-        ax.plot(range(1, 61), y, color=col, ls=ls, lw=1.6, label=f"{lab} (n={len(ok)})")
-    refs(ax); ax.set_title(f"{m} ({len(g)} gated runs)", fontsize=10); ax.set_xlabel("round"); ax.legend(fontsize=7, loc="lower left")
-axs[0].set_ylabel("mean price (competitive 10, monopoly 55)"); axs[0].set_ylim(5, 92)
-axs[3].annotate("round-1 openers\nup to 89", xy=(1, 64), xytext=(8, 80), fontsize=7, arrowprops=dict(arrowstyle="-", color="grey"))
-fig.suptitle("Mean price per round (headline pooling, gated runs); dotted line = swap after round 30; shaded = min to max over runs for no swap and undercutter k=1", y=1.0, fontsize=9)
-fig.tight_layout(); fig.savefig(f"{OUT}/fig_a_price_per_round.png", dpi=160); plt.close(fig)
+        ax.plot(range(1, 61), y, color=col, ls=ls, lw=1.6, label=lab)
+    refs(ax); ax.set_title(f"{DN[m]} ({len(g)} runs)", fontsize=11); ax.set_xlabel("round")
+axs[0].set_ylabel("average price (10 = competitive, 55 = monopoly)"); axs[0].set_ylim(5, 92)
+axs[3].annotate("some round-1 prices\nup to 89", xy=(1, 64), xytext=(8, 80), fontsize=7, arrowprops=dict(arrowstyle="-", color="grey"))
+fig.suptitle("Average price in each round, by model", fontsize=13)
+fig.legend(*axs[0].get_legend_handles_labels(), loc="lower center", ncol=5, fontsize=9, frameon=False)
+fig.tight_layout(rect=[0, .07, 1, .95]); fig.savefig(f"{OUT}/fig_a_price_per_round.png", dpi=160); plt.close(fig)
 
 # (b)
 conds = COND[:4]; fig, ax = plt.subplots(figsize=(9.5, 4.4)); w = .2
@@ -130,19 +135,19 @@ for i, (c, _, _) in enumerate(conds):
     for j, m in enumerate(MODELS):
         e = EFF[m][c]; x = j + (i - 1.5) * w
         if e is None: continue
-        ax.bar(x, e[0], w, color=cols[i], label=c if j == 0 else None)
+        ax.bar(x, e[0], w, color=cols[i], label=LAB[c] if j == 0 else None)
         if e[3] > 1: ax.errorbar(x, e[0], yerr=[[e[0] - e[1]], [e[2] - e[0]]], color="black", lw=1, capsize=2)
         if abs(e[0]) < .0015: ax.plot(x, 0, marker="D", color="black", ms=4, zorder=4)  # zero effect marker
-        ax.text(x, (e[2] if e[3] > 1 else e[0]) + .008 if e[0] >= -.0005 else min(e[1], e[0]) - .008, f"{e[0]:+.2f}", ha="center", va="bottom" if e[0] >= -.0005 else "top", fontsize=6.5, rotation=90)
-ax.axhline(0, color="black", lw=.8); ax.set_xticks(range(len(MODELS))); ax.set_xticklabels([f"{m}\n({len(G[m][1])} gated runs)" for m in MODELS])
-ax.set_ylabel("change in index, rounds 31-60\nvs same run's no-swap branch"); ax.set_ylim(-.46, .2)
-ax.legend(fontsize=8, ncol=2, loc="upper right"); ax.set_title("Effect of replacing firms, headline pooling (95% bootstrap interval over runs; diamond = effect within 0.0015 of zero)", fontsize=9)
+        ax.text(x, (e[2] if e[3] > 1 else e[0]) + (.02 if abs(e[0]) < .0015 else .008) if e[0] >= -.0005 else min(e[1], e[0]) - .008, f"{e[0]:+.2f}", ha="center", va="bottom" if e[0] >= -.0005 else "top", fontsize=6.5, rotation=90)
+ax.axhline(0, color="black", lw=.8); ax.set_xticks(range(len(MODELS))); ax.set_xticklabels([f"{DN[m]}\n({len(G[m][1])} runs)" for m in MODELS])
+ax.set_ylabel("change in collusion index, rounds 31-60\ncompared with no swap"); ax.set_ylim(-.46, .2)
+ax.legend(fontsize=8, ncol=2, loc="upper right"); ax.set_title("Effect of replacing firms on the collusion index", fontsize=12)
 fig.tight_layout(); fig.savefig(f"{OUT}/fig_b_effects.png", dpi=160); plt.close(fig)
 
 # (c)
 MK = {**{m: MODELS[m] for m in ["gemma4-12b", "deepseek-v4-1-flash", "glm53f"]}, **MIXED}
 fig, ax = plt.subplots(figsize=(10, 4)); w = .35
-cc = [("clone, comm cut", "clone_k1_hid_nocomm", OI["sky"]), ("undercutter k=1, comm cut", "undercutter_k1_hid_nocomm", OI["orange"])]
+cc = [("fresh copy", "clone_k1_hid_nocomm", OI["sky"]), ("scripted undercutter", "undercutter_k1_hid_nocomm", OI["orange"])]
 for j, (m, p) in enumerate(MK.items()):
     _, g = gated(dirs(p))
     for i, (lab, t, col) in enumerate(cc):
@@ -151,9 +156,9 @@ for j, (m, p) in enumerate(MK.items()):
         ax.bar(x, e[0], w, color=col, label=lab if j == 0 else None)
         if e[3] > 1: ax.errorbar(x, e[0], yerr=[[e[0] - e[1]], [e[2] - e[0]]], color="black", lw=1, capsize=2)
         ax.text(x, min(e[0], e[1]) - .02, f"n={e[3]}", ha="center", va="top", fontsize=7)
-ax.axhline(0, color="black", lw=.8); ax.set_xticks(range(len(MK))); ax.set_xticklabels([m.replace(" ", "\n", 1) for m in MK], fontsize=8)
-ax.set_ylabel("change in index, rounds 31-60\nvs no-swap branch with messages also cut"); ax.legend(fontsize=8, loc="lower left"); ax.set_ylim(-0.85, 0.05)
-ax.set_title("Messages switched off from round 31: effect of a fresh clone and of one undercutter (headline pooling, gated runs)"); fig.tight_layout(); fig.savefig(f"{OUT}/fig_c_comm_cut.png", dpi=160); plt.close(fig)
+ax.axhline(0, color="black", lw=.8); ax.set_xticks(range(len(MK))); ax.set_xticklabels([MIXLAB.get(m) or DN[m] for m in MK], fontsize=9)
+ax.set_ylabel("change in collusion index, rounds 31-60\ncompared with no swap (messages cut)"); ax.legend(fontsize=8, loc="lower left"); ax.set_ylim(-0.85, 0.05)
+ax.set_title("Replacing one firm when messages are cut", fontsize=12); fig.tight_layout(); fig.savefig(f"{OUT}/fig_c_comm_cut.png", dpi=160); plt.close(fig)
 
 # (d)
 fig, axs = plt.subplots(1, 2, figsize=(9, 3.8), sharey=True); d_info = {}
@@ -168,9 +173,9 @@ for ax, (m, root) in zip(axs, [("gemma4-12b", "nfirm"), ("deepseek-v4-1-flash", 
     for k, v in pts.items():
         ax.bar(k, np.mean(v), .6, color=OI["sky"], alpha=.6); ax.scatter([k] * len(v), v, color=OI["blue"], s=12, zorder=3)
     ax.axhline(.5, color=OI["verm"], ls="--", lw=1); ax.set_xticks([2, 3, 4, 5]); ax.set_xlabel("number of firms")
-    ax.set_title(m + "\n(" + ", ".join(f"{k} firms: n={len(v)}" for k, v in pts.items()) + ")", fontsize=8)
-axs[0].set_ylabel("base-run index, rounds 16-30"); axs[0].text(5.4, .52, "gate 0.5", color=OI["verm"], ha="right", fontsize=8)
-fig.tight_layout(); fig.savefig(f"{OUT}/fig_d_firms.png", dpi=160); plt.close(fig)
+    ax.set_title(DN[m], fontsize=11)
+axs[0].set_ylabel("collusion index, rounds 16-30"); axs[0].text(2.0, .52, "dashed line = 0.5", color=OI["verm"], ha="left", fontsize=8)
+fig.suptitle("Collusion index by number of firms", fontsize=12); fig.tight_layout(rect=[0, 0, 1, .94]); fig.savefig(f"{OUT}/fig_d_firms.png", dpi=160); plt.close(fig)
 
 # (e)
 fig, axs = plt.subplots(1, 2, figsize=(10, 3.8), sharey=True); e_info = {}
@@ -185,9 +190,9 @@ for ax, (m, root) in zip(axs, [("gemma4-12b", "long"), ("deepseek-v4-1-flash", "
             r = rows(f"{d}/{tag}/rounds.jsonl"); ys = [b] + [idx(r[a:a + 30]) if len(r) >= a + 30 else np.nan for a in (0, 30, 60)]
             ax.plot(X, ys, color=col, alpha=.7 if ok else .3, lw=1, ls="-" if ok else ":")
             if ok: means.setdefault(tag, []).append(ys)
-    for tag, col, lab in [("none", OI["black"], "no swap"), ("undercutter_k1_hid", OI["orange"], "undercutter k=1")]:
-        if tag in means: ax.plot(X, np.nanmean(means[tag], axis=0), color=col, lw=2.4, label=f"{lab}, mean of gated runs")
-    ax.axvline(30, color="grey", ls=":"); ax.set_title(m, fontsize=10); ax.set_xlabel("round (windows 16-30, 31-60, 61-90, 91-120)"); ax.legend(fontsize=7, loc="lower left")
-axs[0].set_ylabel("collusion index per window"); fig.tight_layout(); fig.savefig(f"{OUT}/fig_e_horizon.png", dpi=160); plt.close(fig)
+    for tag, col, lab in [("none", OI["black"], "no swap"), ("undercutter_k1_hid", OI["orange"], "scripted undercutter")]:
+        if tag in means: ax.plot(X, np.nanmean(means[tag], axis=0), color=col, lw=2.4, label=f"{lab} (average)")
+    ax.axvline(30, color="grey", ls=":"); ax.set_title(DN[m], fontsize=11); ax.set_xlabel("round (blocks 16-30, 31-60, 61-90, 91-120)")
+axs[0].set_ylabel("collusion index in each block"); fig.suptitle("Collusion index in a game of up to 120 rounds", fontsize=12); fig.legend(*axs[0].get_legend_handles_labels(), loc="lower center", ncol=2, fontsize=9, frameon=False); fig.tight_layout(rect=[0, .07, 1, .94]); fig.savefig(f"{OUT}/fig_e_horizon.png", dpi=160); plt.close(fig)
 
 print("done", {m: (len(G[m][0]), len(G[m][1])) for m in MODELS}, "seeds_a", seeds_a, d_info, e_info, sep=chr(10))

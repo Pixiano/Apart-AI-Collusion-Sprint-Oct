@@ -46,14 +46,16 @@ flowchart LR
 
 <table>
 <tr>
-<td width="50%"><img src="Submission/preliminary_report/V2/figures/fig_f_design.png" alt="Design of the study"><br><sub><b>Design.</b> Base run, gate, paired branches.</sub></td>
-<td width="50%"><img src="Submission/preliminary_report/V2/figures/fig_a_price_per_round.png" alt="Mean price per round for each swap type"><br><sub><b>Price per round,</b> by swap type, per model.</sub></td>
+<td width="50%"><img src="Submission/preliminary_report/V2/figures/fig_f_design.png" alt="Study design: one base run, then branches from a checkpoint"><br><sub><b>Study design.</b> One base run, then branches from a checkpoint.</sub></td>
+<td width="50%"><img src="Submission/preliminary_report/V2/figures/fig_a_price_per_round.png" alt="Average price in each round, by model"><br><sub><b>Average price in each round,</b> by model and type of replacement.</sub></td>
 </tr>
 <tr>
-<td width="50%"><img src="Submission/preliminary_report/V2/figures/fig_b_effects.png" alt="Effect of each swap on the collusion index"><br><sub><b>Effects</b> on the collusion index with 95% intervals.</sub></td>
-<td width="50%"><img src="Submission/preliminary_report/V2/figures/fig_c_comm_cut.png" alt="Communication cut then a clone"><br><sub><b>Silence the messages,</b> then swap in a clone.</sub></td>
+<td width="50%"><img src="Submission/preliminary_report/V2/figures/fig_b_effects.png" alt="Effect of replacing firms on the collusion index"><br><sub><b>Effect of replacing firms</b> on the collusion index, with 95% intervals.</sub></td>
+<td width="50%"><img src="Submission/preliminary_report/V2/figures/fig_c_comm_cut.png" alt="Replacing one firm when messages are cut"><br><sub><b>Replacing one firm</b> when messages are cut.</sub></td>
 </tr>
 </table>
+
+<sub>Model key: Gemma = gemma4-12b (local, 12B); DeepSeek = DeepSeek V4.1 Flash (hosted); Qwen = Qwen3.8-2.4T-A95B (hosted, label qw38); GLM = GLM-5.3-Flash (hosted, label glm53f).</sub>
 
 ## Game and design
 
