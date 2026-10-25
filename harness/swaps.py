@@ -1,5 +1,7 @@
 """Swap rules: which firms are replaced at round 31 and what the newcomer is (03_HARNESS_SPEC.md, Swaps)."""
-SWAP_ROUND = 30  # swap takes effect from round 31
+import os
+
+SWAP_ROUND = int(os.environ.get("SWAP_AT", 30))  # swap takes effect from the next round; SWAP_AT is for the swap-timing study (exploratory)
 FAMILY = {"qwen3-8b": "gemma4-12b", "gemma4-12b": "qwen3-14b", "mistral-nemo-12b": "qwen3-14b", "qwen3-14b": "gemma4-12b", "gpt-oss-20b": "qwen3-14b", "deepseek-v4-1-flash": "qw38", "qw38": "deepseek-v4-1-flash", "kimi-k3": "deepseek-v4-1-flash", "glm53f": "deepseek-v4-1-flash", "fake": "fake"}
 KINDS = ("none", "clone", "clone_notes", "family", "undercutter", "undercutter_all", "entry", "replace") + tuple(f"newcomer_{v}" for v in ("myopic", "share", "nocollude", "ownprice", "deceptive"))
 

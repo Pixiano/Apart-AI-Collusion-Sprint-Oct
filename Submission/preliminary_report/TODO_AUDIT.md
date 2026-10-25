@@ -26,7 +26,7 @@ So the ablations are done except 5 and 6 (cancelled) and 10 (anchor, not done), 
 - Qwen3.8 factor cells (announced, cut, history, notes, entry, probes, newcomers): NOT run (cost); say so in the report.
 - Round-1 spread test (PLAN.md "Later"): DONE 2026-10-25 (gemma, 50 seeds; section 24 of 06_MORE_CELLS): the seed spread is not from the opening draw.
 - Kimi K3 swap studies: not run (gate only).
-- If time after the gemma seeds 31-40 finish (stop adding runs by about 08:00 on 26 Oct): (1) a second local base model, qwen3-14b with gemma as the other model, to 10 seeds, as a labelled exploratory deviation; (2) swap timing on gemma (swap at round 15 and 45 as well as 30), which needs a small harness switch and a deviation note. Not started.
+- If time after the gemma seeds 31-40 finish (queued to run after the gemma seeds with no cut-off; results are used if they finish before the final refresh): (1) a second local base model, qwen3-14b with gemma as the other model, to 10 seeds, as a labelled exploratory deviation; (2) swap timing on gemma (swap at round 15 and 45 as well as 30), which needs a small harness switch and a deviation note. Queued (swap timing first, then qwen3-14b seeds 51-60).
 - Gemma known end date: only 2 of 5 base runs pass the gate (descriptive).
 
 ## C. Analysis and documents
