@@ -13,7 +13,7 @@
 | 8 | Temperature 0.3 and 1.0 | DONE: gemma and deepseek (3 seeds each) |
 | 9 | Number of firms 2, 4, 5 | DONE: gemma and deepseek (2 seeds per size), plus the eight-firm runs |
 | 10 | Anchor price in the prompt | NOT DONE (cancelled earlier as low value) |
-| 11 | Entry of a new firm | DONE for gemma, deepseek, glm53f (5 seeds; entry at round 31 not 40). Not done: a different-family entrant and a scripted-undercutter entrant |
+| 11 | Entry of a new firm | DONE for gemma, deepseek, glm53f (5 seeds; entry at round 31 not 40). Both extra entry variants DONE 2026-10-25 (section 26: qwen3-14b entrant +0.000, scripted-undercutter entrant -0.036) |
 | 12 | LLM newcomer variants | DONE: gemma, deepseek (5 seeds); glm53f running at 14 of 25 |
 | H | Human plays a firm | DONE 2026-10-25 as a fun research direction: five case-study games (3 firms x3, 5 firms, 10 firms), debriefs by the gemma firms; section 25 of 06_MORE_CELLS |
 | H2 | External agent firm | DONE as a small hosted chat model, 2 seeds, descriptive |

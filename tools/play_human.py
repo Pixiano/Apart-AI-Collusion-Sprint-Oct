@@ -33,7 +33,7 @@ while True:
         if s.isdigit() and 10 <= int(s) <= 100:
             break
         print("whole number from 10 to 100")
-    msg = " ".join(input("message (max 30 words, Enter for none)> ").split()[:30])
+    msg = " ".join(input("message (max 30 words, Enter for none)> ").split()[:30]) if '"message"' in text else ""  # no message box when the game has communication off
     tmp = reply + ".tmp"
     with open(tmp, "w", encoding="utf-8") as f:
         json.dump({"round": rnd, "price": int(s), "message": msg}, f)
