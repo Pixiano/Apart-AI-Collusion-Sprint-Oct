@@ -46,7 +46,20 @@ Plus-factor collusion detector (messages-only vs actions-only vs plus-factor rep
 - Round-1 spread test (added 2026-10-23): play only round 1 for 50 seeds on phi4-14b with the easy prompt (`$env:EASY='profit'; powershell -ExecutionPolicy Bypass -File tools/round1_spread.ps1 -Model phi4-14b -N 50`) and plot the opening-price counts, to show how much of the 0.84 vs 0.22 seed gap is just the opening draw. Run when the server is free. Repeat on the base prompt for gemma4-12b if time allows.
 - gpt-oss-20b on the easy prompt: DROPPED 2026-10-24 by the author (not needed). It was cancelled at round 21 of seed 1 (index 0.04 over rounds 16-21, prices 11-20) on 2026-10-23 and is not to be resumed; the partial data stays in `data/easy/gpt-oss-20b_common_s1` as a record.
 
-## Next runs, in this order (updated 2026-10-24 afternoon)
+## Status 2026-10-25
+Earlier sections below are kept as history and marked; this section is current.
+
+**Done:** pilot gate; swap studies on gemma4-12b, deepseek-v4-1-flash, qw38, glm53f; factor cells (announced, communication off and cut, history none and last round, notes, known end date, clone k=2, family k=2); three mixed markets; eight-firm runs; external-agent firm; temperature, entry and number-of-firms ablations; awareness probes; LLM newcomer variants (gemma, deepseek); 120-round horizon (gemma, deepseek); parity runs; more seeds (deepseek 31-40, glm53f 21-30); preliminary report folder, figures and pooled table.
+
+**Cancelled, with reasons:** swap timing at round 15 and 45 (author); history window of 20 rounds (covered by history none and last round); gpt-oss reasoning effort (never passes the gate); anchor-price and prompt-wording ablations (low value); Kimi swap studies (thinking cannot be switched off, cost); further hosted runs (credit used up).
+
+**Not run:** human firm H (needs the author's time); qw38 announced, communication-cut, history and notes cells (cost); round-1 spread test; different-family and scripted-undercutter entrants; qw38 and glm53f 120-round and number-of-firms runs.
+
+**Still running or paused:** glm53f newcomer variants (running); gemma main-study seeds 31-40 (paused, seed 31 partly done).
+
+**Author next:** write the report on the official template (8 pages or fewer) from `Submission/preliminary_report/`; read the prize terms and privacy policy; fill the submission form; tag `submitted`; Zenodo upload; check links logged out. Deadline Mon 26 Oct 17:29 IST.
+
+## [History, superseded] Next runs, in this order (updated 2026-10-24 afternoon)
 Frozen-plan factors done: 2 of 3 replaced and announced swap on gemma4-12b (seeds 11-20, `01_GEMMA_SWAP_RESULTS.md`).
 1. **Communication on/off on gemma4-12b and deepseek-v4-1-flash: DONE 2026-10-24 (`04_FACTOR_RESULTS.md`), both fail the gate without messages.** Base runs with `--comm off`, seeds 21-25, branches none, clone, undercutter (no family branch, too slow). `tools/swapstudy.ps1 -Comm off`. Compare with the communication-on runs of the same index and branches.
 2. **History on/off (windows none and last round) on gemma4-12b and deepseek-v4-1-flash: DONE 2026-10-24 (`04_FACTOR_RESULTS.md`).** Firms see less or none of the past prices when they choose, so a swap is harder to copy from the visible record. Needs harness code and a design decision before running (all firms vs only newcomers, none vs last few rounds); log it as an addition in `03_PREREG.md` first. Plan: seeds 21-25 like the other factors.
@@ -54,7 +67,7 @@ Frozen-plan factors done: 2 of 3 replaced and announced swap on gemma4-12b (seed
 4. **Hosted second model (deepseek-v4-1-flash, thinking off): DONE.** Swap study seeds 11-20, see `2026-10-24/03_HOSTED_DEEPSEEK.md`. Cost about 1.5 USD in tokens. A 70B-class model on rented GPUs is optional and only if time allows.
 Stay with the gate: a cell enters the swap analysis only if at least 60% of its base runs reach index 0.5.
 
-## Expansion plan (decided 2026-10-24 evening, author's order)
+## [History, superseded] Expansion plan (decided 2026-10-24 evening, author's order)
 All items after the first are exploratory additions; each is logged in `03_PREREG.md` before it runs. Seeds 21-25 unless a cell needs more; the hosted model is cheap enough for 10.
 0. **A, deeper analysis of existing data (no runs):** message content, reaction timing, secondary outcomes, per-seed trajectories. Done by a separate analysis pass, output `2026-10-24/05_DEEPER_ANALYSIS.md`.
 1. **Finish the notes run** (gemma, seeds 21-25) and write it up.
@@ -74,12 +87,12 @@ All items after the first are exploratory additions; each is logged in `03_PRERE
 5. **Report** (author): needs a free evening; stop new runs by Sunday midday (deadline Monday 17:29 IST).
 Open requirement for item 3: the author creates the Kimi and Qwen 3.8 endpoints and puts each address and key in its own untracked `.env.<name>` file.
 
-## Decisions of 2026-10-24 evening (author agreed)
+## [History] Decisions of 2026-10-24 evening (author agreed)
 Cancelled, with reasons: Qwen3.8-2.4T as first planned (checked: shared endpoint, thinking can be set to none, so it is used after all, see below); gpt-oss low vs high reasoning (ablation 6: gpt-oss never passes the gate); history window of 20 rounds (ablation 3: covered by history none and last-round); human firm H (needs the author's time, deferred); external-agent firm H2 (already done in the additional experiments); Kimi swap studies and Kimi history runs (thinking cannot be switched off, about 0.01 USD per call, so only the 3-seed gate was run); anchor-price and prompt-wording ablations (low value). Merged: ablation 7 into the cross-family swaps, ablations 1, 2, 5 into the known-end-date, notes and swap-timing runs, ablation 12 with the LLM deviator.
 Replaced: Kimi by Qwen3.8-2.4T-A95B (shared endpoint, `reasoning_effort: none`): gate first, then swaps with DeepSeek (both directions, full history), then a mixed-family run.
 Next, in order: Qwen gate; awareness probe; LLM deviator with four instruction variants (myopic, sell more, do not collude, own prices only) and the deceptive newcomer; swap timing (round 15 and 45) and longer horizon (to 120 rounds); ablations temperature (0.3, 1.0), number of firms (2, 4, 5), entry of a fourth firm; mixed-family run. Each logged in `03_PREREG.md` before it runs.
 Cost estimate for the rest of the hosted runs: about 25 to 30 USD with a 30% margin; stop and ask at 40 USD spent in total.
 
-## Schedule changes (author, 2026-10-24 evening)
+## [History, superseded] Schedule changes (author, 2026-10-24 evening)
 Swap timing (round 15 and 45) cancelled. Longer horizon (to 120 rounds) and the ablations (temperature, number of firms, entry) moved to overnight runs. Analysis and docs tomorrow. Added: a few big runs with several model families in one market (deepseek, qwen, glm, gemma, an external agent in the first run only), required variants only; and one or two eight-firm runs with two copies of each of four models.
 

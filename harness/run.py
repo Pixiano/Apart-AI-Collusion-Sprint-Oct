@@ -28,9 +28,9 @@ def write_json(path, obj):
 
 def base(model, comm, seed, out):
     models = model.split(",") * (3 if "," not in model else 1)  # one model for all firms, or comma-separated (mixed, external, or eight firms); a trailing * gives that firm the deviator prompt
-    prompts = ["deviator" if m.endswith("*") else None for m in models]
-    models = [m.rstrip("*") for m in models]
-    model = model.replace(":", "").replace(",", "+").replace("*", "-dev")
+    prompts = ["deviator" if m.endswith("*") else "agree" if m.endswith("^") else None for m in models]  # * deviator prompt, ^ agree-with-the-human prompt (exploratory)
+    models = [m.rstrip("*^") for m in models]
+    model = model.replace(":", "").replace(",", "+").replace("*", "-dev").replace("^", "-agree")
     run = f"{model}_comm{'on' if comm else 'off'}_s{seed}"
     run_dir = os.path.join(out, run)
     os.makedirs(run_dir, exist_ok=True)
@@ -51,8 +51,13 @@ def resume(run_dir, last):
     """Continue an interrupted base run from its logged rounds (full history, messages and per-call seeds are rebuilt from rounds.jsonl)."""
     meta = json.load(open(os.path.join(run_dir, "meta.json"), encoding="utf-8"))
     hist = [json.loads(l) for l in open(os.path.join(run_dir, "base", "rounds.jsonl"), encoding="utf-8")]
-    firms = [{"label": l, "model": meta["model"], "view": 1} for l in "ABC"]
-    calls = play.play(run_dir, "base", firms, hist, len(hist) + 1, last, meta["comm"], meta["seed"], {meta["model"]: client_for(meta["model"])})
+    names = meta["model"].split("+") if "+" in meta["model"] else [meta["model"]] * 3  # mixed or many-firm runs keep their model list in the run name
+    names = [n.replace("-dev", "").replace("-agree", "").replace("exthuman", "ext:human").replace("exth1", "ext:h1") for n in names]
+    agree = os.environ.get("RESUME_AGREE", "")  # exploratory: these firms get the agree-with-the-human prompt from the resumed round on (logged in resume_note.txt)
+    firms = [{"label": play.LABELS[i], "model": n, "view": 1, **({"prompt": "agree"} if play.LABELS[i] in agree else {})} for i, n in enumerate(names)]
+    if agree:
+        open(os.path.join(run_dir, "resume_note.txt"), "a", encoding="utf-8").write(f"from round {len(hist) + 1}: firms {agree} use the agree-with-the-human prompt\n")
+    calls = play.play(run_dir, "base", firms, hist, len(hist) + 1, last, meta["comm"], meta["seed"], {n: client_for(n) for n in set(names)})
     write_json(os.path.join(run_dir, "checkpoint.json"), {"hist": hist, "firms": firms, "comm": meta["comm"], "seed": meta["seed"], "round": last})
     play.summarize(calls, meta["run"] + " (resumed)")
 
@@ -61,7 +66,8 @@ def branch(run_dir, swap, k, announce, newcomers=(), comm_after=None):
     ck = json.load(open(os.path.join(run_dir, "checkpoint.json"), encoding="utf-8"))
     firms, replaced, notice = swaps.apply_swap(ck["firms"], swap, k, announce, newcomers)
     k = len(newcomers) if swap == "entry" else 3 if swap == "undercutter_all" else k
-    tag = "none" if swap == "none" else f"{swap}{'-' + newcomers[0] if swap == 'replace' else ''}_k{k}_{'ann' if announce else 'hid'}"
+    named = swap == "replace" or (swap == "entry" and newcomers[0] != ck["firms"][0]["model"])  # entry by a different model or the scripted undercutter gets its own folder; same-model entry keeps the old tag
+    tag = "none" if swap == "none" else f"{swap}{'-' + newcomers[0].replace(':', '_') if named else ''}_k{k}_{'ann' if announce else 'hid'}"
     comm = ck["comm"] if comm_after is None else comm_after == "on"  # communication switched on or off from round 31 on (exploratory)
     if comm_after:
         tag += "_" + ("comm" if comm else "nocomm")

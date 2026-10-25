@@ -7,7 +7,7 @@ import sys
 
 from . import agents, game
 
-LABELS = "ABCDEFGH"
+LABELS = "ABCDEFGHIJ"
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")  # model text can hold non-ASCII; a print must not kill a run
 
 

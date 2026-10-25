@@ -1,0 +1,22 @@
+{
+ "run": "glm53f_commoff_s22",
+ "model": "glm53f",
+ "comm": false,
+ "seed": 22,
+ "url": "remote",
+ "max_tokens": {
+  "default": 150,
+  "gpt-oss-20b": 2000,
+  "mistral-nemo-12b": 450,
+  "phi4-14b": 450,
+  "nemotron-nano-12b-v2": 450,
+  "nemotron-nano-12b-v2-think": 3300,
+  "kimi-k3": 1200,
+  "qw38": 450,
+  "glm53f": 600
+ },
+ "temperature": 0.7,
+ "system_prompt_sha": "0ffa938f96",
+ "llama_cpp": "b11798",
+ "started": "2026-10-24T23:57:50"
+}

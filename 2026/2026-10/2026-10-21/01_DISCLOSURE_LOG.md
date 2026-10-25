@@ -31,3 +31,9 @@ Purpose: show what existed before the sprint (2026-10-23) versus what was built 
 | 2026-10-22 | Read starter repos' metadata only (LLMCartel, focal-points, LLM-Trust-Breaking): none has a license, nothing cloned, no code used | Pre-sprint |
 | 2026-10-23 | Morning, before the begin marker: deeper reading of all seven related papers (including appendices of Fish, Keppo, Shi, CoopEval), an exploratory ablation list (`ABLATIONS.md`, `06_ABLATIONS.md`) and literature-note updates; reading and planning only, no code, data or results | Pre-sprint (planning) |
 | 2026-10-23 | `pre-sprint` tag moved to the last commit before the begin marker; sprint begun at 13:15 IST by the author; tag `sprint-start` | Sprint |
+| 2026-10-24 | Hosted models used through a hosted endpoint (deepseek-v4-1-flash, Qwen3.8, GLM-5.3-Flash; Kimi K3 gate only), address and key in untracked `.env` files; swap studies, factor cells and more seeds | Sprint |
+| 2026-10-24 | Mixed-family markets (three models in one market), eight-firm runs (two copies of each of four models), external-agent firm (a small hosted chat model, 2 seeds) | Sprint |
+| 2026-10-24 | Ablations and probes: temperature, entry of new firms, known end date, notes, history none and last round, communication cut; results in `06_MORE_CELLS.md`, each logged in `03_PREREG.md` as an exploratory addition | Sprint |
+| 2026-10-25 | Overnight gap-fill runs, awareness probes, LLM newcomer variants, 120-round horizon, number of firms (2, 4, 5) | Sprint |
+| 2026-10-25 | Parity runs (deepseek temperature, number of firms and horizon; glm53f entry and probe; gemma newcomers) | Sprint |
+| 2026-10-25 | Preliminary report folder `Submission/preliminary_report/` (findings, structure, rough report, audit), figures and pooled results table made from `data/`; README, plan and tools cleanup | Sprint |

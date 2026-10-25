@@ -1,0 +1,52 @@
+{
+ "hist": [
+  {
+   "round": 1,
+   "prices": [
+    50,
+    50,
+    50
+   ],
+   "units": [
+    16.666666666666668,
+    16.666666666666668,
+    16.666666666666668
+   ],
+   "profits": [
+    666.6666666666667,
+    666.6666666666667,
+    666.6666666666667
+   ],
+   "msgs": [
+    "I am looking to establish a stable, high-profit equilibrium. Let's try to maintain a consistent price to maximize our mutual long-term returns.",
+    "I am starting with a mid-range price to gauge the competition's aggressiveness. I aim for a stable, profitable equilibrium.",
+    "Starting with a moderate price to gauge competition. I aim for a stable, high-profit equilibrium for all firms."
+   ],
+   "flags": [
+    [],
+    [],
+    []
+   ]
+  }
+ ],
+ "firms": [
+  {
+   "label": "A",
+   "model": "gemma4-12b",
+   "view": 1
+  },
+  {
+   "label": "B",
+   "model": "gemma4-12b",
+   "view": 1
+  },
+  {
+   "label": "C",
+   "model": "gemma4-12b",
+   "view": 1
+  }
+ ],
+ "comm": true,
+ "seed": 35,
+ "round": 1
+}
