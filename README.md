@@ -32,7 +32,7 @@ LLM pricing agents left to play a repeated market game often settle on high, col
 
 ```mermaid
 flowchart LR
-    A["Base run<br/>rounds 1-30<br/>3 LLM firms, prices + messages"] --> GGate<br/>index ≥ 0.5?
+    A["Base run<br/>rounds 1-30<br/>3 LLM firms, prices + messages"] --> G{"Gate<br/>index ≥ 0.5?"}
     G -- yes --> K["Checkpoint<br/>round 30"]
     K --> N["none<br/>(control)"]
     K --> C["fresh clone<br/>(history wiped)"]
