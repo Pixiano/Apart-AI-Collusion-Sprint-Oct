@@ -46,3 +46,4 @@ On 2026-10-25 four read-only auditors (a leak and privacy check, a number-integr
 | 2026-10-26 | Swap timing on gemma (`data/gemma_timing`, `tools/swap_timing.py`, switch `SWAP_AT`; exploratory deviation; 9 gated seeds): clone +0.001 / -0.002 / +0.001 and undercutter k=1 -0.037 / -0.032 / -0.028 for a swap at round 15 / 30 / 45. Results note section 29. |
 | 2026-10-26 | qwen3-14b as a second local base model (`data/qwen14_more`, exploratory deviation): all finished base runs (at least 7) sit at the floor price of 10, gate 0 passes, no swap result. Results note section 30. |
 | 2026-10-25 | Git history rewritten once to remove material not meant to be public (see the README history note); tags re-created. |
+| 2026-10-26 | qwen3-14b queue stopped after seed 57 on purpose: seven of seven finished seeds never form a cartel (0 pass the gate), so more seeds could not change the result; seed 58 is partial and not committed. |
