@@ -1,6 +1,6 @@
 # Report structure V2 (fits the official template and the 8-page limit)
 
-V1 to V2: V2 uses one pooling per table (headline seeds 11-20 for the main cells; all seeds only in Table 2), the 06 numbers recomputed from data/, same n across figures a, b and c, error-aware wording ("in these runs"), the human games, round-1 spread test, glm53f newcomers and gemma entry variants added, and the figure scripts moved to V2/figures (V1 scripts still write to the old path).
+V1 to V2: V2 uses one pooling per table (headline seeds 11-20 for the main cells (gemma seeds 11-20 and 31-40 since 2026-10-26); all seeds only in Table 2), the 06 numbers recomputed from data/, same n across figures a, b and c, error-aware wording ("in these runs"), the human games, round-1 spread test, glm53f newcomers and gemma entry variants added, and the figure scripts moved to V2/figures (V1 scripts still write to the old path).
 
 Limit: 8 pages before references and appendices (the template recommends about 4; aim 5 to 6), PDF up to 25 MB, abstract 150 to 250 words. Fix the title before the first submission (resubmitting needs the exact same title). Draft main text (Introduction to Code and Data) is about 1,650 words plus Table 1 and four figures, roughly 4.5 to 5.5 pages on the template (estimate; check after typesetting).
 
@@ -21,7 +21,7 @@ Limit: 8 pages before references and appendices (the template recommends about 4
 | LLM Usage Statement | not counted | placeholder, the author writes it (private source `_local/ai_usage_statement.md`) | author |
 
 ## Figures
-Main text (four): Figure 1 design (fig_f), Figure 2 price per round (fig_a), Figure 3 effects (fig_b), Figure 4 messages cut (fig_c). Appendix (twelve): A1 gate on and off (g), A2 heatmap of all effects (h), A3 LLM newcomers (i), A4 entry (k), A5 awareness (j), A6 temperature (l), A7 mixed and eight firms (m), A8 known end (n), A9 number of firms (d), A10 horizon (e), A11 per seed (o), A12 message length (p). Captions: `figures/CAPTIONS.md`.
+Main text (four): Figure 1 design (fig_f), Figure 2 price per round (fig_a), Figure 3 effects (fig_b), Figure 4 messages cut (fig_c). Appendix (thirteen, A13 swap timing = fig_q): A1 gate on and off (g), A2 heatmap of all effects (h), A3 LLM newcomers (i), A4 entry (k), A5 awareness (j), A6 temperature (l), A7 mixed and eight firms (m), A8 known end (n), A9 number of firms (d), A10 horizon (e), A11 per seed (o), A12 message length (p). Captions: `figures/CAPTIONS.md`.
 
 ## Tables
 Main text: Table 1 (headline pooling, `RESULTS_TABLE.md`). Appendix: Table 2 all seeds, Table 3 factor cells, Table D1 human games, Table D2 human suite.

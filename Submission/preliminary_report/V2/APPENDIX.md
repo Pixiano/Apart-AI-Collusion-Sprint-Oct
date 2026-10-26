@@ -57,7 +57,7 @@ python -m harness.analyze gate <dir>                              # also: effect
 .\tools\round1_spread.ps1 -Model gemma4-12b -N 50
 .\tools\swapstudy.ps1 -Model gemma4-12b -Seeds 31,32,33,34,35,36,37,38,39,40 -Out data/gemma_more   # gemma main study on seeds 31-40; the overnight run was a chain of local scripts that called this tool (also with -K 2, -Announce, -CommAfter off, and harness.run branch for the entry and myopic-newcomer cells) one after the other
 .venv\Scripts\python.exe -I tools\swap_timing.py              # swap timing: cuts a checkpoint at round 15 and 45 from the gated gemma main runs, runs none/clone/undercutter into data/gemma_timing
-python harness.run base --model qwen3-14b --comm on --seed 51 --out data/qwen14_more   # qwen3-14b as base model, seeds 51 and up (same call shape as the line for <m> above)
+python -m harness.run base --model qwen3-14b --comm on --seed 51 --out data/qwen14_more   # qwen3-14b as base model, seeds 51 and up (same call shape as the line for <m> above)
 .venv\Scripts\python.exe -I analysis\new_runs.py              # all numbers of the 2026-10-26 refresh: 20-seed gemma pooling, comm-cut, entry, myopic, swap timing, qwen3-14b gate -> analysis/out/new_runs.md
 python Submission\preliminary_report\V2\figures\make_figures.py   # also make_figures2.py
 ```
