@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Research Timeline</title>
+<style>
+@page { size: Letter; margin: 1.6cm 1.8cm 1.6cm 1.8cm;
+  @bottom-center { content: counter(page); font-family: Cambria, Georgia, serif; font-size: 9pt; color: #555; } }
+:root { --d21:#7b8794; --d22:#3b6fb6; --d23:#2a9d8f; --d24:#e9a23b; --d25:#d1495b; --d26:#7a4fb3; }
+body { font-family: "Cambria", "Georgia", serif; font-size: 10.2pt; line-height: 1.32; color: #1a1a1a; background: #fff; margin: 0; }
+h1 { font-size: 18pt; margin: 0 0 2px; text-align: center; border-top: 4px solid #000; border-bottom: 1px solid #000; padding: 8px 0; letter-spacing: .02em; }
+.sub { text-align: center; color: #444; margin: 6px 0 12px; font-size: 9.6pt; }
+h2 { font-size: 12pt; margin: 14px 0 6px; color: #333; break-after: avoid; }
+.day { border-left: 7px solid var(--c); background: color-mix(in srgb, var(--c) 9%, white); border-radius: 4px; padding: 6px 10px 6px 12px; margin: 0 0 8px; break-inside: avoid; }
+.day .when { font-weight: bold; color: var(--c); font-size: 10.4pt; }
+.day .phase { float: right; font-size: 8.6pt; color: #fff; background: var(--c); padding: 1px 8px; border-radius: 10px; }
+.ms { margin: 4px 0 0; padding-left: 0; list-style: none; }
+.ms li { margin: 3px 0; padding-left: 20px; position: relative; text-align: left; }
+.ms li::before { content: ""; position: absolute; left: 3px; top: 5px; width: 9px; height: 9px; border-radius: 50%; background: var(--c); }
+.ms li.key::before { border-radius: 2px; transform: rotate(45deg); width: 9px; height: 9px; }
+.num { font-weight: bold; }
+.note { border: 1px solid #ccc; border-radius: 4px; padding: 6px 10px; margin: 6px 0; font-size: 9.6pt; break-inside: avoid; }
+.note b { color: #333; }
+.legend { font-size: 8.8pt; color: #444; margin: 2px 0 8px; }
+.legend span { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin: 0 4px 0 10px; vertical-align: -1px; }
+.charts { display: flex; gap: 18px; break-inside: avoid; }
+.chart { flex: 1; border: 1px solid #ddd; border-radius: 4px; padding: 8px 10px; }
+.chart h3 { font-size: 10pt; margin: 0 0 6px; }
+.bar { display: flex; align-items: center; margin: 3px 0; font-size: 8.8pt; }
+.bar .lab { width: 118px; flex: none; }
+.bar .fill { height: 13px; border-radius: 2px; }
+.bar .val { margin-left: 5px; font-weight: bold; }
+.cap { font-size: 8.4pt; color: #555; margin-top: 6px; }
+</style>
+</head>
+<body>
+
+<h1>HOW THE RESEARCH WAS CONDUCTED</h1>
+<div class="sub">AI Collusion Research Sprint, 21 to 26 October 2026 (sprint: 23 to 25 October). Question: does a cartel among language-model pricing agents survive when a firm is replaced? All times IST. Dates and counts come from the repository's daily notes, results note and git log.</div>
+<div class="legend">Phases:<span style="background:var(--d21)"></span>planning<span style="background:var(--d22)"></span>frozen plan<span style="background:var(--d23)"></span>build and pilot<span style="background:var(--d24)"></span>main sweeps<span style="background:var(--d25)"></span>exploratory additions and audit<span style="background:var(--d26)"></span>final runs and report</div>
+
+<div class="day" style="--c:var(--d21)"><span class="phase">planning</span><div class="when">Wed 21 Oct (before the sprint)</div>
+<ul class="ms">
+<li class="key"><b>Question chosen:</b> "cartel turnover", whether collusion survives when a firm is replaced (sprint question 1.2), with a fallback study. Repository, license and tag <code>pre-sprint</code> created; a local model server set up. No experiment code, runs or results.</li>
+</ul></div>
+
+<div class="day" style="--c:var(--d22)"><span class="phase">frozen plan</span><div class="when">Thu 22 Oct (before the sprint)</div>
+<ul class="ms">
+<li><b>Reading:</b> seven related papers read (abstracts and introductions, then design sections); harness specified on paper; an exploratory ablation list written.</li>
+<li class="key"><b>Plan frozen, 16:13:</b> game, gate, swap branches and outcome fixed in the repository before any data (tag <code>prereg-v1</code>).</li>
+</ul></div>
+
+<div class="day" style="--c:var(--d23)"><span class="phase">build and pilot</span><div class="when">Fri 23 Oct (sprint day 1)</div>
+<ul class="ms">
+<li class="key"><b>Sprint start, 13:15</b> (tag <code>sprint-start</code>). Harness and tests written by about 15:40 (game, agents, play, swaps, run, analysis).</li>
+<li><b>Pilot gate:</b> <span class="num">5</span> local models x <span class="num">3</span> seeds. Only gemma4-12b formed a cartel (3 of 3); qwen3-14b, gpt-oss-20b, mistral-nemo-12b and phi4-14b priced near the competitive level. Main swap study on gemma started that evening.</li>
+</ul></div>
+
+<div class="day" style="--c:var(--d24)"><span class="phase">main sweeps</span><div class="when">Sat 24 Oct (sprint day 2)</div>
+<ul class="ms">
+<li class="key"><b>gemma4-12b swap study finished overnight:</b> seeds 11 to 20, four branches each, 9 of 10 runs formed a cartel; then two firms replaced and announced swaps.</li>
+<li><b>Hosted endpoint added</b> (a change from the local-only plan): deepseek-v4-1-flash seeds 11 to 20, then qw38 and glm53f gate and swap studies. Messages off and history off: without messages cartels formed in 1 of 5 and 0 of 10 runs.</li>
+<li><b>First exploratory cells:</b> communication cut at the swap, private notes, known end date, mixed-model and eight-firm markets.</li>
+</ul></div>
+
+<div class="day" style="--c:var(--d25)"><span class="phase">exploratory additions and audit</span><div class="when">Sun 25 Oct (sprint day 3)</div>
+<ul class="ms">
+<li><b>Overnight and morning:</b> gap-fill cells, awareness probes (do firms notice a swap?), instructed newcomer prompts, 120-round horizon, 2, 4 and 5 firms, entry of new firms.</li>
+<li class="key"><b>12:36, hosted credit ran out</b> during the glm53f newcomer cells (21 of 25 branches finished). No hosted runs after that. Round-1 spread test on <span class="num">50</span> seeds.</li>
+<li><b>Human case studies:</b> <span class="num">5</span> games with the author as one firm, then a <span class="num">4</span>-game information suite (one game per setting, not estimates).</li>
+<li class="key"><b>Evening audit</b> by four read-only reviews (leaks, numbers, documents, report readiness), fixes applied, and the git history rewritten once to remove material not meant to be public (logged in the disclosure log). Report draft rebuilt as V2.</li>
+</ul></div>
+
+<div class="day" style="--c:var(--d26)"><span class="phase">final runs and report</span><div class="when">Sun 25 to Mon 26 Oct</div>
+<ul class="ms">
+<li class="key"><b>Overnight, local GPU only:</b> gemma seeds 31 to 40 added (now 20 seeds, 17 of 20 formed a cartel; no direction changed), swap timing (swap at round 15, 30 or 45), and qwen3-14b as a second local base model, which never formed a cartel (0 of 7 runs) and so cannot test persistence.</li>
+<li><b>Report written</b> on the official template (deadline 17:29); tag <code>submitted</code> on the submitted commit.</li>
+</ul></div>
+
+<h2>Effort, as recorded</h2>
+<div class="charts">
+<div class="chart"><h3>Base runs in the main swap study, by model</h3>
+<div class="bar"><span class="lab">gemma4-12b</span><span class="fill" style="width:160px;background:var(--d23)"></span><span class="val">20</span></div>
+<div class="bar"><span class="lab">deepseek-v4-1-flash</span><span class="fill" style="width:160px;background:var(--d24)"></span><span class="val">20</span></div>
+<div class="bar"><span class="lab">glm53f</span><span class="fill" style="width:80px;background:var(--d25)"></span><span class="val">10</span></div>
+<div class="bar"><span class="lab">qw38</span><span class="fill" style="width:40px;background:var(--d22)"></span><span class="val">5</span></div>
+<div class="cap">Each base run is 30 rounds followed by several 30-round branches from its checkpoint. Not shown: pilot (15 runs), factor, mixed, horizon and newcomer cells, round-1 test (50 seeds), human games (9).</div></div>
+<div class="chart"><h3>Commits per day (git log)</h3>
+<div class="bar"><span class="lab">Wed 21 Oct</span><span class="fill" style="width:27px;background:var(--d21)"></span><span class="val">14</span></div>
+<div class="bar"><span class="lab">Thu 22 Oct</span><span class="fill" style="width:25px;background:var(--d22)"></span><span class="val">13</span></div>
+<div class="bar"><span class="lab">Fri 23 Oct</span><span class="fill" style="width:140px;background:var(--d23)"></span><span class="val">73</span></div>
+<div class="bar"><span class="lab">Sat 24 Oct</span><span class="fill" style="width:36px;background:var(--d24)"></span><span class="val">19</span></div>
+<div class="bar"><span class="lab">Sun 25 Oct</span><span class="fill" style="width:25px;background:var(--d25)"></span><span class="val">13</span></div>
+<div class="bar"><span class="lab">Mon 26 Oct</span><span class="fill" style="width:8px;background:var(--d26)"></span><span class="val">4+</span></div>
+<div class="cap">136 commits up to midday 26 Oct; Monday is still in progress. Hosted spend: about 36 USD of a 50 USD credit by the end of the mixed and eight-firm runs (results note, section 16).</div></div>
+</div>
+
+<h2>Honesty notes</h2>
+<div class="note"><b>Deviations are logged.</b> Every change after the frozen plan (models, the hosted endpoint, token limits, every ablation, the human games, extra seeds, swap timing, the second base model) is dated in the deviations section of the frozen plan and treated as exploratory.</div>
+<div class="note"><b>Not run</b> (cost or time): a 20-round history window, reasoning-effort and anchor-price ablations, swap studies on a gate-only hosted model, factor cells for qw38, swap timing on the hosted models, and further hosted runs once the credit ran out.</div>
+<div class="note"><b>How the work was done.</b> One author. Code and analysis were written with an AI coding tool; local runs used a single consumer GPU, hosted runs a hosted endpoint.</div>
+
+</body>
+</html>

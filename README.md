@@ -68,6 +68,8 @@ flowchart LR
 
 Frozen pre-registration (git tag `prereg-v1`): [`03_PREREG.md`](2026/2026-10/2026-10-21/03_PREREG.md). Plan: [`PLAN.md`](PLAN.md). Everything behind the report: [`SUPPLEMENTARY.md`](SUPPLEMENTARY.md).
 
+**How the research was conducted:** a short, dated, colourful timeline of the milestones, with what was not run and how the work was done: [`research_spend_timeline/timeline.pdf`](Submission/supplementary/research_spend_timeline/timeline.pdf) ([folder](Submission/supplementary/research_spend_timeline/)).
+
 ## Models
 
 - **Local** (llama.cpp on one 16 GB GPU): gemma4-12b is the only local model that passes the pilot gate (3 of 3 seeds, index 0.84 to 0.89). qwen3-14b fails it (0 of 3) and serves as gemma's different-family replacement. Run as a base model for a swap study (seeds 51 onward) it never forms a cartel either (see the exploratory results below). Also tried and failing the gate: gpt-oss-20b, mistral-nemo-12b, phi4-14b, Nemotron-Nano-12B-v2 ([`02_PILOT_RESULTS.md`](2026/2026-10/2026-10-23/02_PILOT_RESULTS.md), [`02_OTHER_RESULTS.md`](2026/2026-10/2026-10-24/02_OTHER_RESULTS.md)).
