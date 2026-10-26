@@ -1,0 +1,39 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Project image</title>
+<style>
+html,body{margin:0;width:1600px;height:900px;background:#fff;font-family:Cambria,Georgia,serif;color:#1a1a1a;overflow:hidden}
+.top{position:absolute;left:60px;right:60px;top:40px;border-top:8px solid #000;border-bottom:2px solid #000;padding:18px 0 104px;text-align:center}
+h1{margin:0;font-size:84px;white-space:nowrap;letter-spacing:.01em;line-height:1}
+.sub{position:absolute;top:186px;width:100%;text-align:center;font-size:42px;color:#333}
+.foot{position:absolute;bottom:26px;width:100%;text-align:center;font-size:26px;color:#555}
+svg{position:absolute;left:0;top:0}
+</style></head><body>
+<div class="top"><h1>Cartels Under Model Replacement</h1></div>
+<div class="sub">Does a language-model cartel survive a firm swap?</div>
+<svg width="1600" height="900" font-family="Cambria,Georgia,serif">
+ <!-- axes: x 160..1440 = rounds 0..60 ; y high=360, competitive=720 -->
+ <line x1="160" y1="330" x2="160" y2="780" stroke="#333" stroke-width="3"/>
+ <line x1="160" y1="780" x2="1440" y2="780" stroke="#333" stroke-width="3"/>
+ <text x="60" y="560" font-size="28" fill="#444" transform="rotate(-90 60,560)" text-anchor="middle">average price</text>
+ <text x="800" y="822" font-size="28" fill="#444" text-anchor="middle">round</text>
+ <line x1="160" y1="730" x2="1440" y2="730" stroke="#7b8794" stroke-width="2" stroke-dasharray="3 7"/>
+ <text x="1432" y="765" font-size="26" fill="#7b8794" text-anchor="end">competitive price</text>
+ <!-- before swap: cartel holds high -->
+ <polyline fill="none" stroke="#3b6fb6" stroke-width="9" stroke-linejoin="round" stroke-linecap="round"
+  points="160,430 280,420 400,426 520,418 640,424 800,420"/>
+ <text x="190" y="395" font-size="30" fill="#3b6fb6" font-weight="bold">3 firms hold a high price (cartel)</text>
+ <!-- swap line -->
+ <line x1="800" y1="320" x2="800" y2="780" stroke="#000" stroke-width="4" stroke-dasharray="14 10"/>
+ <rect x="690" y="296" width="220" height="44" rx="22" fill="#000"/>
+ <text x="800" y="327" font-size="28" fill="#fff" text-anchor="middle" font-weight="bold">swap, round 30</text>
+ <!-- clone: holds -->
+ <polyline fill="none" stroke="#2a9d8f" stroke-width="9" stroke-linejoin="round" stroke-linecap="round"
+  points="800,420 920,424 1040,418 1160,424 1280,420 1400,422"/>
+ <text x="1420" y="390" font-size="30" fill="#2a9d8f" font-weight="bold" text-anchor="end">fresh copy joins: price holds</text>
+ <!-- undercutter: drops -->
+ <polyline fill="none" stroke="#d1495b" stroke-width="9" stroke-linejoin="round" stroke-linecap="round"
+  points="800,420 880,500 960,570 1040,610 1160,628 1280,634 1400,636"/>
+ <text x="1420" y="690" font-size="30" fill="#d1495b" font-weight="bold" text-anchor="end">scripted undercutter joins: price drops</text>
+</svg>
+<div class="foot">Vatsal Kumar | AI Collusion Research Sprint, Oct 2026</div>
+</body></html>

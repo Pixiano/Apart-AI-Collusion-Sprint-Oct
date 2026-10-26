@@ -1,0 +1,64 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Cartels Under Model Replacement: slides</title>
+<style>
+@page{size:1280px 720px;margin:0}
+*{box-sizing:border-box}
+:root{--b:#3b6fb6;--g:#2a9d8f;--o:#e9a23b;--r:#d1495b;--p:#7a4fb3;--k:#1a1a1a}
+body{margin:0;font-family:Cambria,Georgia,serif;color:var(--k);background:#fff}
+.s{width:1280px;height:720px;page-break-after:always;break-after:page;position:relative;overflow:hidden;padding:56px 72px 0;border-top:14px solid var(--c,var(--b))}
+.s:last-child{page-break-after:auto;break-after:auto}
+.n{position:absolute;right:40px;bottom:24px;font-size:20px;color:#777}
+h1{font-size:62px;line-height:1.1;margin:0 0 18px}
+h2{font-size:50px;margin:0 0 26px;color:var(--c,var(--b))}
+p,li{font-size:38px;line-height:1.3;margin:0 0 14px}
+ul{padding-left:36px;margin:0}
+b{color:var(--c,var(--b))}
+.cols{display:flex;gap:36px;align-items:center}
+.cols>div{flex:1}
+img{max-width:100%;max-height:480px;display:block;margin:0 auto}
+.big{font-size:84px;font-weight:bold;color:var(--c);margin:10px 0}
+.t{background:linear-gradient(135deg,#3b6fb6,#7a4fb3);color:#fff;border:0}
+.t h1,.t p{color:#fff}.t .sub{font-size:34px}.t .meta{font-size:28px;margin-top:40px;opacity:.9}
+.chips span{display:inline-block;padding:8px 18px;border-radius:30px;color:#fff;font-size:30px;margin:0 10px 12px 0}
+.small{font-size:26px;color:#555}
+</style></head><body>
+
+<div class="s t"><h1 style="margin-top:90px">Cartels Under Model Replacement</h1>
+<p class="sub">Does a language-model cartel survive a firm swap?</p>
+<p class="meta">Vatsal Kumar, Independent<br>AI Collusion Research Sprint, Apart Research<br>October 2026</p></div>
+
+<div class="s" style="--c:var(--g)"><h2>The question</h2>
+<p>Pricing agents built on language models can hold prices <b>above the competitive level</b>.</p>
+<p>Models get updated or replaced all the time.</p>
+<p><b>Does the cartel survive when a firm is swapped?</b></p><span class="n">2</span></div>
+
+<div class="s" style="--c:var(--o)"><h2>The setup</h2>
+<div class="cols"><div><ul><li>3 firms, repeated pricing game, 60 rounds</li><li>Checkpoint at round 30</li><li>Gate: price index (CI) &ge; 0.5</li></ul>
+<div class="chips" style="margin-top:18px"><span style="background:var(--b)">no swap</span><span style="background:var(--g)">fresh clone</span><span style="background:var(--p)">other model</span><span style="background:var(--r)">scripted undercutter</span></div></div>
+<div><img src="figures/fig_f_design.png" alt="design"></div></div><span class="n">3</span></div>
+
+<div class="s" style="--c:var(--g)"><h2>Clones and other models change nothing</h2>
+<div class="cols"><div style="flex:.8"><p>Price index unchanged after a <b>clone</b> or <b>family swap</b>, in all four models.</p><p class="small">Table 1, Figure 3</p></div>
+<div style="flex:1.2"><img src="figures/fig_b_effects.png" alt="Figure 3"></div></div><span class="n">4</span></div>
+
+<div class="s" style="--c:var(--r)"><h2>Positive control: a defector hurts</h2>
+<div class="big">-0.05 to -0.30</div><p>One scripted undercutter lowers the index.</p>
+<p>Two undercutters: about <b>-0.3</b>.</p><p class="small">The design can detect damage, so the clone null is not blindness.</p><span class="n">5</span></div>
+
+<div class="s" style="--c:var(--p)"><h2>Messages decide it</h2>
+<div class="cols"><div style="flex:.9"><p>Cartels were <b>rare without messages</b>.</p><p>A fresh copy joining while messages are cut lowers the index by <b>0.22 to 0.33</b>.</p></div>
+<div style="flex:1.1"><img src="figures/fig_c_comm_cut.png" alt="Figure 4"></div></div><span class="n">6</span></div>
+
+<div class="s" style="--c:var(--o)"><h2>Ablations</h2>
+<div class="cols"><div><p>Instructed newcomers: broke the cartel in some models, barely moved it in others.</p><p>Memory: clone null held in gemma and deepseek.</p><p class="small">Figure 5, Table 2</p></div>
+<div><img src="figures/fig_i_newcomers.png" alt="Figure 5"></div></div><span class="n">7</span></div>
+
+<div class="s" style="--c:var(--r)"><h2>Limitations</h2>
+<ul><li>Only gated runs (CI &ge; 0.5)</li><li>Toy game, no real market</li><li>Small samples</li><li>Scripted defector</li><li>60 rounds is short</li></ul><span class="n">8</span></div>
+
+<div class="s" style="--c:var(--g)"><h2>Implications</h2>
+<ul><li><b>Monitor</b> agent-to-agent messages</li><li><b>Test model swaps</b> before deployment</li><li>Keep auditing across versions</li></ul><span class="n">9</span></div>
+
+<div class="s t"><h2 style="color:#fff">Code and data</h2>
+<p>Every call, price and message is logged; data is CC BY 4.0.</p>
+<p style="font-size:32px;margin-top:30px">https://github.com/Pixiano/Apart-AI-Collusion-Sprint-Oct</p></div>
+</body></html>

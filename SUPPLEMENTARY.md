@@ -11,6 +11,7 @@ The submitted report is short (8 pages at most). This file points to everything 
 | Every result, in order, with its source folder | [`2026/2026-10/2026-10-24/06_MORE_CELLS.md`](2026/2026-10/2026-10-24/06_MORE_CELLS.md) (sections 1 to 30) |
 | What was planned and what changed | [`03_PREREG.md`](2026/2026-10/2026-10-21/03_PREREG.md) (frozen at tag `prereg-v1`, deviations appended), [`01_DISCLOSURE_LOG.md`](2026/2026-10/2026-10-21/01_DISCLOSURE_LOG.md), [`PLAN.md`](PLAN.md) |
 | What each day produced | `2026/2026-10/<day>/00_SUMMARY.md` for 21 to 26 October |
+| Slides (10 pages) and project image | [`Submission/supplementary/slides/slides.pdf`](Submission/supplementary/slides/slides.pdf), [`project_image.png`](Submission/supplementary/project_image/project_image.png) |
 | How the research was conducted (dated timeline, 2 pages) | [`Submission/supplementary/research_spend_timeline/`](Submission/supplementary/research_spend_timeline/timeline.pdf) |
 | The human case studies with figures | [`Submission/supplementary/human_case_studies/`](Submission/supplementary/human_case_studies/README.md) |
 | The raw data | [`data/README.md`](data/README.md) (every folder, the experiment it belongs to, partial and cancelled runs) |
