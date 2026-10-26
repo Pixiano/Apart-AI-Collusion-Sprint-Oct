@@ -1,4 +1,4 @@
-# Project audit: what is done and what is left (2026-10-25 evening)
+# Project audit: what is done and what is left (2026-10-26, after the overnight runs)
 
 ## A. Ablations (06_ABLATIONS.md, items 1-12, H, H2)
 | # | Item | Status |
@@ -7,7 +7,7 @@
 | 2 | Notes | DONE: gemma, deepseek, glm53f (5 seeds) |
 | 3 | History window | DONE as history none and last round (gemma, deepseek, glm53f); the 20-round window was cancelled |
 | 4 | Prompt wording (sell more) | Cancelled as low value; partly covered by the "share" newcomer variant and the pilot `hint` prompt |
-| 5 | Swap timing (round 15, 45) | CANCELLED by the author |
+| 5 | Swap timing (round 15, 45) | DONE 2026-10-26 (gemma, 9 gated seeds; exploratory deviation; results note section 29): clone +0.001 / -0.002 / +0.001, undercutter k=1 -0.037 / -0.032 / -0.028 for a swap at round 15 / 30 / 45 |
 | 6 | gpt-oss reasoning effort | CANCELLED (gpt-oss never passes the gate) |
 | 7 | Replacement strength | DONE as cross-family swaps and mixed markets |
 | 8 | Temperature 0.3 and 1.0 | DONE: gemma and deepseek (3 seeds each) |
@@ -18,27 +18,27 @@
 | H | Human plays a firm | DONE 2026-10-25 as a fun research direction: five case-study games (3 firms x3, 5 firms, 10 firms) plus a four-game information suite (section 27), debriefs by the gemma firms; section 25 of 06_MORE_CELLS |
 | H2 | External agent firm | DONE as a small hosted chat model, 2 seeds, descriptive |
 
-So the ablations are done except 5 and 6 (cancelled) and 10 (anchor, not done), by choice.
+So the ablations are done except 6 (cancelled) and 10 (anchor, not done), by choice.
 
 ## B. Other runs
 - glm53f newcomer variants: DONE for 21 of 25 branches (section 23); the credit ran out in seed 25.
-- Gemma main-study seeds 31-40: RUNNING overnight 25-26 Oct (earlier note: paused; only seed 31 partly done: base, none, clone; family branch unfinished and untracked); not part of any reported count.
+- Gemma main-study seeds 31-40: DONE overnight 25-26 Oct (results note section 28). Gemma is pooled over 20 seeds, 17 gated; the new seeds agree with the old. The thin gemma cells were filled on the same seeds: communication-cut clone -0.269 (-0.406, -0.137) over 17 gated seeds, entry n=13 (one firm -0.001, two firms -0.068), myopic newcomer n=13 (-0.110).
 - Qwen3.8 factor cells (announced, cut, history, notes, entry, probes, newcomers): NOT run (cost); say so in the report.
 - Round-1 spread test (PLAN.md "Later"): DONE 2026-10-25 (gemma, 50 seeds; section 24 of 06_MORE_CELLS): the seed spread is not from the opening draw.
 - Kimi K3 swap studies: not run (gate only).
-- If time after the gemma seeds 31-40 finish (queued to run after the gemma seeds with no cut-off; results are used if they finish before the final refresh): (1) a second local base model, qwen3-14b with gemma as the other model, to 10 seeds, as a labelled exploratory deviation; (2) swap timing on gemma (swap at round 15 and 45 as well as 30), which needs a small harness switch and a deviation note. Queued (swap timing first, then qwen3-14b seeds 51-60).
+- Queued depth runs, DONE 2026-10-26: (1) swap timing on gemma (see item 5 above; results note section 29). (2) A second local base model, qwen3-14b (`data/qwen14_more`, seeds 51 and up): all finished base runs (at least 7; 7 when analysed) price at the floor of 10 in rounds 16-30, gate index 0.000, 0 passes, so it never forms a cartel and cannot answer the persistence question (true negative; results note section 30). Its swap cells were run but are not analysed.
 - Gemma known end date: only 2 of 5 base runs pass the gate (descriptive).
 
 ## C. Analysis and documents
-- Figures: DONE, 16 figures (a to p) in figures/ with make_figures.py and make_figures2.py; the entry-variant bars are included once make_figures2.py is rerun (check in V2).
+- Figures: DONE, 17 figures (a to q) in figures/ with make_figures.py and make_figures2.py; the entry-variant bars are included once make_figures2.py is rerun (check in V2).
 - Pooled effect table with intervals across models, in one place: partly in README and 06_MORE_CELLS; one clean table for the report is still to build.
-- `2026/2026-10/2026-10-25/00_SUMMARY.md`: written for the whole day (2026-10-25 evening).
+- `2026/2026-10/2026-10-25/00_SUMMARY.md`: written for the whole day (2026-10-25 evening). `2026/2026-10/2026-10-26/00_SUMMARY.md`: written 2026-10-26 (overnight runs).
 - `01_DISCLOSURE_LOG.md`: 2026-10-25 afternoon and evening rows added (human games, suite, spread test, entry variants, audit).
 - `PLAN.md` and README status: refreshed 2026-10-25 evening; history sections are kept and marked.
 - README snapshot to `general/readme_history/`: take one after the last README edit.
 - Decision logs for new runs: re-run `tools/export_decisions.py` into `Submission/supplementary/` (supporting material only).
 - `tools/models.ini`: untracked; `tools/models.example.ini` is the tracked template.
-- Housekeeping: `data/gemma_more` is partly pushed (seed 31 base, none, clone); `data/external_agent_ext*` and `data/human_ext*` hold the agent and human prompt files, untracked. `data/README.md` lists every data folder.
+- Housekeeping: `data/gemma_more` (seeds 31-40), `data/gemma_timing` and `data/qwen14_more` are new and untracked until committed; `data/external_agent_ext*` and `data/human_ext*` hold the agent and human prompt files, untracked. `data/README.md` lists every data folder.
 
 ## D. Report and submission (author)
 - Write the report on the official template, 8 pages or fewer, from `Submission/preliminary_report/V2` (rough draft, outline, findings; V1 is the frozen first draft). Abstract 150-250 words, written last.

@@ -3,6 +3,7 @@
 Same design and statistics as `04_FACTOR_RESULTS.md`: index = (mean price - 10) / 45 over rounds 31-60, effect = branch minus the paired no-swap branch of the same base run, bootstrap 95% interval over gated runs (10,000 resamples, seed 0, one seed everywhere). Each section states its seeds and n; the pooling is never mixed inside one table (the `Submission/` tables also give an all-seeds pooling, for example deepseek 20 seeds: clone +0.003, undercutter k=1 -0.038). These cells are exploratory additions (see `03_PREREG.md`). The hosted model ignores the seed parameter.
 
 ## 1. Full-history cells, both models (seeds 11-20, gated runs: deepseek 10, gemma 9)
+*Update 2026-10-26: the gemma column below is the old seeds 11-20 only. Gemma is now pooled over 20 seeds (11-20 and 31-40), see section 28; the new seeds agree with the old and no direction changed.*
 
 | Replacement | deepseek-v4-1-flash | gemma4-12b |
 |-------------|--------------------:|-----------:|
@@ -16,6 +17,7 @@ Same design and statistics as `04_FACTOR_RESULTS.md`: index = (mean price - 10) 
 Both models: clones change nothing, one undercutter dents the cartel, announcing makes an undercutter's damage larger, two undercutters break it. An announced clone raises deepseek's index slightly.
 
 ## 2. Communication cut at the swap (messages on until round 30, off from round 31; seeds 11-20 checkpoints)
+*Update 2026-10-26: the gemma numbers in this section are the old seeds (n=9). Pooled over 17 gated seeds with the cut, the gemma clone effect is -0.269 (-0.406, -0.137); see section 28.*
 
 Effects against the no-swap branch with the same cut (so the cut itself is separated out):
 
@@ -110,7 +112,7 @@ Cost: Qwen about 4.8 USD, GLM about 1.1 USD. Hosted spend to date about 23.5 USD
 
 Same market with history none (data/mixed_h0, 5 of 5 gated, no-swap 0.94): clone +0.024, undercutter k=1 +0.026, k=2 -0.203.
 
-**deepseek-v4-1-flash / qw38 / gemma4-12b** (data/mixed_g, seeds 31-35, 5 of 5 gated, no-swap 0.91): clone +0.000, undercutter k=1 -0.089 (-0.105, -0.063), k=2 -0.306 (-0.322, -0.292), communication cut then clone **-0.605** (-0.730, -0.428), about three times the effect in the all-gemma market (-0.207).
+**deepseek-v4-1-flash / qw38 / gemma4-12b** (data/mixed_g, seeds 31-35, 5 of 5 gated, no-swap 0.91): clone +0.000, undercutter k=1 -0.089 (-0.105, -0.063), k=2 -0.306 (-0.322, -0.292), communication cut then clone **-0.605** (-0.730, -0.428), about three times the effect in the old all-gemma value (-0.207, old seeds), about twice the 20-seed pooled value (-0.269, section 28).
 
 ## 13. More seeds
 deepseek-v4-1-flash seeds 31-40 (data/more_ds, 10 of 10 gated, no-swap 0.78): clone -0.017, announced clone -0.027, qw38 replaces 1 firm +0.052 (-0.000, +0.111), undercutter k=1 -0.031 (-0.069, +0.007), announced -0.100 (-0.154, -0.039), k=2 -0.254 (-0.301, -0.198). Consistent with seeds 11-20. glm53f seeds 21-30 (10 of 10 gated, no-swap 1.01): clone -0.005, deepseek replaces 1 or 2 firms +0.000, undercutter k=1 **-0.297** (-0.315, -0.274), k=2 -0.346 (-0.352, -0.342).
@@ -131,11 +133,13 @@ Both base runs pass the gate (0.89 and 0.89): the agent opened at 90 and 55 in r
 About 36 USD of the 50 USD credit at the end of the mixed and eight-firm runs (logged tokens about 38.3 USD without any cached-token discount): Qwen 23.5, deepseek 9.5, GLM 3.4, Kimi 1.9. The hosted per-token price of Qwen and its growing history prompt (about 480 input tokens in round 1, 1,640 by round 60) dominate.
 
 ## 17. Ablations on gemma4-12b (local), seeds 11, 13, 14
+*Update 2026-10-26: the entry numbers here (seeds 11, 13-16, n=5) are the old seeds. Entry is now pooled over n=13 (k=1 -0.001, k=2 -0.068 (-0.163, -0.003)); the sentence about seed 13 only is superseded, see section 28.*
 Entry of new firms at round 31 (seeds 11, 13, 14, 15, 16, no-swap index 0.84 to 0.87): one new gemma firm D changes nothing in any seed; two new firms (D and E) change nothing in four seeds and lower the index from 0.87 to 0.43 in seed 13.
 Sampling temperature (new base runs and branches; the same seeds at the frozen 0.7 in data/main for comparison): the cartel forms at every temperature (base index 0.84 to 0.87 at 0.3, 0.7 and 1.0) and a fresh clone is exactly 0.000 in every seed at every temperature. One undercutter: 0.3 gives -0.017, -0.110, -0.091; 0.7 gives -0.070, -0.045, -0.036; 1.0 gives -0.113, -0.036, -0.039. No temperature trend; the between-seed spread is larger than any temperature difference. Three seeds, descriptive only. Data in data/temp03 and data/temp10.
 
 ## 18. Coverage by model (complete branches with a finished base run, all seeds pooled; updated 2026-10-25 evening)
-Full history, hidden swap: clone k=1, family k=1 and undercutter k=1 and k=2 exist for gemma (10), deepseek (20), qw38 (5) and glm53f (10); clone k=2 only for gemma and deepseek; family k=2 for deepseek (10), qw38 (5), glm53f (5), not gemma. Announced swap, communication cut, history none, history last, persistent notes: gemma and deepseek only (announced and cut: 10 or 20 seeds; history and notes: 5). Known end date: all four models (5 seeds each). Communication off from the start: gemma (5 base runs) and deepseek (10) only. Entry: gemma, deepseek (+0.005, -0.003; section 19) and glm53f (section 22). Awareness probes and newcomer variants: gemma, deepseek, glm53f. Only qw38 therefore lacks the announced, communication-cut, history, notes, entry, probe and newcomer cells (cost); glm53f has all of them (history and notes cells with n=5).
+*Update 2026-10-26: gemma is now 20 seeds for the full-history hidden cells (17 gated) and has the communication-cut clone, entry and myopic cells on more seeds (section 28). Swap timing (gemma, 9 gated seeds) is section 29 and the qwen3-14b base is section 30. The text below is the 2026-10-25 coverage.*
+Full history, hidden swap: clone k=1, family k=1 and undercutter k=1 and k=2 exist for gemma (10, now 20), deepseek (20), qw38 (5) and glm53f (10); clone k=2 only for gemma and deepseek; family k=2 for deepseek (10), qw38 (5), glm53f (5), not gemma. Announced swap, communication cut, history none, history last, persistent notes: gemma and deepseek only (announced and cut: 10 or 20 seeds; history and notes: 5). Known end date: all four models (5 seeds each). Communication off from the start: gemma (5 base runs) and deepseek (10) only. Entry: gemma, deepseek (+0.005, -0.003; section 19) and glm53f (section 22). Awareness probes and newcomer variants: gemma, deepseek, glm53f. Only qw38 therefore lacks the announced, communication-cut, history, notes, entry, probe and newcomer cells (cost); glm53f has all of them (history and notes cells with n=5).
 
 
 ## 19. Coverage fills and probes (written 2026-10-25 ~02:00; the gemma probes, newcomers, horizon and number-of-firms runs came later and are in sections 20 to 22 and 24 to 26)
@@ -172,13 +176,13 @@ The unperturbed cartel is frozen: the same price (48 or 49 per firm) in every ro
 Two firms collude at the shared price 50 in both seeds; at four firms one seed holds 47 and one decays to 21; at five firms neither seed passes the gate (prices settle at 20 and 30). The cartel gets harder to form as the group grows, consistent with the eight-firm runs (section 14). With only two seeds per size, descriptive only. One undercutter among 2 to 4 gated firms costs about -0.05 to -0.08.
 
 ## 22. Parity runs (2026-10-25 midday; credit-limited, logged-cost cap 3.0 USD)
-**gemma4-12b newcomer variants** (seeds 11, 13-16, all 5 gated, 5 seeds each, like deepseek; recomputed 2026-10-25 with `analysis/common.py` helpers, effect vs the same run's no-swap branch, rounds 31-60, bootstrap seed 0): do not collude **-0.015** (-0.026, -0.005), own price only +0.000, share -0.047 (-0.079, -0.020), myopic **-0.181** (-0.434, -0.029), deceptive -0.016 (-0.019, -0.011). Per-seed myopic effects: -0.036, -0.027, -0.664, -0.154, -0.027, so one seed (14) drives most of the mean. An earlier note gave myopic -0.242 with n=3 (seeds 11, 13, 14); the n=5 value replaces it. Only the myopic variant moves gemma clearly (deepseek: do not collude and myopic).
+**gemma4-12b newcomer variants** (seeds 11, 13-16, all 5 gated, 5 seeds each, like deepseek; recomputed 2026-10-25 with `analysis/common.py` helpers, effect vs the same run's no-swap branch, rounds 31-60, bootstrap seed 0): do not collude **-0.015** (-0.026, -0.005), own price only +0.000, share -0.047 (-0.079, -0.020), myopic **-0.181** (-0.434, -0.029), deceptive -0.016 (-0.019, -0.011). Per-seed myopic effects: -0.036, -0.027, -0.664, -0.154, -0.027, so one seed (14) drives most of the mean. An earlier note gave myopic -0.242 with n=3 (seeds 11, 13, 14); the n=5 value replaces it. Only the myopic variant moves gemma clearly (deepseek: do not collude and myopic). *Update 2026-10-26: gemma myopic pooled over n=13 is -0.110 (-0.225, -0.028); the other gemma newcomer prompts stay at n=5 (section 28). The values above are the old seeds.*
 **glm53f entry** (seeds 21-25): one new firm **-0.151** (-0.301, -0.040), two new firms **-0.138** (-0.191, -0.073). Unlike gemma and deepseek (no effect), glm53f is hurt by newcomers who enter without the history. Undercutter k=2 with communication cut: -0.348 (-0.354, -0.337).
 **glm53f awareness probe**: no swap 0 of 15, clone 0 of 10, undercutter 0 of 10 (never notices, like gemma; deepseek notices an undercutter in 5 of 10).
 **deepseek temperature** (seeds 11, 13, 14; 0.3: 2 of 3 gated, 1.0: 3 of 3 gated): clone +0.000 (0.3, n=2) and -0.049 (1.0, n=3); undercutter k=1 -0.110 (0.3) and -0.099 (1.0), against -0.046 at the frozen 0.7. The cartel and the clone result do not depend on temperature; the undercutter effect is somewhat larger at 0.3 and 1.0 than at 0.7 but intervals are wide; on the matched seeds 11, 13, 14 alone the frozen 0.7 gives clone +0.101 and undercutter k=1 +0.003, so the comparison with the 10-seed -0.046 is seed-sensitive.
 **deepseek number of firms** (seeds 41, 42; effect of one undercutter over rounds 31-60): 2 firms -0.065 and -0.126; 4 firms -0.072 and -0.214; 5 firms +0.009 and -0.015, where the no-swap cartel has decayed (indices 0.58 and 0.28 against base 0.84 and 0.64). deepseek cartels form at 2 and 4 firms in most seeds (at 4 firms seed 42 fails the gate, base index 0.37) and decay at 5 (like gemma).
 **deepseek longer horizon** (seeds 11, 13, 14; index per 30 rounds, no swap / undercutter): seed 11 0.67, 0.67, 0.67 / 0.65, 0.54, 0.38; seed 13 0.44, 0.20, 0.14 / 0.44, 0.10, 0.01; seed 14 0.29, 0.10, 0.15 / 0.31, 0.03, 0.01. Unlike gemma (frozen to round 120), deepseek's no-swap cartel decays in 2 of 3 seeds, and one undercutter pushes it to about zero by rounds 91-120.
-**Not run** (credit): deepseek and glm53f cells not listed here. glm53f newcomer variants were started after this section and are in section 23 (21 of 25 branches done). qw38 factor cells excluded earlier for cost. Gemma main-study seeds 31-40 were not run: paused after seed 31 (base, none and clone done, family branch unfinished and untracked), so they are part of no reported count.
+**Not run** (credit): deepseek and glm53f cells not listed here. glm53f newcomer variants were started after this section and are in section 23 (21 of 25 branches done). qw38 factor cells excluded earlier for cost. Gemma main-study seeds 31-40 were not run when this section was written (paused after seed 31). *Update 2026-10-26: they were run overnight 25 to 26 October and are reported in section 28.*
 
 ## 23. glm53f LLM newcomer variants (seeds 21-25; the hosted credit ran out in seed 25, so 21 of 25 branches finished; 4 or 5 seeds per variant)
 Effect vs the same run's no-swap branch: do not collude **-0.357** (-0.441, -0.293, n=4), own price only **-0.311** (-0.386, -0.228, n=4), share **-0.265** (-0.348, -0.211, n=4), myopic **-0.208** (-0.266, -0.138, n=5), deceptive **-0.160** (-0.201, -0.101, n=4). Every variant hurts glm53f (gemma: only myopic; deepseek: do not collude and myopic); the deceptive newcomer, harmless for gemma and deepseek, costs glm53f -0.16. The unfinished branches of seed 25 (share, do not collude, own price only, deceptive) were deleted after the endpoint refused calls (429, plan credits not usable on the shared endpoint); no partial or repeated-price rounds are kept.
@@ -216,3 +220,68 @@ The qwen3-14b entrant opens at 10 in its first round (it enters without the hist
 | 83 no messages | all | off | 11,980 / 5,170 / 10,521 | 46.3, 46.5, 47.5 | 10.1, 10.1, 18.7 | 0.10 |
 | 84 neither | none | off | 1,009 / 875 / 2,241 | 17.6, 18.5, 40.9 | 11.0, 11.0, 21.3 | 0.14 |
 Game 81: A and B followed the author down one cent at a time (50 to 48) and never punished; the author earned about 12 times each rival. Game 82: the gemma firms held about 50 for ten rounds, then both fell together to 30 in round 11 and sat there (the author followed to 29), bounced in rounds 26 to 30; the author still earned 10 and 60 times A and B. Game 83: no cartel; both gemma firms slid from 50 to 40 by round 13 and to the floor (10) from round 17, the author's attempts to pull them up (50 in rounds 9 to 13 and 19 to 21) failed, and for the only time in all human games the author did not take most of the profit. Game 84: both gemma firms dropped to 11 or 20 from round 2 and stayed (they saw only their own last price), the author alternated between 49 and 10 to 11 and earned about twice each rival, all at very low profits. One player (the author, who knew the design), one model, one game per cell: the pattern (messages hold the cartel together, history keeps it from sliding, human undercutting works only while the gemma firms can still see and read it) agrees with the base study but is a case study only. Same fun research direction label as section 25.
+
+## 28. Gemma seeds 31-40 and the 20-seed pooling (written 2026-10-26; source `analysis/out/new_runs.md`, made by `analysis/new_runs.py`; exploratory, logged as a deviation)
+The gemma main study was run again on seeds 31-40 (`data/gemma_more`, same prompts, harness and gate) overnight 25 to 26 October, together with the thin gemma cells on the same checkpoints. Gemma headline numbers are now pooled over 20 seeds: `data/main` seeds 11-20 plus `data/gemma_more` seeds 31-40. Gated 17 of 20 (ungated seeds 12, 33, 38). Base index over rounds 16-30: 0.846 over the 17 gated runs, 0.758 over all 20 base runs. DeepSeek (seeds 11-20), qw38 (21-25) and glm53f (21-30) are unchanged.
+
+Effect against the same run's no-swap branch, rounds 31-60 (n=17 gated in the pooled column; the old-seeds column is the gemma column of section 1 and of Table 1 before this update):
+
+| Branch | 20 seeds (11-20, 31-40), n=17 | new seeds 31-40, n=8 | old seeds 11-20, n=9 |
+|---|---|---|---|
+| no-swap index | 0.846 | 0.839 | 0.852 |
+| clone, hidden | -0.000 (-0.002, +0.001) | +0.001 (+0.000, +0.001) | -0.001 (-0.004, +0.000) |
+| family (qwen3-14b), hidden | +0.000 (+0.000, +0.000) | +0.000 (+0.000, +0.000) | +0.000 (+0.000, +0.000) |
+| undercutter k=1, hidden | **-0.050** (-0.060, -0.041) | -0.054 (-0.071, -0.041) | -0.046 (-0.058, -0.036) |
+| undercutter k=2, hidden | -0.313 (-0.324, -0.300) | -0.308 (-0.325, -0.285) | -0.317 (-0.329, -0.302) |
+| clone, announced | +0.000 (+0.000, +0.001) | +0.001 (+0.000, +0.001) | +0.000 (+0.000, +0.001) |
+| undercutter k=1, announced | -0.080 (-0.100, -0.062) | -0.085 (-0.116, -0.056) | -0.075 (-0.102, -0.053) |
+
+The new seeds agree with the old: no direction changed.
+
+**Communication cut at the swap** (reference = the same run's no-swap branch with the cut; rounds 31-60):
+
+| Seeds | clone, messages cut | cut alone vs messages on | undercutter k=1, cut |
+|---|---|---|---|
+| old 11-20 (n=9) | -0.207 (-0.407, -0.062) | +0.000 (+0.000, +0.000) | -0.177 (-0.181, -0.173) |
+| new 31-40 (n=8) | -0.339 (-0.520, -0.156) | +0.000 (+0.000, +0.000) | not run |
+| pooled (n=17) | **-0.269** (-0.406, -0.137) | +0.000 (+0.000, +0.000) | -0.177, n=9 (old seeds only) |
+
+Per-seed clone effects, old: s11 -0.022, s13 -0.622, s14 +0.000, s15 -0.560, s16 +0.000, s17 -0.637, s18 +0.001, s19 +0.000, s20 -0.021. New: s31 -0.580, s32 +0.000, s34 -0.652, s35 -0.027, s36 -0.385, s37 -0.398, s39 -0.649, s40 -0.020. The effect is bimodal (near 0, or -0.4 to -0.65): 3 of 9 old seeds and 5 of 8 new seeds hit hard. The cut alone moves nothing. The pooled -0.269 replaces -0.207 as the gemma value.
+
+**Entry** (new firms D, E join at round 31; index over all firms present; same-model entrants), pooled n=13 (old seeds 11, 13-16 n=5, new seeds n=8):
+
+| Branch | Seeds | Rounds 31-60 | Rounds 46-60 |
+|---|---|---|---|
+| one new firm | old (n=5) | -0.001 (-0.004, +0.000) | +0.000 (+0.000, +0.000) |
+| one new firm | new (n=8) | -0.001 (-0.003, +0.000) | +0.000 (+0.000, +0.000) |
+| one new firm | pooled (n=13) | **-0.001** (-0.003, +0.000) | +0.000 (+0.000, +0.000) |
+| two new firms | old (n=5) | -0.091 (-0.267, -0.001) | -0.107 (-0.320, +0.000) |
+| two new firms | new (n=8) | -0.054 (-0.154, -0.003) | -0.056 (-0.167, +0.000) |
+| two new firms | pooled (n=13) | **-0.068** (-0.163, -0.003) | **-0.075** (-0.185, +0.000) |
+
+One new firm changes nothing in either window. Two new firms give a mild negative effect that a few seeds drive. The earlier sentence that only seed 13 moved (section 17) is superseded by these pooled numbers.
+
+**Newcomer myopic** (LLM newcomer with the history wiped, myopic instruction, rounds 31-60):
+
+| Seeds | all | without seed 14 |
+|---|---|---|
+| old 11-20 | -0.181 (-0.434, -0.029), n=5 | -0.061 (-0.122, -0.027), n=4 |
+| new 31-40 | -0.066 (-0.149, -0.013), n=8 | -0.066 (-0.149, -0.013), n=8 |
+| pooled | **-0.110** (-0.225, -0.028), n=13 | -0.064 (-0.124, -0.021), n=12 |
+
+Per seed: s11 -0.036, s13 -0.027, s14 -0.664, s15 -0.154, s16 -0.027, s31 -0.009, s32 -0.029, s34 -0.100, s35 -0.007, s36 -0.009, s37 -0.008, s39 -0.340, s40 -0.024. Seed 14 and the new seed 39 are the large ones. The other newcomer prompts (do not collude, own price only, share, deceptive) stay at n=5 on seeds 11, 13-16 (section 22).
+
+Sections 1, 2, 17 and 22 keep the old-seed numbers, labelled as old seeds.
+
+## 29. Swap timing, gemma4-12b (written 2026-10-26; exploratory, a dated deviation; `data/gemma_timing`, tool `tools/swap_timing.py`, switch `SWAP_AT` in `harness/swaps.py`)
+Does it matter when the swap happens? The main study swaps at round 30. Here the 9 gated seeds of 11-20 are swapped at round 15 or round 45 as well: a checkpoint is cut from the logged main-study rounds, then the branches none, clone and undercutter k=1 (hidden) run from it. The switch `SWAP_AT` defaults to 30, so the main study is unchanged. Effect = index over the first 15 rounds after the swap, branch minus the same checkpoint's no-swap branch (n=9; gate = the matching `data/main` base run, rounds 16-30 >= 0.5; the timing folders hold no base run):
+
+| Branch | swap at round 15 (rounds 16-30) | swap at round 30 (rounds 31-45, `data/main`) | swap at round 45 (rounds 46-60) |
+|---|---|---|---|
+| clone, hidden | +0.001 (+0.000, +0.001) | -0.002 (-0.007, +0.001) | +0.001 (+0.000, +0.001) |
+| undercutter k=1, hidden | -0.037 (-0.052, -0.023) | -0.032 (-0.043, -0.021) | -0.028 (-0.035, -0.021) |
+
+In these runs a fresh clone changes nothing whenever it joins, and the undercutter's early damage is of similar size at any swap time (slightly larger when earlier). Per seed, undercutter at round 15: s11 -0.025, s13 -0.014, s14 -0.062, s15 -0.008, s16 -0.076, s17 -0.021, s18 -0.030, s19 -0.043, s20 -0.056; at round 45: s11 -0.013, s13 -0.029, s14 -0.019, s15 -0.027, s16 -0.011, s17 -0.029, s18 -0.041, s19 -0.042, s20 -0.041. Clone effects are +0.000 to +0.002 in every seed at both times. Only the first 15 rounds after the swap are compared; later damage (section 20) is not measured here. Nine seeds, one model, hidden swap only.
+
+## 30. qwen3-14b as the base model (written 2026-10-26; exploratory, a dated deviation; `data/qwen14_more`, seeds 51 and up)
+A second local model as base, to ask the persistence question of it (cells none, clone, undercutter and family (gemma) were run behind the base runs). Result: in every finished base run the three firms price at the floor of 10 in 100% of rounds 16-30 (mean price 10.0, index 0.000, gate failed). Seeds 51 to 57 were finished when analysed: 7 of 7 fail the gate, 0 pass; the queue may have added more seeds, so read this as at least 7. This local 14B model never forms a cartel in this game, so there is nothing to persist and it cannot answer the persistence question. A true negative, reported as such. The swap cells that were run on these bases are not analysed because the gate fails. The qwen3-14b entrant and family results in sections 17 and 26 are unaffected.

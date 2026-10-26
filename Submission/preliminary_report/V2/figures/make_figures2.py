@@ -12,7 +12,7 @@ OUT = "Submission/preliminary_report/V2/figures"
 D = "data"
 PRE = {"gemma": "gemma4-12b", "deepseek": "deepseek-v4-1-flash", "qw38": "qw38", "glm53f": "glm53f"}
 MODELS = {
-    "gemma": [f"{D}/main/gemma4-12b_common_s*"],  # headline pooling: seeds 11-20 (gemma seed 31 in data/gemma_more is unfinished, never used)
+    "gemma": [f"{D}/main/gemma4-12b_common_s*", f"{D}/gemma_more/gemma4-12b_common_s*"],  # headline pooling: 20 seeds, 11-20 + 31-40
     "deepseek": [f"{D}/main/deepseek-v4-1-flash_common_s*"],  # seeds 11-20; seeds 31-40 (data/more_ds) are in the all-seeds table only
     "qw38": [f"{D}/qwen/qw38_common_s*"],
     "glm53f": [f"{D}/glm/glm53f_common_s*"],
@@ -28,7 +28,7 @@ def n_rows(d, t):
     except OSError: return 0
 def mp(rs): return [sum(r["prices"]) / len(r["prices"]) for r in rs]
 def idx(rs): return (np.mean(mp(rs)) - 10) / 45
-def dirs(pats): return sorted(d for p in pats for d in glob.glob(p) if os.path.isdir(d))
+def dirs(pats): return [d for p in pats for d in sorted(glob.glob(p)) if os.path.isdir(d)]  # pattern order kept: data/main seeds first, then gemma_more (same order as analysis/new_runs.py)
 def seed(d): return int(d.rsplit("_s", 1)[1])
 def gated(ds):
     base = [d for d in ds if n_rows(d, "base") == 30]
@@ -239,26 +239,26 @@ NOTES["n"] = ("fig_n_known_end.png", "Mean price in rounds 31-50 vs 51-60 of the
               "seeds 21-25; gated n: " + ", ".join(f"{m}={v}" for m, v in kn.items()) + " (gemma fails the 60% rule in this cell)")
 
 # ---------------- o) per-seed gemma main
-ds = [d for d in dirs([f"{D}/main/gemma4-12b_common_s*"]) if n_rows(d, "base") == 30 and n_rows(d, "none") == 30 and n_rows(d, "undercutter_k1_hid") == 30]
-fig, axs = plt.subplots(2, 5, figsize=(15, 6), sharey=True, sharex=True)
+ds = [d for d in dirs(MODELS["gemma"]) if n_rows(d, "base") == 30 and n_rows(d, "none") == 30 and n_rows(d, "undercutter_k1_hid") == 30]
+fig, axs = plt.subplots(4, 5, figsize=(15, 11), sharey=True, sharex=True)
 for ax, d in zip(axs.flat, ds):
     b = mp(rows(f"{d}/base/rounds.jsonl")); ok = idx(rows(f"{d}/base/rounds.jsonl")[15:30]) >= .5
     for t, lab, col in [("none", "no swap", OI["black"]), ("undercutter_k1_hid", "scripted undercutter", OI["orange"])]:
         ax.plot(range(1, 61), b + mp(rows(f"{d}/{t}/rounds.jsonl")), color=col, lw=1.5, label=lab)
     ax.axvline(30.5, color="grey", ls=":"); ax.axhline(55, color="grey", lw=.8); ax.axhline(10, color="grey", lw=.8)
     ax.set_title(f"Run {seed(d)}" + ("" if ok else " (no cartel)"), fontsize=10)
-for ax in axs[1]: ax.set_xlabel("round")
+for ax in axs[-1]: ax.set_xlabel("round")
 for ax in axs[:, 0]: ax.set_ylabel("average price")
 axs.flat[0].legend(fontsize=7, loc="lower left"); axs.flat[0].set_ylim(5, 62)
-fig.suptitle("Gemma: price in each of the ten runs", fontsize=13); fig.tight_layout(rect=[0, 0, 1, .95]); fig.savefig(f"{OUT}/fig_o_per_seed.png", dpi=160); plt.close(fig)
-NOTES["o"] = ("fig_o_per_seed.png", "gemma4-12b price per round, no swap vs undercutter k=1, one panel per seed; all seeds shown, ungated marked in title", "data/main gemma4-12b_common",
+fig.suptitle(f"Gemma: price in each of the {len(ds)} runs (runs with no cartel are marked)", fontsize=13); fig.tight_layout(rect=[0, 0, 1, .95]); fig.savefig(f"{OUT}/fig_o_per_seed.png", dpi=160); plt.close(fig)
+NOTES["o"] = ("fig_o_per_seed.png", "gemma4-12b price per round, no swap vs undercutter k=1, one panel per seed; all seeds shown, ungated marked in title", "data/main + data/gemma_more gemma4-12b_common",
               "gate not applied (marked in titles)", "seeds " + ", ".join(str(seed(d)) for d in ds) + f"; n={len(ds)} panels")
 
 # ---------------- p) message volume
 def words(r): return np.mean([len(m.split()) for m in r["msgs"]]) if r.get("msgs") else np.nan
 fig, ax = plt.subplots(figsize=(8, 4)); pn = {}
 for m, col in [("gemma", OI["blue"]), ("deepseek", OI["verm"])]:  # DN[m] in labels
-    g = [d for d in G[m][1] if d.replace("\\", "/").startswith(f"{D}/main/") and n_rows(d, "none") == 30]; pn[m] = len(g)
+    g = [d for d in G[m][1] if n_rows(d, "none") == 30]; pn[m] = len(g)
     ys = np.array([[words(r) for r in rows(f"{d}/base/rounds.jsonl") + rows(f"{d}/none/rounds.jsonl")] for d in g])
     for y in ys: ax.plot(range(1, 61), y, color=col, alpha=.15, lw=.8)
     ax.plot(range(1, 61), np.nanmean(ys, axis=0), color=col, lw=2.2, label=f"{DN[m]} (average of {len(g)} runs)")
@@ -266,5 +266,6 @@ ax.axvline(30.5, color="grey", ls=":"); ax.set_xlabel("round"); ax.set_ylabel("a
 ax.set_title("How long the firms' messages are, round by round", fontsize=12); fig.tight_layout(); fig.savefig(f"{OUT}/fig_p_message_volume.png", dpi=160); plt.close(fig)
 NOTES["p"] = ("fig_p_message_volume.png", "Mean words per message per round (three firms averaged), thin lines = single runs", "data/main gemma4-12b_common and deepseek-v4-1-flash_common, base + none", "gated runs of data/main only", f"n: {pn}")
 
+print("gemma gated n", len(G["gemma"][1]), "of", len(G["gemma"][0]))
 print("ok", pn, kn, tn, pj, en, sep="\n")
 for k in sorted(NOTES): print(k, NOTES[k][4])

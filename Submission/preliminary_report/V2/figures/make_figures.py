@@ -1,7 +1,7 @@
 """V2: builds main-text figures a-e and V2/RESULTS_TABLE.md from data/*/rounds.jsonl (read only).
 Run from the repo root: .venv/Scripts/python.exe -I Submission/preliminary_report/V2/figures/make_figures.py
 Pooling (state it in every caption): HEADLINE = seeds 11-20 for gemma4-12b and deepseek-v4-1-flash (data/main), qw38 seeds 21-25,
-glm53f seeds 21-30. ALL = headline plus deepseek seeds 31-40 (data/more_ds). gemma seed 31 (data/gemma_more) is unfinished and never used.
+glm53f seeds 21-30. ALL = headline plus deepseek seeds 31-40 (data/more_ds). gemma = seeds 11-20 (data/main) + 31-40 (data/gemma_more), 20 runs.
 Figures a, b, c and the headline table all use HEADLINE, so 'n gated' agrees across them.
 Gate: base run has 30 rounds and index over rounds 16-30 >= 0.5. Effect: index(branch, rounds 31-60) minus index of the
 same run's reference branch (none, or none_nocomm for comm-cut branches), mean over runs, 95% bootstrap interval (10000 resamples, seed 0).
@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 OUT = "Submission/preliminary_report/V2/figures"
 D = "data"
 MODELS = {  # HEADLINE pooling: label -> glob patterns of run dirs
-    "gemma4-12b": [f"{D}/main/gemma4-12b_common_s*"],
+    "gemma4-12b": [f"{D}/main/gemma4-12b_common_s*", f"{D}/gemma_more/gemma4-12b_common_s*"],  # 20 seeds: 11-20 + 31-40
     "deepseek-v4-1-flash": [f"{D}/main/deepseek-v4-1-flash_common_s*"],
     "qw38": [f"{D}/qwen/qw38_common_s*"],
     "glm53f": [f"{D}/glm/glm53f_common_s*"],
@@ -36,7 +36,7 @@ def n_rows(d, t):
     except OSError: return 0
 def mp(rs): return [sum(r["prices"]) / len(r["prices"]) for r in rs]
 def idx(rs): return (np.mean(mp(rs)) - 10) / 45
-def dirs(pats): return sorted(d for p in pats for d in glob.glob(p) if os.path.isdir(d))
+def dirs(pats): return [d for p in pats for d in sorted(glob.glob(p)) if os.path.isdir(d)]  # pattern order kept: data/main seeds first, then gemma_more (same order as analysis/new_runs.py)
 def gated(ds):
     base = [d for d in ds if n_rows(d, "base") == 30]
     return base, [d for d in base if idx(rows(f"{d}/base/rounds.jsonl")[15:30]) >= 0.5]
@@ -195,4 +195,5 @@ for ax, (m, root) in zip(axs, [("gemma4-12b", "long"), ("deepseek-v4-1-flash", "
     ax.axvline(30, color="grey", ls=":"); ax.set_title(DN[m], fontsize=11); ax.set_xlabel("round (blocks 16-30, 31-60, 61-90, 91-120)")
 axs[0].set_ylabel("collusion index in each block"); fig.suptitle("Collusion index in a game of up to 120 rounds", fontsize=12); fig.legend(*axs[0].get_legend_handles_labels(), loc="lower center", ncol=2, fontsize=9, frameon=False); fig.tight_layout(rect=[0, .07, 1, .94]); fig.savefig(f"{OUT}/fig_e_horizon.png", dpi=160); plt.close(fig)
 
+print("gemma gated", [os.path.basename(d) for d in G["gemma4-12b"][1]], {c: (None if e is None else tuple(round(float(v),3) for v in e)) for c, e in EFF["gemma4-12b"].items()})
 print("done", {m: (len(G[m][0]), len(G[m][1])) for m in MODELS}, "seeds_a", seeds_a, d_info, e_info, sep=chr(10))

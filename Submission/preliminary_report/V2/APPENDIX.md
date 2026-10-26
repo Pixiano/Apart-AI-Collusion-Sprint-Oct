@@ -55,25 +55,30 @@ python -m harness.run branch --run <run_dir> --swap clone --k 1 [--announce] [--
 python -m harness.run probe --run <run_dir> --tag <branch>
 python -m harness.analyze gate <dir>                              # also: effects <dir>
 .\tools\round1_spread.ps1 -Model gemma4-12b -N 50
+.\tools\swapstudy.ps1 -Model gemma4-12b -Seeds 31,32,33,34,35,36,37,38,39,40 -Out data/gemma_more   # gemma main study on seeds 31-40; the overnight run was a chain of local scripts that called this tool (also with -K 2, -Announce, -CommAfter off, and harness.run branch for the entry and myopic-newcomer cells) one after the other
+.venv\Scripts\python.exe -I tools\swap_timing.py              # swap timing: cuts a checkpoint at round 15 and 45 from the gated gemma main runs, runs none/clone/undercutter into data/gemma_timing
+python harness.run base --model qwen3-14b --comm on --seed 51 --out data/qwen14_more   # qwen3-14b as base model, seeds 51 and up (same call shape as the line for <m> above)
+.venv\Scripts\python.exe -I analysis\new_runs.py              # all numbers of the 2026-10-26 refresh: 20-seed gemma pooling, comm-cut, entry, myopic, swap timing, qwen3-14b gate -> analysis/out/new_runs.md
 python Submission\preliminary_report\V2\figures\make_figures.py   # also make_figures2.py
 ```
-Environment switches: HIST, NOTES, HORIZON, TEMPERATURE, ROUNDS, BRANCH_ROUNDS, REMOTE, EXT_DIR, EXT_TIMEOUT, RESUME_AGREE (README table).
+Environment switches: HIST, NOTES, HORIZON, TEMPERATURE, ROUNDS, BRANCH_ROUNDS, REMOTE, EXT_DIR, EXT_TIMEOUT, RESUME_AGREE (README table), and SWAP_AT (round after which the swap takes effect; default 30, so the main study is unchanged; used only by the swap-timing tool, exploratory).
 
 Versions: Python 3.10.11; numpy 2.2.6; matplotlib 3.10.9; the chat-client package pinned in `requirements.txt` (3.36.0 as installed in `.venv`); llama.cpp release b11798 (prebuilt CUDA build) as the local server; gemma4-12b as a 4-bit quantised GGUF (Q4_0). Hosted models are the endpoint's labels (deepseek-v4-1-flash, qw38 = a Qwen3.8 model, glm53f = a GLM-5.3 Flash model) and hosted runs cannot be reproduced bit for bit: the endpoint ignores the seed parameter and may change the model behind a label. Local runs are only approximately reproducible (GPU arithmetic, server version). The bootstrap is exact given the data (numpy default generator, seed 0, 10000 resamples). Prices and messages of every call are logged in `calls.jsonl`.
 
 ## C. Limitations and Dual-Use (required appendix)
 
-**What the study establishes.** In a three-firm repeated pricing game, with these four models and this prompt, in the runs that reached cartel-like pricing: replacing a firm by a fresh clone or by a model from another family did not change the price index by more than +0.06; replacing one or two firms by a scripted undercutter lowered it by 0.05 to 0.30 (one) and about 0.3 (two); with messages cut at the swap, a fresh clone lowered the index by about 0.2 in three models. **What it does not establish.** Behaviour of real markets, of larger or fine-tuned models, of firms with other objectives; how newcomers are recruited; that real pricing agents collude; that model updates are harmless.
+**What the study establishes.** In a three-firm repeated pricing game, with these four models and this prompt, in the runs that reached cartel-like pricing: replacing a firm by a fresh clone or by a model from another family did not change the price index by more than +0.06; replacing one or two firms by a scripted undercutter lowered it by 0.05 to 0.30 (one) and about 0.3 (two); with messages cut at the swap, a fresh clone lowered the index by about 0.2 to 0.3 in three models (gemma -0.269 over 17 gated seeds, deepseek -0.222, glm53f -0.325); a fresh copy swapped in at round 15, 30 or 45 changed nothing in gemma (swap timing). **What it does not establish.** Behaviour of real markets, of larger or fine-tuned models, of firms with other objectives; how newcomers are recruited; that real pricing agents collude; that model updates are harmless.
 
 **Assumptions and what happens if one fails.**
 1. The scripted undercutter represents a defector. A real defector (an LLM that reasons, retaliates or hides) may do less or more damage; LLM newcomers told not to collude cost as much as the scripted one in deepseek (-0.218) and more in glm53f (-0.357), but moved gemma by -0.015 only. If the undercutter is unrepresentative, the size of the positive-control numbers changes, not the null results for clone and family.
 2. Thinking off or low. Reasoning models may behave differently; glm53f (low effort) reacted about five times as strongly as the thinking-off models. A model with full thinking could break cartels more or less often.
 3. 60 rounds. The horizon runs show damage growing after round 60 (gemma undercutter 0.84 to 0.67 by round 120) and deepseek's no-swap cartel decaying over 120 rounds, so 30 post-swap rounds can understate a persistent defector's effect and a clone-null result may not hold longer.
 4. Conditioning on the gate. Every effect is computed on base runs that reached CI >= 0.5; the effect of a swap on a market that never formed a cartel is not measured, and the choice of 0.5 and 60% is a convention. If the gate were different the cells would contain different runs.
-5. Bootstrap over base runs. Gemma and qw38 runs are nearly identical, so their narrow intervals understate uncertainty; the gemma message-cut interval (-0.407, -0.062) is wide because 3 of 9 runs sit near -0.6 and its upper end moves between -0.012 and -0.062 with the bootstrap seed.
+5. Bootstrap over base runs. Gemma and qw38 runs are nearly identical, so their narrow intervals understate uncertainty; the gemma message-cut interval (-0.406, -0.137, pooled n=17) is wide because the per-seed effect is bimodal (near 0 or -0.4 to -0.65; 8 of 17 seeds hit hard).
 6. Seeds. Hosted endpoints ignore the seed, so those runs are independent replicates, not reproducible; seed-matched comparisons across cells (temperature, factor cells) are nominal for them.
-7. Small cells. Most cells beyond Table 1 have n=5 (some 2 to 4); the human games are one game per cell with an unblinded author; the external agent has n=2.
-8. Coverage differs by model (qw38 lacks the announced, message-cut, history and notes cells; seeds differ between cells), and everything after the frozen plan is exploratory.
+7. Small cells. Most cells beyond Table 1 have n=5 (some 2 to 4); gemma entry and the myopic newcomer have n=13, swap timing n=9, the deepseek and glm53f message-cut cells n=10 and 5; the human games are one game per cell with an unblinded author; the external agent has n=2.
+8. Coverage differs by model (qw38 lacks the announced, message-cut, history and notes cells; seeds differ between cells), and everything after the frozen plan is exploratory. The extra gemma seeds 31-40 (they did not change any direction), the swap-timing study and the qwen3-14b base are exploratory deviations added after the preregistration; swap timing compares only the first 15 rounds after each swap, hidden swaps, one model.
+8a. A second local base model was tried and failed the premise: qwen3-14b priced at the floor of 10 in all rounds 16-30 in at least 7 of 7 base runs (gate index 0.000), so persistence cannot be asked of it; this says nothing about other small models.
 9. The index is a price-level measure. It does not distinguish an agreement from independent high pricing, and the messages are explicit communication, not tacit coordination.
 
 **Dual use.** The sensitive point is the messages result: in these runs cartel-like pricing was rare without messages, and a cartel weakened when a newcomer joined while messages were off. A reader could infer that explicit messages are what sustain cartel-like pricing among agents, and that a fresh agent can be brought into a price agreement through messages, which could help someone keep a price agreement going. The harness is a toy game with no market connection, uses no real prices, and the cartel-like price here emerged from the models' own behaviour, so the practical risk is low. The same result points to countermeasures: monitor and limit agent-to-agent messages, watch for newcomers and defectors, test model swaps before deployment, and diversify pricing agents. The human-firm games show that a human who undercut slightly while sending cooperative messages took most of the profit in all five games; this is a case study, but it also suggests a way to exploit a cooperating agent, so the report states it as a risk to agents, not a recipe. Credentials are not in the repository; data is released under CC BY 4.0.
@@ -115,19 +120,21 @@ The pattern (messages hold the price level, history keeps it from sliding, under
 | `data/nfirm`, `nfirm_ds` | number of firms, seeds 41, 42 | A9 |
 | `data/long`, `long_ds` | rounds 31-120 | A10 |
 | `data/temp03`, `temp10`, `temp03_ds`, `temp10_ds` | temperature | A6 |
-| `data/gemma_more` | gemma seed 31 only (unfinished, in no count) | none |
+| `data/gemma_more` | gemma seeds 31-40: main study (none, clone, family, undercutter k=1 and k=2, announced clone and undercutter, communication-cut cells) and the entry and myopic-newcomer cells on the same seeds | Table 1 and Table 4 (gemma), FINDINGS 2 to 6, 10, 11 |
+| `data/gemma_timing` | swap timing, gemma, 9 gated seeds, swap at round 15 and 45 | Table 4, FINDINGS 20 |
+| `data/qwen14_more` | qwen3-14b as base model, seeds 51-57 finished and analysed | Table 4, FINDINGS 21 |
 | `data/external_agent*` | external agent as firm C, n=2 | FINDINGS 16 |
 | `data/round1` | round-1 spread test (gemma set used; an old phi4 set is not used) | FINDINGS 17 |
 | `data/human`, `data/human_suite` | human games and suite | Appendix D |
 | `data/kimi`, `pilot`, `easy`, `median`, `additional` | gate-only and early checks | text only |
 
 ## F. Future Work and Author Contributions
-Future work [your words]: swap timing (rounds 15 and 45; not run); other defector types than the scripted undercutter; more seeds in the message-cut cells, and a message-cut cell for qw38; full-thinking models; longer horizons; blinded human players and repeated human games; a test of whether monitoring messages keeps a cartel-like price level from forming.
-Not run: swap timing, anchor price, qw38 factor cells (cost), the round-1 phi4 variant (model deleted), Kimi swap studies, gemma seeds 31-40 (paused; only seed 31 partly done).
+Future work [your words]: swap timing with more seeds, a hidden-and-announced comparison and a longer window after the swap (rounds 15 and 45 were run for gemma only, first 15 rounds after the swap); a base model that forms a cartel at small size (qwen3-14b did not); other defector types than the scripted undercutter; more seeds in the message-cut cells, and a message-cut cell for qw38; full-thinking models; longer horizons; blinded human players and repeated human games; a test of whether monitoring messages keeps a cartel-like price level from forming.
+Not run: anchor price, qw38 factor cells (cost), the round-1 phi4 variant (model deleted), Kimi swap studies, swap timing for the hosted models.
 Author contributions: [the author alone: question, design, harness, runs, analysis, figures, writing].
 
 ## G. Additional results (exploratory)
-See `RESULTS_TABLE.md` (Tables 2 and 3) and FINDINGS items 8 to 17. Figures A1 to A12 and their captions are in `figures/CAPTIONS.md`.
+See `RESULTS_TABLE.md` (Tables 2 to 4) and FINDINGS items 8 to 21. Figures A1 to A12 and their captions are in `figures/CAPTIONS.md`.
 
 ## LLM Usage Statement
 [Placeholder: the author writes this in their own words.]

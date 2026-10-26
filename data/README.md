@@ -17,7 +17,9 @@ One folder per experiment; each run is `<run>/{meta.json, checkpoint.json, base/
 | `more_ds/` | More deepseek seeds | MC 13 |
 | `eight_a/`, `eight_b/` | Eight-firm markets (seeds 51-53) | MC 14 |
 | `external_agent/`, `external_agent_ext*/` | An external agent (a small hosted chat model) as firm C via the prompt/reply file hook, seeds 61 and 62, n=2; `_ext*` hold the agent prompt files | MC 15 |
-| `gemma_more/` | Gemma variants: entry variants (MC 26) and the attempted main-study seeds 31-40 (only seed 31 partly done, paused, not part of any count) | MC 26 |
+| `gemma_more/` | Gemma main study on seeds 31-40 (none, clone, family, undercutter k=1 and k=2, announced clone and undercutter, communication-cut cells) and the entry (one and two new firms) and myopic-newcomer cells on the same seeds; pooled with `main/` seeds 11-20 for the 20-seed gemma numbers | MC 28 |
+| `gemma_timing/` | Swap timing, gemma, 9 gated seeds of 11-20: swap at round 15 (`_t15`) and 45 (`_t45`); each folder holds a checkpoint cut from the matching `main/` run and the branches none, clone_k1_hid, undercutter_k1_hid (no base run; exploratory, tool `tools/swap_timing.py`) | MC 29 |
+| `qwen14_more/` | qwen3-14b as the base model, seeds 51 and up (7 finished when analysed): all firms at the floor price 10 in rounds 16-30, gate fails; none, clone, undercutter and family branches exist but are not analysed (exploratory) | MC 30 |
 | `long/`, `long_ds/` | Longer horizon (rounds 31-120, gemma and deepseek) | MC 20 |
 | `nfirm/`, `nfirm_ds/` | Number of firms (gemma, deepseek; seeds 41, 42) | MC 21 |
 | `temp03/`, `temp10/`, `temp03_ds/`, `temp10_ds/` | Temperature 0.3 and 1.0 (gemma, deepseek) | MC 22 |
@@ -33,6 +35,7 @@ One folder per experiment; each run is `<run>/{meta.json, checkpoint.json, base/
 - `eight_b/..._dev..._common_s53/clone_k1_hid`: 1 round only.
 - `easy/gpt-oss-20b_common_s1/base`: 21 rounds, cancelled.
 - 13 folders in `additional/` (sanity checks) have no `rounds.jsonl`.
-- `gemma_more/gemma4-12b_common_s31`: seed 31 only (base, none, clone); the family branch is unfinished. Seeds 31-40 were not run.
+- `gemma_more`: seeds 12, 33 and 38 do not pass the gate (index over rounds 16-30 below 0.5; 12 is in `main/`), so they are left out of every effect.
+- `qwen14_more`: the swap branches are not used for results because every base run fails the gate.
 - `round1` phi4-14b set: not used.
 - `human_ext*`, `external_agent_ext*`: prompt files only, no results.

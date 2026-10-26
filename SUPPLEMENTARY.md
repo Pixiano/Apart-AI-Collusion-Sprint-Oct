@@ -7,10 +7,10 @@ The submitted report is short (8 pages at most). This file points to everything 
 | If you want | Read |
 |---|---|
 | The whole project in 5 minutes | [`README.md`](README.md) (figures, results tables, findings, limitations) |
-| The report draft and its numbers | [`Submission/preliminary_report/V2/`](Submission/preliminary_report/V2): [`ROUGH_REPORT.md`](Submission/preliminary_report/V2/ROUGH_REPORT.md), [`FINDINGS.md`](Submission/preliminary_report/V2/FINDINGS.md) (19 numbered results), [`RESULTS_TABLE.md`](Submission/preliminary_report/V2/RESULTS_TABLE.md), [`APPENDIX.md`](Submission/preliminary_report/V2/APPENDIX.md) (prompts, commands, limitations, human games, data map), [`figures/CAPTIONS.md`](Submission/preliminary_report/V2/figures/CAPTIONS.md) |
-| Every result, in order, with its source folder | [`2026/2026-10/2026-10-24/06_MORE_CELLS.md`](2026/2026-10/2026-10-24/06_MORE_CELLS.md) (sections 1 to 27) |
+| The report draft and its numbers | [`Submission/preliminary_report/V2/`](Submission/preliminary_report/V2): [`ROUGH_REPORT.md`](Submission/preliminary_report/V2/ROUGH_REPORT.md), [`FINDINGS.md`](Submission/preliminary_report/V2/FINDINGS.md) (21 numbered results), [`RESULTS_TABLE.md`](Submission/preliminary_report/V2/RESULTS_TABLE.md), [`APPENDIX.md`](Submission/preliminary_report/V2/APPENDIX.md) (prompts, commands, limitations, human games, data map), [`figures/CAPTIONS.md`](Submission/preliminary_report/V2/figures/CAPTIONS.md) |
+| Every result, in order, with its source folder | [`2026/2026-10/2026-10-24/06_MORE_CELLS.md`](2026/2026-10/2026-10-24/06_MORE_CELLS.md) (sections 1 to 30) |
 | What was planned and what changed | [`03_PREREG.md`](2026/2026-10/2026-10-21/03_PREREG.md) (frozen at tag `prereg-v1`, deviations appended), [`01_DISCLOSURE_LOG.md`](2026/2026-10/2026-10-21/01_DISCLOSURE_LOG.md), [`PLAN.md`](PLAN.md) |
-| What each day produced | `2026/2026-10/<day>/00_SUMMARY.md` for 21 to 25 October |
+| What each day produced | `2026/2026-10/<day>/00_SUMMARY.md` for 21 to 26 October |
 | The human case studies with figures | [`Submission/supplementary/human_case_studies/`](Submission/supplementary/human_case_studies/README.md) |
 | The raw data | [`data/README.md`](data/README.md) (every folder, the experiment it belongs to, partial and cancelled runs) |
 | How to rerun it | README "Reproduce", [`requirements.txt`](requirements.txt), [`tests/`](tests) |
@@ -20,8 +20,8 @@ The submitted report is short (8 pages at most). This file points to everything 
 ## What is in the study
 
 - The main question, a frozen design and a narrow claim: collusion persistence under agent replacement in a repeated three-firm pricing game, with four swap types, hidden or announced, one or two firms replaced.
-- Models: gemma4-12b (local), DeepSeek V4.1 Flash, Qwen3.8 and GLM-5.3-Flash (hosted), Kimi K3 (gate only), plus an external agent (a small hosted chat model) and a human as one firm.
-- Ablations and extra cells: history window, notes, known end date, temperature, number of firms, horizon, entry of new firms (same model, another family, a scripted undercutter), LLM newcomer prompts, awareness probes, mixed-family markets, eight firms, a round-1 spread test, and a communication cut.
+- Models: gemma4-12b (local; the headline gemma pooling is 20 seeds, 17 gated), DeepSeek V4.1 Flash, Qwen3.8 and GLM-5.3-Flash (hosted), Kimi K3 (gate only), qwen3-14b (local; tried as a base model, never forms a cartel, so no swap result), plus an external agent (a small hosted chat model) and a human as one firm.
+- Ablations and extra cells: history window, notes, known end date, temperature, number of firms, horizon, entry of new firms (same model, another family, a scripted undercutter), LLM newcomer prompts, awareness probes, mixed-family markets, eight firms, a round-1 spread test, a communication cut, and swap timing (swap at round 15, 30 or 45, gemma).
 - A fun research direction, outside the preregistered study and never pooled with it: nine games in which the author plays one firm against gemma firms (3, 5 and 10 firms, four information conditions), with the AI firms' own debriefs at the end.
 
 ## Quality checks
@@ -42,4 +42,7 @@ On 2026-10-25 four read-only auditors (a leak and privacy check, a number-integr
 |---|---|
 | 2026-10-25 | Repository audit and clean-up; report remade as V2 (V1 archived); data map, requirements and citation file added; README redesigned with figures; this file added. |
 | 2026-10-25 | Gemma runs planned overnight: main-study seeds 31 to 40, plus communication-cut clone, entry (one and two new firms) and the myopic newcomer variant on the same seeds (thin cells found by the coverage check). Results will be added to the results note and this log. |
+| 2026-10-26 | Gemma seeds 31 to 40 finished (`data/gemma_more`); gemma now pooled over 20 seeds (17 gated). The new seeds agree with the old: clone -0.000, undercutter k=1 -0.050, k=2 -0.313; communication-cut clone -0.269 (-0.406, -0.137) over 17 seeds (old -0.207); entry pooled n=13 (one firm -0.001, two firms -0.068); myopic newcomer -0.110, n=13. Results note section 28, `analysis/new_runs.py`. |
+| 2026-10-26 | Swap timing on gemma (`data/gemma_timing`, `tools/swap_timing.py`, switch `SWAP_AT`; exploratory deviation; 9 gated seeds): clone +0.001 / -0.002 / +0.001 and undercutter k=1 -0.037 / -0.032 / -0.028 for a swap at round 15 / 30 / 45. Results note section 29. |
+| 2026-10-26 | qwen3-14b as a second local base model (`data/qwen14_more`, exploratory deviation): all finished base runs (at least 7) sit at the floor price of 10, gate 0 passes, no swap result. Results note section 30. |
 | 2026-10-25 | Git history rewritten once to remove material not meant to be public (see the README history note); tags re-created. |
