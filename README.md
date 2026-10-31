@@ -12,6 +12,8 @@
 
 # Does the Cartel Survive Turnover?
 
+**THE VIDEO -->** https://www.youtube.com/watch?v=aN4JW4Z5tVw
+
 **In one line:** when LLM pricing agents have settled on a high, cartel-like price, swapping one of them for a fresh copy changes nothing, but swapping in an undercutter, or silencing the messages first, breaks it.
 
 Entry to the [Apart Research AI Collusion Research Sprint](https://apartresearch.com/sprints/ai-collusion-research-sprint-2026-10-23-to-2026-10-25) (2026-10-23 to 2026-10-25), solo. The gemma4-12b study now has 20 seeds (17 of 20 pass the gate); the hosted models have 5 to 10 seeds each.
